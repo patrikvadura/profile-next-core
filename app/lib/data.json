@@ -37,10 +37,8 @@
   "services": {
 
   },
-  "cta": {
-    "title": "Již více než 10 let <span>pomáhám klientům</span> v řešení finančního zázemí."
-  },
   "contact": {
+    "title": "Již více než 10 let <span>pomáhám klientům</span> v řešení finančního zázemí.",
     "email": "indra@saroli.cz",
     "phone": "+420 123 456 789",
     "address": "Stojanova 508, Uh. Hradiště"

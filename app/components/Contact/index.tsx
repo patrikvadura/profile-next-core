@@ -10,7 +10,7 @@ export function Contact() {
   return (
     <div id="contact" className={classes.section}>
       <div className="flex flex-col items-center space-y-12">
-        <p dangerouslySetInnerHTML={{ __html: data.cta.title }} className={classes.title} />
+        <p dangerouslySetInnerHTML={{ __html: data.contact.title }} className={classes.title} />
 
         <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 items-center text-center">
           <Link href={`mailto:${data.contact.email}`} className={classes.cta}>
