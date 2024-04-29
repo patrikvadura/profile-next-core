@@ -1,0 +1,23 @@
+.navbar {
+  @apply fixed bg-header-background transition duration-300 ease-in-out;
+}
+
+.name {
+  @apply text-header-name text-lg md:text-xl font-bold;
+
+  span {
+    @apply text-header-nameClaim font-normal opacity-50;
+  }
+}
+
+.logo {
+  @apply rounded-none h-32 z-30 transition duration-300 ease-in-out;
+}
+
+.menuToggle {
+  @apply sm:hidden text-header-link;
+}
+
+.link {
+  @apply text-header-link hover:text-header-linkHover font-bold;
+}

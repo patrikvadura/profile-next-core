@@ -1,0 +1,19 @@
+.section {
+  @apply h-[40rem] w-full flex items-center justify-center overflow-hidden;
+}
+
+.title {
+  @apply max-w-4xl mx-auto text-contact-title text-center text-[50px] leading-[1.2] font-bold;
+
+  span {
+    @apply text-contact-highlight;
+  }
+}
+
+.cta {
+  @apply hover:underline text-contact-title text-xl font-semibold tracking-wider;
+
+  svg {
+    @apply mr-4;
+  }
+}

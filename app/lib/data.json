@@ -1,0 +1,70 @@
+{
+  "profile": {
+    "name": "Patrik Indra",
+    "nameClaim": "Finanční specialista",
+    "logo": null,
+    "logoDark": null,
+    "image": "/assets/img/profileImage.webp"
+  },
+  "meta": {
+    "title": "Patrik Indra - Saroli | Finanční specialista",
+    "description": "Jsem tu pro vás v oblasti finančního poradenství, hypoték a pojištění již více než 5 let.",
+    "openGraph": "/assets/img/profileImage.webp"
+  },
+  "hero": {
+    "title": "Ve financích se na mě můžete spolehnout",
+    "subtitle": "Finanční specialista",
+    "largeTitle": "Finance",
+    "cta": {
+      "primary": {
+        "title": "Nezávazná konzultace",
+        "link": "#form"
+      },
+      "secondary": {
+        "title": "Kdo jsem?",
+        "link": "#about"
+      }
+    }
+  },
+  "about": {
+    "title": "Pomůžu zajistit vaši budoucnost a cíle",
+    "description": "Již více než 10 let pomáhám klientům v řešení finančního zázemí, zajištění příjmu v případě nemoci / úrazu a dále v přípravě na jejich budoucnost a cíle. Spolupráci si zakládám na fér jednání, zodpovědném přístupu a na kvalitě předávaných informací. Věřím, že jen poctivě odvedená práce může naši spolupráci posunout dále. Pokud právě tyto hodnoty ve financích hledáte, už víte, na koho se obrátit.",
+    "cta": {
+      "title": "Nezávazná konzultace",
+      "link": "#form"
+    }
+  },
+  "services": {
+
+  },
+  "cta": {
+    "title": "Již více než 10 let <span>pomáhám klientům</span> v řešení finančního zázemí."
+  },
+  "contact": {
+    "email": "indra@saroli.cz",
+    "phone": "+420 123 456 789",
+    "address": "Stojanova 508, Uh. Hradiště"
+  },
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "O nás",
+      "link": "#about"
+    },
+    {
+      "id": 2,
+      "title": "Služby",
+      "link": "#services"
+    },
+    {
+      "id": 3,
+      "title": "Reference",
+      "link": "#reference"
+    },
+    {
+      "id": 4,
+      "title": "Kontakt",
+      "link": "#contact"
+    }
+  ]
+}
