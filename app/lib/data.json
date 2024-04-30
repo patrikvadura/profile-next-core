@@ -9,7 +9,12 @@
   "meta": {
     "title": "Patrik Indra - Saroli | Finanční specialista",
     "description": "Jsem tu pro vás v oblasti finančního poradenství, hypoték a pojištění již více než 5 let.",
-    "openGraph": "/assets/img/profileImage.webp"
+    "openGraph": "/assets/img/profileImage.webp",
+    "favicon": {
+      "label": "PI",
+      "background": "#5B319B",
+      "foreground": "#fff"
+    }
   },
   "hero": {
     "title": "Ve financích se na mě můžete spolehnout",
@@ -35,10 +40,116 @@
     }
   },
   "services": {
-
+    "title": "Nabídka mých služeb",
+    "style": "background",
+    "items": [
+      {
+        "title": "Úvěry",
+        "icon": "material-symbols:arrow-forward-rounded",
+        "image": "/assets/icons/icon_uvery.svg",
+        "imageDark": "/assets/icons/icon_uvery.svg",
+        "list": {
+          "listItems": [
+            {
+              "id": 1,
+              "label": "hypoteční úvěr"
+            },
+            {
+              "id": 2,
+              "label": "spotřebitelský úvěr"
+            },
+            {
+              "id": 3,
+              "label": "podnikatelský úvěr"
+            },
+            {
+              "id": 4,
+              "label": "leasing"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "title": "Investice",
+        "icon": "material-symbols:arrow-forward-rounded",
+        "image": "/assets/icons/icon_investice.svg",
+        "imageDark": "",
+        "list": {
+          "listItems": [
+            {
+              "id": 1,
+              "label": "nemovitostní fondy"
+            },
+            {
+              "id": 2,
+              "label": "podílové fondy"
+            },
+            {
+              "id": 3,
+              "label": "akciové indexy"
+            },
+            {
+              "id": 4,
+              "label": "doplňkové penzijní spoření"
+            }
+          ]
+        },
+        "description": null
+      },
+      {
+        "title": "Pojištění",
+        "icon": "material-symbols:arrow-forward-rounded",
+        "image": "/assets/icons/icon_pojisteni.svg",
+        "imageDark": "",
+        "list": {
+          "listItems": [
+            {
+              "id": 1,
+              "label": "životní pojištění"
+            },
+            {
+              "id": 2,
+              "label": "úrazové pojištění"
+            },
+            {
+              "id": 3,
+              "label": "pojištění nemovitosti"
+            },
+            {
+              "id": 4,
+              "label": "pojištění automobilu"
+            }
+          ]
+        },
+        "description": null
+      }
+    ]
+  },
+  "reference": {
+    "largeTitle": "Reference",
+    "items": [
+      {
+        "title": "Manželé V. | Brno",
+        "description": "S Patrikem jsme se setkali kvůli pojištění nemovitosti. V jednoduchosti nám vysvětlil rozdíly mezi pojišťovnami a vybral pro nás nejlepší variantu. Od té doby s ním konzultujeme životní pojištění a veškeré investice. Jeho celkový přehled a upřímné jednání jsme ve financích hledali."
+      },
+      {
+        "title": "Libor N. | Uherský Brodgit ",
+        "description": "S Patrikem se známe už řadu let a naši spolupráci si nemohu vynachválit. Vím, že potřeby klienta jsou pro něj na prvním místě. V oblasti financí vždy dokáže věci srozumitelně vysvětlit a následně poradit s výběrem ideálního řešení. K mé velké spokojenosti spolu řešíme také otázky ohledně povinného ručení, životního pojištění, investic i penze."
+      },
+      {
+        "title": "Libor O. | Uherský Brod",
+        "description": "S Patrikem se známe od malička a řeším s ním všechny své pojištění i investice. O všechno se mi skvěle stará, dokázal pro mě najít nejvhodnější finanční nástroje a vždy se na něj můžu obrátit. Mohu jedině doporučit."
+      },
+      {
+        "title": "Manželé J. | Uherský Brod",
+        "description": "Před několika lety jsme se potkali přes doporučení s panem Indrou kvůli hypotéce. Od první schůzky byla jeho práce profesionální a efektivní. Během 3 týdnů bylo vše vyřešeno a my mohli čerpat peníze. Navíc připravil finanční plán, díky kterému můžeme hypotéku splatit dříve a tím pádem ušetřit nemalé peníze. Spolupráci s panem Indrou jen doporučujeme."
+      }
+    ]
   },
   "contact": {
     "title": "Již více než 10 let <span>pomáhám klientům</span> v řešení finančního zázemí.",
+    "subtitle": "Pojďme začít spolupracovat",
     "email": "indra@saroli.cz",
     "phone": "+420 123 456 789",
     "address": "Stojanova 508, Uh. Hradiště"
@@ -64,5 +175,22 @@
       "title": "Kontakt",
       "link": "#contact"
     }
-  ]
+  ],
+  "footer": {
+    "cookie": true,
+    "socialItems": [
+      {
+        "id": 1,
+        "label": "Facebook",
+        "icon": "mingcute:facebook-line",
+        "link": "https://facebook.com"
+      },
+      {
+        "id": 2,
+        "label": "Instagram",
+        "icon": "ci:instagram",
+        "link": "https://facebook.com"
+      }
+    ]
+  }
 }

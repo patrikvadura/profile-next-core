@@ -1,39 +1,35 @@
+.main {
+  @apply w-full pb-20 pt-40 flex items-center justify-center overflow-hidden;
+}
+
 .title {
-  @apply text-[70px] leading-[1.5] text-hero-title font-bold translate-y-[100px];
+  @apply w-full text-[50px] font-bold text-service-title text-center translate-y-[100px];
 }
 
 .subtitle {
-  @apply mb-8 text-xl font-normal tracking-[.3rem] text-hero-subtitle translate-y-[50px];
+  @apply text-2xl text-service-subtitle font-bold;
 }
 
-.largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-hero-largeTitle -translate-x-full;
+.text {
+  @apply text-service-text text-opacity-75;
 }
 
-.profileImage {
-  @apply absolute right-0 bottom-0 translate-y-[120px] translate-x-[60px] z-0;
-}
+.item {
+  @apply flex flex-col items-center md:items-start text-center md:text-left p-8 space-y-4 transition duration-300 ease-in-out;
 
-.gradientOverlay {
-  @apply absolute right-0 bottom-0 h-full w-full z-10 bg-gradient-to-r from-hero-gradientFrom to-hero-gradientTo;
-}
+  &Border {
+    @apply border border-service-border;
 
-.cta {
-  @apply px-6 py-4 bg-hero-buttonBackground text-hero-buttonText font-semibold tracking-wider uppercase;
-
-  svg {
-    @apply ml-4 transition duration-300 ease-in-out;
-  }
-
-  &:hover {
-    svg {
-      @apply -rotate-45 scale-150;
+    &:Hover {
+      @apply bg-service-borderHoverBackground;
     }
   }
 
-  &Secondary {
-    @extend .cta;
+  &Background {
+    @apply bg-service-background;
 
-    @apply bg-transparent hover:bg-transparent hover:underline;
+    &:Hover {
+      @apply bg-service-backgroundHover;
+    }
   }
 }

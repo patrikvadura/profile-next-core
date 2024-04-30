@@ -13,6 +13,14 @@ const config: Config = {
     container: {
       center: true,
     },
+    extend: {
+      colors: {
+        favicon: {
+          background: '#191A44',
+          foreground: '#fff',
+        },
+      },
+    },
   },
   darkMode: 'class',
   plugins: [
@@ -51,10 +59,31 @@ const config: Config = {
               buttonBackground: '#5B319B',
               buttonText: '#fff',
             },
+            service: {
+              title: '#191A44',
+              subtitle: '#191A44',
+              text: '#000',
+              background: '#EDF1F4',
+              backgroundHover: '#d2d6d8',
+              border: '#ededed',
+              borderHoverBackground: '#ededed',
+            },
+            reference: {
+              title: '#fff',
+              description: '#fff',
+              largeTitle: '#fff',
+              dots: '#fff',
+              symbol: '#5B319B',
+              background: '#191A44',
+            },
             contact: {
               title: '#191A44',
+              subtitle: '#191A44',
               highlight: '#5B319B',
-              background: '#fff',
+            },
+            footer: {
+              text: '#000',
+              logo: '#000',
             },
           },
         },
@@ -88,10 +117,23 @@ const config: Config = {
               buttonBackground: '#5B319B',
               buttonText: '#fff',
             },
+            service: {
+              title: '#fff',
+              subtitle: '#fff',
+              text: '#fff',
+              background: '#13133099',
+              backgroundHover: '#131330D1',
+              border: '#13133099',
+              borderHoverBackground: '#13133099',
+            },
             contact: {
-              title: '#191A44',
+              title: '#fff',
+              subtitle: '#fff',
               highlight: '#5B319B',
-              background: '#fff',
+            },
+            footer: {
+              text: '#fff',
+              logo: '#fff',
             },
           },
         },

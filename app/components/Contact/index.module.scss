@@ -1,13 +1,17 @@
 .section {
-  @apply h-[40rem] w-full flex items-center justify-center overflow-hidden;
+  @apply h-[32rem] w-full flex items-center justify-center overflow-hidden;
 }
 
 .title {
-  @apply max-w-4xl mx-auto text-contact-title text-center text-[50px] leading-[1.2] font-bold;
+  @apply max-w-4xl mx-auto text-contact-title text-center text-[50px] leading-[1.2] font-bold scale-0;
 
   span {
     @apply text-contact-highlight;
   }
+}
+
+.subtitle {
+  @apply max-w-4xl mx-auto text-contact-subtitle text-center text-2xl;
 }
 
 .cta {

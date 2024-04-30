@@ -6,18 +6,19 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { Providers } from '@/app/providers'
 import Header from '@/app/ui/Header'
+import Footer from '@/app/ui/Footer'
 import { Hind } from 'next/font/google'
 import './globals.css'
 
 const defaultFont = Hind({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
 export const metadata: Metadata = {
-    metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
-    title: data.meta.title,
-    description: data.meta.description,
-    openGraph: {
-        images: [data.meta.openGraph],
-    },
+  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+  title: data.meta.title,
+  description: data.meta.description,
+  openGraph: {
+    images: [data.meta.openGraph],
+  },
 }
 
 export default function RootLayout({
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="cs-CZ" className="scroll-smooth" suppressHydrationWarning>
       <Head>
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
       </Head>
 
       <Script
@@ -49,20 +50,21 @@ export default function RootLayout({
         strategy="lazyOnload"
       />
 
-      <body className={defaultFont.className}>
+      <body className={defaultFont.className} suppressHydrationWarning>
         <Providers>
           <noscript>
             <iframe
               src={`https://www.googletagmanager.com/ns.html?id=${gtmID}`}
               height="0"
               width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
+              className="hidden invisible"
             ></iframe>
           </noscript>
 
           <Header />
-
           {children}
+
+          <Footer />
         </Providers>
       </body>
     </html>

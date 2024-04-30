@@ -3,7 +3,6 @@
 import data from '@/app/lib/data.json'
 
 import React, { useRef } from 'react'
-import { Divider, Link } from '@nextui-org/react'
 import { Icon } from '@iconify/react'
 import classes from './index.module.scss'
 
@@ -15,7 +14,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
 }
 
-export function About() {
+export function Reference() {
   const title = useRef<HTMLElement | any>()
   const divider = useRef<HTMLElement | any>()
   const main = useRef<HTMLElement | any>()
@@ -42,23 +41,16 @@ export function About() {
   })
 
   return (
-    <div id="about" className="pt-24 px-24">
+    <div id="reference" className="container pt-24 py-24">
       <div className={classes.main} ref={main}>
-        <div className="max-w-screen-md space-y-8 text-left p-16">
-          <h3 className={classes.title} ref={title}>
-            {data.about.title}
-          </h3>
-
-          <Divider orientation="horizontal" ref={divider} className={classes.divider} />
+        <div className="flex flex-col items-center space-y-8 text-center p-16">
+          <Icon icon="ic:sharp-format-quote" className="text-reference-symbol text-[150px]" />
 
           <p className={classes.description}>{data.about.description}</p>
 
-          <div className="mt-12 space-x-4">
-            <Link href={data.about.cta.link} className={classes.cta}>
-              {data.about.cta.title}
-              <Icon icon="material-symbols:arrow-forward-rounded" />
-            </Link>
-          </div>
+          <h3 className={classes.title} ref={title}>
+            {data.about.title}
+          </h3>
         </div>
       </div>
     </div>
