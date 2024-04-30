@@ -3,8 +3,17 @@
 import data from '@/app/lib/data.json'
 
 import React, { useRef } from 'react'
+
 import { Icon } from '@iconify/react'
 import classes from './index.module.scss'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -15,44 +24,43 @@ if (typeof window !== 'undefined') {
 }
 
 export function Reference() {
-  const title = useRef<HTMLElement | any>()
-  const divider = useRef<HTMLElement | any>()
+  const largeTitle = useRef<HTMLElement | any>()
   const main = useRef<HTMLElement | any>()
 
   useGSAP(() => {
-    gsap.to(title.current, {
-      y: 0,
+    gsap.to(largeTitle.current, {
+      x: 0,
       duration: 1,
       scrollTrigger: {
         trigger: main.current,
-      },
-    })
-
-    gsap.to(divider.current, {
-      y: 0,
-      scaleX: 10,
-      transformOrigin: 'left center',
-      duration: 1,
-      scrollTrigger: {
-        trigger: main.current,
+        start: '200px center',
+        end: '300px',
         scrub: true,
       },
     })
   })
 
   return (
-    <div id="reference" className="container pt-24 py-24">
-      <div className={classes.main} ref={main}>
-        <div className="flex flex-col items-center space-y-8 text-center p-16">
-          <Icon icon="ic:sharp-format-quote" className="text-reference-symbol text-[150px]" />
+    <div id="reference" className={classes.wrapper} ref={main}>
+      <div className={classes.main}>
+        <Swiper slidesPerView={1} loop={true} navigation={true} modules={[Autoplay, Navigation]}>
+          {data.reference.items.map((item: { title: string; description: string; id: number }) => (
+            <SwiperSlide key={item.id}>
+              <div className={classes.item}>
+                <Icon icon="ic:sharp-format-quote" className="text-reference-symbol text-[150px]" />
 
-          <p className={classes.description}>{data.about.description}</p>
+                <p className={classes.description}>{item.description}</p>
 
-          <h3 className={classes.title} ref={title}>
-            {data.about.title}
-          </h3>
-        </div>
+                <h3 className={classes.title}>{item.title}</h3>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
+
+      <p className={classes.largeTitle} ref={largeTitle}>
+        {data.reference.largeTitle}
+      </p>
     </div>
   )
 }

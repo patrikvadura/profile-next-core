@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+  --swiper-navigation-color: #fff;
+  --swiper-theme-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-color: #fff;
+  --swiper-pagination-color: #fff;
+  --swiper-navigation-size: 2rem !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,3 +54,21 @@
   --cc-footer-border-color: transparent;
   --cc-footer-bg: #eaeaea;
 }
+
+.swiper {
+  width: 100%;
+  height: 80%;
+}
+
+.swiper-button-prev {
+  @screen md {
+    left: 3rem !important;
+  }
+}
+
+.swiper-button-next {
+  @screen md {
+    right: 3rem !important;
+  }
+}
+

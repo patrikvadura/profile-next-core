@@ -126,6 +126,14 @@ const config: Config = {
               border: '#13133099',
               borderHoverBackground: '#13133099',
             },
+            reference: {
+              title: '#fff',
+              description: '#fff',
+              largeTitle: '#fff',
+              dots: '#fff',
+              symbol: '#5B319B',
+              background: '#000',
+            },
             contact: {
               title: '#fff',
               subtitle: '#fff',
