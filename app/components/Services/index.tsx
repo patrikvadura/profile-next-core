@@ -62,9 +62,9 @@ export function Services() {
         </h2>
 
         <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
-          {services.services.items.map(item => (
+          {services.services.items.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className={`${classes.item} ${
                 services.services.style === 'border' ? classes.itemBorder : classes.itemBackground
               }`}
@@ -80,9 +80,9 @@ export function Services() {
                 <p className={classes.text}>{item.description}</p>
               ) : (
                 <ul className="text-center md:text-left">
-                  {item.list.listItems.map(listItem => (
+                  {item.list.listItems.map((listItem, index) => (
                     <li
-                      key={listItem.id}
+                      key={index}
                       className={`${classes.text} flex flex-row justify-center md:justify-start items-center`}
                     >
                       <Icon icon="material-symbols:check-small" className="mr-2" />

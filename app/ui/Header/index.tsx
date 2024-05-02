@@ -15,7 +15,7 @@ import {
   Image,
   Link,
 } from '@nextui-org/react'
-import { ThemeSwitcher } from '@/app/ui/ThemeSwitcher/ThemeSwitcher'
+import { ThemeSwitcher } from '@/app/ui/ThemeSwitcher'
 import classes from './index.module.scss'
 
 export default function Header() {

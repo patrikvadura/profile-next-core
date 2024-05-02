@@ -5,7 +5,11 @@
     "logo": null,
     "logoDark": null,
     "image": "/assets/img/profileImage.webp",
-    "cookie": false
+    "cookie": false,
+    "gtm": {
+      "status": false,
+      "id": ""
+    }
   },
   "meta": {
     "title": "Patrik Indra - Saroli | Finanční specialista",
