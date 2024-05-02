@@ -3,7 +3,7 @@
 }
 
 .name {
-  @apply text-header-name text-lg md:text-xl font-bold;
+  @apply text-header-name text-base md:text-lg lg:text-xl font-bold;
 
   span {
     @apply text-header-nameClaim font-normal opacity-50;
@@ -20,4 +20,8 @@
 
 .link {
   @apply text-header-link hover:text-header-linkHover font-bold;
+
+  &Mobile {
+    @apply text-header-LinkMobileToggle text-4xl py-2 font-bold;
+  }
 }

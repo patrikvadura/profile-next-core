@@ -1,9 +1,9 @@
 .main {
-  @apply h-[650px] flex flex-col justify-center items-start bg-about-background;
+  @apply lg:h-[650px] flex flex-col justify-center items-start bg-about-background;
 }
 
 .title {
-  @apply text-[56px] leading-[1.3] font-bold text-about-title translate-y-[100px];
+  @apply text-[40px] md:text-[56px] leading-[1.3] font-bold text-about-title translate-y-[100px];
 }
 
 .description {
@@ -25,11 +25,5 @@
     svg {
       @apply -rotate-45 scale-150;
     }
-  }
-
-  &Secondary {
-    @extend .cta;
-
-    @apply hover:bg-transparent hover:underline;
   }
 }

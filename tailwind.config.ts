@@ -38,7 +38,9 @@ const config: Config = {
               nameClaim: '#000',
               link: '#191A44',
               linkHover: '#5B319B',
+              LinkMobileToggle: '#fff',
               background: '#fff',
+              backgroundMobileToggle: '#191A44',
             },
             hero: {
               title: '#fff',
@@ -96,7 +98,9 @@ const config: Config = {
               nameClaim: '#fff',
               link: '#fff',
               linkHover: '#fff',
+              LinkMobileToggle: '#fff',
               background: '#000',
+              backgroundMobileToggle: '#fff',
             },
             hero: {
               title: '#fff',

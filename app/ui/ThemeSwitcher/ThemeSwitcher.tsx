@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '@nextui-org/react'
 import { Icon } from '@iconify/react'
 import React from 'react'
+import classes from './index.module.scss'
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
@@ -30,9 +31,9 @@ export function ThemeSwitcher() {
         aria-label="Změna tématu"
       >
         {theme === 'dark' ? (
-          <Icon icon="lucide:sun" className="text-secondary dark:text-white text-lg" />
+          <Icon icon="lucide:sun" className={classes.icon} />
         ) : (
-          <Icon icon="lucide:moon" className="text-secondary dark:text-white text-lg" />
+          <Icon icon="lucide:moon" className={classes.icon} />
         )}
       </Button>
     </div>

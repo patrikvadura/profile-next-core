@@ -42,7 +42,7 @@ export function About() {
   })
 
   return (
-    <div id="about" className="pt-24 px-24">
+    <div id="about" className="md:pt-12 lg:pt-24 md:px-8 lg:px-24">
       <div className={classes.main} ref={main}>
         <div className="max-w-screen-md space-y-8 text-left p-16">
           <h3 className={classes.title} ref={title}>
