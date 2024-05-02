@@ -10,7 +10,7 @@ import { Link } from '@nextui-org/react'
 export default function FooterSocial() {
   return (
     <div className="flex flex-row items-center space-x-4">
-      {data.footer.cookie ? <CookieConsentComponent /> : null}
+      {data.profile.cookie ? <CookieConsentComponent /> : null}
 
       {data.footer.socialItems.map(
         (item: { label: string; icon: string; link: string; id: number }) => (

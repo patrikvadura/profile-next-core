@@ -4,7 +4,8 @@
     "nameClaim": "Finanční specialista",
     "logo": null,
     "logoDark": null,
-    "image": "/assets/img/profileImage.webp"
+    "image": "/assets/img/profileImage.webp",
+    "cookie": false
   },
   "meta": {
     "title": "Patrik Indra - Saroli | Finanční specialista",
@@ -181,7 +182,6 @@
     }
   ],
   "footer": {
-    "cookie": true,
     "socialItems": [
       {
         "id": 1,
