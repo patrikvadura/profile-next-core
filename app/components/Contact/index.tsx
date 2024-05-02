@@ -32,7 +32,7 @@ export function Contact() {
 
   return (
     <div id="contact" className={classes.section} ref={main}>
-      <div className="flex flex-col items-center space-y-12">
+      <div className="flex flex-col items-center space-y-8 md:space-y-12">
         <h4 className={classes.subtitle}>{data.contact.subtitle}</h4>
 
         <h3

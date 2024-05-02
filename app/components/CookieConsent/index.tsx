@@ -6,6 +6,7 @@ import * as CookieConsent from 'vanilla-cookieconsent'
 
 import getConfig from './Config'
 import addEventListeners from './Listeners'
+import classes from './index.module.scss'
 
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
@@ -23,10 +24,7 @@ const CookieConsentComponent = () => {
   return (
     <>
       <div onClick={CookieConsent.showPreferences}>
-        <Icon
-          icon="material-symbols:cookie-outline"
-          className="mr-1 text-footer-text text-opacity-50 hover:text-opacity-100 text-2xl transition duration-300 ease-in-out"
-        />
+        <Icon icon="material-symbols:cookie-outline" className={classes.icon} />
       </div>
 
       {/*<button type="button" onClick={ResetCookieConsent}>

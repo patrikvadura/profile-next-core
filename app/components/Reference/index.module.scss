@@ -1,9 +1,13 @@
 .wrapper {
-  @apply relative w-full h-screen pt-24 py-24 bg-reference-background overflow-hidden;
+  @apply relative w-full lg:h-screen py-12 md:py-24 bg-reference-background overflow-hidden;
 }
 
 .main {
-  @apply container h-[650px] flex flex-col justify-center items-start;
+  @apply container lg:h-[650px] flex flex-col justify-center items-start;
+}
+
+.quote {
+  @apply text-reference-symbol text-[100px] md:text-[150px];
 }
 
 .item {

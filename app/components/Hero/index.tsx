@@ -57,7 +57,7 @@ export function Hero() {
       <div className={classes.gradientOverlay} />
 
       <div className="md:h-screen lg:h-[950px] flex flex-col justify-center items-start py-32 md:pt-0">
-        <div className="container p-8 lg:p-0 z-20">
+        <div className="container p-8 xl:p-0 z-20">
           <div className="max-w-screen-md text-left">
             <h3 className={classes.subtitle} ref={subtitle}>
               {data.hero.subtitle}

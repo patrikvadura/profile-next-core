@@ -100,9 +100,9 @@ const getConfig = () => {
             acceptNecessaryBtn: 'Odmítnout',
             showPreferencesBtn: 'Nastavení cookies',
             // closeIconLabel: 'Reject all and close modal',
-            footer: `
-                        <a href="/privacy-policy" target="_blank">Privacy Policy</a>
-                    `,
+            // footer: `
+            //     <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+            // `,
           },
           preferencesModal: {
             title: 'Nastavení cookies',
@@ -186,11 +186,11 @@ const getConfig = () => {
                   'Používají se ke sledování preferencí webu uživatele za účelem cílení reklamy, tj. zobrazování marketingových a reklamních sdělení (i na stránkách třetích stran), které mohou návštěvníka webu zajímat, v souladu s těmito preferencemi. Marketingové cookies využívají nástroje externích společností. Tyto marketingové soubory cookie budou použity pouze s vaším souhlasem.',
                 linkedCategory: 'ads',
               },
-              {
-                title: 'Více o cookies',
-                description:
-                  'Pro více informací o cookies a ochraně soukromí: <a href="/privacy-policy" target="_blank">Privacy Policy</a>',
-              },
+              // {
+              //   title: 'Více o cookies',
+              //   description:
+              //     'Pro více informací o cookies a ochraně soukromí: <a href="/privacy-policy" target="_blank">Privacy Policy</a>',
+              // },
             ],
           },
         },

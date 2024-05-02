@@ -47,7 +47,7 @@ export function Reference() {
           {data.reference.items.map((item: { title: string; description: string; id: number }) => (
             <SwiperSlide key={item.id}>
               <div className={classes.item}>
-                <Icon icon="ic:sharp-format-quote" className="text-reference-symbol text-[150px]" />
+                <Icon icon="ic:sharp-format-quote" className={classes.quote} />
 
                 <p className={classes.description}>{item.description}</p>
 
