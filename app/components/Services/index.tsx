@@ -70,7 +70,7 @@ export function Services() {
               }`}
             >
               {item.image ? (
-                <Image src={item.image} width={80} height={80} alt={item.title} />
+                <Image src={item.image} width={80} height={80} loading="lazy" alt={item.title} />
               ) : (
                 <Icon icon={item.icon} className="text-[40px]" />
               )}

@@ -20,6 +20,7 @@ export function Hero() {
   const title = useRef<HTMLElement | any>()
   const subtitle = useRef<HTMLElement | any>()
   const largeTitle = useRef<HTMLElement | any>()
+  const image = useRef<HTMLElement | any>()
 
   useGSAP(() => {
     gsap.to(title.current, {
@@ -42,6 +43,11 @@ export function Hero() {
         scrub: true,
       },
     })
+
+    gsap.to(image.current, {
+      opacity: 1,
+      duration: 2,
+    })
   })
 
   return (
@@ -51,6 +57,8 @@ export function Hero() {
         className={classes.profileImage}
         width={1050}
         height={1050}
+        loading="lazy"
+        ref={image}
         alt={data.profile.name}
       />
 
