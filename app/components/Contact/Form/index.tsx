@@ -4,8 +4,6 @@ import data from '@/app/lib/data.json'
 import classes from './index.module.scss'
 import { Input, Textarea, Button } from '@nextui-org/react'
 import { Icon } from '@iconify/react'
-//@ts-ignore
-import ReCAPTCHA from 'react-google-recaptcha'
 
 export function Form() {
   const [name, setName] = useState('')
@@ -13,18 +11,12 @@ export function Form() {
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const [recaptchaValue, setRecaptchaValue] = useState(null)
-
-  //@ts-ignore
-  const handleRecaptcha = value => {
-    setRecaptchaValue(value)
-  }
   //@ts-ignore
   const handleSubmit = async e => {
     setLoading(true)
     e.preventDefault()
 
-    if ((name == '' && email == '') || recaptchaValue === null) {
+    if (name == '' && email == '') {
       alert('Please enter both name & email id and verify you are not a robot')
       setLoading(false)
       return false
@@ -103,12 +95,6 @@ export function Form() {
         }}
         required={data.contact.form.textarea.isRequired}
         onChange={e => setMessage(e.target.value)}
-      />
-
-      <ReCAPTCHA
-        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}`}
-        stoken={`${process.env.NEXT_PUBLIC_RECAPTCHA_STOKEN}`}
-        onChange={handleRecaptcha}
       />
 
       <Button type="submit" size="lg" radius="none" className={classes.submit}>
