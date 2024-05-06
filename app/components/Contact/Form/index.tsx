@@ -105,7 +105,11 @@ export function Form() {
         onChange={e => setMessage(e.target.value)}
       />
 
-      <ReCAPTCHA sitekey={`${process.env.NEXT_APP_RECAPTCHA}`} onChange={handleRecaptcha} />
+      <ReCAPTCHA
+        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY}`}
+        stoken={`${process.env.NEXT_PUBLIC_RECAPTCHA_STOKEN}`}
+        onChange={handleRecaptcha}
+      />
 
       <Button type="submit" size="lg" radius="none" className={classes.submit}>
         {loading ? <div className={classes.submitLoading}></div> : data.contact.form.submit}
