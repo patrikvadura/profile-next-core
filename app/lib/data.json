@@ -161,7 +161,33 @@
     "subtitle": "Pojďme začít spolupracovat",
     "email": "indra@saroli.cz",
     "phone": "+420 123 456 789",
-    "address": "Stojanova 508, Uh. Hradiště"
+    "address": "Stojanova 508, Uh. Hradiště",
+    "form": {
+      "submit": "Odeslat zprávu",
+      "name": {
+        "label": "Jméno a příjmení",
+        "type": "text",
+        "name": "name",
+        "placeholder": "např. Jan Novák",
+        "icon": "material-symbols:person-outline-rounded",
+        "isRequired": true
+      },
+      "email": {
+        "label": "Emailová adresa",
+        "type": "email",
+        "name": "email",
+        "placeholder": "např. novak@email.cz",
+        "icon": "material-symbols:alternate-email",
+        "isRequired": true
+      },
+      "textarea": {
+        "label": "Zpráva",
+        "name": "message",
+        "placeholder": "Zpráva",
+        "icon": "material-symbols:alternate-email",
+        "isRequired": true
+      }
+    }
   },
   "menuItems": [
     {

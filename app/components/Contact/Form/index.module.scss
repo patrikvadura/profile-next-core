@@ -1,0 +1,37 @@
+.main {
+  @apply w-full flex flex-col gap-4;
+}
+
+.columns {
+  @apply flex w-full flex-wrap md:flex-nowrap gap-4;
+}
+
+.input {
+  &Input {
+    @apply p-2;
+  }
+
+  &Icon {
+    @apply opacity-50;
+  }
+}
+
+.textarea {
+  @apply col-span-12 md:col-span-6;
+
+  &Label {
+    @apply p-3;
+  }
+
+  &Input {
+    @apply p-2;
+  }
+}
+
+.submit {
+  @apply px-8 py-4 bg-form-submitBackground text-form-submitForeground text-center;
+
+  &Loading {
+    @apply w-6 h-6 border-4 border-white border-solid rounded-full animate-spin;
+  }
+}

@@ -5,6 +5,7 @@ import classes from './index.module.scss'
 import { Icon } from '@iconify/react'
 import { Link } from '@nextui-org/react'
 import React, { useRef } from 'react'
+import { Form } from '@/app/components/Contact/Form'
 
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -56,6 +57,8 @@ export function Contact() {
             {data.contact.address}
           </p>
         </div>
+
+        <Form />
       </div>
     </div>
   )
