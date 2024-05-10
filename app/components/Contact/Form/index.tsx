@@ -12,11 +12,11 @@ export function Form() {
   const [loading, setLoading] = useState(false)
 
   //@ts-ignore
-  const handleSubmit = async e => {
+  const handleSubmit = async (e: React.FormEvent) => {
     setLoading(true)
     e.preventDefault()
 
-    if (name == '' && email == '') {
+    if (name === '' && email === '') {
       alert('Please enter both name & email id and verify you are not a robot')
       setLoading(false)
       return false
@@ -24,12 +24,13 @@ export function Form() {
 
     await fetch('/api/send', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, message }),
     })
       .then(res => res.json())
       .then(data => {
         setLoading(false)
-        if (data && data.id) {
+        if (data && data.data.sent) {
           alert(`Děkujeme za zájem ${name}! Ozveme se hned jak to bude možné!`)
           setName('')
           setEmail('')
