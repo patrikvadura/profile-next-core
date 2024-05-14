@@ -43,11 +43,6 @@ export function Hero() {
         scrub: true,
       },
     })
-
-    gsap.to(image.current, {
-      opacity: 1,
-      duration: 2,
-    })
   })
 
   return (

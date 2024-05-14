@@ -11,7 +11,7 @@
 }
 
 .profileImage {
-  @apply absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] opacity-0 z-0;
+  @apply absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] z-0;
 }
 
 .gradientOverlay {
