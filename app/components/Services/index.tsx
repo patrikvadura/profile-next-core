@@ -2,9 +2,8 @@
 
 import data from '@/app/lib/data.json'
 
-import React, { useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import { Icon } from '@iconify/react'
 import classes from './index.module.scss'
 
 import { gsap } from 'gsap'
@@ -41,25 +40,20 @@ export function Services() {
   // @ts-ignore
   const services: Data = data
 
-  const title = useRef<HTMLElement | any>()
-  const main = useRef<HTMLElement | any>()
-
   useGSAP(() => {
-    gsap.to(title.current, {
+    gsap.to('.title', {
       y: 0,
       duration: 1,
       scrollTrigger: {
-        trigger: main.current,
+        trigger: '#services',
       },
     })
   })
 
   return (
-    <div id="services" className={classes.main} ref={main}>
+    <div id="services" className={classes.main}>
       <div className="container">
-        <h2 className={classes.title} ref={title}>
-          {services.services.title}
-        </h2>
+        <h2 className={`${classes.title} title`}>{services.services.title}</h2>
 
         <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
           {services.services.items.map((item, index) => (
@@ -80,7 +74,7 @@ export function Services() {
                   alt={item.title}
                 />
               ) : (
-                <Icon icon={item.icon} className="text-[40px]" />
+                <div className="text-[40px]">{item.icon}</div>
               )}
               <h3 className={classes.subtitle}>{item.title}</h3>
 
@@ -93,7 +87,15 @@ export function Services() {
                       key={index}
                       className={`${classes.text} flex flex-row justify-center md:justify-start items-center`}
                     >
-                      <Icon icon="material-symbols:check-small" className="mr-2" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        className="mr-2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path fill="currentColor" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4z" />
+                      </svg>
                       {listItem.label}
                     </li>
                   ))}

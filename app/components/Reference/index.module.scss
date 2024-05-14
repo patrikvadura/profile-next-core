@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative w-full lg:h-screen py-12 md:py-24 bg-reference-background overflow-hidden;
+  @apply relative w-full lg:h-screen py-12 md:py-24 bg-light-reference-background overflow-hidden;
 }
 
 .main {
@@ -7,7 +7,7 @@
 }
 
 .quote {
-  @apply text-reference-symbol text-[100px] md:text-[150px];
+  @apply text-light-reference-symbol text-[100px] md:text-[150px];
 }
 
 .item {
@@ -15,13 +15,13 @@
 }
 
 .title {
-  @apply text-xl font-bold text-reference-title;
+  @apply text-xl font-bold text-light-reference-title;
 }
 
 .description {
-  @apply max-w-screen-md mb-8 text-xl font-normal text-reference-description text-opacity-70;
+  @apply max-w-screen-md mb-8 text-xl font-normal text-light-reference-description text-opacity-70;
 }
 
 .largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-reference-largeTitle -translate-x-full;
+  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-reference-largeTitle -translate-x-full;
 }

@@ -1,12 +1,12 @@
 .navbar {
-  @apply fixed bg-header-background transition duration-300 ease-in-out;
+  @apply fixed w-full py-8 transition duration-300 ease-in-out z-50;
 }
 
 .name {
-  @apply text-header-name text-base md:text-lg lg:text-xl font-bold;
+  @apply text-light-header-name text-base md:text-lg lg:text-xl font-bold;
 
   span {
-    @apply text-header-nameClaim font-normal opacity-50;
+    @apply text-light-header-nameClaim font-normal opacity-50;
   }
 }
 
@@ -15,13 +15,13 @@
 }
 
 .menuToggle {
-  @apply sm:hidden text-header-link;
+  @apply sm:hidden text-light-header-link;
 }
 
 .link {
-  @apply text-header-link hover:text-header-linkHover font-bold;
+  @apply text-light-header-link hover:text-light-header-linkHover font-bold;
 
   &Mobile {
-    @apply text-header-LinkMobileToggle text-4xl py-2 font-bold;
+    @apply text-light-header-LinkMobileToggle text-4xl py-2 font-bold;
   }
 }

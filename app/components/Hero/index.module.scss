@@ -1,13 +1,13 @@
 .title {
-  @apply text-[40px] md:text-[70px] leading-[1.5] text-hero-title font-bold translate-y-[100px];
+  @apply text-[40px] md:text-[70px] leading-[1.5] text-light-hero-title font-bold translate-y-[100px];
 }
 
 .subtitle {
-  @apply mb-8 text-xl font-normal tracking-[.3rem] text-hero-subtitle translate-y-[50px];
+  @apply mb-8 text-xl font-normal tracking-[.3rem] text-light-hero-subtitle translate-y-[50px];
 }
 
 .largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-hero-largeTitle -translate-x-full;
+  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-hero-largeTitle -translate-x-full;
 }
 
 .profileImage {
@@ -15,11 +15,11 @@
 }
 
 .gradientOverlay {
-  @apply absolute right-0 bottom-0 h-full w-full z-10 bg-gradient-to-r from-hero-gradientFrom to-hero-gradientTo;
+  @apply absolute right-0 bottom-0 h-full w-full z-10 bg-gradient-to-r from-light-hero-gradientFrom to-light-hero-gradientTo;
 }
 
 .cta {
-  @apply px-6 py-4 bg-hero-buttonBackground text-hero-buttonText font-semibold tracking-wider uppercase;
+  @apply px-6 py-4 bg-light-hero-buttonBackground text-light-hero-buttonText font-semibold tracking-wider uppercase;
 
   svg {
     @apply ml-4 transition duration-300 ease-in-out;

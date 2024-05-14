@@ -1,10 +1,8 @@
 'use client'
 
 import data from '@/app/lib/data.json'
-
-import React, { useRef } from 'react'
-import { Divider, Link } from '@nextui-org/react'
-import { Icon } from '@iconify/react'
+import React from 'react'
+import Link from 'next/link'
 import classes from './index.module.scss'
 
 import { gsap } from 'gsap'
@@ -16,26 +14,22 @@ if (typeof window !== 'undefined') {
 }
 
 export function About() {
-  const title = useRef<HTMLElement | any>()
-  const divider = useRef<HTMLElement | any>()
-  const main = useRef<HTMLElement | any>()
-
   useGSAP(() => {
-    gsap.to(title.current, {
+    gsap.to('.title', {
       y: 0,
       duration: 1,
       scrollTrigger: {
-        trigger: main.current,
+        trigger: '#about',
       },
     })
 
-    gsap.to(divider.current, {
+    gsap.to('.divider', {
       y: 0,
       scaleX: 10,
       transformOrigin: 'left center',
       duration: 1,
       scrollTrigger: {
-        trigger: main.current,
+        trigger: '#about',
         scrub: true,
       },
     })
@@ -43,20 +37,17 @@ export function About() {
 
   return (
     <div id="about" className="md:pt-12 lg:pt-24 md:px-8 lg:px-24">
-      <div className={classes.main} ref={main}>
+      <div className={classes.main}>
         <div className="max-w-screen-md space-y-8 text-left py-12 px-8 md:p-16">
-          <h3 className={classes.title} ref={title}>
-            {data.about.title}
-          </h3>
+          <h3 className={`${classes.title} title`}>{data.about.title}</h3>
 
-          <Divider orientation="horizontal" ref={divider} className={classes.divider} />
+          <div className={`${classes.divider} divider`} />
 
           <p className={classes.description}>{data.about.description}</p>
 
           <div className="mt-12 space-x-4">
             <Link href={data.about.cta.link} className={classes.cta}>
               {data.about.cta.title}
-              <Icon icon="material-symbols:arrow-forward-rounded" />
             </Link>
           </div>
         </div>

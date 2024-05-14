@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import React from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
-import { Providers } from '@/app/providers'
 import Header from '@/app/ui/Header'
 import Footer from '@/app/ui/Footer'
 import { Hind } from 'next/font/google'
@@ -55,25 +54,23 @@ export default function RootLayout({
       )}
 
       <body className={defaultFont.className} suppressHydrationWarning>
-        <Providers>
-          {data.profile.gtm.status ? (
-            <noscript>
-              <iframe
-                src={`https://www.googletagmanager.com/ns.html?id=${gtmID}`}
-                height="0"
-                width="0"
-                className="hidden invisible"
-              ></iframe>
-            </noscript>
-          ) : (
-            ''
-          )}
+        {data.profile.gtm.status ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmID}`}
+              height="0"
+              width="0"
+              className="hidden invisible"
+            ></iframe>
+          </noscript>
+        ) : (
+          ''
+        )}
 
-          <Header />
-          {children}
+        <Header />
+        {children}
 
-          <Footer />
-        </Providers>
+        <Footer />
       </body>
     </html>
   )

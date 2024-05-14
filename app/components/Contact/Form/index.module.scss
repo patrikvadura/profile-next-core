@@ -29,7 +29,7 @@
 }
 
 .submit {
-  @apply px-8 py-4 bg-form-submitBackground text-form-submitForeground text-center;
+  @apply px-8 py-4 bg-light-form-submitBackground text-light-form-submitForeground text-center;
 
   &Loading {
     @apply w-6 h-6 border-4 border-white border-solid rounded-full animate-spin;

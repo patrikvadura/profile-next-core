@@ -3,33 +3,33 @@
 }
 
 .title {
-  @apply w-full text-[50px] font-bold text-service-title text-center translate-y-[100px];
+  @apply w-full text-[50px] font-bold text-light-service-title text-center translate-y-[100px];
 }
 
 .subtitle {
-  @apply text-2xl text-service-subtitle font-bold;
+  @apply text-2xl text-light-service-subtitle font-bold;
 }
 
 .text {
-  @apply text-service-text text-opacity-75;
+  @apply text-light-service-text text-opacity-75;
 }
 
 .item {
   @apply flex flex-col items-center md:items-start text-center md:text-left p-8 space-y-4 transition duration-300 ease-in-out;
 
   &Border {
-    @apply border border-service-border;
+    @apply border border-light-service-border;
 
     &:Hover {
-      @apply bg-service-borderHoverBackground;
+      @apply bg-light-service-borderHoverBackground;
     }
   }
 
   &Background {
-    @apply bg-service-background;
+    @apply bg-light-service-background;
 
     &:Hover {
-      @apply bg-service-backgroundHover;
+      @apply bg-light-service-backgroundHover;
     }
   }
 }

@@ -1,60 +1,26 @@
-'use client'
-
 import data from '@/app/lib/data.json'
 
-import React, { useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
-import {
-  Navbar,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Image,
-  Link,
-} from '@nextui-org/react'
-import { ThemeSwitcher } from '@/app/ui/ThemeSwitcher'
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 import classes from './index.module.scss'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-  const [scrollPosition, setScrollPosition] = useState(0)
-
-  const { theme, setTheme } = useTheme()
-
-  const toggleTheme = (): void => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-  }
-
-  useEffect(() => {
-    const updateScroll = () => {
-      setScrollPosition(window.scrollY || document.documentElement.scrollTop)
-    }
-    window.addEventListener('scroll', updateScroll)
-    return () => window.removeEventListener('scroll', updateScroll)
-  }, [])
-
   return (
-    <Navbar
-      className={`${classes.navbar} ${scrollPosition > 50 ? 'py-2' : 'py-4'}`}
-      classNames={{
-        wrapper: 'xl:px-0',
-      }}
-      maxWidth="xl"
-      isBordered
-      onMenuOpenChange={setIsMenuOpen}
-    >
-      <NavbarBrand>
+    <div className={`${classes.navbar} bg-light-header-background dark:bg-dark-header-background`}>
+      <div className="container flex flex-row justify-between">
         <Link href="/">
           {data.profile.logo ? (
             <Image
-              className={`${classes.logo} ${
-                scrollPosition > 50 ? '-bottom-6 scale-75' : 'bottom-0 scale-100'
-              }`}
-              src={`/${theme === 'dark' ? data.profile.logoDark : data.profile.logo}`}
+              height={50}
+              width={200}
+              className={classes.logo}
+              src={data.profile.logo}
               alt={data.profile.name}
+              quality={75}
+              sizes="(max-width: 480px) 100px, (max-width: 800px) 150px, 200px"
+              loading="lazy"
             />
           ) : (
             <h3 className={classes.name}>
@@ -62,40 +28,21 @@ export default function Header() {
             </h3>
           )}
         </Link>
-      </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-8" justify="end">
-        {data.menuItems.map((item: { title: string; link: string; id: number }) => (
-          <NavbarItem key={item.id}>
-            <Link href={item.link} className={classes.link}>
-              {item.title}
-            </Link>
-          </NavbarItem>
-        ))}
-      </NavbarContent>
+        <div className="flex flex-row space-x-4">
+          <div className="hidden sm:flex gap-8">
+            {data.menuItems.map((item: { title: string; link: string; id: number }) => (
+              <Link key={item.id} href={item.link} className={classes.link}>
+                {item.title}
+              </Link>
+            ))}
+          </div>
 
-      <div className="hidden md:inline">
-        <ThemeSwitcher />
-      </div>
-
-      <NavbarMenuToggle
-        aria-label={isMenuOpen ? 'Zavřít' : 'Otevřít'}
-        className={classes.menuToggle}
-      />
-
-      <NavbarMenu className="bg-header-backgroundMobileToggle flex flex-col justify-center items-center">
-        {data.menuItems.map((item: { title: string; link: string; id: number }) => (
-          <NavbarMenuItem key={item.id}>
-            <Link href={item.link} className={`${classes.link} ${classes.linkMobile}`}>
-              {item.title}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-
-        <div className="md:hidden">
-          <ThemeSwitcher />
+          <div className="hidden md:inline">
+            <ThemeSwitcher />
+          </div>
         </div>
-      </NavbarMenu>
-    </Navbar>
+      </div>
+    </div>
   )
 }
