@@ -57,7 +57,9 @@ export function Hero() {
         className={classes.profileImage}
         width={1050}
         height={1050}
-        loading="lazy"
+        quality={75}
+        sizes="(max-width: 480px) 200px, (max-width: 800px) 600px, 1050px"
+        priority={true}
         ref={image}
         alt={data.profile.name}
       />

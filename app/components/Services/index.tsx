@@ -70,7 +70,15 @@ export function Services() {
               }`}
             >
               {item.image ? (
-                <Image src={item.image} width={80} height={80} loading="lazy" alt={item.title} />
+                <Image
+                  src={item.image}
+                  width={80}
+                  height={80}
+                  quality={50}
+                  sizes="(max-width: 800px) 60px, 80px"
+                  loading="lazy"
+                  alt={item.title}
+                />
               ) : (
                 <Icon icon={item.icon} className="text-[40px]" />
               )}
