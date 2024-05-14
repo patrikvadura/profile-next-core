@@ -17,7 +17,7 @@ export default function FooterSocial() {
           <Link key={item.id} href={item.link} aria-label={item.label}>
             <Icon
               icon={item.icon}
-              className="text-footer-text text-opacity-50 hover:text-opacity-100 text-2xl transition duration-300 ease-in-out"
+              className="text-footer-text text-opacity-75 hover:text-opacity-100 text-2xl transition duration-300 ease-in-out"
             />
           </Link>
         ),
