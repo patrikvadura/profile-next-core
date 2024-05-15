@@ -10,9 +10,10 @@ interface ButtonProps {
   href?: string
   asLink?: boolean
   disabled?: boolean
+  ariaLabel?: string
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   children,
   className,
   type = 'button',
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   href,
   asLink = false,
   disabled = false,
+  ariaLabel,
   ...props
 }) => {
   const buttonClass = `${className} ${classes.button}`
@@ -33,7 +35,14 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button type={type} onClick={onClick} className={buttonClass} disabled={disabled} {...props}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={buttonClass}
+      disabled={disabled}
+      aria-label={ariaLabel || 'Tlačítko'}
+      {...props}
+    >
       {children}
     </button>
   )

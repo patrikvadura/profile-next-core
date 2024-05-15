@@ -21,7 +21,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ menuItems }) => {
 
   return (
     <div className="sm:hidden">
-      <button onClick={toggleMenu} className={classes.toggleButton}>
+      <button onClick={toggleMenu} aria-label="Mobilní navigace" className={classes.toggleButton}>
         {isOpen ? <Close /> : <Menu />}
       </button>
 

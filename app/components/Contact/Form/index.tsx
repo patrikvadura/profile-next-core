@@ -94,7 +94,12 @@ export function Form() {
         ></textarea>
       </div>
 
-      <Button type="submit" href={data.about.cta.link} className={classes.submit}>
+      <Button
+        type="submit"
+        href={data.about.cta.link}
+        className={classes.submit}
+        ariaLabel={data.contact.form.submit}
+      >
         {data.contact.form.submit}
       </Button>
     </form>

@@ -20,7 +20,7 @@ export default function Logo() {
       ) : (
         <h3 className="text-light-header-name text-base md:text-lg lg:text-xl font-bold">
           {data.profile.name}{' '}
-          <span className="text-light-header-nameClaim font-normal opacity-50">
+          <span className="text-light-header-nameClaim font-normal opacity-75">
             | {data.profile.nameClaim}
           </span>
         </h3>
