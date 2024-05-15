@@ -20,7 +20,19 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
 }
 
+interface ReferenceItem {
+  title: string
+  description?: string | null
+}
+
+interface ReferenceItems {
+  items: ReferenceItem[]
+  title?: string
+}
+
 export function Reference() {
+  const references: ReferenceItems = data.reference
+
   useGSAP(() => {
     gsap.to('.largeTitle', {
       x: 0,
@@ -38,8 +50,8 @@ export function Reference() {
     <div id="reference" className={classes.wrapper}>
       <div className={classes.main}>
         <Swiper slidesPerView={1} loop={true} navigation={true} modules={[Autoplay, Navigation]}>
-          {data.reference.items.map((item: { title: string; description: string; id: number }) => (
-            <SwiperSlide key={item.id}>
+          {references.items.map((item, index) => (
+            <SwiperSlide key={index}>
               <div className={classes.item}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

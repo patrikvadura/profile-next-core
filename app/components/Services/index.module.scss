@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply w-full text-[50px] font-bold text-light-service-title text-center translate-y-[100px];
+  @apply w-full text-[50px] font-bold text-light-service-title text-center;
 }
 
 .subtitle {
@@ -15,21 +15,9 @@
 }
 
 .item {
-  @apply flex flex-col items-center md:items-start text-center md:text-left p-8 space-y-4 transition duration-300 ease-in-out;
+  @apply flex flex-col items-center md:items-start text-center md:text-left bg-light-service-background p-8 space-y-4 transition duration-300 ease-in-out;
 
-  &Border {
-    @apply border border-light-service-border;
-
-    &:Hover {
-      @apply bg-light-service-borderHoverBackground;
-    }
-  }
-
-  &Background {
-    @apply bg-light-service-background;
-
-    &:Hover {
-      @apply bg-light-service-backgroundHover;
-    }
+  &:hover {
+    @apply bg-light-service-backgroundHover;
   }
 }

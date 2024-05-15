@@ -46,7 +46,6 @@
   },
   "services": {
     "title": "Nabídka mých služeb",
-    "style": "background",
     "items": [
       {
         "title": "Úvěry",
@@ -56,19 +55,15 @@
         "list": {
           "listItems": [
             {
-              "id": 1,
               "label": "hypoteční úvěr"
             },
             {
-              "id": 2,
               "label": "spotřebitelský úvěr"
             },
             {
-              "id": 3,
               "label": "podnikatelský úvěr"
             },
             {
-              "id": 4,
               "label": "leasing"
             }
           ]
@@ -83,19 +78,15 @@
         "list": {
           "listItems": [
             {
-              "id": 1,
               "label": "nemovitostní fondy"
             },
             {
-              "id": 2,
               "label": "podílové fondy"
             },
             {
-              "id": 3,
               "label": "akciové indexy"
             },
             {
-              "id": 4,
               "label": "doplňkové penzijní spoření"
             }
           ]
@@ -110,19 +101,15 @@
         "list": {
           "listItems": [
             {
-              "id": 1,
               "label": "životní pojištění"
             },
             {
-              "id": 2,
               "label": "úrazové pojištění"
             },
             {
-              "id": 3,
               "label": "pojištění nemovitosti"
             },
             {
-              "id": 4,
               "label": "pojištění automobilu"
             }
           ]
@@ -135,22 +122,18 @@
     "largeTitle": "Reference",
     "items": [
       {
-        "id": 1,
         "title": "Manželé V. | Brno",
         "description": "S Patrikem jsme se setkali kvůli pojištění nemovitosti. V jednoduchosti nám vysvětlil rozdíly mezi pojišťovnami a vybral pro nás nejlepší variantu. Od té doby s ním konzultujeme životní pojištění a veškeré investice. Jeho celkový přehled a upřímné jednání jsme ve financích hledali."
       },
       {
-        "id": 2,
         "title": "Libor N. | Uherský Brod",
         "description": "S Patrikem se známe už řadu let a naši spolupráci si nemohu vynachválit. Vím, že potřeby klienta jsou pro něj na prvním místě. V oblasti financí vždy dokáže věci srozumitelně vysvětlit a následně poradit s výběrem ideálního řešení. K mé velké spokojenosti spolu řešíme také otázky ohledně povinného ručení, životního pojištění, investic i penze."
       },
       {
-        "id": 3,
         "title": "Libor O. | Uherský Brod",
         "description": "S Patrikem se známe od malička a řeším s ním všechny své pojištění i investice. O všechno se mi skvěle stará, dokázal pro mě najít nejvhodnější finanční nástroje a vždy se na něj můžu obrátit. Mohu jedině doporučit."
       },
       {
-        "id": 4,
         "title": "Manželé J. | Uherský Brod",
         "description": "Před několika lety jsme se potkali přes doporučení s panem Indrou kvůli hypotéce. Od první schůzky byla jeho práce profesionální a efektivní. Během 3 týdnů bylo vše vyřešeno a my mohli čerpat peníze. Navíc připravil finanční plán, díky kterému můžeme hypotéku splatit dříve a tím pádem ušetřit nemalé peníze. Spolupráci s panem Indrou jen doporučujeme."
       }
@@ -164,6 +147,13 @@
     "address": "Stojanova 508, Uh. Hradiště",
     "form": {
       "submit": "Odeslat zprávu",
+      "alerts": {
+        "v01": "Prosím vyplňte jméno i emailovou adresu.",
+        "v02": "Děkujeme za zájem",
+        "v03": "Ozveme se hned jak to bude možné",
+        "v04": "Omlouváme se, zkuste to znovu později.",
+        "v05": "Ooops! Někde se stala chyba. Zkuste to později."
+      },
       "name": {
         "label": "Jméno a příjmení",
         "type": "text",
@@ -191,22 +181,18 @@
   },
   "menuItems": [
     {
-      "id": 1,
       "title": "O nás",
       "link": "#about"
     },
     {
-      "id": 2,
       "title": "Služby",
       "link": "#services"
     },
     {
-      "id": 3,
       "title": "Reference",
       "link": "#reference"
     },
     {
-      "id": 4,
       "title": "Kontakt",
       "link": "#contact"
     }

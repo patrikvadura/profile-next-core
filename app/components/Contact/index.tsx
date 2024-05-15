@@ -1,40 +1,23 @@
-'use client'
-
 import data from '@/app/lib/data.json'
 import classes from './index.module.scss'
 import React from 'react'
 import Link from 'next/link'
-// import { Form } from '@/app/components/Contact/Form'
-
-import { gsap } from 'gsap'
-import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, useGSAP)
-}
+import { Form } from '@/app/components/Contact/Form'
+import { AnimatedTitle } from '@/app/ui/Animations/Title'
 
 export function Contact() {
-  useGSAP(() => {
-    gsap.to('.title', {
-      y: 0,
-      scale: 1,
-      transformOrigin: 'center center',
-      duration: 1,
-      scrollTrigger: {
-        trigger: '#contact',
-      },
-    })
-  })
-
   return (
     <div id="contact" className={classes.section}>
       <div className="flex flex-col items-center space-y-8 md:space-y-12">
         <h4 className={classes.subtitle}>{data.contact.subtitle}</h4>
 
-        <h3
+        <AnimatedTitle
           dangerouslySetInnerHTML={{ __html: data.contact.title }}
-          className={`${classes.title} title`}
+          target="#contact"
+          type="scale"
+          origin="scale-0"
+          className={classes.title}
+          as="h3"
         />
 
         <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 items-center text-center">
@@ -51,7 +34,7 @@ export function Contact() {
           </p>
         </div>
 
-        {/*<Form />*/}
+        <Form />
       </div>
     </div>
   )
