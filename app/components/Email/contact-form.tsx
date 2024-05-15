@@ -151,6 +151,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name, email, messa
               Powered by
               <img
                 alt="Patrik Vaďura"
+                width="65"
                 src="https://res.cloudinary.com/patrik-vadura/image/upload/v1715011999/patrikvadura.cz/emailing/logo_v3kisw.webp"
                 style={{
                   display: 'inline',
