@@ -1,9 +1,9 @@
-import data from '@/app/lib/data.json'
-import classes from './index.module.scss'
 import React from 'react'
+import data from '@/app/lib/data.json'
 import Link from 'next/link'
 import { Form } from '@/app/components/Contact/Form'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
+import classes from './index.module.scss'
 
 export function Contact() {
   return (

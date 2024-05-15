@@ -200,15 +200,11 @@
   "footer": {
     "socialItems": [
       {
-        "id": 1,
         "label": "Facebook",
-        "icon": "mingcute:facebook-line",
         "link": "https://facebook.com"
       },
       {
-        "id": 2,
         "label": "Instagram",
-        "icon": "ci:instagram",
         "link": "https://facebook.com"
       }
     ]

@@ -1,21 +1,18 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
+import { MenuItems } from '@/app/lib/types'
 import Link from 'next/link'
 import Logo from '@/app/ui/Logo'
+import { MobileNav } from '@/app/ui/Header/MobileNav'
 import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 import classes from './index.module.scss'
-
-type MenuItems = {
-  title?: string
-  link?: string | undefined
-}
 
 export default function Header() {
   const menu: MenuItems[] = data.menuItems
 
   return (
     <div className={`${classes.navbar} bg-light-header-background dark:bg-dark-header-background`}>
-      <div className="container flex flex-row justify-between">
+      <div className="container flex flex-row justify-between items-center">
         <Logo />
 
         <div className="flex flex-row space-x-4">
@@ -26,6 +23,8 @@ export default function Header() {
               </Link>
             ))}
           </div>
+
+          <MobileNav menuItems={menu} />
 
           <div className="hidden md:inline">
             <ThemeSwitcher />

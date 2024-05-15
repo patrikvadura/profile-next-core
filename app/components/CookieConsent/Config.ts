@@ -2,49 +2,18 @@ import type { CookieConsentConfig } from 'vanilla-cookieconsent'
 
 const getConfig = () => {
   const config: CookieConsentConfig = {
-    // root: 'body',
-    // autoShow: true,
-    // disablePageInteraction: true,
-    // hideFromBots: true,
-    // mode: 'opt-in',
     // revision: 0,
 
     cookie: {
-      // name: 'cc_cookie',
-      // domain: location.hostname,
-      // path: '/',
-      // sameSite: "Lax",
-      // expiresAfterDays: 365,
+      name: 'cc_cookie',
+      domain: location.hostname,
+      expiresAfterDays: 365,
     },
 
     /**
      * Callback functions
      */
-    // onFirstConsent: ({ cookie }) => {
-    //   console.log('onFirstConsent fired', cookie);
-    // },
 
-    // onConsent: ({ cookie }) => {
-    //   console.log('onConsent fired!', cookie);
-    // },
-
-    // onChange: ({ changedCategories, changedServices }) => {
-    //   console.log('onChange fired!', changedCategories, changedServices);
-    // },
-
-    // onModalReady: ({ modalName }) => {
-    //   console.log('ready:', modalName);
-    // },
-
-    // onModalShow: ({ modalName }) => {
-    //   console.log('visible:', modalName);
-    // },
-
-    // onModalHide: ({ modalName }) => {
-    //   console.log('hidden:', modalName);
-    // },
-
-    // https://cookieconsent.orestbida.com/reference/configuration-reference.html#guioptions
     guiOptions: {
       consentModal: {
         layout: 'box inline',
@@ -61,17 +30,17 @@ const getConfig = () => {
 
     categories: {
       necessary: {
-        enabled: true, // this category is enabled by default
-        readOnly: true, // this category cannot be disabled
+        enabled: true,
+        readOnly: true,
       },
       analytics: {
         autoClear: {
           cookies: [
             {
-              name: /^_ga/, // regex: match all cookies starting with '_ga'
+              name: /^_ga/,
             },
             {
-              name: '_gid', // string: exact cookie name
+              name: '_gid',
             },
           ],
         },
@@ -99,10 +68,6 @@ const getConfig = () => {
             acceptAllBtn: 'Přijmout',
             acceptNecessaryBtn: 'Odmítnout',
             showPreferencesBtn: 'Nastavení cookies',
-            // closeIconLabel: 'Reject all and close modal',
-            // footer: `
-            //     <a href="/privacy-policy" target="_blank">Privacy Policy</a>
-            // `,
           },
           preferencesModal: {
             title: 'Nastavení cookies',
@@ -121,7 +86,6 @@ const getConfig = () => {
                 description:
                   'Tyto soubory cookie jsou nezbytné pro fungování webových stránek, není tedy možné je zakázat. Obvykle se nastavují v reakci na akci, kterou na webu sami provedete, jako je nastavení zabezpečení, přihlášení a vyplňování formulářů. Svůj prohlížeč můžete nastavit tak, aby blokoval soubory cookie nebo o nich zasílal upozornění. Mějte na paměti, že některé stránky nebudou bez těchto souborů fungovat. Tyto soubory cookie neukládají žádné informace, které lze přiřadit konkrétní osobě. Tyto soubory cookie můžeme nastavit my nebo poskytovatelé třetích stran, jejichž služby na webu využíváme. Tyto soubory cookie neukládají žádné informace, které lze přiřadit konkrétní osobě.',
 
-                //this field will generate a toggle linked to the 'necessary' category
                 linkedCategory: 'necessary',
                 cookieTable: {
                   caption: 'Detail cookie',
@@ -186,11 +150,6 @@ const getConfig = () => {
                   'Používají se ke sledování preferencí webu uživatele za účelem cílení reklamy, tj. zobrazování marketingových a reklamních sdělení (i na stránkách třetích stran), které mohou návštěvníka webu zajímat, v souladu s těmito preferencemi. Marketingové cookies využívají nástroje externích společností. Tyto marketingové soubory cookie budou použity pouze s vaším souhlasem.',
                 linkedCategory: 'ads',
               },
-              // {
-              //   title: 'Více o cookies',
-              //   description:
-              //     'Pro více informací o cookies a ochraně soukromí: <a href="/privacy-policy" target="_blank">Privacy Policy</a>',
-              // },
             ],
           },
         },

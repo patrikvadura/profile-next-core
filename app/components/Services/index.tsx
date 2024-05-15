@@ -1,31 +1,13 @@
-import data from '@/app/lib/data.json'
 import React from 'react'
+import data from '@/app/lib/data.json'
+import { ServicesData } from '@/app/lib/types'
 import Image from 'next/image'
 import { Check } from '@/app/ui/Icons/Check'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import classes from './index.module.scss'
 
-interface ListItem {
-  label?: string
-}
-
-interface ServiceItem {
-  title: string
-  icon: string | undefined | null
-  image: string | undefined | null
-  description: string | null
-  list: { listItems: ListItem[] }
-}
-
-interface Data {
-  services: {
-    items: ServiceItem[]
-    title?: string
-  }
-}
-
 export function Services() {
-  const services: Data = data
+  const services: ServicesData = data
 
   return (
     <div id="services" className={classes.main}>

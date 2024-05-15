@@ -1,5 +1,5 @@
 .title {
-  @apply text-[40px] md:text-[70px] leading-[1.5] text-light-hero-title font-bold translate-y-[100px];
+  @apply text-[40px] md:text-[70px] leading-[1.5] text-light-hero-title font-bold;
 }
 
 .subtitle {
@@ -7,7 +7,7 @@
 }
 
 .largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-hero-largeTitle -translate-x-full;
+  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-hero-largeTitle;
 }
 
 .profileImage {
@@ -19,21 +19,9 @@
 }
 
 .cta {
-  @apply px-6 py-4 bg-light-hero-buttonBackground text-light-hero-buttonText font-semibold tracking-wider uppercase;
+  @apply bg-light-hero-buttonBackground text-light-hero-buttonText;
 
-  svg {
-    @apply ml-4 transition duration-300 ease-in-out;
-  }
-
-  &:hover {
-    svg {
-      @apply -rotate-45 scale-150;
-    }
-  }
-
-  &Secondary {
-    @extend .cta;
-
-    @apply bg-transparent hover:bg-transparent hover:underline;
+  &Plain {
+    @apply bg-transparent text-white hover:underline;
   }
 }

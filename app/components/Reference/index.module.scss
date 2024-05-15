@@ -6,22 +6,6 @@
   @apply container lg:h-[650px] flex flex-col justify-center items-start;
 }
 
-.quote {
-  @apply text-light-reference-symbol text-[100px] md:text-[150px];
-}
-
-.item {
-  @apply flex flex-col justify-center items-center w-full h-full space-y-8 text-center p-12 -translate-y-12;
-}
-
-.title {
-  @apply text-xl font-bold text-light-reference-title;
-}
-
-.description {
-  @apply max-w-screen-md mb-8 text-xl font-normal text-light-reference-description text-opacity-70;
-}
-
 .largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-reference-largeTitle -translate-x-full;
+  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-reference-largeTitle;
 }

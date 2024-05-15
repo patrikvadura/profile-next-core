@@ -10,7 +10,7 @@ export default function Logo() {
         <Image
           height={50}
           width={200}
-          className="rounded-none h-32 z-30 transition duration-300 ease-in-out"
+          className="h-32 z-30 transition duration-300 ease-in-out"
           src={data.profile.logo}
           alt={data.profile.name}
           quality={75}
