@@ -1,74 +1,27 @@
-'use client'
-
+import React from 'react'
 import data from '@/app/lib/data.json'
-
-import React, { useRef } from 'react'
+import { ServicesData } from '@/app/lib/types'
 import Image from 'next/image'
-import { Icon } from '@iconify/react'
+import { Check } from '@/app/ui/Icons/Check'
+import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import classes from './index.module.scss'
 
-import { gsap } from 'gsap'
-import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, useGSAP)
-}
-
-interface ListItem {
-  label: string
-  id: number
-}
-
-interface ServiceItem {
-  title: string
-  icon: string
-  image: string
-  description: string
-  list: { listItems: ListItem[] }
-  id: number
-}
-
-interface Data {
-  services: {
-    items: ServiceItem[]
-    title: string
-    style: string
-  }
-}
-
 export function Services() {
-  // @ts-ignore
-  const services: Data = data
-
-  const title = useRef<HTMLElement | any>()
-  const main = useRef<HTMLElement | any>()
-
-  useGSAP(() => {
-    gsap.to(title.current, {
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: main.current,
-      },
-    })
-  })
+  const services: ServicesData = data
 
   return (
-    <div id="services" className={classes.main} ref={main}>
+    <div id="services" className={classes.main}>
       <div className="container">
-        <h2 className={classes.title} ref={title}>
-          {services.services.title}
-        </h2>
+        <AnimatedTitle
+          title={services.services.title}
+          target="#services"
+          origin="translate-y-[100px]"
+          className={classes.title}
+        />
 
         <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
           {services.services.items.map((item, index) => (
-            <div
-              key={index}
-              className={`${classes.item} ${
-                services.services.style === 'border' ? classes.itemBorder : classes.itemBackground
-              }`}
-            >
+            <div key={index} className={classes.item}>
               {item.image ? (
                 <Image
                   src={item.image}
@@ -80,7 +33,7 @@ export function Services() {
                   alt={item.title}
                 />
               ) : (
-                <Icon icon={item.icon} className="text-[40px]" />
+                <div className="text-[40px]">{item.icon}</div>
               )}
               <h3 className={classes.subtitle}>{item.title}</h3>
 
@@ -93,7 +46,8 @@ export function Services() {
                       key={index}
                       className={`${classes.text} flex flex-row justify-center md:justify-start items-center`}
                     >
-                      <Icon icon="material-symbols:check-small" className="mr-2" />
+                      <Check className="me-2" />
+
                       {listItem.label}
                     </li>
                   ))}

@@ -1,21 +1,21 @@
 .section {
-  @apply lg:h-screen w-full px-8 lg:px-0 pt-16 lg:pt-0 flex items-center justify-center overflow-hidden;
+  @apply lg:min-h-screen w-full px-8 lg:px-0 pt-16 lg:pt-0 flex items-center justify-center overflow-hidden;
 }
 
 .title {
-  @apply max-w-4xl mx-auto text-contact-title text-center text-[32px] md:text-[50px] leading-[1.2] font-bold scale-0;
+  @apply max-w-4xl mx-auto text-light-contact-title text-center text-[32px] md:text-[50px] leading-[1.2] font-bold;
 
   span {
-    @apply text-contact-highlight;
+    @apply text-light-contact-highlight;
   }
 }
 
 .subtitle {
-  @apply max-w-4xl mx-auto text-contact-subtitle text-center text-xl md:text-2xl;
+  @apply max-w-4xl mx-auto text-light-contact-subtitle text-center text-xl md:text-2xl;
 }
 
 .cta {
-  @apply hover:underline text-contact-title text-xl font-semibold tracking-wider;
+  @apply hover:underline text-light-contact-title text-xl font-semibold tracking-wider;
 
   svg {
     @apply mr-4;

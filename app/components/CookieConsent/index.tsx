@@ -1,14 +1,12 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Icon } from '@iconify/react'
 import * as CookieConsent from 'vanilla-cookieconsent'
-
 import getConfig from './Config'
 import addEventListeners from './Listeners'
-import classes from './index.module.scss'
-
+import { Cookie } from '@/app/ui/Icons/Cookie'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
+import '@/app/components/CookieConsent/cookieConsent.css'
 
 const ResetCookieConsent = () => {
   CookieConsent.reset(true)
@@ -24,12 +22,12 @@ const CookieConsentComponent = () => {
   return (
     <>
       <div onClick={CookieConsent.showPreferences}>
-        <Icon icon="material-symbols:cookie-outline" className={classes.icon} />
+        <Cookie className="cursor-pointer mr-1 text-light-footer-text text-opacity-50 hover:text-opacity-100 text-2xl transition duration-300 ease-in-out" />
       </div>
 
-      {/*<button type="button" onClick={ResetCookieConsent}>
-        Reset cookie consent
-      </button>*/}
+      {/*<button type="button" onClick={ResetCookieConsent}>*/}
+      {/*  Reset cookie consent*/}
+      {/*</button>*/}
     </>
   )
 }

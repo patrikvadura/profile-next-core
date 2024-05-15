@@ -1,0 +1,15 @@
+.item {
+  @apply flex flex-col justify-center items-center w-full h-full space-y-8 text-center p-12 -translate-y-12;
+}
+
+.quote {
+  @apply text-light-reference-symbol size-[100px] md:size-[150px];
+}
+
+.title {
+  @apply text-xl font-bold text-light-reference-title;
+}
+
+.description {
+  @apply max-w-screen-md mb-8 text-xl font-normal text-light-reference-description text-opacity-70;
+}

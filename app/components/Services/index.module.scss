@@ -3,33 +3,21 @@
 }
 
 .title {
-  @apply w-full text-[50px] font-bold text-service-title text-center translate-y-[100px];
+  @apply w-full text-[50px] font-bold text-light-service-title text-center;
 }
 
 .subtitle {
-  @apply text-2xl text-service-subtitle font-bold;
+  @apply text-2xl text-light-service-subtitle font-bold;
 }
 
 .text {
-  @apply text-service-text text-opacity-75;
+  @apply text-light-service-text text-opacity-75;
 }
 
 .item {
-  @apply flex flex-col items-center md:items-start text-center md:text-left p-8 space-y-4 transition duration-300 ease-in-out;
+  @apply flex flex-col items-center md:items-start text-center md:text-left bg-light-service-background p-8 space-y-4 transition duration-300 ease-in-out;
 
-  &Border {
-    @apply border border-service-border;
-
-    &:Hover {
-      @apply bg-service-borderHoverBackground;
-    }
-  }
-
-  &Background {
-    @apply bg-service-background;
-
-    &:Hover {
-      @apply bg-service-backgroundHover;
-    }
+  &:hover {
+    @apply bg-light-service-backgroundHover;
   }
 }

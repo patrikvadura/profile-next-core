@@ -1,66 +1,25 @@
-'use client'
-
+import React from 'react'
 import data from '@/app/lib/data.json'
-
-import React, { useRef } from 'react'
-
-import { Icon } from '@iconify/react'
+import { ReferenceItems } from '@/app/lib/types'
 import classes from './index.module.scss'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, useGSAP)
-}
+import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
+import { SwiperComponent } from '@/app/components/Reference/Swiper'
 
 export function Reference() {
-  const largeTitle = useRef<HTMLElement | any>()
-  const main = useRef<HTMLElement | any>()
-
-  useGSAP(() => {
-    gsap.to(largeTitle.current, {
-      x: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: main.current,
-        start: '200px center',
-        end: '300px',
-        scrub: true,
-      },
-    })
-  })
+  const references: ReferenceItems = data.reference
 
   return (
-    <div id="reference" className={classes.wrapper} ref={main}>
+    <div id="reference" className={classes.wrapper}>
       <div className={classes.main}>
-        <Swiper slidesPerView={1} loop={true} navigation={true} modules={[Autoplay, Navigation]}>
-          {data.reference.items.map((item: { title: string; description: string; id: number }) => (
-            <SwiperSlide key={item.id}>
-              <div className={classes.item}>
-                <Icon icon="ic:sharp-format-quote" className={classes.quote} />
-
-                <p className={classes.description}>{item.description}</p>
-
-                <h3 className={classes.title}>{item.title}</h3>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <SwiperComponent references={references} />
       </div>
 
-      <p className={classes.largeTitle} ref={largeTitle}>
-        {data.reference.largeTitle}
-      </p>
+      <AnimatedLargeTitle
+        title={data.reference.largeTitle}
+        target="#reference"
+        origin="-translate-x-full"
+        className={classes.largeTitle}
+      />
     </div>
   )
 }
