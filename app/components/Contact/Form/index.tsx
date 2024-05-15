@@ -34,9 +34,9 @@ export function Form() {
           alert(data.contact.form.alerts.v04)
         }
       })
-      .catch(err => {
-        alert(data.contact.form.alerts.v05)
-      })
+    // .catch(err => {
+    //   alert(data.contact.form.alerts.v05)
+    // })
     return true
   }
 
