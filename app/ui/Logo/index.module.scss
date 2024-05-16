@@ -1,3 +1,11 @@
 .logo {
-  @apply rounded-none h-32 z-30 transition duration-300 ease-in-out;
+  @apply h-32 z-30 transition duration-300 ease-in-out;
+}
+
+.name {
+  @apply text-header-name dark:text-white text-base md:text-lg lg:text-xl font-bold;
+
+  span {
+    @apply font-normal opacity-75;
+  }
 }

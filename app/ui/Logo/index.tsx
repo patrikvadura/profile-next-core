@@ -2,6 +2,7 @@ import React from 'react'
 import data from '@/app/lib/data.json'
 import Image from 'next/image'
 import Link from 'next/link'
+import classes from './index.module.scss'
 
 export default function Logo() {
   return (
@@ -10,7 +11,7 @@ export default function Logo() {
         <Image
           height={50}
           width={200}
-          className="h-32 z-30 transition duration-300 ease-in-out"
+          className={classes.logo}
           src={data.profile.logo}
           alt={data.profile.name}
           quality={75}
@@ -18,11 +19,8 @@ export default function Logo() {
           loading="lazy"
         />
       ) : (
-        <h3 className="text-light-header-name text-base md:text-lg lg:text-xl font-bold">
-          {data.profile.name}{' '}
-          <span className="text-light-header-nameClaim font-normal opacity-75">
-            | {data.profile.nameClaim}
-          </span>
+        <h3 className={classes.name}>
+          {data.profile.name} <span>| {data.profile.nameClaim}</span>
         </h3>
       )}
     </Link>

@@ -29,6 +29,7 @@ export function Services() {
                   height={80}
                   quality={50}
                   sizes="(max-width: 800px) 60px, 80px"
+                  className={classes.image}
                   loading="lazy"
                   alt={item.title}
                 />

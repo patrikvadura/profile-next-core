@@ -21,17 +21,15 @@ export function Contact() {
         />
 
         <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 items-center text-center">
-          <Link href={`mailto:${data.contact.email}`} className={classes.cta}>
+          <Link href={`mailto:${data.contact.email}`} className={classes.contact}>
             {data.contact.email}
           </Link>
 
-          <Link href={`tel:${data.contact.phone}`} className={classes.cta}>
+          <Link href={`tel:${data.contact.phone}`} className={classes.contact}>
             {data.contact.phone}
           </Link>
 
-          <p className="text-contact-title text-xl font-semibold tracking-wider">
-            {data.contact.address}
-          </p>
+          <p className={classes.contact}>{data.contact.address}</p>
         </div>
 
         <Form />

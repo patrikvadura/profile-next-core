@@ -21,9 +21,9 @@ export default function FooterSocial() {
         return (
           <Link key={index} href={item.link} aria-label={item.label}>
             {IconComponent ? (
-              <IconComponent className="fill-footer-text opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out" />
+              <IconComponent className="fill-black opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out" />
             ) : (
-              <div className="fill-footer-text opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out">
+              <div className="fill-black opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out">
                 {item.label}
               </div>
             )}

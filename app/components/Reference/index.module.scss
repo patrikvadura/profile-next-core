@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative w-full lg:h-screen py-12 md:py-24 bg-light-reference-background overflow-hidden;
+  @apply relative w-full lg:h-screen py-12 md:py-24 bg-reference-background dark:bg-black overflow-hidden;
 }
 
 .main {
@@ -7,5 +7,5 @@
 }
 
 .largeTitle {
-  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-light-reference-largeTitle;
+  @apply absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-reference-typo-lg dark:text-white;
 }
