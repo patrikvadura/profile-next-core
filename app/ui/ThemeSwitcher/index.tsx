@@ -25,7 +25,7 @@ const ThemeSwitcher = () => {
   }
 
   return (
-    <button onClick={toggleTheme}>
+    <button onClick={toggleTheme} aria-label="Přepněte schéma">
       {theme === 'dark' ? <ThemeLight size={20} className="fill-white" /> : <ThemeDark size={20} />}
     </button>
   )
