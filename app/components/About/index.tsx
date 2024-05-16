@@ -7,7 +7,7 @@ import classes from './index.module.scss'
 
 export function About() {
   return (
-    <div id="about" className="md:pt-12 lg:pt-24 md:px-8 lg:px-24">
+    <div id="about" className="md:pt-12 lg:pt-24 md:px-8 lg:px-24 dark:bg-black">
       <div className={classes.main}>
         <div className="max-w-screen-md space-y-8 text-left py-12 px-8 md:p-16">
           <AnimatedTitle

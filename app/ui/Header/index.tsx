@@ -11,7 +11,7 @@ export default function Header() {
   const menu: MenuItems[] = data.menuItems
 
   return (
-    <div className={`${classes.navbar} bg-light-header-background dark:bg-dark-header-background`}>
+    <div className={classes.navbar}>
       <div className="container flex flex-row justify-between items-center">
         <Logo />
 

@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect, useState } from 'react'
 import { ThemeLight } from '@/app/ui/Icons/Theme/Light'
 import { ThemeDark } from '@/app/ui/Icons/Theme/Dark'
@@ -27,7 +26,7 @@ const ThemeSwitcher = () => {
 
   return (
     <button onClick={toggleTheme}>
-      {theme === 'dark' ? <ThemeDark size={20} className="fill-white" /> : <ThemeLight size={20} />}
+      {theme === 'dark' ? <ThemeLight size={20} className="fill-white" /> : <ThemeDark size={20} />}
     </button>
   )
 }

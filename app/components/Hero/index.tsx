@@ -10,7 +10,7 @@ import classes from './index.module.scss'
 
 export function Hero() {
   return (
-    <div className="w-full relative overflow-hidden bg-light-hero-background">
+    <div className={classes.main}>
       <Image
         src={data.profile.image}
         className={classes.profileImage}
@@ -21,8 +21,6 @@ export function Hero() {
         priority={true}
         alt={data.profile.name}
       />
-
-      <div className={classes.gradientOverlay} />
 
       <div className="md:h-screen lg:h-[950px] flex flex-col justify-center items-start py-32 md:pt-0">
         <div className="container p-8 xl:p-0 z-20">

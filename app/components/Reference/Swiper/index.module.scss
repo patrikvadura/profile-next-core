@@ -3,13 +3,13 @@
 }
 
 .quote {
-  @apply text-light-reference-symbol size-[100px] md:size-[150px];
+  @apply text-reference-accent dark:text-white size-[100px] md:size-[150px];
 }
 
 .title {
-  @apply text-xl font-bold text-light-reference-title;
+  @apply text-xl font-bold text-reference-typo dark:text-white;
 }
 
 .description {
-  @apply max-w-screen-md mb-8 text-xl font-normal text-light-reference-description text-opacity-70;
+  @apply max-w-screen-md mb-8 text-xl font-normal text-reference-typo dark:text-white text-opacity-70;
 }
