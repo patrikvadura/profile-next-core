@@ -1,12 +1,18 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import data from '@/app/lib/data.json'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import getConfig from './Config'
 import addEventListeners from './Listeners'
 import { Cookie } from '@/app/ui/Icons/Cookie'
-import 'vanilla-cookieconsent/dist/cookieconsent.css'
-import '@/app/components/CookieConsent/cookieConsent.css'
+
+if (typeof window !== 'undefined' && data.profile.cookie) {
+  // @ts-ignore
+  import('vanilla-cookieconsent/dist/cookieconsent.css')
+  // @ts-ignore
+  import('@/app/components/CookieConsent/cookieConsent.css')
+}
 
 const ResetCookieConsent = () => {
   CookieConsent.reset(true)

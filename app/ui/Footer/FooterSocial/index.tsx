@@ -1,9 +1,14 @@
 import data from '@/app/lib/data.json'
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import Link from 'next/link'
-import CookieConsentComponent from '@/app/components/CookieConsent'
 import { SocialItem, IconComponents } from '@/app/lib/types'
 import { Facebook, Instagram } from '@/app/ui/Icons/Social'
+
+const LazyCookieConsentComponent = lazy(() =>
+  import('@/app/components/CookieConsent').then(module => ({
+    default: data.profile.cookie ? module.default : () => null,
+  })),
+)
 
 const socialIcons: IconComponents = {
   Facebook,
@@ -13,7 +18,11 @@ const socialIcons: IconComponents = {
 export default function FooterSocial() {
   return (
     <div className="flex flex-row items-center space-x-4">
-      {data.profile.cookie ? <CookieConsentComponent /> : null}
+      {data.profile.cookie ? (
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyCookieConsentComponent />
+        </Suspense>
+      ) : null}
 
       {data.footer.socialItems.map((item: SocialItem, index) => {
         const IconComponent = socialIcons[item.label] || null
