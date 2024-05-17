@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `/assets/openGraph.jpg`,
+        url: `<generated>`,
         width: 1200,
         height: 630,
-        alt: data.profile.name,
+        alt: data.meta.openGraph.alt,
         type: 'image/png',
       },
     ],
