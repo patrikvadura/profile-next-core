@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: `/assets/openGraph.jpg`,
         width: 1200,
         height: 630,
-        alt: data.meta.openGraph.alt,
+        alt: data.profile.name,
         type: 'image/png',
       },
     ],
