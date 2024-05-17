@@ -9,10 +9,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        favicon: {
-          background: '#191A44',
-          foreground: '#fff',
-        },
         primary: '#5B319B',
         secondary: '#191A44',
         header: {

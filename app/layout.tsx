@@ -1,8 +1,6 @@
-import data from '@/app/lib/data.json'
-
-import type { Metadata } from 'next'
 import React from 'react'
-import Head from 'next/head'
+import type { Metadata } from 'next'
+import data from '@/app/lib/data.json'
 import Script from 'next/script'
 import Header from '@/app/ui/Header'
 import Footer from '@/app/ui/Footer'
@@ -16,7 +14,24 @@ export const metadata: Metadata = {
   title: data.meta.title,
   description: data.meta.description,
   openGraph: {
-    images: [data.meta.openGraph],
+    images: [
+      {
+        url: `<generated>`,
+        width: 1200,
+        height: 630,
+        alt: data.meta.openGraph.alt,
+        type: 'image/png',
+      },
+    ],
+  },
+  icons: {
+    icon: [
+      {
+        url: `/icon?<generated>`,
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
   },
 }
 
@@ -29,10 +44,6 @@ export default function RootLayout({
 
   return (
     <html lang="cs-CZ" className="scroll-smooth" suppressHydrationWarning>
-      <Head>
-        <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
-      </Head>
-
       {data.profile.gtm.status ? (
         <Script
           id="Google Analytics"
