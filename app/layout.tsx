@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: data.meta.openGraph.alt,
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
