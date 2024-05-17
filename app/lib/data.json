@@ -14,13 +14,6 @@
   "meta": {
     "title": "Patrik Indra - Saroli | Finanční specialista",
     "description": "Jsem tu pro vás v oblasti finančního poradenství, hypoték a pojištění již více než 5 let.",
-    "openGraph": {
-      "image": "/assets/img/openGraph.jpg",
-      "imageOpacity": ".2",
-      "alt": "Patrik Indra",
-      "background": "#191A44",
-      "foreground": "#fff"
-    },
     "favicon": {
       "label": "PI",
       "background": "#5B319B",
