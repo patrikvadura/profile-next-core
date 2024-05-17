@@ -10,7 +10,7 @@ import './globals.css'
 const defaultFont = Hind({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+  metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),
   title: data.meta.title,
   description: data.meta.description,
   openGraph: {
