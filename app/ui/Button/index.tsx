@@ -5,6 +5,7 @@ import classes from './index.module.scss'
 interface ButtonProps {
   children: React.ReactNode
   className?: string
+  style?: any
   type?: 'button' | 'submit' | 'reset'
   onClick?: () => void
   href?: string
@@ -16,6 +17,7 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   children,
   className,
+  style,
   type = 'button',
   onClick,
   href,
@@ -24,11 +26,11 @@ export const Button: React.FC<ButtonProps> = ({
   ariaLabel,
   ...props
 }) => {
-  const buttonClass = `${className} ${classes.button}`
+  const buttonClass = `${classes.button} ${className}`
 
   if (asLink && href) {
     return (
-      <Link href={href} className={buttonClass} {...props} passHref>
+      <Link href={href} className={buttonClass} style={style} {...props} passHref>
         {children}
       </Link>
     )
@@ -39,6 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       className={buttonClass}
+      style={style}
       disabled={disabled}
       aria-label={ariaLabel || 'Tlačítko'}
       {...props}

@@ -2,8 +2,6 @@ import React from 'react'
 import type { Metadata } from 'next'
 import data from '@/app/lib/data.json'
 import Script from 'next/script'
-import Header from '@/app/ui/Header'
-import Footer from '@/app/ui/Footer'
 import { Hind } from 'next/font/google'
 import './globals.css'
 
@@ -77,11 +75,7 @@ export default function RootLayout({
         ) : (
           ''
         )}
-
-        <Header />
         {children}
-
-        <Footer />
       </body>
     </html>
   )

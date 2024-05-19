@@ -1,0 +1,13 @@
+.side {
+  &Right {
+    @apply relative;
+
+    box-shadow: 200px 0 0 0 var(--tw-shadow-color);
+  }
+
+  &Left {
+    @apply relative;
+
+    box-shadow: -200px 0 0 0 var(--tw-shadow-color);
+  }
+}

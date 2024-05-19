@@ -1,0 +1,28 @@
+{
+  "primary": "#5B329B",
+  "secondary": "#191A44",
+  "accent": "#EDF1F4",
+  "header": {
+    "background": "#fff",
+    "accent": "#191A44",
+    "name": "#191A44",
+    "menuItem": "#191A44"
+  },
+  "hero": {
+    "background": "#191A44",
+    "accent": {
+      "background": "#5B319B",
+      "foreground": "#fff"
+    },
+    "typo": "#fff",
+    "typoLg": "#fff"
+  },
+  "about": {
+    "background": "#EDF1F4",
+    "accent": {
+      "background": "#5B319B",
+      "foreground": "#fff"
+    },
+    "typo": "#191A44"
+  }
+}

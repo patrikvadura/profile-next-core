@@ -14,6 +14,7 @@ type ServicesProps = {
   target?: string
   title?: string
   className?: string
+  style?: any
   origin?: string
   as?: ElementType
 }
@@ -22,6 +23,7 @@ export function AnimatedLargeTitle({
   target,
   title,
   className,
+  style,
   origin,
   as: Component = 'span',
 }: ServicesProps) {
@@ -41,7 +43,7 @@ export function AnimatedLargeTitle({
   }, [target])
 
   return (
-    <Component className={`${className} ${origin}`} ref={largeTitleRef}>
+    <Component className={`${className} ${origin}`} style={style} ref={largeTitleRef}>
       {title}
     </Component>
   )
