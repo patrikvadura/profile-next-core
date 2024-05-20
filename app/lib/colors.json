@@ -3,7 +3,7 @@
   "secondary": "#191A44",
   "accent": "#EDF1F4",
   "header": {
-    "background": "#fff",
+    "background": "#ffffff",
     "accent": "#191A44",
     "name": "#191A44",
     "menuItem": "#191A44"
@@ -12,16 +12,16 @@
     "background": "#191A44",
     "accent": {
       "background": "#5B319B",
-      "foreground": "#fff"
+      "foreground": "#ffffff"
     },
-    "typo": "#fff",
-    "typoLg": "#fff"
+    "typo": "#ffffff",
+    "typoLg": "#EDF1F4"
   },
   "about": {
     "background": "#EDF1F4",
     "accent": {
       "background": "#5B319B",
-      "foreground": "#fff"
+      "foreground": "#ffffff"
     },
     "typo": "#191A44"
   }

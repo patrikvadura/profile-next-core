@@ -1,7 +1,6 @@
 import React from 'react'
 import CustomizerLogo from '@/app/components/Customizer/Logo'
 import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
-import Button from '@/app/ui/Button'
 
 export default function OptionsContainer({
   children,
@@ -15,11 +14,9 @@ export default function OptionsContainer({
           <CustomizerLogo />
 
           <div className="">
-            <ThemeSwitcher />
+            <ThemeSwitcher previewMode />
           </div>
         </div>
-
-        <h2 className="text-4xl font-semibold">Přizpůsobte si svoji vizitku</h2>
 
         <div className="flex flex-col space-y-4">{children}</div>
       </div>

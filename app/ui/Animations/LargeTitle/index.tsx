@@ -15,7 +15,7 @@ type ServicesProps = {
   title?: string
   className?: string
   style?: any
-  origin?: string
+  origin?: string | any
   as?: ElementType
 }
 

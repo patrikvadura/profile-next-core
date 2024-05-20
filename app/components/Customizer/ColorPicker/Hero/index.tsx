@@ -4,16 +4,18 @@ import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
 import classes from '../index.module.scss'
 
-const ColorPickerAbout: React.FC<ColorPickerProps> = ({
+const ColorPickerHero: React.FC<ColorPickerProps> = ({
   backgroundColor,
   accentBgColor,
   accentFgColor,
   typoColor,
+  typoLgColor,
 }) => {
-  const [backgroundColorValue, setBackgroundColor] = useState(colors.about.background)
-  const [accentBgColorValue, setAccentBgColor] = useState(colors.about.accent.background)
-  const [accentFgColorValue, setAccentFgColor] = useState(colors.about.accent.foreground)
-  const [typoColorValue, setTypoColor] = useState(colors.about.typo)
+  const [backgroundColorValue, setBackgroundColor] = useState(colors.hero.background)
+  const [accentBgColorValue, setAccentBgColor] = useState(colors.hero.accent.background)
+  const [accentFgColorValue, setAccentFgColor] = useState(colors.hero.accent.foreground)
+  const [typoColorValue, setTypoColor] = useState(colors.hero.typo)
+  const [typoLgColorValue, setTypoLgColor] = useState(colors.hero.typoLg)
 
   const handleBackgroundChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value
@@ -44,6 +46,14 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
     setTypoColor(newColor)
     if (typoColor) {
       typoColor(newColor)
+    }
+  }
+
+  const handleTypoLgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value
+    setTypoLgColor(newColor)
+    if (typoLgColor) {
+      typoLgColor(newColor)
     }
   }
 
@@ -88,8 +98,18 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
         />
         Typografie
       </div>
+
+      <div className="basis-1/5 flex flex-col items-start">
+        <input
+          type="color"
+          value={typoLgColorValue}
+          className={classes.picker}
+          onChange={handleTypoLgChange}
+        />
+        Moving text
+      </div>
     </div>
   )
 }
 
-export default ColorPickerAbout
+export default ColorPickerHero

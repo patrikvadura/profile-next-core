@@ -1,27 +1,50 @@
+import { ReactNode } from 'react'
+
+export interface PreviewContainerProps {
+  children?: ReactNode
+  totalPrice: number
+  totalTime: number
+}
+
+export interface ToggleDropdownProps {
+  id: string
+  label: string
+  link?: string | undefined
+  checked: boolean | undefined
+  toggled?: boolean
+  onChange?: any
+  preview?: boolean
+  children?: ReactNode
+}
+
 export interface Option {
   value: string
   label: string
-  image?: string
+  image?: string | any
 }
 
 export interface CustomizerOptions {
-  variant: Option[]
-  layout: Option[]
-  align: Option[]
-  order: Option[]
+  variant?: Option[] | any
+  layout?: Option[] | any
+  imageOpacity?: Option[] | any
+  align?: Option[] | any
+  order?: Option[] | any
+}
+
+export interface OptionSelectorProps {
+  title?: string
+  options?: Option[] | any
+  selectedOption: string
+  onChange: (value: string) => void
+  visual?: boolean
 }
 
 export interface ColorPickerProps {
-  primaryColor?: (color: string | any) => void
-  secondaryColor?: (color: string | any) => void
-  accentColor?: (color: string | any) => void
-}
-
-export interface ColorPickerAboutProps {
   backgroundColor?: (color: string | any) => void
   accentBgColor?: (color: string | any) => void
   accentFgColor?: (color: string | any) => void
   typoColor?: (color: string | any) => void
+  typoLgColor?: (color: string | any) => void
 }
 
 export interface ColorUpdaterProps {
@@ -29,9 +52,31 @@ export interface ColorUpdaterProps {
   accentBgColor?: string | any | undefined
   accentFgColor?: string | any | undefined
   typoColor?: string | any | undefined
+  typoLgColor?: string | any | undefined
 }
 
-export const options: CustomizerOptions = {
+export const optionsHero: CustomizerOptions = {
+  variant: [
+    { value: '01', label: 'Varianta 01', image: 'hero/hero_01' },
+    { value: '02', label: 'Varianta 02', image: 'hero/hero_02' },
+    { value: '03', label: 'Varianta 03', image: 'hero/hero_03' },
+    { value: '04', label: 'Varianta 04', image: 'hero/hero_04' },
+    { value: '05', label: 'Varianta 05', image: 'hero/hero_05' },
+  ],
+  imageOpacity: [
+    { value: '100', label: 'Neprůhledné' },
+    { value: '80', label: 'Málo průhledné' },
+    { value: '50', label: 'Mírně průhledné' },
+    { value: '30', label: 'Silně průhledné' },
+  ],
+  align: [
+    { value: 'start', label: 'Začátek' },
+    { value: 'center', label: 'Střed' },
+    { value: 'end', label: 'Konec' },
+  ],
+}
+
+export const optionsAbout: CustomizerOptions = {
   variant: [
     { value: '01', label: 'Varianta 01', image: 'about/about_01' },
     { value: '02', label: 'Varianta 02', image: 'about/about_02' },
@@ -40,17 +85,17 @@ export const options: CustomizerOptions = {
     { value: '05', label: 'Varianta 05', image: 'about/about_05' },
   ],
   layout: [
-    { value: 'transparent', label: 'Transparent', image: '' },
-    { value: 'background', label: 'Background', image: '' },
-    { value: 'border', label: 'Border', image: '' },
+    { value: 'transparent', label: 'Transparent' },
+    { value: 'background', label: 'Background' },
+    { value: 'border', label: 'Border' },
   ],
   align: [
-    { value: 'left', label: 'Left', image: '' },
-    { value: 'full', label: 'Full', image: '' },
-    { value: 'right', label: 'Right', image: '' },
+    { value: 'left', label: 'Left' },
+    { value: 'full', label: 'Full' },
+    { value: 'right', label: 'Right' },
   ],
   order: [
-    { value: 'asc', label: 'Ascending', image: '' },
-    { value: 'desc', label: 'Descending', image: '' },
+    { value: 'asc', label: 'Ascending' },
+    { value: 'desc', label: 'Descending' },
   ],
 }

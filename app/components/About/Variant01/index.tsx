@@ -1,17 +1,18 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
-import { AboutVariant01Props } from '@/app/lib/variants'
+import { AboutVariantProps } from '@/app/lib/variants'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
 
-export function AboutVariant01({ layout, align }: AboutVariant01Props) {
+export function AboutVariant01({ layout, align, preview }: AboutVariantProps) {
   const layouts = {
     transparent: 'dark:bg-black',
     background: 'bg-[var(--about-background)] dark:bg-black',
     border: 'dark:bg-black',
   }
 
+  // @ts-ignore
   const layoutsClass = layouts[layout]
 
   const aligns = {
@@ -20,6 +21,7 @@ export function AboutVariant01({ layout, align }: AboutVariant01Props) {
     full: 'items-center text-center',
   }
 
+  // @ts-ignore
   const alignsClass = aligns[align]
 
   const alignsDivider = {
@@ -28,6 +30,7 @@ export function AboutVariant01({ layout, align }: AboutVariant01Props) {
     full: 'center center',
   }
 
+  // @ts-ignore
   const alignsDividerClass = alignsDivider[align]
 
   return (

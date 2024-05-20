@@ -1,16 +1,7 @@
 'use client'
-
 import React, { useState } from 'react'
+import { OptionSelectorProps, optionsHero } from '@/app/lib/customizer'
 import Image from 'next/image'
-import { Option } from '@/app/lib/customizer'
-
-interface Props {
-  title?: string
-  options: Option[]
-  selectedOption: string
-  onChange: (value: string) => void
-  visual?: boolean
-}
 
 export default function OptionSelector({
   title,
@@ -18,11 +9,15 @@ export default function OptionSelector({
   selectedOption,
   onChange,
   visual,
-}: Props) {
+}: OptionSelectorProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  if (!options) {
+    return <div>Není k dispozici</div>
   }
 
   if (!visual) {
@@ -41,7 +36,8 @@ export default function OptionSelector({
                 aria-labelledby="listbox-label"
                 onClick={toggleDropdown}
               >
-                {options.find(opt => opt.value === selectedOption)?.label || 'Vyberte možnost'}
+                {options.find((opt: { value: string }) => opt.value === selectedOption)?.label ||
+                  'Vyberte možnost'}
 
                 <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                   <svg
@@ -66,6 +62,7 @@ export default function OptionSelector({
                   role="listbox"
                   aria-labelledby="listbox-label"
                 >
+                  {/*@ts-ignore*/}
                   {options.map((option, index) => (
                     <li
                       key={option.value}
@@ -101,7 +98,8 @@ export default function OptionSelector({
         )}
 
         <div className="flex flex-nowrap overflow-x-scroll overflow-y-hidden">
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 mb-4">
+            {/*@ts-ignore*/}
             {options.map(option => (
               <div
                 key={option.value}

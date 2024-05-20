@@ -20,6 +20,7 @@ export function About({
   accentBgColor = colors.about.accent.background,
   accentFgColor = colors.about.accent.foreground,
   typoColor = colors.about.typo,
+  preview,
 }: AboutProps) {
   // @ts-ignore
   const VariantComponent = variantComponents[variant]
@@ -32,7 +33,7 @@ export function About({
         accentFgColor={accentFgColor}
         typoColor={typoColor}
       />
-      <VariantComponent layout={layout} align={align} order={order} />
+      <VariantComponent layout={layout} align={align} order={order} preview={preview} />
     </>
   )
 }

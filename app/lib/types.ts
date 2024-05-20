@@ -7,6 +7,20 @@ export interface MenuItems {
   link?: string | undefined
 }
 
+// About
+
+export interface AboutItem {
+  title?: string | any | undefined
+  description?: string | any | undefined
+}
+
+export interface AboutData {
+  about: {
+    items?: AboutItem[] | any
+    title?: string
+  }
+}
+
 // Service
 
 export interface ListItem {
@@ -14,10 +28,10 @@ export interface ListItem {
 }
 
 export interface ServiceItem {
-  title: string
-  icon?: string | null
-  image?: string | null
-  description?: string | null
+  title?: string | any
+  icon?: string | any
+  image?: string | any
+  description?: string | any
   list: { listItems: ListItem[] }
 }
 
@@ -38,6 +52,12 @@ export interface ReferenceItem {
 export interface ReferenceItems {
   items: ReferenceItem[]
   title?: string
+}
+
+// ThemeSwitcher
+
+export interface ThemeSwitcherProps {
+  previewMode?: boolean
 }
 
 // Footer

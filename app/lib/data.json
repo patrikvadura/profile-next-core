@@ -5,6 +5,7 @@
     "logo": null,
     "logoDark": null,
     "image": "/assets/img/profileImage.webp",
+    "imageAlternative": "/assets/img/profileImageAlternative.webp",
     "cookie": false,
     "gtm": {
       "status": false,
@@ -48,7 +49,21 @@
     "cta": {
       "title": "Nezávazná konzultace",
       "link": "#form"
-    }
+    },
+    "items": [
+      {
+        "title": "Zkušenosti",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      },
+      {
+        "title": "Profesionalita",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      },
+      {
+        "title": "Komunikace",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      }
+    ]
   },
   "services": {
     "title": "Nabídka mých služeb",

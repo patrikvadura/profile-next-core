@@ -1,3 +1,4 @@
+import React from 'react'
 import { Hero } from '@/app/components/Hero'
 import { About } from '@/app/components/About'
 import { Services } from '@/app/components/Services'
@@ -10,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
+      <Hero variant="03" imageOpacity="80" align="center" />
       <About variant="01" layout="transparent" align="left" order="asc" />
       <Services />
       <Reference />

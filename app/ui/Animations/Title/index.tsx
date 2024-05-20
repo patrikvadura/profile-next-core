@@ -16,7 +16,7 @@ type ServicesProps = {
   className?: string
   style?: any
   type?: 'move' | 'opacity' | 'scale'
-  origin?: string
+  origin?: string | any
   as?: ElementType
   dangerouslySetInnerHTML?: { __html: string } | undefined
 }

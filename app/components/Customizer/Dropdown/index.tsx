@@ -1,24 +1,22 @@
-import React, { useState, useRef, FunctionComponent, ReactNode } from 'react'
+import React, { useState, useRef, FunctionComponent } from 'react'
+import { ToggleDropdownProps } from '@/app/lib/customizer'
 import { ChevronDown } from '@/app/ui/Icons/Chevron/Down'
 import { Show } from '@/app/ui/Icons/Show'
 import Link from 'next/link'
 
-interface ToggleDropdownProps {
-  label: string
-  link?: string | undefined
-  checked: boolean | undefined
-  onChange: any
-  children?: ReactNode
-}
-
 const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
+  id,
   label,
   link,
   checked,
+  toggled,
   onChange,
+  preview,
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const toggleState = !!toggled
+
+  const [isOpen, setIsOpen] = useState<boolean>(toggleState)
   const ref = useRef<HTMLDivElement>(null)
 
   const toggleIsOpen = () => {
@@ -32,10 +30,10 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
           onClick={toggleIsOpen}
           className="flex items-center justify-between py-2 rounded focus:outline-none focus:shadow-outline w-full"
         >
-          <label htmlFor="toggle" className="flex items-center font-semibold cursor-pointer">
+          <label htmlFor={id} className="flex items-center font-semibold cursor-pointer">
             <input
               type="checkbox"
-              id="toggle"
+              id={id}
               className="sr-only peer"
               checked={checked}
               onChange={onChange}
@@ -50,9 +48,13 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
           />
         </button>
 
-        <Link href={link ? link : '/'}>
-          <Show size={24} className="text-gray-300" />
-        </Link>
+        {preview ? (
+          <Link href={link ? link : '/'}>
+            <Show size={24} className="text-gray-300" />
+          </Link>
+        ) : (
+          ''
+        )}
       </div>
 
       {isOpen && (

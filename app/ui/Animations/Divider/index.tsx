@@ -10,21 +10,15 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
 }
 
-type ServicesProps = {
+type Props = {
   target?: string
   className?: string
   style?: any
   transformOrigin?: string | any
-  origin?: string
+  origin?: string | any
 }
 
-export function AnimatedDivider({
-  target,
-  className,
-  style,
-  transformOrigin,
-  origin,
-}: ServicesProps) {
+export function AnimatedDivider({ target, className, style, transformOrigin, origin }: Props) {
   const dividerRef = useRef<HTMLElement | any>()
 
   useGSAP(() => {

@@ -1,11 +1,11 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
-import { AboutVariant02Props } from '@/app/lib/variants'
+import { AboutVariantProps } from '@/app/lib/variants'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
 
-export function AboutVariant02({ layout, align, order }: AboutVariant02Props) {
+export function AboutVariant02({ layout, align, order, preview }: AboutVariantProps) {
   const classes = require('./index.module.scss')
 
   const layouts = {
@@ -14,6 +14,7 @@ export function AboutVariant02({ layout, align, order }: AboutVariant02Props) {
     border: 'dark:bg-black',
   }
 
+  // @ts-ignore
   const layoutsClass = layouts[layout]
 
   const aligns = {
@@ -22,6 +23,7 @@ export function AboutVariant02({ layout, align, order }: AboutVariant02Props) {
     full: 'items-center text-center',
   }
 
+  // @ts-ignore
   const alignsClass = aligns[align]
 
   const alignsDivider = {
@@ -30,6 +32,7 @@ export function AboutVariant02({ layout, align, order }: AboutVariant02Props) {
     full: 'center center',
   }
 
+  // @ts-ignore
   const alignsDividerClass = alignsDivider[align]
 
   return (
