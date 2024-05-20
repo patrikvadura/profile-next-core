@@ -1,8 +1,9 @@
 'use client'
 import React from 'react'
-import { optionsHero, optionsAbout } from '@/app/lib/customizer'
+import { optionsHero, optionsAbout, optionsService } from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
+import { useServiceState } from '@/app/lib/useState/useServiceState'
 import { useVisibilityState } from '@/app/lib/useState/useVisibilityState'
 import { calculatePreviewState } from '@/app/lib/calculatePreviewState'
 import exportToJson from '@/app/lib/exportPreview'
@@ -19,10 +20,12 @@ import OptionsContainer from '@/app/components/Customizer/OptionsContainer'
 import OptionSelector from '@/app/components/Customizer/OptionSelector'
 import ColorPickerAbout from '@/app/components/Customizer/ColorPicker/About'
 import ColorPickerHero from '@/app/components/Customizer/ColorPicker/Hero'
+import ColorPickerService from '@/app/components/Customizer/ColorPicker/Service'
 
 export default function Customizer() {
   const hero = useHeroState()
   const about = useAboutState()
+  const service = useServiceState()
   const visibility = useVisibilityState()
 
   const { totalPrice, totalTime } = calculatePreviewState(visibility)
@@ -30,9 +33,11 @@ export default function Customizer() {
   const stateData = {
     ...hero,
     ...about,
+    ...service,
     ...visibility,
     optionsHero,
     optionsAbout,
+    optionsService,
     totalPrice,
     totalTime,
   }
@@ -153,10 +158,55 @@ export default function Customizer() {
           label="Služby"
           id="serviceToggle"
           checked={visibility.showServices}
-          link="#service"
+          link="#services"
           preview
           onChange={() => visibility.setShowServices(!visibility.showServices)}
-        />
+        >
+          <div className="space-y-4">
+            <span className="mt-2 font-semibold">Barevnost sekce:</span>
+
+            <ColorPickerService
+              backgroundColor={service.setServiceBackground}
+              accentBgColor={service.setServiceAccentBg}
+              accentFgColor={service.setServiceAccentFg}
+              typoColor={service.setServiceTypo}
+              boxBackgroundColor={service.setServiceBoxBackground}
+              boxTypoColor={service.setServiceBoxTypo}
+              boxIconColor={service.setServiceBoxIcon}
+            />
+
+            <OptionSelector
+              title="Varianta"
+              options={optionsService.variant}
+              selectedOption={service.serviceVariant}
+              onChange={service.setServiceVariant}
+              visual
+            />
+          </div>
+
+          <div className="space-y-4">
+            <OptionSelector
+              title="Layout"
+              options={optionsService.layout}
+              selectedOption={service.serviceLayout}
+              onChange={service.setServiceLayout}
+            />
+
+            <OptionSelector
+              title="Zarovnání"
+              options={optionsService.align}
+              selectedOption={service.serviceAlign}
+              onChange={service.setServiceAlign}
+            />
+
+            <OptionSelector
+              title="Radius"
+              options={optionsService.radius}
+              selectedOption={service.serviceRadius}
+              onChange={service.setServiceRadius}
+            />
+          </div>
+        </Dropdown>
 
         <Dropdown
           label="Reference"
@@ -292,7 +342,22 @@ export default function Customizer() {
             preview
           />
         )}
-        {visibility.showServices && <Services />}
+        {visibility.showServices && (
+          <Services
+            variant={service.serviceVariant}
+            layout={service.serviceLayout}
+            align={service.serviceAlign}
+            radius={service.serviceRadius}
+            backgroundColor={service.serviceBackground}
+            accentBgColor={service.serviceAccentBg}
+            accentFgColor={service.serviceAccentFg}
+            typoColor={service.serviceTypo}
+            boxBackgroundColor={service.serviceBoxBackground}
+            boxTypoColor={service.serviceBoxTypo}
+            boxIconColor={service.serviceBoxIcon}
+            preview
+          />
+        )}
         {visibility.showReference && <Reference />}
         {visibility.showContact && <Contact />}
         <Footer />

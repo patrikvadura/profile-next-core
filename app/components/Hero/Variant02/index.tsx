@@ -23,7 +23,8 @@ export function HeroVariant02({ align, preview }: HeroVariantProps) {
       id="hero"
       className={`${alignsClass} w-full relative md:h-screen lg:h-[950px] flex flex-col items-end overflow-hidden bg-[var(--hero-background)] dark:bg-black`}
     >
-      <div className="absolute left-12 -bottom-[150px] size-[850px] bg-[var(--hero-accent-bg)] rounded-full z-0" />
+      <div className="absolute left-12 -bottom-[150px] size-[850px] bg-[var(--hero-accent-bg)] dark:bg-white dark:bg-opacity-10 rounded-full z-0" />
+
       <Image
         src={data.profile.image}
         className={`absolute left-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[920px] lg:translate-y-[120px] translate-x-[60px] z-1`}

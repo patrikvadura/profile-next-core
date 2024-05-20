@@ -4,18 +4,22 @@ import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
 import classes from '../index.module.scss'
 
-const ColorPickerHero: React.FC<ColorPickerProps> = ({
+const ColorPickerService: React.FC<ColorPickerProps> = ({
   backgroundColor,
   accentBgColor,
   accentFgColor,
   typoColor,
-  typoLgColor,
+  boxBackgroundColor,
+  boxTypoColor,
+  boxIconColor,
 }) => {
-  const [backgroundColorValue, setBackgroundColor] = useState(colors.hero.background)
-  const [accentBgColorValue, setAccentBgColor] = useState(colors.hero.accent.background)
-  const [accentFgColorValue, setAccentFgColor] = useState(colors.hero.accent.foreground)
-  const [typoColorValue, setTypoColor] = useState(colors.hero.typo)
-  const [typoLgColorValue, setTypoLgColor] = useState(colors.hero.typoLg)
+  const [backgroundColorValue, setBackgroundColor] = useState(colors.service.background)
+  const [accentBgColorValue, setAccentBgColor] = useState(colors.service.accent.background)
+  const [accentFgColorValue, setAccentFgColor] = useState(colors.service.accent.foreground)
+  const [typoColorValue, setTypoColor] = useState(colors.service.typo)
+  const [boxBackgroundColorValue, setBoxBackgroundColor] = useState(colors.service.box.background)
+  const [boxTypoColorValue, setBoxTypoColor] = useState(colors.service.box.typo)
+  const [boxIconColorValue, setBoxIconColor] = useState(colors.service.box.icon)
 
   const handleBackgroundChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value
@@ -49,11 +53,27 @@ const ColorPickerHero: React.FC<ColorPickerProps> = ({
     }
   }
 
-  const handleTypoLgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBoxBackgroundChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value
-    setTypoLgColor(newColor)
-    if (typoLgColor) {
-      typoLgColor(newColor)
+    setBoxBackgroundColor(newColor)
+    if (boxBackgroundColor) {
+      boxBackgroundColor(newColor)
+    }
+  }
+
+  const handleBoxTypoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value
+    setBoxTypoColor(newColor)
+    if (boxTypoColor) {
+      boxTypoColor(newColor)
+    }
+  }
+
+  const handleBoxIconChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value
+    setBoxIconColor(newColor)
+    if (boxIconColor) {
+      boxIconColor(newColor)
     }
   }
 
@@ -102,14 +122,34 @@ const ColorPickerHero: React.FC<ColorPickerProps> = ({
       <div className="flex flex-col items-start">
         <input
           type="color"
-          value={typoLgColorValue}
+          value={boxBackgroundColorValue}
           className={classes.picker}
-          onChange={handleTypoLgChange}
+          onChange={handleBoxBackgroundChange}
         />
-        Moving text
+        Box - pozadí
+      </div>
+
+      <div className="flex flex-col items-start">
+        <input
+          type="color"
+          value={boxTypoColorValue}
+          className={classes.picker}
+          onChange={handleBoxTypoChange}
+        />
+        Box - typografie
+      </div>
+
+      <div className="flex flex-col items-start">
+        <input
+          type="color"
+          value={boxIconColorValue}
+          className={classes.picker}
+          onChange={handleBoxIconChange}
+        />
+        Box - ikona
       </div>
     </div>
   )
 }
 
-export default ColorPickerHero
+export default ColorPickerService

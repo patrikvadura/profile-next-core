@@ -47,3 +47,34 @@ export type HeroVariantProps = {
   typoLgColor?: string | any
   preview?: boolean
 }
+
+// Service
+
+export type ServiceProps = {
+  variant: '01' | '02' | '03' | '04' | any
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  radius: 'none' | 'rounded' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  accentFgColor?: string | any
+  typoColor?: string | any
+  boxBackgroundColor?: string | any
+  boxTypoColor?: string | any
+  boxIconColor?: string | any
+  preview?: boolean
+}
+
+export type ServiceVariantProps = {
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  radius: 'none' | 'rounded' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  accentFgColor?: string | any
+  typoColor?: string | any
+  boxBackgroundColor?: string | any
+  boxTypoColor?: string | any
+  boxIconColor?: string | any
+  preview?: boolean
+}

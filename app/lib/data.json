@@ -70,9 +70,9 @@
     "items": [
       {
         "title": "Úvěry",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_uvery.svg",
-        "imageDark": "/assets/icons/icon_uvery.svg",
+        "icon": "streamline:money-bank-institution-money-saving-bank-payment-finance",
+        "image": "",
+        "imageDark": "",
         "list": {
           "listItems": [
             {
@@ -93,8 +93,8 @@
       },
       {
         "title": "Investice",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_investice.svg",
+        "icon": "material-symbols:finance-mode-rounded",
+        "image": "",
         "imageDark": "",
         "list": {
           "listItems": [
@@ -116,8 +116,8 @@
       },
       {
         "title": "Pojištění",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_pojisteni.svg",
+        "icon": "material-symbols:ecg-heart-outline-sharp",
+        "image": "",
         "imageDark": "",
         "list": {
           "listItems": [

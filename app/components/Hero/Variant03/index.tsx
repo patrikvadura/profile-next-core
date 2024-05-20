@@ -39,7 +39,7 @@ export function HeroVariant03({ align, preview }: HeroVariantProps) {
       />
 
       <div
-        className={`${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-gradient-to-r from-[var(--hero-background)] to-white from-70% to-70% dark:bg-black`}
+        className={`${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-gradient-to-r from-[var(--hero-background)] dark:from-black to-white dark:to-black from-70% to-70%`}
       >
         <div className={`container flex flex-col items-start py-32 md:pt-0`}>
           <div className="p-8 xl:p-0 z-20">

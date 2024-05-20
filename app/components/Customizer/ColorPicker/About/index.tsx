@@ -48,8 +48,8 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
   }
 
   return (
-    <div className="flex flex-row flex-wrap justify-between gap-y-4 text-xs">
-      <div className="basis-1/5 flex flex-col items-start">
+    <div className="grid grid-cols-5 gap-y-4 text-xs">
+      <div className="flex flex-col items-start">
         <input
           type="color"
           value={backgroundColorValue}
@@ -59,7 +59,7 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
         Pozadí
       </div>
 
-      <div className="basis-1/5 flex flex-col items-start">
+      <div className="flex flex-col items-start">
         <input
           type="color"
           value={accentBgColorValue}
@@ -69,7 +69,7 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
         Akcent - pozadí
       </div>
 
-      <div className="basis-1/5 flex flex-col items-start">
+      <div className="flex flex-col items-start">
         <input
           type="color"
           value={accentFgColorValue}
@@ -79,7 +79,7 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
         Akcent - popředí
       </div>
 
-      <div className="basis-1/5 flex flex-col items-start">
+      <div className="flex flex-col items-start">
         <input
           type="color"
           value={typoColorValue}

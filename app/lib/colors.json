@@ -24,5 +24,35 @@
       "foreground": "#ffffff"
     },
     "typo": "#191A44"
+  },
+  "service": {
+    "background": "#ffffff",
+    "accent": {
+      "background": "#5B319B",
+      "foreground": "#ffffff"
+    },
+    "box": {
+      "background": "#EDF1F4",
+      "typo": "#191A44",
+      "icon": "#5B319B"
+    },
+    "typo": "#191A44"
+  },
+  "reference": {
+    "background": "#191A44",
+    "accent": {
+      "background": "#5B319B",
+      "foreground": "#ffffff"
+    },
+    "typo": "#ffffff",
+    "typoLg": "#ffffff"
+  },
+  "contact": {
+    "background": "#ffffff",
+    "accent": {
+      "background": "#5B319B",
+      "foreground": "#ffffff"
+    },
+    "typo": "#191A44"
   }
 }

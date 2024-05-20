@@ -30,6 +30,7 @@ export interface CustomizerOptions {
   imageOpacity?: Option[] | any
   align?: Option[] | any
   order?: Option[] | any
+  radius?: Option[] | any
 }
 
 export interface OptionSelectorProps {
@@ -46,6 +47,9 @@ export interface ColorPickerProps {
   accentFgColor?: (color: string | any) => void
   typoColor?: (color: string | any) => void
   typoLgColor?: (color: string | any) => void
+  boxBackgroundColor?: (color: string | any) => void
+  boxTypoColor?: (color: string | any) => void
+  boxIconColor?: (color: string | any) => void
 }
 
 export interface ColorUpdaterProps {
@@ -54,6 +58,9 @@ export interface ColorUpdaterProps {
   accentFgColor?: string | any | undefined
   typoColor?: string | any | undefined
   typoLgColor?: string | any | undefined
+  boxBackgroundColor?: string | any | undefined
+  boxTypoColor?: string | any | undefined
+  boxIconColor?: string | any | undefined
 }
 
 export const optionsHero: CustomizerOptions = {
@@ -98,5 +105,29 @@ export const optionsAbout: CustomizerOptions = {
   order: [
     { value: 'asc', label: 'Ascending' },
     { value: 'desc', label: 'Descending' },
+  ],
+}
+
+export const optionsService: CustomizerOptions = {
+  variant: [
+    { value: '01', label: 'Varianta 01', image: 'service/service_01' },
+    { value: '02', label: 'Varianta 02', image: 'service/service_02' },
+    { value: '03', label: 'Varianta 03', image: 'service/service_03' },
+    { value: '04', label: 'Varianta 04', image: 'service/service_04' },
+    { value: '05', label: 'Varianta 05', image: 'service/service_05' },
+  ],
+  layout: [
+    { value: 'transparent', label: 'Transparent' },
+    { value: 'background', label: 'Background' },
+    { value: 'border', label: 'Border' },
+  ],
+  align: [
+    { value: 'left', label: 'Left' },
+    { value: 'center', label: 'center' },
+    { value: 'right', label: 'Right' },
+  ],
+  radius: [
+    { value: 'none', label: 'Rovné' },
+    { value: 'rounded', label: 'Radius' },
   ],
 }
