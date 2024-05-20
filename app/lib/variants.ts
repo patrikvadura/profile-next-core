@@ -27,7 +27,7 @@ export type AboutVariantProps = {
 
 export type HeroProps = {
   variant: '01' | '02' | '03' | '04' | any
-  imageOpacity?: '80' | '50' | '30' | any
+  imageOpacity?: '100' | '80' | '50' | '30' | any
   align?: 'start' | 'center' | 'end' | any
   backgroundColor?: string | any
   accentBgColor?: string | any
@@ -38,7 +38,7 @@ export type HeroProps = {
 }
 
 export type HeroVariantProps = {
-  imageOpacity?: '80' | '50' | '30' | any
+  imageOpacity?: '100' | '80' | '50' | '30' | any
   align?: 'start' | 'center' | 'end' | any
   backgroundColor?: string | any
   accentBgColor?: string | any

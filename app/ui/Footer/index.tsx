@@ -5,7 +5,7 @@ import classes from './index.module.scss'
 
 export default function Footer() {
   return (
-    <footer className="container">
+    <footer className="bg-white dark:bg-black">
       <div className={classes.main}>
         <Link href="https://patrikvadura.cz" className={`${classes.copyright} group`}>
           Powered by{' '}

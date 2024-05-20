@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useRef, FunctionComponent } from 'react'
 import { ToggleDropdownProps } from '@/app/lib/customizer'
 import { ChevronDown } from '@/app/ui/Icons/Chevron/Down'

@@ -68,7 +68,7 @@ export function AboutVariant02({ layout, align, order, preview }: AboutVariantPr
               : 'bg-[--about-background] dark:bg-black'
           } ${
             order === 'desc' ? classes.sideLeft : classes.sideRight
-          } ${alignsClass} shadow-[--about-background] md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:px-12 py-20 md:py-12`}
+          } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:px-12 py-20 md:py-12`}
         >
           <AnimatedDivider
             target="#about"

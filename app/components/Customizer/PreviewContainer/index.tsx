@@ -7,6 +7,7 @@ export default function PreviewContainer({
   children,
   totalPrice,
   totalTime,
+  onExport,
 }: PreviewContainerProps) {
   return (
     <div className="basis-7/12 bg-[#F3F3F5] flex flex-col justify-center ps-12 overflow-hidden">
@@ -53,7 +54,7 @@ export default function PreviewContainer({
         </div>
 
         <div className="flex flex-row space-x-4">
-          <Button className="bg-[#E5E5E9] rounded-full !normal-case">
+          <Button className="bg-[#E5E5E9] rounded-full !normal-case" onClick={onExport}>
             Export <Download size={24} />
           </Button>
 

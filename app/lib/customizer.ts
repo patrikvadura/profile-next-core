@@ -4,6 +4,7 @@ export interface PreviewContainerProps {
   children?: ReactNode
   totalPrice: number
   totalTime: number
+  onExport: any
 }
 
 export interface ToggleDropdownProps {

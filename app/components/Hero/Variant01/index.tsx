@@ -9,6 +9,16 @@ import { AnimatedSubtitle } from '@/app/ui/Animations/Subtitle'
 import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 
 export function HeroVariant01({ imageOpacity, align, preview }: HeroVariantProps) {
+  const opacityOptions = {
+    '100': 'opacity-100',
+    '80': 'opacity-80',
+    '50': 'opacity-50',
+    '30': 'opacity-30',
+  }
+
+  // @ts-ignore
+  const opacityClass = opacityOptions[imageOpacity]
+
   const aligns = {
     start: 'justify-start md:pt-40',
     center: 'justify-center md:pt-12',
@@ -25,7 +35,7 @@ export function HeroVariant01({ imageOpacity, align, preview }: HeroVariantProps
     >
       <Image
         src={data.profile.image}
-        className={`opacity-${imageOpacity} absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] z-0`}
+        className={`${opacityClass} absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] z-0`}
         width={1050}
         height={1050}
         quality={75}

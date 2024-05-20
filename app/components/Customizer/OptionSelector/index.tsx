@@ -117,8 +117,7 @@ export default function OptionSelector({
                       width={300}
                       height={300}
                       alt={option.label}
-                      objectFit="contain"
-                      className="mb-2"
+                      className="mb-2 object-contain"
                     />
                   </div>
                 ) : (
