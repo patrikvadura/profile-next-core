@@ -19,6 +19,9 @@ const sections: Section[] = [
   { name: 'analyticsCode', price: 1000, time: 1 },
   { name: 'analyticsSetup', price: 1000, time: 1 },
   { name: 'cookie', price: 500, time: 0 },
+  { name: 'dnsTransfer', price: 250, time: 0 },
+  { name: 'dnsSelf', price: 0, time: 0 },
+  { name: 'dnsHelp', price: 500, time: 0 },
 ]
 
 export function calculateTotals(showStates: ShowStates): { totalPrice: number; totalTime: number } {

@@ -22,6 +22,12 @@ interface VisibilityState {
   setShowAnalyticsSetup: (value: boolean) => void
   showCookie: boolean
   setShowCookie: (value: boolean) => void
+  showDnsTransfer: boolean
+  setShowDnsTransfer: (value: boolean) => void
+  showDnsSelf: boolean
+  setShowDnsSelf: (value: boolean) => void
+  showDnsHelp: boolean
+  setShowDnsHelp: (value: boolean) => void
 }
 
 export const useVisibilityState = (): VisibilityState => {
@@ -35,6 +41,9 @@ export const useVisibilityState = (): VisibilityState => {
   const [showAnalyticsCode, setShowAnalyticsCode] = useState<boolean>(false)
   const [showAnalyticsSetup, setShowAnalyticsSetup] = useState<boolean>(false)
   const [showCookie, setShowCookie] = useState<boolean>(false)
+  const [showDnsTransfer, setShowDnsTransfer] = useState<boolean>(false)
+  const [showDnsSelf, setShowDnsSelf] = useState<boolean>(false)
+  const [showDnsHelp, setShowDnsHelp] = useState<boolean>(false)
 
   return {
     showHero,
@@ -57,5 +66,11 @@ export const useVisibilityState = (): VisibilityState => {
     setShowAnalyticsSetup,
     showCookie,
     setShowCookie,
+    showDnsTransfer,
+    setShowDnsTransfer,
+    showDnsSelf,
+    setShowDnsSelf,
+    showDnsHelp,
+    setShowDnsHelp,
   }
 }

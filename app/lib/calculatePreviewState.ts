@@ -12,5 +12,8 @@ export const calculatePreviewState = (visibility: any) => {
     analyticsCode: !visibility.showAnalytics && visibility.showAnalyticsCode,
     analyticsSetup: !visibility.showAnalytics && visibility.showAnalyticsSetup,
     cookie: visibility.showCookie,
+    dnsTransfer: visibility.showDnsTransfer,
+    dnsSelf: visibility.showDnsSelf,
+    dnsHelp: visibility.showDnsHelp,
   })
 }

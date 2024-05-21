@@ -5,6 +5,14 @@ export interface PreviewContainerProps {
   totalPrice: number
   totalTime: number
   onExport: any
+  className?: string
+  classPreview?: string
+}
+
+export interface OptionContainerProps {
+  children?: ReactNode
+  className?: string | undefined | null
+  style?: any | undefined | null
 }
 
 export interface ToggleDropdownProps {
