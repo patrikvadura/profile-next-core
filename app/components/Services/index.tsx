@@ -8,6 +8,9 @@ const variantComponents = {
   '01': dynamic(() =>
     import('@/app/components/Services/Variant01').then(mod => mod.ServicesVariant01),
   ),
+  '02': dynamic(() =>
+    import('@/app/components/Services/Variant02').then(mod => mod.ServicesVariant02),
+  ),
 }
 
 export function Services({

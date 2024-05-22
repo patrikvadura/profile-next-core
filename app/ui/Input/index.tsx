@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 type Props = {
   id?: string
@@ -8,9 +8,12 @@ type Props = {
   value?: string
   isRequired?: boolean
   placeholder?: string
-  onChange?: string | any
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   classLabel?: string
   classInput?: string
+  withLimit?: boolean
+  maxLength?: number
+  minLength?: number
 }
 
 export function Input({
@@ -24,7 +27,39 @@ export function Input({
   onChange,
   classLabel,
   classInput,
+  withLimit = false,
+  maxLength = 160,
+  minLength = 150,
 }: Props) {
+  const [inputValue, setInputValue] = useState(value || '')
+  const [remaining, setRemaining] = useState(maxLength)
+
+  useEffect(() => {
+    if (withLimit) {
+      setRemaining(maxLength - inputValue.length)
+    }
+  }, [inputValue, maxLength, withLimit])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value
+    if (!withLimit || newValue.length <= maxLength) {
+      setInputValue(newValue)
+      if (onChange) {
+        onChange(e)
+      }
+    }
+  }
+
+  const getRemainingTextColor = () => {
+    if (remaining < 0) {
+      return 'text-red-500'
+    } else if (remaining >= 0 && remaining <= maxLength - minLength) {
+      return 'text-green-500'
+    } else {
+      return 'text-yellow-500'
+    }
+  }
+
   return (
     <div className="flex flex-col gap-2">
       {label ? (
@@ -41,14 +76,18 @@ export function Input({
       <input
         type={type}
         name={name}
-        value={value}
+        value={inputValue}
         required={isRequired}
         placeholder={placeholder}
         id={id}
-        autoComplete="email"
+        autoComplete="true"
         className={`${classInput} block w-full border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
-        onChange={onChange}
+        onChange={handleChange}
       />
+
+      {withLimit && (
+        <div className={`text-xs ${getRemainingTextColor()}`}>Zbývající znaky: {remaining}</div>
+      )}
     </div>
   )
 }

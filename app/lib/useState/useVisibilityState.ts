@@ -28,6 +28,16 @@ interface VisibilityState {
   setShowDnsSelf: (value: boolean) => void
   showDnsHelp: boolean
   setShowDnsHelp: (value: boolean) => void
+  selectedDnsOption: string
+  setSelectedDnsOption: (value: string) => void
+  selectedBuyInfoAccept: string
+  setSelectedBuyInfoAccept: (value: string) => void
+  selectedBuyInfoAccepted: boolean
+  setSelectedBuyInfoAccepted: (value: boolean) => void
+  showHeroContentButtonPrimary: boolean
+  setShowHeroContentButtonPrimary: (value: boolean) => void
+  showHeroContentButtonSecondary: boolean
+  setShowHeroContentButtonSecondary: (value: boolean) => void
 }
 
 export const useVisibilityState = (): VisibilityState => {
@@ -44,6 +54,13 @@ export const useVisibilityState = (): VisibilityState => {
   const [showDnsTransfer, setShowDnsTransfer] = useState<boolean>(false)
   const [showDnsSelf, setShowDnsSelf] = useState<boolean>(false)
   const [showDnsHelp, setShowDnsHelp] = useState<boolean>(false)
+  const [selectedDnsOption, setSelectedDnsOption] = useState<string>('')
+  const [selectedBuyInfoAccept, setSelectedBuyInfoAccept] = useState<string>('')
+  const [selectedBuyInfoAccepted, setSelectedBuyInfoAccepted] = useState<boolean>(false)
+  // Hero content
+  const [showHeroContentButtonPrimary, setShowHeroContentButtonPrimary] = useState<boolean>(true)
+  const [showHeroContentButtonSecondary, setShowHeroContentButtonSecondary] =
+    useState<boolean>(true)
 
   return {
     showHero,
@@ -72,5 +89,15 @@ export const useVisibilityState = (): VisibilityState => {
     setShowDnsSelf,
     showDnsHelp,
     setShowDnsHelp,
+    selectedDnsOption,
+    setSelectedDnsOption,
+    selectedBuyInfoAccept,
+    setSelectedBuyInfoAccept,
+    selectedBuyInfoAccepted,
+    setSelectedBuyInfoAccepted,
+    showHeroContentButtonPrimary,
+    setShowHeroContentButtonPrimary,
+    showHeroContentButtonSecondary,
+    setShowHeroContentButtonSecondary,
   }
 }

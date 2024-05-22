@@ -19,6 +19,14 @@ export function Hero({
   accentFgColor = colors.hero.accent.foreground,
   typoColor = colors.hero.typo,
   typoLgColor = colors.hero.typoLg,
+  contentTitle,
+  contentSubtitle,
+  contentButtonPrimary,
+  contentButtonPrimaryText,
+  contentButtonPrimaryLink,
+  contentButtonSecondary,
+  contentButtonSecondaryText,
+  contentButtonSecondaryLink,
   preview,
 }: HeroProps) {
   // @ts-ignore
@@ -33,7 +41,19 @@ export function Hero({
         typoColor={typoColor}
         typoLgColor={typoLgColor}
       />
-      <VariantComponent imageOpacity={imageOpacity} align={align} preview={preview} />
+      <VariantComponent
+        imageOpacity={imageOpacity}
+        align={align}
+        contentTitle={contentTitle}
+        contentSubtitle={contentSubtitle}
+        contentButtonPrimary={contentButtonPrimary}
+        contentButtonPrimaryText={contentButtonPrimaryText}
+        contentButtonPrimaryLink={contentButtonPrimaryLink}
+        contentButtonSecondary={contentButtonSecondary}
+        contentButtonSecondaryText={contentButtonSecondaryText}
+        contentButtonSecondaryLink={contentButtonSecondaryLink}
+        preview={preview}
+      />
     </>
   )
 }

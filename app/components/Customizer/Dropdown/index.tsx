@@ -11,6 +11,7 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
   link,
   checked,
   toggled,
+  hideToggle = false,
   onChange,
   preview,
   children,
@@ -31,17 +32,21 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
           onClick={toggleIsOpen}
           className="flex items-center justify-between py-2 rounded focus:outline-none focus:shadow-outline w-full"
         >
-          <label htmlFor={id} className="flex items-center font-semibold cursor-pointer">
-            <input
-              type="checkbox"
-              id={id}
-              className="sr-only peer"
-              checked={checked}
-              onChange={onChange}
-            />
-            <div className="mr-2 block relative bg-gray-200 w-12 h-6 p-1 rounded-full before:absolute before:bg-white before:w-4 before:h-4 before:p-1 before:rounded-full before:transition-all before:duration-500 before:left-1 peer-checked:before:left-7 peer-checked:bg-[#72E790]"></div>
-            {label}
-          </label>
+          {!hideToggle ? (
+            <label htmlFor={id} className="flex items-center font-semibold cursor-pointer">
+              <input
+                type="checkbox"
+                id={id}
+                className="sr-only peer"
+                checked={checked}
+                onChange={onChange}
+              />
+              <div className="mr-2 block relative bg-gray-200 w-12 h-6 p-1 rounded-full before:absolute before:bg-white before:w-4 before:h-4 before:p-1 before:rounded-full before:transition-all before:duration-500 before:left-1 peer-checked:before:left-7 peer-checked:bg-[#72E790]"></div>
+              {label}
+            </label>
+          ) : (
+            <div className="flex items-center text-lg font-semibold cursor-pointer">{label}</div>
+          )}
 
           <ChevronDown
             size={24}

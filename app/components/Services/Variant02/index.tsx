@@ -3,11 +3,12 @@ import data from '@/app/lib/data.json'
 import { ServiceVariantProps } from '@/app/lib/variants'
 import { ServicesData } from '@/app/lib/types'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Check } from '@/app/ui/Icons/Check'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ServiceIcon } from '@/app/ui/Icons/Service'
 
-export function ServicesVariant01({ layout, align, radius, preview }: ServiceVariantProps) {
+export function ServicesVariant02({ layout, align, radius, preview }: ServiceVariantProps) {
   const services: ServicesData = data
 
   return (
@@ -27,7 +28,7 @@ export function ServicesVariant01({ layout, align, radius, preview }: ServiceVar
           {services.services.items.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center md:items-start text-center md:text-left bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out"
+              className="flex flex-col items-center md:items-start text-center md:text-left dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out"
             >
               {item.image ? (
                 <Image
@@ -55,18 +56,19 @@ export function ServicesVariant01({ layout, align, radius, preview }: ServiceVar
                   {item.description}
                 </p>
               ) : (
-                <ul className="text-center md:text-left">
-                  {item.list.listItems.map((listItem, index) => (
-                    <li
-                      key={index}
-                      className="text-[var(--service-typo)] flex flex-row justify-center md:justify-start items-center"
-                    >
-                      <Check className="me-2" />
+                <div className="text-center md:text-left">
+                  <p className="text-[var(--service-typo)] flex flex-row justify-center md:justify-start items-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                  </p>
 
-                      {listItem.label}
-                    </li>
-                  ))}
-                </ul>
+                  <div className="mt-6">
+                    <Link href="#" className="underline">
+                      Zobrazit více
+                    </Link>
+                  </div>
+                </div>
               )}
             </div>
           ))}

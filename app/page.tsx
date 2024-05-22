@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero variant="03" imageOpacity="80" align="center" />
+      <Hero variant="01" imageOpacity="80" align="center" />
       <About variant="01" layout="transparent" align="left" order="asc" />
       <Services />
       <Reference />

@@ -1,7 +1,9 @@
 {
-  "primary": "#5B329B",
-  "secondary": "#191A44",
-  "accent": "#EDF1F4",
+  "global": {
+    "primary": "#5B329B",
+    "secondary": "#191A44",
+    "accent": "#EDF1F4"
+  },
   "header": {
     "background": "#ffffff",
     "accent": "#191A44",

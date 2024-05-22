@@ -34,6 +34,14 @@ export type HeroProps = {
   accentFgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  contentTitle?: string
+  contentSubtitle?: string
+  contentButtonPrimary?: boolean
+  contentButtonPrimaryText?: string
+  contentButtonPrimaryLink?: string | any
+  contentButtonSecondary?: boolean
+  contentButtonSecondaryText?: string
+  contentButtonSecondaryLink?: string | any
   preview?: boolean
 }
 
@@ -45,6 +53,14 @@ export type HeroVariantProps = {
   accentFgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  contentTitle?: string
+  contentSubtitle?: string
+  contentButtonPrimary?: boolean
+  contentButtonPrimaryText?: string
+  contentButtonPrimaryLink?: string | any
+  contentButtonSecondary?: boolean
+  contentButtonSecondaryText?: string
+  contentButtonSecondaryLink?: string | any
   preview?: boolean
 }
 

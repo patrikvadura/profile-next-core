@@ -1,17 +1,27 @@
 'use client'
 import React, { createContext, useContext, useState, ReactNode } from 'react'
+import { OtherState, useOtherState } from '@/app/lib/useState/useOtherState'
 
-interface DomainContextProps {
-  domain: string
-  setDomain: (domain: string) => void
-}
-
-const DomainContext = createContext<DomainContextProps | undefined>(undefined)
+const DomainContext = createContext<OtherState | undefined>(undefined)
 
 export const DomainProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [domain, setDomain] = useState<string>('')
+  const other = useOtherState()
 
-  return <DomainContext.Provider value={{ domain, setDomain }}>{children}</DomainContext.Provider>
+  const stateData = {
+    ...other,
+  }
+
+  const domain = other.domain
+  const setDomain = other.setDomain
+  const availability = other.availability
+  const setAvailability = other.setAvailability
+
+  return (
+    //@ts-ignore
+    <DomainContext.Provider value={{ domain, setDomain, availability, setAvailability }}>
+      {children}
+    </DomainContext.Provider>
+  )
 }
 
 export const useDomain = () => {

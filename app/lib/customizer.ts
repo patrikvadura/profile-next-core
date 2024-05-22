@@ -19,8 +19,9 @@ export interface ToggleDropdownProps {
   id: string
   label: string
   link?: string | undefined
-  checked: boolean | undefined
+  checked?: boolean | undefined
   toggled?: boolean
+  hideToggle?: boolean
   onChange?: any
   preview?: boolean
   children?: ReactNode
@@ -50,6 +51,9 @@ export interface OptionSelectorProps {
 }
 
 export interface ColorPickerProps {
+  primaryGlobalColor?: (color: string | any) => void
+  secondaryGlobalColor?: (color: string | any) => void
+  accentGlobalColor?: (color: string | any) => void
   backgroundColor?: (color: string | any) => void
   accentBgColor?: (color: string | any) => void
   accentFgColor?: (color: string | any) => void
@@ -61,6 +65,9 @@ export interface ColorPickerProps {
 }
 
 export interface ColorUpdaterProps {
+  primaryGlobalColor?: string | any | undefined
+  secondaryGlobalColor?: string | any | undefined
+  accentGlobalColor?: string | any | undefined
   backgroundColor?: string | any | undefined
   accentBgColor?: string | any | undefined
   accentFgColor?: string | any | undefined

@@ -1,11 +1,10 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '@/app/ui/Button'
 import { Download } from '@/app/ui/Icons/Download'
 import { PreviewContainerProps } from '@/app/lib/customizer'
 import { useOtherState } from '@/app/lib/useState/useOtherState'
 import { Icon } from '@iconify/react'
-import { setBreakpointClass } from '@/app/lib/breakpoints' // Import utility funkce
 
 export default function PreviewContainer({
   children,
@@ -31,10 +30,6 @@ export default function PreviewContainer({
     },
   ]
 
-  useEffect(() => {
-    setBreakpointClass(breakpoints[other.currentStep].size)
-  }, [other.currentStep])
-
   return (
     <div
       className={`${className} basis-7/12 bg-[#F3F3F5] flex flex-col justify-center ps-12 overflow-hidden`}
@@ -50,85 +45,55 @@ export default function PreviewContainer({
           <button
             key={index}
             className={`flex flex-row items-center text-base pt-4 ${
-              other.currentStep === index ? 'text-black font-bold' : 'text-black text-opacity-50'
+              other.currentBreakpoint === index
+                ? 'text-black font-bold'
+                : 'text-black text-opacity-50'
             }`}
-            onClick={() => other.setCurrentStep(index)}
+            onClick={() => other.setCurrentBreakpoint(index)}
           >
             <Icon
               icon={breakpoint.icon}
               className={`${
-                other.currentStep === index ? 'text-opacity-100' : 'text-opacity-30'
+                other.currentBreakpoint === index ? 'text-opacity-100' : 'text-opacity-30'
               } text-black hover:text-opacity-100 text-2xl`}
             />
           </button>
         ))}
       </div>
 
-      {other.currentStep === 0 && (
-        <div className="mx-auto border-[12px] border-black bg-white rounded-3xl overflow-x-hidden overflow-y-scroll z-20">
+      <div className="mx-auto border-[12px] border-black bg-white rounded-3xl overflow-x-hidden overflow-y-scroll z-20">
+        <div
+          className="overflow-hidden"
+          style={{
+            width:
+              other.currentBreakpoint === 0
+                ? '15vw'
+                : other.currentBreakpoint === 1
+                ? '40vw'
+                : '90vw',
+            height: '55vh',
+            margin: 'auto',
+          }}
+        >
           <div
-            className="overflow-hidden"
-            style={{ width: '15vw', height: '55vh', margin: 'auto' }}
+            className={classPreview}
+            style={{
+              transform: 'scale(0.55)',
+              transformOrigin: 'top left',
+              width:
+                other.currentBreakpoint === 0
+                  ? '28vw'
+                  : other.currentBreakpoint === 1
+                  ? '73vw'
+                  : '100vw',
+              height: '100vh',
+              overflow: 'scroll',
+            }}
           >
-            <div
-              className={classPreview}
-              style={{
-                transform: 'scale(0.55)',
-                transformOrigin: 'top left',
-                width: '28vw',
-                height: '100vh',
-                overflow: 'scroll',
-              }}
-            >
-              {children}
-            </div>
+            {children}
           </div>
         </div>
-      )}
-
-      {other.currentStep === 1 && (
-        <div className="mx-auto border-[12px] border-black bg-white rounded-3xl overflow-x-hidden overflow-y-scroll z-20">
-          <div
-            className="overflow-hidden"
-            style={{ width: '40vw', height: '55vh', margin: 'auto' }}
-          >
-            <div
-              className={classPreview}
-              style={{
-                transform: 'scale(0.55)',
-                transformOrigin: 'top left',
-                width: '73vw',
-                height: '100vh',
-                overflow: 'scroll',
-              }}
-            >
-              {children}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {other.currentStep === 2 && (
-        <div className="border-s-[12px] border-y-[12px] border-black bg-white rounded-s-3xl overflow-x-hidden overflow-y-scroll z-20">
-          <div
-            className="overflow-hidden"
-            style={{ width: '90vw', height: '55vh', margin: 'auto' }}
-          >
-            <div
-              className={classPreview}
-              style={{
-                transform: 'scale(0.55)',
-                transformOrigin: 'top left',
-                width: '100vw',
-                height: '100vh',
-                overflow: 'scroll',
-              }}
-            >
-              {children}
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
 
       <div className="flex flex-row items-center justify-between bottom-0 right-0 py-8 px-8 bg-gray-100">
         <div className="flex flex-col text-base text-black text-opacity-75">

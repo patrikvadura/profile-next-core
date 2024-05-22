@@ -7,9 +7,8 @@ import { Input } from '@/app/ui/Input'
 import Button from '@/app/ui/Button'
 
 export default function DNSChecker() {
-  const { domain, setDomain } = useDomain()
+  const { domain, setDomain, availability, setAvailability } = useDomain()
 
-  const [availability, setAvailability] = useState<boolean | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 
@@ -17,7 +16,9 @@ export default function DNSChecker() {
     e.preventDefault()
     setLoading(true)
     setError('')
-    setAvailability(null)
+    if (setAvailability) {
+      setAvailability(null)
+    }
 
     try {
       const response = await fetch('/api/check-domain', {
@@ -31,7 +32,9 @@ export default function DNSChecker() {
       const data = await response.json()
 
       if (response.ok) {
-        setAvailability(data.available)
+        if (setAvailability) {
+          setAvailability(data.available)
+        }
       } else {
         setError(data.error || 'An error occurred')
       }
@@ -49,7 +52,9 @@ export default function DNSChecker() {
           <Input
             type="text"
             value={domain}
-            onChange={(e: { target: { value: string } }) => setDomain(e.target.value)}
+            onChange={(e: { target: { value: string } }) =>
+              setDomain ? setDomain(e.target.value) : ''
+            }
             placeholder="Vložte doménové jméno"
           />
 

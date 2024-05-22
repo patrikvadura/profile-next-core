@@ -19,6 +19,18 @@ interface HeroState {
   setHeroTypo: (value: string) => void
   heroTypoLg: string | undefined | any
   setHeroTypoLg: (value: string) => void
+  heroContentTitle: string | undefined | any
+  setHeroContentTitle: (value: React.SetStateAction<string>) => void
+  heroContentSubtitle: string | undefined | any
+  setHeroContentSubtitle: (value: React.SetStateAction<string>) => void
+  heroContentButtonPrimaryText: string | undefined | any
+  setHeroContentButtonPrimaryText: (value: React.SetStateAction<string>) => void
+  heroContentButtonPrimaryLink: string | undefined | any
+  setHeroContentButtonPrimaryLink: (value: React.SetStateAction<string>) => void
+  heroContentButtonSecondaryText: string | undefined | any
+  setHeroContentButtonSecondaryText: (value: React.SetStateAction<string>) => void
+  heroContentButtonSecondaryLink: string | undefined | any
+  setHeroContentButtonSecondaryLink: (value: React.SetStateAction<string>) => void
 }
 
 export const useHeroState = (): HeroState => {
@@ -34,6 +46,20 @@ export const useHeroState = (): HeroState => {
   )
   const [heroTypo, setHeroTypo] = useState<string | undefined>(colors.hero.typo)
   const [heroTypoLg, setHeroTypoLg] = useState<string | undefined>(colors.hero.typoLg)
+
+  // Content
+  const [heroContentTitle, setHeroContentTitle] = useState<string>(
+    'Ve financích se na mě můžete spolehnout',
+  )
+  const [heroContentSubtitle, setHeroContentSubtitle] = useState<string>('Finanční specialista')
+  const [heroContentButtonPrimaryText, setHeroContentButtonPrimaryText] =
+    useState<string>('Nezávazná konzultace')
+  const [heroContentButtonPrimaryLink, setHeroContentButtonPrimaryLink] =
+    useState<string>('#contact')
+  const [heroContentButtonSecondaryText, setHeroContentButtonSecondaryText] =
+    useState<string>('O mně')
+  const [heroContentButtonSecondaryLink, setHeroContentButtonSecondaryLink] =
+    useState<string>('#about')
 
   return {
     heroVariant,
@@ -52,5 +78,17 @@ export const useHeroState = (): HeroState => {
     setHeroTypo,
     heroTypoLg,
     setHeroTypoLg,
+    heroContentTitle,
+    setHeroContentTitle,
+    heroContentSubtitle,
+    setHeroContentSubtitle,
+    heroContentButtonPrimaryText,
+    setHeroContentButtonPrimaryText,
+    heroContentButtonPrimaryLink,
+    setHeroContentButtonPrimaryLink,
+    heroContentButtonSecondaryText,
+    setHeroContentButtonSecondaryText,
+    heroContentButtonSecondaryLink,
+    setHeroContentButtonSecondaryLink,
   }
 }
