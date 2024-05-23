@@ -25,6 +25,22 @@ export function Services({
   boxBackgroundColor = colors.service.box.background,
   boxTypoColor = colors.service.box.typo,
   boxIconColor = colors.service.box.icon,
+  servicesContentTitle,
+  servicesContentBox1,
+  servicesContentBox1Title,
+  servicesContentBox1Content,
+  servicesContentBox1Icon,
+  servicesContentBox1IconShow,
+  servicesContentBox2,
+  servicesContentBox2Title,
+  servicesContentBox2Content,
+  servicesContentBox2Icon,
+  servicesContentBox2IconShow,
+  servicesContentBox3,
+  servicesContentBox3Title,
+  servicesContentBox3Content,
+  servicesContentBox3Icon,
+  servicesContentBox3IconShow,
   preview,
 }: ServiceProps) {
   // @ts-ignore
@@ -41,7 +57,28 @@ export function Services({
         boxTypoColor={boxTypoColor}
         boxIconColor={boxIconColor}
       />
-      <VariantComponent layout={layout} align={align} radius={radius} preview={preview} />
+      <VariantComponent
+        layout={layout}
+        align={align}
+        radius={radius}
+        servicesContentTitle={servicesContentTitle}
+        servicesContentBox1={servicesContentBox1}
+        servicesContentBox1Title={servicesContentBox1Title}
+        servicesContentBox1Content={servicesContentBox1Content}
+        servicesContentBox1Icon={servicesContentBox1Icon}
+        servicesContentBox1IconShow={servicesContentBox1IconShow}
+        servicesContentBox2={servicesContentBox2}
+        servicesContentBox2Title={servicesContentBox2Title}
+        servicesContentBox2Content={servicesContentBox2Content}
+        servicesContentBox2Icon={servicesContentBox2Icon}
+        servicesContentBox2IconShow={servicesContentBox2IconShow}
+        servicesContentBox3={servicesContentBox3}
+        servicesContentBox3Title={servicesContentBox3Title}
+        servicesContentBox3Content={servicesContentBox3Content}
+        servicesContentBox3Icon={servicesContentBox3Icon}
+        servicesContentBox3IconShow={servicesContentBox3IconShow}
+        preview={preview}
+      />
     </>
   )
 }

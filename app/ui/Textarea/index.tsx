@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import classes from '@/app/components/Contact/Form/index.module.scss'
+import data from '@/app/lib/data.json'
 
 type Props = {
   id?: string
@@ -16,7 +18,7 @@ type Props = {
   minLength?: number
 }
 
-export function Input({
+export function Textarea({
   id,
   type,
   label,
@@ -42,12 +44,11 @@ export function Input({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
-    setInputValue(newValue)
-    if (withLimit) {
-      setRemaining(maxLength - newValue.length)
-    }
-    if (onChange) {
-      onChange(e)
+    if (!withLimit || newValue.length <= maxLength) {
+      setInputValue(newValue)
+      if (onChange) {
+        onChange(e)
+      }
     }
   }
 
@@ -74,17 +75,17 @@ export function Input({
         ''
       )}
 
-      <input
-        type={type}
+      <textarea
         name={name}
         value={inputValue}
         required={isRequired}
-        placeholder={placeholder}
         id={id}
-        autoComplete="true"
+        rows={4}
+        placeholder={placeholder}
         className={`${classInput} block w-full border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+        // @ts-ignore
         onChange={handleChange}
-      />
+      ></textarea>
 
       {withLimit && (
         <div className={`text-xs ${getRemainingTextColor()}`}>Zbývající znaky: {remaining}</div>

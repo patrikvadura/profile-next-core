@@ -23,14 +23,28 @@ interface HeroState {
   setHeroContentTitle: (value: React.SetStateAction<string>) => void
   heroContentSubtitle: string | undefined | any
   setHeroContentSubtitle: (value: React.SetStateAction<string>) => void
+  heroContentLargeTitle: string | undefined | any
+  setHeroContentLargeTitle: (value: React.SetStateAction<string>) => void
   heroContentButtonPrimaryText: string | undefined | any
   setHeroContentButtonPrimaryText: (value: React.SetStateAction<string>) => void
   heroContentButtonPrimaryLink: string | undefined | any
   setHeroContentButtonPrimaryLink: (value: React.SetStateAction<string>) => void
+  heroContentButtonPrimaryCustomLink: string | undefined | any
+  setHeroContentButtonPrimaryCustomLink: (value: React.SetStateAction<string>) => void
   heroContentButtonSecondaryText: string | undefined | any
   setHeroContentButtonSecondaryText: (value: React.SetStateAction<string>) => void
   heroContentButtonSecondaryLink: string | undefined | any
   setHeroContentButtonSecondaryLink: (value: React.SetStateAction<string>) => void
+  heroContentButtonSecondaryCustomLink: string | undefined | any
+  setHeroContentButtonSecondaryCustomLink: (value: React.SetStateAction<string>) => void
+  imageMainUrl: string | undefined | any
+  setImageMainUrl: (value: React.SetStateAction<string | undefined>) => void
+  imageMainAlternativeUrl: string | undefined | any
+  setImageMainAlternativeUrl: (value: React.SetStateAction<string | undefined>) => void
+  imageMainHeight: number | undefined | any
+  setImageMainHeight: (value: React.SetStateAction<number | undefined>) => void
+  imageMainWidth: number | undefined | any
+  setImageMainWidth: (value: React.SetStateAction<number | undefined>) => void
 }
 
 export const useHeroState = (): HeroState => {
@@ -52,14 +66,29 @@ export const useHeroState = (): HeroState => {
     'Ve financích se na mě můžete spolehnout',
   )
   const [heroContentSubtitle, setHeroContentSubtitle] = useState<string>('Finanční specialista')
+  const [heroContentLargeTitle, setHeroContentLargeTitle] = useState<string>('Finance')
   const [heroContentButtonPrimaryText, setHeroContentButtonPrimaryText] =
     useState<string>('Nezávazná konzultace')
   const [heroContentButtonPrimaryLink, setHeroContentButtonPrimaryLink] =
     useState<string>('#contact')
+  const [heroContentButtonPrimaryCustomLink, setHeroContentButtonPrimaryCustomLink] =
+    useState<string>('https://vaseadresa.cz')
   const [heroContentButtonSecondaryText, setHeroContentButtonSecondaryText] =
     useState<string>('O mně')
   const [heroContentButtonSecondaryLink, setHeroContentButtonSecondaryLink] =
     useState<string>('#about')
+  const [heroContentButtonSecondaryCustomLink, setHeroContentButtonSecondaryCustomLink] =
+    useState<string>('https://vaseadresa.cz')
+
+  // Image
+  const [imageMainUrl, setImageMainUrl] = useState<string | undefined>(
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/profileImage.webp',
+  )
+  const [imageMainAlternativeUrl, setImageMainAlternativeUrl] = useState<string | undefined>(
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/image_without-bg.webp',
+  )
+  const [imageMainHeight, setImageMainHeight] = useState<number | undefined>(undefined)
+  const [imageMainWidth, setImageMainWidth] = useState<number | undefined>(undefined)
 
   return {
     heroVariant,
@@ -82,13 +111,27 @@ export const useHeroState = (): HeroState => {
     setHeroContentTitle,
     heroContentSubtitle,
     setHeroContentSubtitle,
+    heroContentLargeTitle,
+    setHeroContentLargeTitle,
     heroContentButtonPrimaryText,
     setHeroContentButtonPrimaryText,
     heroContentButtonPrimaryLink,
     setHeroContentButtonPrimaryLink,
+    heroContentButtonPrimaryCustomLink,
+    setHeroContentButtonPrimaryCustomLink,
     heroContentButtonSecondaryText,
     setHeroContentButtonSecondaryText,
     heroContentButtonSecondaryLink,
     setHeroContentButtonSecondaryLink,
+    heroContentButtonSecondaryCustomLink,
+    setHeroContentButtonSecondaryCustomLink,
+    imageMainUrl,
+    setImageMainUrl,
+    imageMainAlternativeUrl,
+    setImageMainAlternativeUrl,
+    imageMainHeight,
+    setImageMainHeight,
+    imageMainWidth,
+    setImageMainWidth,
   }
 }

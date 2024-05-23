@@ -8,7 +8,22 @@ import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedSubtitle } from '@/app/ui/Animations/Subtitle'
 import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 
-export function HeroVariant03({ align, preview }: HeroVariantProps) {
+export function HeroVariant03({
+  align,
+  preview,
+  contentTitle,
+  contentSubtitle,
+  contentLargeTitle,
+  contentButtonPrimary,
+  contentButtonPrimaryText,
+  contentButtonPrimaryLink,
+  contentButtonSecondary,
+  contentButtonSecondaryText,
+  contentButtonSecondaryLink,
+  imageMainUrl,
+  imageMainWidth,
+  imageMainHeight,
+}: HeroVariantProps) {
   const aligns = {
     start: 'justify-start md:pt-40',
     center: 'justify-center md:pt-12',
@@ -21,21 +36,22 @@ export function HeroVariant03({ align, preview }: HeroVariantProps) {
   return (
     <div id="hero" className="relative w-full dark:bg-black overflow-hidden">
       <AnimatedLargeTitle
-        title={data.hero.largeTitle}
+        title={contentLargeTitle || data.hero.largeTitle}
         target="body"
         origin={!preview ? 'translate-x-full' : null}
-        className="absolute -right-[20vw] top-[400px] -rotate-90 z-10 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white"
+        className="verticalText absolute rotate-180 right-[14rem] -bottom-[2rem] z-10 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white"
       />
 
       <Image
-        src={data.profile.imageAlternative}
+        // @ts-ignore
+        src={imageMainUrl}
         className={`absolute right-0 object-contain bottom-0 size-[600px] md:size-[950px] lg:size-[980px] lg:translate-y-[120px] translate-x-[60px] z-10`}
-        width={1250}
-        height={1250}
+        width={imageMainWidth || 1050}
+        height={imageMainHeight || 1050}
         quality={75}
         sizes="(max-width: 480px) 200px, (max-width: 800px) 600px, 1050px"
         priority={true}
-        alt={data.profile.name}
+        alt="Hero"
       />
 
       <div
@@ -45,37 +61,41 @@ export function HeroVariant03({ align, preview }: HeroVariantProps) {
           <div className="p-8 xl:p-0 z-20">
             <div className="max-w-screen-md text-left">
               <AnimatedSubtitle
-                title={data.hero.subtitle}
+                title={contentSubtitle || data.hero.subtitle}
                 target="body"
                 origin="translate-y-[50px]"
                 className="mb-8 text-xl font-normal tracking-[.3rem] text-[var(--hero-typo)] dark:text-white"
               />
 
               <AnimatedTitle
-                title={data.hero.title}
+                title={contentTitle || data.hero.title}
                 target="body"
                 origin="translate-y-[100px]"
                 className="text-[40px] md:text-[70px] leading-[1.5] text-[var(--hero-typo)] dark:text-white font-bold"
               />
 
               <div className="mt-12 space-x-4">
-                <Button
-                  asLink
-                  href={data.hero.cta.primary.link}
-                  className="bg-[var(--hero-accent-bg)] dark:bg-white text-[var(--hero-accent-fg)] dark:text-black"
-                >
-                  {data.hero.cta.primary.title}
+                {contentButtonPrimary && (
+                  <Button
+                    asLink
+                    href={contentButtonPrimaryLink || data.hero.cta.primary.link}
+                    className="bg-[var(--hero-accent-bg)] dark:bg-white text-[var(--hero-accent-fg)] dark:text-black"
+                  >
+                    {contentButtonPrimaryText || data.hero.cta.primary.title}
 
-                  <ArrowRight size={24} />
-                </Button>
+                    <ArrowRight size={24} />
+                  </Button>
+                )}
 
-                <Button
-                  asLink
-                  href={data.hero.cta.secondary.link}
-                  className="bg-transparent text-[var(--hero-typo)] dark:text-white hover:underline"
-                >
-                  {data.hero.cta.secondary.title}
-                </Button>
+                {contentButtonSecondary && (
+                  <Button
+                    asLink
+                    href={contentButtonSecondaryLink || data.hero.cta.secondary.link}
+                    className="bg-transparent text-[var(--hero-typo)] dark:text-white hover:underline"
+                  >
+                    {contentButtonSecondaryText || data.hero.cta.secondary.title}
+                  </Button>
+                )}
               </div>
             </div>
           </div>

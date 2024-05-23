@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { optionsHero, optionsAbout, optionsService } from '@/app/lib/customizer'
+import { optionsHero, optionsAbout, optionsService, optionsHeroContent } from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
 import { useServiceState } from '@/app/lib/useState/useServiceState'
@@ -31,12 +31,15 @@ import { Icon } from '@iconify/react'
 import FAQ from '@/app/components/Customizer/FAQ'
 import DNSChecker from '@/app/components/Customizer/DNSChecker'
 import { Input } from '@/app/ui/Input'
+import { Textarea } from '@/app/ui/Textarea'
 import { Radio } from '@/app/ui/Radio'
+import Select from '@/app/ui/Select'
 import Head from 'next/head'
 import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 import { Lato } from 'next/font/google'
 import OpenGraphPreview from '@/app/components/Customizer/OpenGraphPreview'
+import UploadComponent from '@/app/components/Customizer/UploadComponent'
 
 const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
@@ -58,6 +61,7 @@ export default function Customizer() {
     ...visibility,
     ...other,
     optionsHero,
+    optionsHeroContent,
     optionsAbout,
     optionsService,
     domain,
@@ -378,7 +382,14 @@ export default function Customizer() {
         {other.currentStep === 1 && (
           <div className="flex flex-col space-y-4 pt-4">
             {visibility.showHero && (
-              <Dropdown label="Hero sekce" id="globalColorsToggle" link="#hero" toggled hideToggle>
+              <Dropdown
+                label="Hero sekce"
+                id="contentHeroToggle"
+                link="#hero"
+                preview
+                toggled
+                hideToggle
+              >
                 <div className="space-y-4">
                   <Input
                     type="text"
@@ -399,6 +410,39 @@ export default function Customizer() {
                     label="Podnadpis"
                     classLabel="!text-black"
                   />
+
+                  <Input
+                    type="text"
+                    value={hero.heroContentLargeTitle}
+                    onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                      hero.setHeroContentLargeTitle(e.target.value)
+                    }
+                    label="Velký text"
+                    withLimit
+                    maxLength={9}
+                    minLength={4}
+                    classLabel="!text-black"
+                  />
+
+                  {!['01', '02', '05'].includes(hero.heroVariant) ? (
+                    <UploadComponent
+                      imageUrl={hero.imageMainAlternativeUrl}
+                      imageWidth={hero.imageMainWidth}
+                      imageHeight={hero.imageMainHeight}
+                      setImageUrl={hero.setImageMainAlternativeUrl}
+                      setImageWidth={hero.setImageMainWidth}
+                      setImageHeight={hero.setImageMainHeight}
+                    />
+                  ) : (
+                    <UploadComponent
+                      imageUrl={hero.imageMainUrl}
+                      imageWidth={hero.imageMainWidth}
+                      imageHeight={hero.imageMainHeight}
+                      setImageUrl={hero.setImageMainUrl}
+                      setImageWidth={hero.setImageMainWidth}
+                      setImageHeight={hero.setImageMainHeight}
+                    />
+                  )}
 
                   <Dropdown
                     label="Základní tlačítko"
@@ -421,15 +465,24 @@ export default function Customizer() {
                         classLabel="!text-black"
                       />
 
-                      <Input
-                        type="text"
-                        value={hero.heroContentButtonPrimaryLink}
-                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
-                          hero.setHeroContentButtonPrimaryLink(e.target.value)
-                        }
-                        label="Odkaz tlačítka"
-                        classLabel="!text-black"
+                      <Select
+                        title="Odkaz tlačítka"
+                        options={optionsHeroContent.buttonLink}
+                        selectedOption={hero.heroContentButtonPrimaryLink}
+                        onChange={hero.setHeroContentButtonPrimaryLink}
                       />
+
+                      {hero.heroContentButtonPrimaryLink === null && (
+                        <Input
+                          type="text"
+                          value={hero.heroContentButtonPrimaryCustomLink}
+                          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                            hero.setHeroContentButtonPrimaryCustomLink(e.target.value)
+                          }
+                          label="Vlastní odkaz"
+                          classLabel="!text-black"
+                        />
+                      )}
                     </div>
                   </Dropdown>
 
@@ -454,31 +507,242 @@ export default function Customizer() {
                         classLabel="!text-black"
                       />
 
-                      <Input
-                        type="text"
-                        value={hero.heroContentButtonSecondaryLink}
-                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
-                          hero.setHeroContentButtonSecondaryLink(e.target.value)
-                        }
-                        label="Odkaz tlačítka"
-                        classLabel="!text-black"
+                      <Select
+                        title="Odkaz tlačítka"
+                        options={optionsHeroContent.buttonLink}
+                        selectedOption={hero.heroContentButtonSecondaryLink}
+                        onChange={hero.setHeroContentButtonSecondaryLink}
                       />
+
+                      {hero.heroContentButtonSecondaryLink === null && (
+                        <Input
+                          type="text"
+                          value={hero.heroContentButtonSecondaryCustomLink}
+                          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                            hero.setHeroContentButtonSecondaryCustomLink(e.target.value)
+                          }
+                          label="Vlastní odkaz"
+                          classLabel="!text-black"
+                        />
+                      )}
                     </div>
                   </Dropdown>
                 </div>
               </Dropdown>
             )}
             {visibility.showServices && (
-              <div className="pt-4">
-                <span className="font-semibold">Volba ikon:</span>
+              <Dropdown
+                label="Služby"
+                id="contentServicesToggle"
+                link="#services"
+                preview
+                toggled
+                hideToggle
+              >
+                <div className="space-y-4">
+                  <Input
+                    type="text"
+                    value={service.servicesContentTitle}
+                    onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                      service.setServicesContentTitle(e.target.value)
+                    }
+                    label="Hlavní nadpis"
+                    classLabel="!text-black"
+                  />
 
-                <div>
-                  Vlastní ikonu si můžete vybrat z databáze{' '}
-                  <Link href="https://icones.js.org/collection/all" className="underline">
-                    Icones
-                  </Link>
+                  <Dropdown
+                    label="První box"
+                    id="contentServicesBox1Toggle"
+                    checked={service.servicesContentBox1}
+                    onChange={() => service.setServicesContentBox1(!service.servicesContentBox1)}
+                  >
+                    <div className="space-y-4">
+                      <Input
+                        type="text"
+                        value={service.servicesContentBox1Title}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox1Title(e.target.value)
+                        }
+                        label="Nadpis"
+                        classLabel="!text-black"
+                      />
+
+                      <Textarea
+                        type="text"
+                        value={service.servicesContentBox1Content}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox1Content(e.target.value)
+                        }
+                        label="Popisek"
+                        classLabel="!text-black"
+                      />
+
+                      <Dropdown
+                        label="Chci zobrazit ikonku"
+                        id="contentServicesIcon1Toggle"
+                        checked={service.servicesContentBox1IconShow}
+                        onChange={() =>
+                          service.setServicesContentBox1IconShow(
+                            !service.servicesContentBox1IconShow,
+                          )
+                        }
+                      >
+                        <div className="space-y-4">
+                          <Input
+                            type="text"
+                            value={service.servicesContentBox1Icon}
+                            onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                              service.setServicesContentBox1Icon(e.target.value)
+                            }
+                            label="Název ikonky"
+                            classLabel="!text-black"
+                          />
+
+                          <p className="text-sm text-black text-opacity-75">
+                            Vybrat vlastní ikonku si můžete z téhle databáze{' '}
+                            <Link
+                              href="https://icones.js.org/collection/all"
+                              target="_blank"
+                              className="underline"
+                            >
+                              Iconify
+                            </Link>
+                            . Stačí zkopírovat její názv a vložit sem.
+                          </p>
+                        </div>
+                      </Dropdown>
+                    </div>
+                  </Dropdown>
+
+                  <Dropdown
+                    label="Druhý box"
+                    id="contentServicesBox2Toggle"
+                    checked={service.servicesContentBox2}
+                    onChange={() => service.setServicesContentBox2(!service.servicesContentBox2)}
+                  >
+                    <div className="space-y-4">
+                      <Input
+                        type="text"
+                        value={service.servicesContentBox2Title}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox2Title(e.target.value)
+                        }
+                        label="Nadpis"
+                        classLabel="!text-black"
+                      />
+
+                      <Textarea
+                        type="text"
+                        value={service.servicesContentBox2Content}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox2Content(e.target.value)
+                        }
+                        label="Popisek"
+                        classLabel="!text-black"
+                      />
+
+                      <Dropdown
+                        label="Chci zobrazit ikonku"
+                        id="contentServicesIcon2Toggle"
+                        checked={service.servicesContentBox2IconShow}
+                        onChange={() =>
+                          service.setServicesContentBox2IconShow(
+                            !service.servicesContentBox2IconShow,
+                          )
+                        }
+                      >
+                        <div className="space-y-4">
+                          <Input
+                            type="text"
+                            value={service.servicesContentBox1Icon}
+                            onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                              service.setServicesContentBox1Icon(e.target.value)
+                            }
+                            label="Název ikonky"
+                            classLabel="!text-black"
+                          />
+
+                          <p className="text-sm text-black text-opacity-75">
+                            Vybrat vlastní ikonku si můžete z téhle databáze{' '}
+                            <Link
+                              href="https://icones.js.org/collection/all"
+                              target="_blank"
+                              className="underline"
+                            >
+                              Iconify
+                            </Link>
+                            . Stačí zkopírovat její názv a vložit sem.
+                          </p>
+                        </div>
+                      </Dropdown>
+                    </div>
+                  </Dropdown>
+
+                  <Dropdown
+                    label="Třetí box"
+                    id="contentServicesBox3Toggle"
+                    checked={service.servicesContentBox3}
+                    onChange={() => service.setServicesContentBox3(!service.servicesContentBox3)}
+                  >
+                    <div className="space-y-4">
+                      <Input
+                        type="text"
+                        value={service.servicesContentBox3Title}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox3Title(e.target.value)
+                        }
+                        label="Nadpis"
+                        classLabel="!text-black"
+                      />
+
+                      <Textarea
+                        type="text"
+                        value={service.servicesContentBox3Content}
+                        onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                          service.setServicesContentBox3Content(e.target.value)
+                        }
+                        label="Popisek"
+                        classLabel="!text-black"
+                      />
+
+                      <Dropdown
+                        label="Chci zobrazit ikonku"
+                        id="contentServicesIcon3Toggle"
+                        checked={service.servicesContentBox3IconShow}
+                        onChange={() =>
+                          service.setServicesContentBox3IconShow(
+                            !service.servicesContentBox3IconShow,
+                          )
+                        }
+                      >
+                        <div className="space-y-4">
+                          <Input
+                            type="text"
+                            value={service.servicesContentBox3Icon}
+                            onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                              service.setServicesContentBox3Icon(e.target.value)
+                            }
+                            label="Název ikonky"
+                            classLabel="!text-black"
+                          />
+
+                          <p className="text-sm text-black text-opacity-75">
+                            Vybrat vlastní ikonku si můžete z téhle databáze{' '}
+                            <Link
+                              href="https://icones.js.org/collection/all"
+                              target="_blank"
+                              className="underline"
+                            >
+                              Iconify
+                            </Link>
+                            . Stačí zkopírovat její názv a vložit sem.
+                          </p>
+                        </div>
+                      </Dropdown>
+                    </div>
+                  </Dropdown>
                 </div>
-              </div>
+              </Dropdown>
             )}
           </div>
         )}
@@ -985,12 +1249,28 @@ export default function Customizer() {
             typoLgColor={hero.heroTypoLg}
             contentTitle={hero.heroContentTitle}
             contentSubtitle={hero.heroContentSubtitle}
+            contentLargeTitle={hero.heroContentLargeTitle}
             contentButtonPrimary={visibility.showHeroContentButtonPrimary}
             contentButtonPrimaryText={hero.heroContentButtonPrimaryText}
-            contentButtonPrimaryLink={hero.heroContentButtonPrimaryLink}
+            contentButtonPrimaryLink={
+              hero.heroContentButtonPrimaryLink === null
+                ? hero.heroContentButtonPrimaryCustomLink
+                : hero.heroContentButtonPrimaryLink
+            }
             contentButtonSecondary={visibility.showHeroContentButtonSecondary}
             contentButtonSecondaryText={hero.heroContentButtonSecondaryText}
-            contentButtonSecondaryLink={hero.heroContentButtonSecondaryLink}
+            contentButtonSecondaryLink={
+              hero.heroContentButtonSecondaryLink === null
+                ? hero.heroContentButtonSecondaryCustomLink
+                : hero.heroContentButtonSecondaryLink
+            }
+            imageMainUrl={
+              !['01', '02', '05'].includes(hero.heroVariant)
+                ? hero.imageMainAlternativeUrl
+                : hero.imageMainUrl
+            }
+            imageMainWidth={hero.imageMainWidth}
+            imageMainHeight={hero.imageMainHeight}
             preview
           />
         )}
@@ -1020,6 +1300,22 @@ export default function Customizer() {
             boxBackgroundColor={service.serviceBoxBackground}
             boxTypoColor={service.serviceBoxTypo}
             boxIconColor={service.serviceBoxIcon}
+            servicesContentTitle={service.servicesContentTitle}
+            servicesContentBox1={service.servicesContentBox1}
+            servicesContentBox1Title={service.servicesContentBox1Title}
+            servicesContentBox1Content={service.servicesContentBox1Content}
+            servicesContentBox1Icon={service.servicesContentBox1Icon}
+            servicesContentBox1IconShow={service.servicesContentBox1IconShow}
+            servicesContentBox2={service.servicesContentBox2}
+            servicesContentBox2Title={service.servicesContentBox2Title}
+            servicesContentBox2Content={service.servicesContentBox2Content}
+            servicesContentBox2Icon={service.servicesContentBox2Icon}
+            servicesContentBox2IconShow={service.servicesContentBox2IconShow}
+            servicesContentBox3={service.servicesContentBox3}
+            servicesContentBox3Title={service.servicesContentBox3Title}
+            servicesContentBox3Content={service.servicesContentBox3Content}
+            servicesContentBox3Icon={service.servicesContentBox3Icon}
+            servicesContentBox3IconShow={service.servicesContentBox3IconShow}
             preview
           />
         )}

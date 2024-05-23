@@ -33,6 +33,11 @@ export interface Option {
   image?: string | any
 }
 
+export interface OptionContent {
+  value: string
+  label: string
+}
+
 export interface CustomizerOptions {
   variant?: Option[] | any
   layout?: Option[] | any
@@ -40,6 +45,10 @@ export interface CustomizerOptions {
   align?: Option[] | any
   order?: Option[] | any
   radius?: Option[] | any
+}
+
+export interface CustomizerOptionsContent {
+  buttonLink?: OptionContent[] | any
 }
 
 export interface OptionSelectorProps {
@@ -96,6 +105,18 @@ export const optionsHero: CustomizerOptions = {
     { value: 'start', label: 'Začátek' },
     { value: 'center', label: 'Střed' },
     { value: 'end', label: 'Konec' },
+  ],
+}
+
+export const optionsHeroContent: CustomizerOptionsContent = {
+  buttonLink: [
+    { value: null, label: 'Vlastní odkaz' },
+    { value: '#hero', label: 'Hero' },
+    { value: '#about', label: 'O nás' },
+    { value: '#services', label: 'Služby' },
+    { value: '#reference', label: 'Reference' },
+    { value: '#portfolio', label: 'Portfolio' },
+    { value: '#contact', label: 'Kontakt' },
   ],
 }
 

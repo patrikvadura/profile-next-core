@@ -36,12 +36,16 @@ export type HeroProps = {
   typoLgColor?: string | any
   contentTitle?: string
   contentSubtitle?: string
+  contentLargeTitle?: string
   contentButtonPrimary?: boolean
   contentButtonPrimaryText?: string
   contentButtonPrimaryLink?: string | any
   contentButtonSecondary?: boolean
   contentButtonSecondaryText?: string
   contentButtonSecondaryLink?: string | any
+  imageMainUrl?: string | any
+  imageMainWidth?: string | any
+  imageMainHeight?: string | any
   preview?: boolean
 }
 
@@ -55,12 +59,16 @@ export type HeroVariantProps = {
   typoLgColor?: string | any
   contentTitle?: string
   contentSubtitle?: string
+  contentLargeTitle?: string
   contentButtonPrimary?: boolean
   contentButtonPrimaryText?: string
   contentButtonPrimaryLink?: string | any
   contentButtonSecondary?: boolean
   contentButtonSecondaryText?: string
   contentButtonSecondaryLink?: string | any
+  imageMainUrl?: string | any
+  imageMainWidth?: string | any
+  imageMainHeight?: string | any
   preview?: boolean
 }
 
@@ -78,6 +86,22 @@ export type ServiceProps = {
   boxBackgroundColor?: string | any
   boxTypoColor?: string | any
   boxIconColor?: string | any
+  servicesContentTitle?: string | undefined | any
+  servicesContentBox1?: boolean
+  servicesContentBox1Title?: string | undefined | any
+  servicesContentBox1Content?: string | undefined | any
+  servicesContentBox1Icon?: string | undefined | any
+  servicesContentBox1IconShow?: boolean
+  servicesContentBox2?: boolean
+  servicesContentBox2Title?: string | undefined | any
+  servicesContentBox2Content?: string | undefined | any
+  servicesContentBox2Icon?: string | undefined | any
+  servicesContentBox2IconShow?: boolean
+  servicesContentBox3?: boolean
+  servicesContentBox3Title?: string | undefined | any
+  servicesContentBox3Content?: string | undefined | any
+  servicesContentBox3Icon?: string | undefined | any
+  servicesContentBox3IconShow?: boolean
   preview?: boolean
 }
 
@@ -92,5 +116,21 @@ export type ServiceVariantProps = {
   boxBackgroundColor?: string | any
   boxTypoColor?: string | any
   boxIconColor?: string | any
+  servicesContentTitle?: string | undefined | any
+  servicesContentBox1?: boolean
+  servicesContentBox1Title?: string | undefined | any
+  servicesContentBox1Content?: string | undefined | any
+  servicesContentBox1Icon?: string | undefined | any
+  servicesContentBox1IconShow?: boolean
+  servicesContentBox2?: boolean
+  servicesContentBox2Title?: string | undefined | any
+  servicesContentBox2Content?: string | undefined | any
+  servicesContentBox2Icon?: string | undefined | any
+  servicesContentBox2IconShow?: boolean
+  servicesContentBox3?: boolean
+  servicesContentBox3Title?: string | undefined | any
+  servicesContentBox3Content?: string | undefined | any
+  servicesContentBox3Icon?: string | undefined | any
+  servicesContentBox3IconShow?: boolean
   preview?: boolean
 }

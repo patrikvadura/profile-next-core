@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import data from '@/app/lib/data.json'
 import { HeroVariantProps } from '@/app/lib/variants'
@@ -7,6 +8,7 @@ import { ArrowRight } from '@/app/ui/Icons/Arrow/Right'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedSubtitle } from '@/app/ui/Animations/Subtitle'
 import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
+import { useHeroState } from '@/app/lib/useState/useHeroState'
 
 export function HeroVariant01({
   imageOpacity,
@@ -14,13 +16,19 @@ export function HeroVariant01({
   preview,
   contentTitle,
   contentSubtitle,
+  contentLargeTitle,
   contentButtonPrimary,
   contentButtonPrimaryText,
   contentButtonPrimaryLink,
   contentButtonSecondary,
   contentButtonSecondaryText,
   contentButtonSecondaryLink,
+  imageMainUrl,
+  imageMainWidth,
+  imageMainHeight,
 }: HeroVariantProps) {
+  const hero = useHeroState()
+
   const opacityOptions = {
     '100': 'opacity-100',
     '80': 'opacity-80',
@@ -46,14 +54,15 @@ export function HeroVariant01({
       className={`${alignsClass} w-full relative md:h-screen lg:h-[950px] flex flex-col items-center overflow-hidden bg-[var(--hero-background)] dark:bg-black`}
     >
       <Image
-        src={data.profile.image}
+        // @ts-ignore
+        src={imageMainUrl}
         className={`${opacityClass} absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] z-0`}
-        width={1050}
-        height={1050}
+        width={imageMainWidth || 1050}
+        height={imageMainHeight || 1050}
         quality={75}
         sizes="(max-width: 480px) 200px, (max-width: 800px) 600px, 1050px"
         priority={true}
-        alt={data.profile.name}
+        alt="Hero"
       />
 
       <div className={`container flex flex-col items-start py-32 md:pt-0`}>
@@ -98,7 +107,7 @@ export function HeroVariant01({
             </div>
 
             <AnimatedLargeTitle
-              title={data.hero.largeTitle}
+              title={contentLargeTitle || data.hero.largeTitle}
               target="body"
               origin={!preview ? '-translate-x-full' : null}
               className="absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white"

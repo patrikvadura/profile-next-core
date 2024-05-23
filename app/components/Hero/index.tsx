@@ -21,12 +21,16 @@ export function Hero({
   typoLgColor = colors.hero.typoLg,
   contentTitle,
   contentSubtitle,
+  contentLargeTitle,
   contentButtonPrimary,
   contentButtonPrimaryText,
   contentButtonPrimaryLink,
   contentButtonSecondary,
   contentButtonSecondaryText,
   contentButtonSecondaryLink,
+  imageMainUrl,
+  imageMainWidth,
+  imageMainHeight,
   preview,
 }: HeroProps) {
   // @ts-ignore
@@ -52,6 +56,10 @@ export function Hero({
         contentButtonSecondary={contentButtonSecondary}
         contentButtonSecondaryText={contentButtonSecondaryText}
         contentButtonSecondaryLink={contentButtonSecondaryLink}
+        contentLargeTitle={contentLargeTitle}
+        imageMainUrl={imageMainUrl}
+        imageMainWidth={imageMainWidth}
+        imageMainHeight={imageMainHeight}
         preview={preview}
       />
     </>
