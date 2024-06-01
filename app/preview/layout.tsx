@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import data from '@/app/lib/data.json'
 import Script from 'next/script'
+import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -72,7 +73,7 @@ export default function RootLayout({
         ) : (
           ''
         )}
-        {children}
+        <DeviceCheck>{children}</DeviceCheck>
       </body>
     </html>
   )

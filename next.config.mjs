@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      `${process.env.S3_UPLOAD_BUCKET}.s3.amazonaws.com`,
-      `${process.env.S3_UPLOAD_BUCKET}.s3.${process.env.S3_UPLOAD_REGION}.amazonaws.com`,
-    ],
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: `${process.env.S3_UPLOAD_BUCKET}.s3.amazonaws.com`,
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: `${process.env.S3_UPLOAD_BUCKET}.s3.${process.env.S3_UPLOAD_REGION}.amazonaws.com`,
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'res.cloudinary.com',
-        port: '',
         pathname: '/patrik-vadura/**',
       },
     ],
@@ -22,6 +27,6 @@ const nextConfig = {
     S3_UPLOAD_REGION: process.env.S3_UPLOAD_REGION,
     REMOVE_BG_API_KEY: process.env.REMOVE_BG_API_KEY,
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
