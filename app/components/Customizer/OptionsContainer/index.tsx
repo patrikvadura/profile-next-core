@@ -9,7 +9,7 @@ export default function PreviewContainer({ children, className, style }: OptionC
     <div className={`${className} basis-5/12`}>
       <div className="p-8 w-[600px] h-screen text-black space-y-8 overflow-y-scroll overflow-x-hidden">
         <div className="flex flex-row justify-between">
-          <CustomizerLogo />
+          <CustomizerLogo studio />
 
           <div className="flex flex-row items-center space-x-4">
             <Link href="#" className="text-sm underline">
