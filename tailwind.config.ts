@@ -1,7 +1,11 @@
+const { nextui } = require('@nextui-org/react')
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: ['class', "[class~='dark']"],
   theme: {
     container: {
@@ -9,8 +13,8 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: '#5B319B',
-        secondary: '#191A44',
+        primary: '#575ff2',
+        secondary: '#05e988',
         header: {
           background: '#fff',
           accent: '#191A44',
@@ -71,6 +75,8 @@ const config: Config = {
       },
     },
   },
+  darkMode: 'class',
+  plugins: [nextui()],
 }
 
 export default config

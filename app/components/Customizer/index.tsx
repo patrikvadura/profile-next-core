@@ -40,6 +40,7 @@ import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 import { Lato } from 'next/font/google'
 import OpenGraphPreview from '@/app/components/Customizer/OpenGraphPreview'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
+import { Progress } from '@nextui-org/react'
 
 const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
@@ -80,6 +81,16 @@ export default function Customizer() {
     other.setCurrentStep(Math.max(other.currentStep - 1, 0))
   }
 
+  const [value, setValue] = React.useState(0)
+
+  React.useEffect(() => {
+    const calculateProgress = () => {
+      return (other.currentStep / (steps.length - 1)) * 100
+    }
+
+    setValue(calculateProgress())
+  }, [other.currentStep, steps.length])
+
   return (
     <div className="h-screen flex flex-row overflow-hidden">
       <Head>
@@ -90,7 +101,16 @@ export default function Customizer() {
       <DynamicFontLoader fontName={other.fontName} fontWeights={other.fontWeights} />
 
       <OptionsContainer className={customizerFont.className}>
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col justify-center items-start space-y-4">
+          <Progress
+            aria-label="Downloading..."
+            size="sm"
+            value={value}
+            color="primary"
+            showValueLabel={true}
+            className="w-full text-black text-opacity-50"
+          />
+
           <div className="flex space-x-8">
             {steps.slice(0, -1).map((step, index) => (
               <button

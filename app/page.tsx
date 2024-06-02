@@ -1,22 +1,11 @@
 import React from 'react'
-import { Hero } from '@/app/components/Hero'
-import { About } from '@/app/components/About'
-import { Services } from '@/app/components/Services'
-import { Reference } from '@/app/components/Reference'
-import { Contact } from '@/app/components/Contact'
-import Header from '@/app/ui/Header'
-import Footer from '@/app/ui/Footer'
+import Customizer from '@/app/components/Customizer'
+import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 
-export default function Home() {
+export default function Preview() {
   return (
-    <>
-      <Header />
-      <Hero variant="01" imageOpacity="80" align="center" />
-      <About variant="01" layout="transparent" align="left" order="asc" />
-      <Services />
-      <Reference />
-      <Contact />
-      <Footer />
-    </>
+    <DomainProvider>
+      <Customizer />
+    </DomainProvider>
   )
 }
