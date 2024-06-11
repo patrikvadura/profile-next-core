@@ -41,6 +41,9 @@ import { Lato } from 'next/font/google'
 import OpenGraphPreview from '@/app/components/Customizer/OpenGraphPreview'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
 import { Progress } from '@nextui-org/react'
+import { Download } from '@/app/ui/Icons/Download'
+import { ActionWrapper } from '@/app/ui/ActionWrapper'
+import HeaderCustomizer from '@/app/components/Customizer/HeaderCustomizer'
 
 const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
@@ -71,6 +74,21 @@ export default function Customizer() {
     totalTime,
   }
 
+  const breakpoints = [
+    {
+      size: 'sm',
+      icon: 'tabler:device-mobile',
+    },
+    {
+      size: 'md',
+      icon: 'tabler:device-ipad-horizontal',
+    },
+    {
+      size: 'lg',
+      icon: 'tabler:device-laptop',
+    },
+  ]
+
   const steps = ['Vzhled', 'Obsah', 'Doména', 'Nastavení', 'Shrnutí']
 
   const nextStep = () => {
@@ -92,7 +110,7 @@ export default function Customizer() {
   }, [other.currentStep, steps.length])
 
   return (
-    <div className="h-screen flex flex-row overflow-hidden">
+    <div className="bg-primary h-screen flex flex-row overflow-hidden">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -100,7 +118,7 @@ export default function Customizer() {
 
       <DynamicFontLoader fontName={other.fontName} fontWeights={other.fontWeights} />
 
-      <div className={`bg-primary ${customizerFont.className}`}>//</div>
+      <HeaderCustomizer />
 
       {/*<OptionsContainer className={customizerFont.className}>*/}
       {/*  <div className="flex flex-col justify-center items-start space-y-4">*/}
@@ -1251,100 +1269,169 @@ export default function Customizer() {
       {/*  </div>*/}
       {/*</OptionsContainer>*/}
 
-      <PreviewContainer
-        totalPrice={totalPrice}
-        totalTime={totalTime}
-        onExport={() => exportToJson(stateData, domain)}
-        //className={defaultFont.className}
-        classPreview="fontDefault"
-      >
-        <Header />
-        {visibility.showHero && (
-          <Hero
-            variant={hero.heroVariant}
-            imageOpacity={hero.heroImageOpacity}
-            align={hero.heroAlign}
-            backgroundColor={hero.heroBackground}
-            accentBgColor={hero.heroAccentBg}
-            accentFgColor={hero.heroAccentFg}
-            typoColor={hero.heroTypo}
-            typoLgColor={hero.heroTypoLg}
-            contentTitle={hero.heroContentTitle}
-            contentSubtitle={hero.heroContentSubtitle}
-            contentLargeTitle={hero.heroContentLargeTitle}
-            contentButtonPrimary={visibility.showHeroContentButtonPrimary}
-            contentButtonPrimaryText={hero.heroContentButtonPrimaryText}
-            contentButtonPrimaryLink={
-              hero.heroContentButtonPrimaryLink === null
-                ? hero.heroContentButtonPrimaryCustomLink
-                : hero.heroContentButtonPrimaryLink
-            }
-            contentButtonSecondary={visibility.showHeroContentButtonSecondary}
-            contentButtonSecondaryText={hero.heroContentButtonSecondaryText}
-            contentButtonSecondaryLink={
-              hero.heroContentButtonSecondaryLink === null
-                ? hero.heroContentButtonSecondaryCustomLink
-                : hero.heroContentButtonSecondaryLink
-            }
-            imageMainUrl={
-              !['01', '02', '05'].includes(hero.heroVariant)
-                ? hero.imageMainAlternativeUrl
-                : hero.imageMainUrl
-            }
-            imageMainWidth={hero.imageMainWidth}
-            imageMainHeight={hero.imageMainHeight}
-            preview
-          />
-        )}
-        {visibility.showAbout && (
-          <About
-            variant={about.aboutVariant}
-            layout={about.aboutLayout}
-            align={about.aboutAlign}
-            order={about.aboutOrder}
-            backgroundColor={about.aboutBackground}
-            accentBgColor={about.aboutAccentBg}
-            accentFgColor={about.aboutAccentFg}
-            typoColor={about.aboutTypo}
-            preview
-          />
-        )}
-        {visibility.showServices && (
-          <Services
-            variant={service.serviceVariant}
-            layout={service.serviceLayout}
-            align={service.serviceAlign}
-            radius={service.serviceRadius}
-            backgroundColor={service.serviceBackground}
-            accentBgColor={service.serviceAccentBg}
-            accentFgColor={service.serviceAccentFg}
-            typoColor={service.serviceTypo}
-            boxBackgroundColor={service.serviceBoxBackground}
-            boxTypoColor={service.serviceBoxTypo}
-            boxIconColor={service.serviceBoxIcon}
-            servicesContentTitle={service.servicesContentTitle}
-            servicesContentBox1={service.servicesContentBox1}
-            servicesContentBox1Title={service.servicesContentBox1Title}
-            servicesContentBox1Content={service.servicesContentBox1Content}
-            servicesContentBox1Icon={service.servicesContentBox1Icon}
-            servicesContentBox1IconShow={service.servicesContentBox1IconShow}
-            servicesContentBox2={service.servicesContentBox2}
-            servicesContentBox2Title={service.servicesContentBox2Title}
-            servicesContentBox2Content={service.servicesContentBox2Content}
-            servicesContentBox2Icon={service.servicesContentBox2Icon}
-            servicesContentBox2IconShow={service.servicesContentBox2IconShow}
-            servicesContentBox3={service.servicesContentBox3}
-            servicesContentBox3Title={service.servicesContentBox3Title}
-            servicesContentBox3Content={service.servicesContentBox3Content}
-            servicesContentBox3Icon={service.servicesContentBox3Icon}
-            servicesContentBox3IconShow={service.servicesContentBox3IconShow}
-            preview
-          />
-        )}
-        {visibility.showReference && <Reference />}
-        {visibility.showContact && <Contact />}
-        <Footer />
-      </PreviewContainer>
+      <div className="w-full bg-primary flex flex-col justify-center ps-12 overflow-hidden">
+        <div className="mx-auto border-[12px] border-black bg-white rounded-3xl overflow-x-hidden overflow-y-scroll z-20">
+          <div
+            className="overflow-hidden"
+            style={{
+              width:
+                other.currentBreakpoint === 0
+                  ? '15vw'
+                  : other.currentBreakpoint === 1
+                  ? '40vw'
+                  : '90vw',
+              height: '55vh',
+              margin: 'auto',
+            }}
+          >
+            <div
+              className="fontDefault"
+              style={{
+                transform: 'scale(0.55)',
+                transformOrigin: 'top left',
+                width:
+                  other.currentBreakpoint === 0
+                    ? '28vw'
+                    : other.currentBreakpoint === 1
+                    ? '73vw'
+                    : '100vw',
+                height: '100vh',
+                overflow: 'scroll',
+              }}
+            >
+              <Header />
+              {visibility.showHero && (
+                <Hero
+                  variant={hero.heroVariant}
+                  imageOpacity={hero.heroImageOpacity}
+                  align={hero.heroAlign}
+                  backgroundColor={hero.heroBackground}
+                  accentBgColor={hero.heroAccentBg}
+                  accentFgColor={hero.heroAccentFg}
+                  typoColor={hero.heroTypo}
+                  typoLgColor={hero.heroTypoLg}
+                  contentTitle={hero.heroContentTitle}
+                  contentSubtitle={hero.heroContentSubtitle}
+                  contentLargeTitle={hero.heroContentLargeTitle}
+                  contentButtonPrimary={visibility.showHeroContentButtonPrimary}
+                  contentButtonPrimaryText={hero.heroContentButtonPrimaryText}
+                  contentButtonPrimaryLink={
+                    hero.heroContentButtonPrimaryLink === null
+                      ? hero.heroContentButtonPrimaryCustomLink
+                      : hero.heroContentButtonPrimaryLink
+                  }
+                  contentButtonSecondary={visibility.showHeroContentButtonSecondary}
+                  contentButtonSecondaryText={hero.heroContentButtonSecondaryText}
+                  contentButtonSecondaryLink={
+                    hero.heroContentButtonSecondaryLink === null
+                      ? hero.heroContentButtonSecondaryCustomLink
+                      : hero.heroContentButtonSecondaryLink
+                  }
+                  imageMainUrl={
+                    !['01', '02', '05'].includes(hero.heroVariant)
+                      ? hero.imageMainAlternativeUrl
+                      : hero.imageMainUrl
+                  }
+                  imageMainWidth={hero.imageMainWidth}
+                  imageMainHeight={hero.imageMainHeight}
+                  preview
+                />
+              )}
+              {visibility.showAbout && (
+                <About
+                  variant={about.aboutVariant}
+                  layout={about.aboutLayout}
+                  align={about.aboutAlign}
+                  order={about.aboutOrder}
+                  backgroundColor={about.aboutBackground}
+                  accentBgColor={about.aboutAccentBg}
+                  accentFgColor={about.aboutAccentFg}
+                  typoColor={about.aboutTypo}
+                  preview
+                />
+              )}
+              {visibility.showServices && (
+                <Services
+                  variant={service.serviceVariant}
+                  layout={service.serviceLayout}
+                  align={service.serviceAlign}
+                  radius={service.serviceRadius}
+                  backgroundColor={service.serviceBackground}
+                  accentBgColor={service.serviceAccentBg}
+                  accentFgColor={service.serviceAccentFg}
+                  typoColor={service.serviceTypo}
+                  boxBackgroundColor={service.serviceBoxBackground}
+                  boxTypoColor={service.serviceBoxTypo}
+                  boxIconColor={service.serviceBoxIcon}
+                  servicesContentTitle={service.servicesContentTitle}
+                  servicesContentBox1={service.servicesContentBox1}
+                  servicesContentBox1Title={service.servicesContentBox1Title}
+                  servicesContentBox1Content={service.servicesContentBox1Content}
+                  servicesContentBox1Icon={service.servicesContentBox1Icon}
+                  servicesContentBox1IconShow={service.servicesContentBox1IconShow}
+                  servicesContentBox2={service.servicesContentBox2}
+                  servicesContentBox2Title={service.servicesContentBox2Title}
+                  servicesContentBox2Content={service.servicesContentBox2Content}
+                  servicesContentBox2Icon={service.servicesContentBox2Icon}
+                  servicesContentBox2IconShow={service.servicesContentBox2IconShow}
+                  servicesContentBox3={service.servicesContentBox3}
+                  servicesContentBox3Title={service.servicesContentBox3Title}
+                  servicesContentBox3Content={service.servicesContentBox3Content}
+                  servicesContentBox3Icon={service.servicesContentBox3Icon}
+                  servicesContentBox3IconShow={service.servicesContentBox3IconShow}
+                  preview
+                />
+              )}
+              {visibility.showReference && <Reference />}
+              {visibility.showContact && <Contact />}
+              <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute left-1/2 bottom-8 -translate-x-1/2 bg-white rounded-full flex flex-row items-center justify-between p-6 shadow-xl z-50">
+        <div className="flex flex-row items-center space-x-2 text-base text-black border-r-1 border-light pr-4 mr-4">
+          <h3 className="text-black font-bold text-base">
+            {totalPrice.toLocaleString('cs-CZ', { useGrouping: true })} Kč
+            <span className="font-normal opacity-75">
+              {' | '}
+              trvání {totalTime.toLocaleString('cs-CZ', { useGrouping: true })} dny
+            </span>
+          </h3>
+        </div>
+
+        <div className="flex flex-row items-center space-x-2 border-r-1 border-light pr-4 mr-4">
+          {breakpoints.map((breakpoint, index) => (
+            <ActionWrapper
+              key={index}
+              className={`text-base ${
+                other.currentBreakpoint === index
+                  ? 'text-black font-bold'
+                  : 'text-black text-opacity-50'
+              }`}
+              onClick={() => other.setCurrentBreakpoint(index)}
+            >
+              <Icon
+                icon={breakpoint.icon}
+                className={`${
+                  other.currentBreakpoint === index ? 'text-opacity-100' : 'text-opacity-30'
+                } text-black hover:text-opacity-100 text-2xl`}
+              />
+            </ActionWrapper>
+          ))}
+        </div>
+
+        <div className="flex flex-row items-center space-x-2">
+          <ActionWrapper onClick={() => exportToJson(stateData, domain)}>
+            <Download size={24} />
+          </ActionWrapper>
+
+          <Button className="bg-[#72E790] !px-4 h-10 !text-sm rounded-full !normal-case">
+            Dokončit
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }

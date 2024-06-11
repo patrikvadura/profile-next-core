@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "createLink": {
+      "title": "Vytvořit nový web",
+      "link": "/studio"
+    },
+    "items": [
+      {
+        "title": "Nástěnka",
+        "link": "#about"
+      },
+      {
+        "title": "Tvoje weby",
+        "link": "#services"
+      },
+      {
+        "title": "Nastavení",
+        "link": "#reference"
+      },
+      {
+        "title": "Tickety",
+        "link": "#contact"
+      }
+    ]
+  }
+}

@@ -31,13 +31,9 @@ export default function PreviewContainer({
   ]
 
   return (
-    <div className={`${className} basis-7/12 flex flex-col justify-center ps-12 overflow-hidden`}>
-      <div className="flex align-middle justify-end space-y-4 right-0 py-6 px-8 bg-gray-100">
-        <h2 className="text-2xl font-semibold border-r-4 border-r-[#73E790] pe-4">
-          Přizpůsobte si svoji vizitku
-        </h2>
-      </div>
-
+    <div
+      className={`${className} w-full bg-primary flex flex-col justify-center ps-12 overflow-hidden`}
+    >
       <div className="flex flex-row justify-end items-center space-x-3 py-4 px-8 w-full">
         {breakpoints.map((breakpoint, index) => (
           <button
@@ -90,30 +86,6 @@ export default function PreviewContainer({
           >
             {children}
           </div>
-        </div>
-      </div>
-
-      <div className="flex flex-row items-center justify-between bottom-0 right-0 py-8 px-8 bg-gray-100">
-        <div className="flex flex-col text-base text-black text-opacity-75">
-          <h4>Výsledná cena</h4>
-          <h3 className="text-black font-semibold text-2xl">
-            {totalPrice.toLocaleString('cs-CZ', { useGrouping: true })} Kč
-          </h3>
-
-          <h4>
-            Doba zhotovení:{' '}
-            <span className="font-bold">
-              {totalTime.toLocaleString('cs-CZ', { useGrouping: true })} dny
-            </span>
-          </h4>
-        </div>
-
-        <div className="flex flex-row space-x-4">
-          <Button className="bg-[#E5E5E9] rounded-full !normal-case" onClick={onExport}>
-            Export <Download size={24} />
-          </Button>
-
-          <Button className="bg-[#72E790] rounded-full !normal-case">Odeslat návrh</Button>
         </div>
       </div>
     </div>
