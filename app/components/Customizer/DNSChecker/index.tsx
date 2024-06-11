@@ -6,7 +6,19 @@ import { Close } from '@/app/ui/Icons/Close'
 import { Input } from '@/app/ui/Input'
 import Button from '@/app/ui/Button'
 
-export default function DNSChecker() {
+type Props = {
+  layout?: 'row' | 'col'
+  classInput?: string
+  classButton?: string
+  buttonText?: string
+}
+
+export default function DNSChecker({
+  layout = 'col',
+  classInput,
+  classButton = 'bg-[#E5E5E9]',
+  buttonText = 'Ověřit',
+}: Props) {
   const { domain, setDomain, availability, setAvailability } = useDomain()
 
   const [loading, setLoading] = useState<boolean>(false)
@@ -47,7 +59,14 @@ export default function DNSChecker() {
 
   return (
     <div>
-      <form onSubmit={checkDomain} className="space-y-4">
+      <form
+        onSubmit={checkDomain}
+        className={`${
+          layout === 'col'
+            ? 'flex flex-col items-start space-y-4'
+            : 'flex flex-row justify-start items-center space-x-2'
+        }`}
+      >
         <div className="relative">
           <Input
             type="text"
@@ -55,6 +74,7 @@ export default function DNSChecker() {
             onChange={(e: { target: { value: string } }) =>
               setDomain ? setDomain(e.target.value) : ''
             }
+            classInput={classInput}
             placeholder="Vložte doménové jméno"
           />
 
@@ -81,8 +101,8 @@ export default function DNSChecker() {
         )}
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
-        <Button type="submit" className="!px-4 !py-2 bg-[#E5E5E9] rounded-full !normal-case">
-          Ověřit
+        <Button type="submit" className={`${classButton} !px-4 !py-2 rounded-full !normal-case`}>
+          {buttonText}
         </Button>
       </form>
     </div>

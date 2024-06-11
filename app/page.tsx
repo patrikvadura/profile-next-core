@@ -1,51 +1,90 @@
-import React from 'react'
-import CustomizerLogo from '@/app/components/Customizer/Logo'
-import Link from 'next/link'
-import Image from 'next/image'
+'use client'
 
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { Icon } from '@iconify/react'
+import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
+import DNSChecker from '@/app/components/LandingPage/DNSChecker'
+import { ContainerScroll } from '@/app/ui/Aceternity/container-scroll-animation'
+import { FlipWords } from '@/app/ui/Aceternity/flip-words'
+import { AuroraBackground } from '@/app/ui/Aceternity/aurora-background'
+import Header from '@/app/components/LandingPage/Header'
 export default function Preview() {
+  const { domain, availability } = useDomain()
+
+  const stateData = {
+    domain,
+    availability,
+  }
+
+  const words = [
+    'webovou vizitku',
+    'prezentační web produktu',
+    'jednoduchý firemní web',
+    'svatební pozvánku',
+    'upoutávku události nebo akce',
+    'webovky baru nebo restaurace',
+  ]
+
   return (
     <>
-      <div className="relative bg-primary h-screen flex flex-col justify-end items-start">
+      <div className="relative bg-primary dark:bg-black h-screen w-screen flex flex-col justify-start items-center">
         <Image
           src="https://profile-next-core.s3.eu-north-1.amazonaws.com/images/andrej-lisakov-W3RqrBgKEro-unsplash.jpeg"
           width={1920}
           height={1920}
-          className="absolute left-0 top-0 mx-auto h-full w-full object-cover object-center z-0 opacity-70 mix-blend-multiply"
+          className="absolute left-0 top-0 mx-auto h-full w-full object-cover object-center z-0 opacity-70 dark:opacity-10 dark:grayscale mix-blend-multiply dark:mix-blend-normal"
           alt="VisioSnap"
         />
 
-        <div className="fixed top-0 left-0 w-full p-4 flex flex-row justify-between items-center">
-          <CustomizerLogo textColor="#ffffff" symbolColor="#05e988" dotColor="#fca4ed" studio />
+        <AuroraBackground>
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: 'easeInOut',
+            }}
+            className="w-screen h-screen !z-0"
+          ></motion.div>
+        </AuroraBackground>
 
-          <div className="flex flex-row items-center space-x-4">
-            <Link href="#" className="text-sm underline">
-              Požádat o pomoc
-            </Link>
-          </div>
-        </div>
+        <Header />
 
-        <div className="mb-8 p-4 relative flex flex-col items-start space-y-8 z-1">
-          <h1 className="text-white text-5xl font-bold">
-            Levné a pohodlné řešení{' '}
-            <span className="text-accent underline decoration-wavy">webové vizitky</span>
-          </h1>
+        <div className="relative w-[120vw] -mt-[105vh] z-10">
+          <Image
+            src="/assets/img/landingPage/hero/hero_symbols.svg"
+            width={1920}
+            height={1920}
+            className="absolute left-1/2 -translate-x-1/2 top-[15rem] h-auto w-full object-cover object-center z-0"
+            alt="VisioSnap"
+          />
 
-          <div className="flex flex-row flex-wrap space-x-2">
-            <Link
-              href="/studio"
-              className="bg-secondary text-primary font-bold py-2 px-4 rounded-full"
-            >
-              Spustit online builder
-            </Link>
+          <ContainerScroll
+            titleComponent={
+              <div className="mx-auto mb-24 p-4 relative flex flex-col items-center space-y-8 z-1">
+                <h1 className="text-center text-white text-4xl font-bold leading-relaxed max-w-screen-lg">
+                  Vytvořte si{' '}
+                  <span className="text-accent underline decoration-wavy">již od 3 000 Kč</span>{' '}
+                  sami kvalitní a moderní
+                  <FlipWords words={words} />
+                </h1>
 
-            <Link
-              href="/"
-              className="bg-white bg-opacity-20 text-white font-bold py-2 px-4 rounded-full"
-            >
-              Ceník
-            </Link>
-          </div>
+                <DNSChecker />
+              </div>
+            }
+          >
+            <Image
+              src={`/assets/img/landingPage/hero/hero_device_preview.png`}
+              alt="VisioSnap"
+              height={720}
+              width={1400}
+              className="mx-auto rounded-2xl object-cover h-full object-left-top"
+              draggable={false}
+            />
+          </ContainerScroll>
         </div>
       </div>
     </>

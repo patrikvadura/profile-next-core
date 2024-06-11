@@ -31,7 +31,9 @@ export default function PreviewContainer({
   ]
 
   return (
-    <div className={`${className} basis-7/12 flex flex-col justify-center ps-12 overflow-hidden`}>
+    <div
+      className={`${className} basis-7/12 bg-[#F3F3F5] flex flex-col justify-center ps-12 overflow-hidden`}
+    >
       <div className="flex align-middle justify-end space-y-4 right-0 py-6 px-8 bg-gray-100">
         <h2 className="text-2xl font-semibold border-r-4 border-r-[#73E790] pe-4">
           Přizpůsobte si svoji vizitku

@@ -2,9 +2,12 @@ import React from 'react'
 import type { Metadata } from 'next'
 import data from '@/app/lib/data.json'
 import Script from 'next/script'
-import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
+import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 import Providers from '@/app/providers'
+import { Lato } from 'next/font/google'
 import './globals.css'
+
+const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),
@@ -61,7 +64,7 @@ export default function RootLayout({
         ''
       )}
       <Providers>
-        <body suppressHydrationWarning>
+        <body className={customizerFont.className} suppressHydrationWarning>
           {data.profile.gtm.status ? (
             <noscript>
               <iframe
@@ -74,7 +77,7 @@ export default function RootLayout({
           ) : (
             ''
           )}
-          {children}
+          <DomainProvider>{children}</DomainProvider>
         </body>
       </Providers>
     </html>
