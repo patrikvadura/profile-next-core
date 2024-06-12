@@ -1,5 +1,12 @@
 import { ReactNode } from 'react'
 
+export interface ModalViewProps {
+  children?: ReactNode
+  title?: string
+  isVisible?: boolean
+  toggleVisibility?: any
+}
+
 export interface PreviewContainerProps {
   children?: ReactNode
   totalPrice: number

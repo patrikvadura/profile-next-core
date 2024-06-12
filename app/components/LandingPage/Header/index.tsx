@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <div className={`${classes.navbar} ${scrolled ? classes.navbarScrolled : ''}`}>
       <div className="container flex flex-row justify-between items-center">
-        <CustomizerLogo textColor="#ffffff" symbolColor="#05e988" dotColor="#fca4ed" studio />
+        <CustomizerLogo textColor="#ffffff" symbolColor="#05e988" dotColor="#fca4ed" />
 
         <div className="flex flex-row space-x-4">
           <div className="hidden sm:flex gap-8">
@@ -43,6 +43,7 @@ export default function Header() {
 
             <Link
               href={data.menu.createLink.link}
+              target="_blank"
               className={`group ${classes.linkCreate} ${classes.link}`}
             >
               <span className={classes.underline} />

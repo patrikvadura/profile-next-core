@@ -36,6 +36,7 @@ export default function HeaderCustomizer() {
             {menu.map((item, index) => (
               <Link key={index} href={item.link ?? '#'} className={`group ${classes.link}`}>
                 <span className={classes.underline} />
+                <Icon icon={item.icon} className="text-2xl mr-2" />
                 {item.title}
               </Link>
             ))}
@@ -51,10 +52,6 @@ export default function HeaderCustomizer() {
               />
               {data.menu.createLink.title}
             </Link>
-          </div>
-
-          <div className="hidden md:inline !text-white">
-            <ThemeSwitcher />
           </div>
         </div>
       </div>

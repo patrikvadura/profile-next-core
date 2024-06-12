@@ -19,10 +19,26 @@ const ThemeSwitcher = ({ previewMode }: ThemeSwitcherProps) => {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
+
+    const handleStorageChange = () => {
+      const newTheme = localStorage.getItem('theme')
+      if (newTheme) {
+        setTheme(newTheme)
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    window.dispatchEvent(new Event('storage')) // Vyvolání události `storage` pro synchronizaci
   }
 
   return (

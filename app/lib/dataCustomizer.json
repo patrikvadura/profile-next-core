@@ -7,18 +7,22 @@
     "items": [
       {
         "title": "Nástěnka",
+        "icon": "material-symbols:dashboard-customize-outline",
         "link": "#about"
       },
       {
         "title": "Tvoje weby",
+        "icon": "material-symbols:inbox-outline-rounded",
         "link": "#services"
       },
       {
         "title": "Nastavení",
+        "icon": "material-symbols:settings-outline-rounded",
         "link": "#reference"
       },
       {
         "title": "Tickety",
+        "icon": "ci:chat-conversation-circle",
         "link": "#contact"
       }
     ]

@@ -1,10 +1,12 @@
 import React from 'react'
+import { IconifyIcon } from '@iconify/react'
 
 // Menu
 
 export interface MenuItems {
   title?: string
   link?: string | undefined
+  icon?: string | undefined | any
 }
 
 // About
