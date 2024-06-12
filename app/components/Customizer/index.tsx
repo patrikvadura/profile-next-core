@@ -17,8 +17,6 @@ import { Reference } from '@/app/components/Reference'
 import { Contact } from '@/app/components/Contact'
 import Link from 'next/link'
 import Dropdown from '@/app/components/Customizer/Dropdown'
-import PreviewContainer from '@/app/components/Customizer/PreviewContainer'
-import OptionsContainer from '@/app/components/Customizer/OptionsContainer'
 import OptionSelector from '@/app/components/Customizer/OptionSelector'
 import ColorPickerGlobal from '@/app/components/Customizer/ColorPicker/Global'
 import ColorPickerAbout from '@/app/components/Customizer/ColorPicker/About'
@@ -26,7 +24,6 @@ import ColorPickerHero from '@/app/components/Customizer/ColorPicker/Hero'
 import ColorPickerService from '@/app/components/Customizer/ColorPicker/Service'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import Button from '@/app/ui/Button'
-import { ArrowRight } from '@/app/ui/Icons/Arrow/Right'
 import { Icon } from '@iconify/react'
 import FAQ from '@/app/components/Customizer/FAQ'
 import DNSChecker from '@/app/components/Customizer/DNSChecker'
@@ -40,7 +37,6 @@ import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 import { Lato } from 'next/font/google'
 import OpenGraphPreview from '@/app/components/Customizer/OpenGraphPreview'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
-import { Progress } from '@nextui-org/react'
 import { Download } from '@/app/ui/Icons/Download'
 import { ActionWrapper } from '@/app/ui/ActionWrapper'
 import HeaderCustomizer from '@/app/components/Customizer/HeaderCustomizer'
@@ -144,7 +140,7 @@ export default function Customizer() {
     return (currentStep / (totalSteps - 1)) * 100
   }
 
-  const handleStepClick = index => {
+  const handleStepClick = (index: number) => {
     if (other.currentStep === index && isModalVisible) {
       setIsModalVisible(false)
     } else {

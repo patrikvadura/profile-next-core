@@ -7,7 +7,7 @@
 }
 
 .link {
-  @apply relative flex flex-row items-center text-white hover:brightness-90 text-sm font-bold;
+  @apply relative flex flex-row items-center px-1 text-white hover:brightness-90 text-sm font-bold;
 
   &Create {
     @apply text-secondary;

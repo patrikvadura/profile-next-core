@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import { ModalViewProps } from '@/app/lib/customizer'
 import { Icon } from '@iconify/react'
@@ -51,9 +53,11 @@ const ModalView = ({ isVisible, toggleVisibility, title, children }: ModalViewPr
   const handleMouseMoveResize = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (isResizing) {
       e.preventDefault()
+      const deltaX = resizeOffset.x - e.clientX
+      const deltaY = resizeOffset.y - e.clientY
       setSize(prevSize => ({
-        width: prevSize.width + (e.clientX - resizeOffset.x),
-        height: prevSize.height + (e.clientY - resizeOffset.y),
+        width: Math.max(100, prevSize.width + deltaX), // Zajištění minimální šířky
+        height: Math.max(100, prevSize.height + deltaY), // Zajištění minimální výšky
       }))
       setResizeOffset({
         x: e.clientX,
@@ -122,11 +126,11 @@ const ModalView = ({ isVisible, toggleVisibility, title, children }: ModalViewPr
 
         <div
           onMouseDown={handleMouseDownResize}
-          className={`opacity-0 group-hover:opacity-100 absolute -bottom-2 -right-2 transition-all duration-300 ease-in-out -z-1 ${
-            isDragging ? 'cursor-se-resize' : 'cursor-se-resize'
+          className={`opacity-0 group-hover:opacity-100 absolute -bottom-2 -left-2 transition-all duration-300 ease-in-out -z-1 ${
+            isResizing ? 'cursor-se-resize' : 'cursor-sw-resize'
           }`}
         >
-          <div className="size-[16px] border-b-4 border-r-4 border-primary opacity-30 rounded-br-full" />
+          <div className="size-[16px] border-b-4 border-l-4 border-primary opacity-30 rounded-bl-full" />
         </div>
       </div>
     </div>

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import data from '@/app/lib/dataCustomizer.json'
 import { MenuItems } from '@/app/lib/types'
 import Link from 'next/link'
+import Image from 'next/image'
 import CustomizerLogo from '@/app/components/Customizer/Logo'
-import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 import classes from './index.module.scss'
 import { Icon } from '@iconify/react'
 
@@ -31,28 +31,45 @@ export default function HeaderCustomizer() {
       <div className="container flex flex-row justify-between items-center">
         <CustomizerLogo textColor="#ffffff" symbolColor="#05e988" dotColor="#fca4ed" studio />
 
-        <div className="flex flex-row space-x-4">
-          <div className="hidden sm:flex gap-8">
-            {menu.map((item, index) => (
-              <Link key={index} href={item.link ?? '#'} className={`group ${classes.link}`}>
-                <span className={classes.underline} />
-                <Icon icon={item.icon} className="text-2xl mr-2" />
-                {item.title}
-              </Link>
-            ))}
-
-            <Link
-              href={data.menu.createLink.link}
-              className={`group ${classes.linkCreate} ${classes.link}`}
-            >
+        <div className="hidden sm:flex gap-4">
+          {menu.map((item, index) => (
+            <Link key={index} href={item.link ?? '#'} className={`group ${classes.link}`}>
               <span className={classes.underline} />
-              <Icon
-                icon="material-symbols:add-circle-outline-rounded"
-                className="text-2xl text-secondary mr-2"
-              />
-              {data.menu.createLink.title}
+              <Icon icon={item.icon} className="text-2xl mr-2" />
+              {item.title}
             </Link>
+          ))}
+
+          <Link
+            href={data.menu.createLink.link}
+            className={`group ${classes.linkCreate} ${classes.link}`}
+          >
+            <span className={classes.underline} />
+            <Icon
+              icon="material-symbols:add-circle-outline-rounded"
+              className="text-2xl text-secondary mr-2"
+            />
+            {data.menu.createLink.title}
+          </Link>
+
+          <div className="flex flex-row items-center text-white text-sm text-opacity-50 border-l-2 border-white border-opacity-10 pl-4 space-x-4">
+            <Image
+              src="/assets/img/studio/profile_dummy.jpg"
+              width={100}
+              height={100}
+              alt="Profile"
+              className="size-6 rounded-full"
+            />
+
+            <span>Patrik Vaďura</span>
           </div>
+
+          <Link
+            href="/"
+            className="flex flex-row items-center text-white text-sm text-opacity-50 hover:text-opacity-100 transiton duration-300 ease-in-out"
+          >
+            <Icon icon="material-symbols:logout" className="text-xl" />
+          </Link>
         </div>
       </div>
     </div>
