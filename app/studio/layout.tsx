@@ -1,9 +1,10 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import data from '@/app/lib/data.json'
+import data from '@/app/lib/dataCustomizer.json'
 import Script from 'next/script'
-import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
 import Providers from '@/app/providers'
+import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
+import HeaderCustomizer from '@/app/components/Customizer/HeaderCustomizer'
 import '@/app/globals.css'
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `<generated>`,
+        url: `/assets/img/studio/openGraph.jpg`,
         width: 1200,
         height: 630,
         alt: data.meta.openGraph.alt,
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: `/icon?<generated>`,
+        url: `/assets/img/studio/favicon.ico`,
         sizes: '32x32',
         type: 'image/png',
       },
@@ -37,11 +38,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const gtmCustomizerID: string | undefined = data.profile.gtm.id
+  const gtmCustomizerID: string | undefined = data.gtm.id
 
   return (
     <html lang="cs-CZ" className="scroll-smooth" suppressHydrationWarning>
-      {data.profile.gtm.status ? (
+      {data.gtm.status ? (
         <Script
           id="Google Analytics"
           data-category="analytics"
@@ -62,7 +63,7 @@ export default function RootLayout({
       )}
       <Providers>
         <body suppressHydrationWarning>
-          {data.profile.gtm.status ? (
+          {data.gtm.status ? (
             <noscript>
               <iframe
                 src={`https://www.googletagmanager.com/ns.html?id=${gtmCustomizerID}`}
@@ -74,7 +75,13 @@ export default function RootLayout({
           ) : (
             ''
           )}
-          <DeviceCheck>{children}</DeviceCheck>
+          <DeviceCheck>
+            <div className="bg-primary w-screen h-screen flex flex-row overflow-hidden">
+              <HeaderCustomizer />
+
+              {children}
+            </div>
+          </DeviceCheck>
         </body>
       </Providers>
     </html>
