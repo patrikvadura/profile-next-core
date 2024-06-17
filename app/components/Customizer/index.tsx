@@ -826,9 +826,9 @@ export default function Customizer() {
                     <Radio
                       id="dnsBuy"
                       name="dnsOption"
-                      checked={visibility.selectedDnsOption === 'dnsTransfer'}
+                      checked={visibility.selectedDnsOption === 'dnsBuy'}
                       onChange={() => {
-                        visibility.setSelectedDnsOption('dnsTransfer')
+                        visibility.setSelectedDnsOption('dnsBuy')
                         visibility.setShowDnsTransfer(true)
                         visibility.setShowDnsSelf(false)
                         visibility.setShowDnsHelp(false)
@@ -840,7 +840,7 @@ export default function Customizer() {
                       </div>
                     </Radio>
 
-                    {visibility.selectedDnsOption === 'dnsTransfer' && (
+                    {visibility.selectedDnsOption === 'dnsBuy' && (
                       <div className="ml-12 space-y-4">
                         <p className="text-black text-xs font-normal opacity-75">
                           Doménu za vás zakoupíme a vše zařídíme - již se nemusíte o nic víc starat.

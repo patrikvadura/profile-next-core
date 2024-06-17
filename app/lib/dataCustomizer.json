@@ -8,22 +8,22 @@
       {
         "title": "Nástěnka",
         "icon": "material-symbols:dashboard-customize-outline",
-        "link": "#about"
+        "link": "/studio/dashboard"
       },
       {
         "title": "Tvoje weby",
         "icon": "material-symbols:inbox-outline-rounded",
-        "link": "#services"
+        "link": "/studio/websites"
       },
       {
         "title": "Nastavení",
         "icon": "material-symbols:settings-outline-rounded",
-        "link": "#reference"
+        "link": "/studio/settings"
       },
       {
         "title": "Tickety",
         "icon": "ci:chat-conversation-circle",
-        "link": "#contact"
+        "link": "/studio/tickets"
       }
     ]
   }

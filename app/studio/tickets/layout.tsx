@@ -4,7 +4,7 @@ import data from '@/app/lib/data.json'
 import Script from 'next/script'
 import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
 import Providers from '@/app/providers'
-import '../globals.css'
+import '@/app/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),
