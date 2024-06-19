@@ -1,5 +1,4 @@
 import React from 'react'
-import { IconifyIcon } from '@iconify/react'
 
 // Menu
 
@@ -71,4 +70,16 @@ export interface SocialItem {
 
 export type IconComponents = {
   [key: string]: React.ComponentType<{ size?: string | number; color?: string; className?: string }>
+}
+
+// LandingPage
+
+export interface BenefitsItems {
+  title?: string
+  description?: string
+  icon?: string | undefined | any
+}
+
+export interface DemoWebsiteItems {
+  image: string | any
 }
