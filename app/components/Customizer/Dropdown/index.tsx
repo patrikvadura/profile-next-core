@@ -33,7 +33,10 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
           className="flex items-center justify-between py-2 rounded focus:outline-none focus:shadow-outline w-full"
         >
           {!hideToggle ? (
-            <label htmlFor={id} className="flex items-center font-semibold cursor-pointer">
+            <label
+              htmlFor={id}
+              className="flex items-center text-primary font-semibold cursor-pointer"
+            >
               <input
                 type="checkbox"
                 id={id}
@@ -45,18 +48,22 @@ const Dropdown: FunctionComponent<ToggleDropdownProps> = ({
               {label}
             </label>
           ) : (
-            <div className="flex items-center text-lg font-semibold cursor-pointer">{label}</div>
+            <div className="flex items-center text-primary text-lg font-semibold cursor-pointer">
+              {label}
+            </div>
           )}
 
           <ChevronDown
             size={24}
-            className={`text-gray-300 transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
+            className={`text-primary text-opacity-30 transform transition-transform ${
+              isOpen ? 'rotate-180' : ''
+            }`}
           />
         </button>
 
         {preview ? (
           <Link href={link ? link : '/'}>
-            <Show size={24} className="text-gray-300" />
+            <Show size={24} className="text-primary text-opacity-30" />
           </Link>
         ) : (
           ''

@@ -25,7 +25,11 @@ export default function OptionSelector({
       <>
         <div className="relative">
           <div className="flex flex-row space-x-4">
-            {title ? <div className="basis-3/12 pt-2 font-semibold">{title}:</div> : ''}
+            {title ? (
+              <div className="basis-3/12 pt-2 text-primary font-semibold">{title}:</div>
+            ) : (
+              ''
+            )}
 
             <div className={`${title ? 'basis-9/12' : ''} w-full`}>
               <button
@@ -91,7 +95,7 @@ export default function OptionSelector({
       <div className="flex flex-col space-y-4">
         {title ? (
           <div className="basis-3/12">
-            <span className="mt-2 font-semibold">{title}:</span>
+            <span className="mt-2 text-primary font-semibold">{title}:</span>
           </div>
         ) : (
           ''

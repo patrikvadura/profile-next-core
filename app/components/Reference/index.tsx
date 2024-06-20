@@ -8,15 +8,24 @@ const variantComponents = {
   '01': dynamic(() =>
     import('@/app/components/Reference/Variant01').then(mod => mod.ReferenceVariant01),
   ),
+  '02': dynamic(() =>
+    import('@/app/components/Reference/Variant02').then(mod => mod.ReferenceVariant02),
+  ),
+  '03': dynamic(() =>
+    import('@/app/components/Reference/Variant03').then(mod => mod.ReferenceVariant03),
+  ),
+  '04': dynamic(() =>
+    import('@/app/components/Reference/Variant04').then(mod => mod.ReferenceVariant04),
+  ),
 }
 
 export function Reference({
   variant = '01',
   layout = 'background',
   align = 'left',
-  backgroundColor = colors.service.background,
-  accentBgColor = colors.service.accent.background,
-  typoColor = colors.service.typo,
+  backgroundColor = colors.reference.background,
+  accentBgColor = colors.reference.accent.background,
+  typoColor = colors.reference.typo,
   typoLgColor = colors.reference.typoLg,
   preview,
 }: ReferenceProps) {

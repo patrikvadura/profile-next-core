@@ -5,7 +5,7 @@ import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { SwiperComponent } from './Swiper'
 import { ReferenceVariantProps } from '@/app/lib/variants'
 
-export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantProps) {
+export function ReferenceVariant04({ layout, align, preview }: ReferenceVariantProps) {
   const references: ReferenceItems = data.reference
 
   const layouts = {
@@ -18,11 +18,8 @@ export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantP
   const layoutsClass = layouts[layout]
 
   return (
-    <div
-      id="reference"
-      className={`${layoutsClass} relative w-full lg:h-screen py-12 md:py-24 overflow-hidden`}
-    >
-      <div className="items-center md:items-center text-center md:text-center container lg:h-[650px] flex flex-col justify-center">
+    <div id="reference" className={`${layoutsClass} relative w-full py-12`}>
+      <div className="container flex flex-col justify-center items-center text-center">
         <SwiperComponent
           accentBgColor="text-[var(--reference-accent-bg)]"
           typoColor="text-[var(--reference-typo)]"
@@ -30,13 +27,6 @@ export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantP
           references={references}
         />
       </div>
-
-      <AnimatedLargeTitle
-        title={data.reference.largeTitle}
-        target="#reference"
-        origin={!preview ? '-translate-x-full' : null}
-        className="absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-[var(--reference-typo-lg)] dark:text-white"
-      />
     </div>
   )
 }

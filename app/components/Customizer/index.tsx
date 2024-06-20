@@ -1,9 +1,16 @@
 'use client'
 import React, { useState } from 'react'
-import { optionsHero, optionsAbout, optionsService, optionsHeroContent } from '@/app/lib/customizer'
+import {
+  optionsHero,
+  optionsAbout,
+  optionsService,
+  optionsReference,
+  optionsHeroContent,
+} from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
 import { useServiceState } from '@/app/lib/useState/useServiceState'
+import { useReferenceState } from '@/app/lib/useState/useReferenceState'
 import { useVisibilityState } from '@/app/lib/useState/useVisibilityState'
 import { useOtherState } from '@/app/lib/useState/useOtherState'
 import { calculatePreviewState } from '@/app/lib/calculatePreviewState'
@@ -22,6 +29,7 @@ import ColorPickerGlobal from '@/app/components/Customizer/ColorPicker/Global'
 import ColorPickerAbout from '@/app/components/Customizer/ColorPicker/About'
 import ColorPickerHero from '@/app/components/Customizer/ColorPicker/Hero'
 import ColorPickerService from '@/app/components/Customizer/ColorPicker/Service'
+import ColorPickerReference from '@/app/components/Customizer/ColorPicker/Reference'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import Button from '@/app/ui/Button'
 import { Icon } from '@iconify/react'
@@ -52,6 +60,7 @@ export default function Customizer() {
   const hero = useHeroState()
   const about = useAboutState()
   const service = useServiceState()
+  const reference = useReferenceState()
   const visibility = useVisibilityState()
   const other = useOtherState()
 
@@ -63,12 +72,14 @@ export default function Customizer() {
     ...hero,
     ...about,
     ...service,
+    ...reference,
     ...visibility,
     ...other,
     optionsHero,
     optionsHeroContent,
     optionsAbout,
     optionsService,
+    optionsReference,
     domain,
     availability,
     totalPrice,
@@ -76,9 +87,6 @@ export default function Customizer() {
   }
 
   const [isHidden, setIsHidden] = useState(false)
-  const [isDragging, setIsDragging] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [isModalVisible, setIsModalVisible] = useState(false)
 
   const toggleVisibility = () => {
@@ -87,29 +95,6 @@ export default function Customizer() {
 
   const toggleModalVisibility = () => {
     setIsModalVisible(!isModalVisible)
-  }
-
-  const handleMouseDown = (e: { preventDefault: () => void; clientX: number; clientY: number }) => {
-    e.preventDefault() // Prevent text selection
-    setIsDragging(true)
-    setOffset({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    })
-  }
-
-  const handleMouseMove = (e: { preventDefault: () => void; clientX: number; clientY: number }) => {
-    if (isDragging) {
-      e.preventDefault() // Prevent text selection
-      setPosition({
-        x: e.clientX - offset.x,
-        y: e.clientY - offset.y,
-      })
-    }
-  }
-
-  const handleMouseUp = () => {
-    setIsDragging(false)
   }
 
   const breakpoints = [
@@ -242,7 +227,7 @@ export default function Customizer() {
               </div>
             </Dropdown>
 
-            <h3 className="text-lg font-bold pt-4">Volba sekcí</h3>
+            <h3 className="text-primary text-lg font-bold pt-4">Volba sekcí</h3>
             <p className="text-black text-sm text-opacity-75">
               Přizpůsobte si barevnost a rozložení jednotlivých sekcí. Sekce které nechcete mít
               videtelné, klidně můžete vypnout.
@@ -257,7 +242,7 @@ export default function Customizer() {
               onChange={() => visibility.setShowHero(!visibility.showHero)}
             >
               <div className="space-y-4">
-                <span className="mt-2 font-semibold">Barevnost sekce:</span>
+                <span className="mt-2 text-primary font-semibold">Barevnost sekce:</span>
 
                 <ColorPickerHero
                   backgroundColor={hero.setHeroBackground}
@@ -304,7 +289,7 @@ export default function Customizer() {
               onChange={() => visibility.setShowAbout(!visibility.showAbout)}
             >
               <div className="space-y-4">
-                <span className="mt-2 font-semibold">Barevnost sekce:</span>
+                <span className="mt-2 text-primary font-semibold">Barevnost sekce:</span>
 
                 <ColorPickerAbout
                   backgroundColor={about.setAboutBackground}
@@ -363,7 +348,7 @@ export default function Customizer() {
               onChange={() => visibility.setShowServices(!visibility.showServices)}
             >
               <div className="space-y-4">
-                <span className="mt-2 font-semibold">Barevnost sekce:</span>
+                <span className="mt-2 text-primary font-semibold">Barevnost sekce:</span>
 
                 <ColorPickerService
                   backgroundColor={service.setServiceBackground}
@@ -416,7 +401,42 @@ export default function Customizer() {
               link="#reference"
               preview
               onChange={() => visibility.setShowReference(!visibility.showReference)}
-            />
+            >
+              <div className="space-y-4">
+                <span className="mt-2 text-primary font-semibold">Barevnost sekce:</span>
+
+                <ColorPickerReference
+                  backgroundColor={reference.setReferenceBackground}
+                  accentBgColor={reference.setReferenceAccentBg}
+                  typoColor={reference.setReferenceTypo}
+                  typoLgColor={reference.setReferenceTypoLg}
+                />
+
+                <OptionSelector
+                  title="Varianta"
+                  options={optionsReference.variant}
+                  selectedOption={reference.referenceVariant}
+                  onChange={reference.setReferenceVariant}
+                  visual
+                />
+              </div>
+
+              <div className="space-y-4">
+                <OptionSelector
+                  title="Layout"
+                  options={optionsReference.layout}
+                  selectedOption={reference.referenceLayout}
+                  onChange={reference.setReferenceLayout}
+                />
+
+                <OptionSelector
+                  title="Zarovnání"
+                  options={optionsReference.align}
+                  selectedOption={reference.referenceAlign}
+                  onChange={reference.setReferenceAlign}
+                />
+              </div>
+            </Dropdown>
 
             <Dropdown
               label="Portfolio"
@@ -1481,8 +1501,19 @@ export default function Customizer() {
                   preview
                 />
               )}
-              {visibility.showReference && <Reference preview />}
-              {visibility.showContact && <Contact preview />}
+              {visibility.showReference && (
+                <Reference
+                  variant={reference.referenceVariant}
+                  layout={reference.referenceLayout}
+                  align={reference.referenceAlign}
+                  backgroundColor={reference.referenceBackground}
+                  accentBgColor={reference.referenceAccentBg}
+                  typoColor={reference.referenceTypo}
+                  typoLgColor={reference.referenceTypoLg}
+                  preview
+                />
+              )}
+              {visibility.showContact && <Contact />}
               <Footer />
             </div>
           </div>

@@ -78,7 +78,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
   }
 
   return (
-    <div className="grid grid-cols-5 gap-y-4 text-xs">
+    <div className="grid grid-cols-3 gap-y-4 text-xs">
       <div className="flex flex-col items-start">
         <input
           type="color"

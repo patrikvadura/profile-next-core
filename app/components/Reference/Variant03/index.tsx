@@ -5,7 +5,7 @@ import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { SwiperComponent } from './Swiper'
 import { ReferenceVariantProps } from '@/app/lib/variants'
 
-export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantProps) {
+export function ReferenceVariant03({ layout, align, preview }: ReferenceVariantProps) {
   const references: ReferenceItems = data.reference
 
   const layouts = {
@@ -20,9 +20,9 @@ export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantP
   return (
     <div
       id="reference"
-      className={`${layoutsClass} relative w-full lg:h-screen py-12 md:py-24 overflow-hidden`}
+      className={`${layoutsClass} relative w-full lg:min-h-screen py-12 md:py-24 overflow-hidden`}
     >
-      <div className="items-center md:items-center text-center md:text-center container lg:h-[650px] flex flex-col justify-center">
+      <div className="items-center md:items-center text-center md:text-center container lg:min-h-[650px] flex flex-col justify-center">
         <SwiperComponent
           accentBgColor="text-[var(--reference-accent-bg)]"
           typoColor="text-[var(--reference-typo)]"

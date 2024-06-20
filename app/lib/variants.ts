@@ -143,7 +143,7 @@ export type ServiceVariantProps = {
 
 export type ReferenceProps = {
   variant: '01' | '02' | '03' | any
-  layout: 'transparent' | 'background' | 'border' | any
+  layout: 'transparent' | 'background' | any
   align: 'left' | 'right' | 'full' | any
   backgroundColor?: string | any
   accentBgColor?: string | any
@@ -153,7 +153,7 @@ export type ReferenceProps = {
 }
 
 export type ReferenceVariantProps = {
-  layout: 'transparent' | 'background' | 'border' | any
+  layout: 'transparent' | 'background' | any
   align: 'left' | 'right' | 'full' | any
   backgroundColor?: string | any
   accentBgColor?: string | any

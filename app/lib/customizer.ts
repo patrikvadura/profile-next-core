@@ -172,3 +172,21 @@ export const optionsService: CustomizerOptions = {
     { value: 'rounded', label: 'Radius' },
   ],
 }
+
+export const optionsReference: CustomizerOptions = {
+  variant: [
+    { value: '01', label: 'Varianta 01', image: 'reference/reference_01' },
+    { value: '02', label: 'Varianta 02', image: 'reference/reference_02' },
+    { value: '03', label: 'Varianta 03', image: 'reference/reference_03' },
+    { value: '04', label: 'Varianta 04', image: 'reference/reference_04' },
+  ],
+  layout: [
+    { value: 'transparent', label: 'Transparent' },
+    { value: 'background', label: 'Background' },
+  ],
+  align: [
+    { value: 'left', label: 'Left' },
+    { value: 'center', label: 'Center' },
+    { value: 'right', label: 'Right' },
+  ],
+}

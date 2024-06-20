@@ -5,7 +5,7 @@ import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { SwiperComponent } from './Swiper'
 import { ReferenceVariantProps } from '@/app/lib/variants'
 
-export function ReferenceVariant01({ layout, align, preview }: ReferenceVariantProps) {
+export function ReferenceVariant02({ layout, align, preview }: ReferenceVariantProps) {
   const references: ReferenceItems = data.reference
 
   const layouts = {

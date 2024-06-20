@@ -4,16 +4,16 @@ import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
 import classes from '../index.module.scss'
 
-const ColorPickerAbout: React.FC<ColorPickerProps> = ({
+const ColorPickerReference: React.FC<ColorPickerProps> = ({
   backgroundColor,
   accentBgColor,
-  accentFgColor,
   typoColor,
+  typoLgColor,
 }) => {
-  const [backgroundColorValue, setBackgroundColor] = useState(colors.about.background)
-  const [accentBgColorValue, setAccentBgColor] = useState(colors.about.accent.background)
-  const [accentFgColorValue, setAccentFgColor] = useState(colors.about.accent.foreground)
-  const [typoColorValue, setTypoColor] = useState(colors.about.typo)
+  const [backgroundColorValue, setBackgroundColor] = useState(colors.reference.background)
+  const [accentBgColorValue, setAccentBgColor] = useState(colors.reference.accent.background)
+  const [typoColorValue, setTypoColor] = useState(colors.reference.typo)
+  const [typoLgColorValue, setTypoLgColor] = useState(colors.reference.typoLg)
 
   const handleBackgroundChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value
@@ -31,19 +31,19 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
     }
   }
 
-  const handleAccentFgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newColor = event.target.value
-    setAccentFgColor(newColor)
-    if (accentFgColor) {
-      accentFgColor(newColor)
-    }
-  }
-
   const handleTypoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.target.value
     setTypoColor(newColor)
     if (typoColor) {
       typoColor(newColor)
+    }
+  }
+
+  const handleTypoLgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = event.target.value
+    setTypoLgColor(newColor)
+    if (typoLgColor) {
+      typoLgColor(newColor)
     }
   }
 
@@ -66,17 +66,7 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
           className={classes.picker}
           onChange={handleAccentBgChange}
         />
-        Akcent - pozadí
-      </div>
-
-      <div className="flex flex-col items-start">
-        <input
-          type="color"
-          value={accentFgColorValue}
-          className={classes.picker}
-          onChange={handleAccentFgChange}
-        />
-        Akcent - popředí
+        Akcent
       </div>
 
       <div className="flex flex-col items-start">
@@ -88,8 +78,18 @@ const ColorPickerAbout: React.FC<ColorPickerProps> = ({
         />
         Typografie
       </div>
+
+      <div className="flex flex-col items-start">
+        <input
+          type="color"
+          value={typoLgColorValue}
+          className={classes.picker}
+          onChange={handleTypoLgChange}
+        />
+        Moving text
+      </div>
     </div>
   )
 }
 
-export default ColorPickerAbout
+export default ColorPickerReference
