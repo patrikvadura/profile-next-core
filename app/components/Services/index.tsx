@@ -11,6 +11,9 @@ const variantComponents = {
   '02': dynamic(() =>
     import('@/app/components/Services/Variant02').then(mod => mod.ServicesVariant02),
   ),
+  '03': dynamic(() =>
+    import('@/app/components/Services/Variant03').then(mod => mod.ServicesVariant03),
+  ),
 }
 
 export function Services({
@@ -41,6 +44,9 @@ export function Services({
   servicesContentBox3Content,
   servicesContentBox3Icon,
   servicesContentBox3IconShow,
+  servicesContentBoxSpecial,
+  servicesContentBoxSpecialTitle,
+  servicesContentBoxSpecialLink,
   preview,
 }: ServiceProps) {
   // @ts-ignore
@@ -77,6 +83,9 @@ export function Services({
         servicesContentBox3Content={servicesContentBox3Content}
         servicesContentBox3Icon={servicesContentBox3Icon}
         servicesContentBox3IconShow={servicesContentBox3IconShow}
+        servicesContentBoxSpecial={servicesContentBoxSpecial}
+        servicesContentBoxSpecialTitle={servicesContentBoxSpecialTitle}
+        servicesContentBoxSpecialLink={servicesContentBoxSpecialLink}
         preview={preview}
       />
     </>

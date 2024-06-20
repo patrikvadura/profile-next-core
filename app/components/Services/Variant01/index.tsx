@@ -2,8 +2,6 @@ import React from 'react'
 import data from '@/app/lib/data.json'
 import { ServiceVariantProps } from '@/app/lib/variants'
 import { ServicesData } from '@/app/lib/types'
-import Image from 'next/image'
-import { Check } from '@/app/ui/Icons/Check'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ServiceIcon } from '@/app/ui/Icons/Service'
 
@@ -31,120 +29,109 @@ export function ServicesVariant01({
 }: ServiceVariantProps) {
   const services: ServicesData = data
 
+  const layouts = {
+    transparent: 'bg-transparent dark:bg-black',
+    background: 'bg-[var(--about-background)] dark:bg-black',
+    border: 'dark:bg-black',
+  }
+
+  // @ts-ignore
+  const layoutsClass = layouts[layout]
+
+  const aligns = {
+    left: 'items-center md:items-start text-center md:text-left',
+    center: 'items-center md:items-center text-center md:text-center',
+    right: 'items-center md:items-end text-center md:text-right',
+  }
+
+  // @ts-ignore
+  const alignsClass = aligns[align]
+
+  const radiuses = {
+    none: '',
+    rounded: 'rounded-2xl',
+  }
+
+  // @ts-ignore
+  const radiusClass = radiuses[radius]
+
   return (
     <div
       id="services"
-      className="w-full bg-[var(--service-background)] dark:bg-black pb-2 md:pb-8 lg:pb-20 pt-8 md:pt-20 lg:pt-40 flex items-center justify-center overflow-hidden"
+      className={`${
+        layout === 'border'
+          ? `border-4 border-[var(--service-background)]`
+          : `bg-[var(--service-background)] dark:bg-black`
+      } ${layoutsClass} ${alignsClass} w-full pb-2 md:pb-8 lg:pb-20 pt-8 md:pt-20 lg:pt-40 flex items-center justify-center overflow-hidden`}
     >
       <div className="container">
         <AnimatedTitle
           title={servicesContentTitle || services.services.title}
           target="#services"
-          origin="translate-y-[100px]"
+          origin={!preview ? 'translate-y-[100px]' : null}
           className="w-full text-[50px] font-bold text-[var(--service-typo)] dark:text-white text-center"
         />
 
         <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
           {servicesContentBox1 && (
-            <div className="flex flex-col items-center md:items-start text-center md:text-left bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out">
+            <div
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+            >
               {servicesContentBox1IconShow && (
                 <ServiceIcon
                   icon={servicesContentBox1Icon}
-                  className="size-[64px] text-[var(--service-box-icon)]"
+                  className="size-[64px] text-[var(--service-box-icon)] dark:text-white"
                 />
               )}
-              <h3 className="text-2xl text-[var(--service-typo)] dark:text-white font-bold">
+              <h3 className="text-2xl text-[var(--service-box-typo)] dark:text-white font-bold">
                 {servicesContentBox1Title}
               </h3>
 
-              <p className="text-[var(--service-typo)] dark:text-white text-opacity-75">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox1Content}
               </p>
             </div>
           )}
 
           {servicesContentBox2 && (
-            <div className="flex flex-col items-center md:items-start text-center md:text-left bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out">
+            <div
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+            >
               {servicesContentBox2IconShow && (
                 <ServiceIcon
                   icon={servicesContentBox2Icon}
-                  className="size-[64px] text-[var(--service-box-icon)]"
+                  className="size-[64px] text-[var(--service-box-icon)] dark:text-white"
                 />
               )}
-              <h3 className="text-2xl text-[var(--service-typo)] dark:text-white font-bold">
+              <h3 className="text-2xl text-[var(--service-box-typo)] dark:text-white font-bold">
                 {servicesContentBox2Title}
               </h3>
 
-              <p className="text-[var(--service-typo)] dark:text-white text-opacity-75">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox2Content}
               </p>
             </div>
           )}
 
           {servicesContentBox3 && (
-            <div className="flex flex-col items-center md:items-start text-center md:text-left bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out">
+            <div
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+            >
               {servicesContentBox3IconShow && (
                 <ServiceIcon
                   icon={servicesContentBox3Icon}
-                  className="size-[64px] text-[var(--service-box-icon)]"
+                  className="size-[64px] text-[var(--service-box-icon)] dark:text-white"
                 />
               )}
-              <h3 className="text-2xl text-[var(--service-typo)] dark:text-white font-bold">
+              <h3 className="text-2xl text-[var(--service-box-typo)] dark:text-white font-bold">
                 {servicesContentBox3Title}
               </h3>
 
-              <p className="text-[var(--service-typo)] dark:text-white text-opacity-75">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox3Content}
               </p>
             </div>
           )}
-
-          {/*{services.services.items.map((item, index) => (*/}
-          {/*    <div*/}
-          {/*        key={index}*/}
-          {/*        className="flex flex-col items-center md:items-start text-center md:text-left bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out"*/}
-          {/*    >*/}
-          {/*      {item.image ? (*/}
-          {/*          <Image*/}
-          {/*              src={item.image}*/}
-          {/*              width={80}*/}
-          {/*              height={80}*/}
-          {/*              quality={50}*/}
-          {/*              sizes="(max-width: 800px) 60px, 80px"*/}
-          {/*              className="dark:grayscale dark:invert"*/}
-          {/*              loading="lazy"*/}
-          {/*              alt={item.title}*/}
-          {/*          />*/}
-          {/*      ) : (*/}
-          {/*          <ServiceIcon*/}
-          {/*              icon={item.icon}*/}
-          {/*              className="size-[64px] text-[var(--service-box-icon)]"*/}
-          {/*          />*/}
-          {/*      )}*/}
-          {/*      <h3 className="text-2xl text-[var(--service-typo)] dark:text-white font-bold">*/}
-          {/*        {item.title}*/}
-          {/*      </h3>*/}
-
-          {/*      {item.description ? (*/}
-          {/*          <p className="text-[var(--service-typo)] dark:text-white text-opacity-75">*/}
-          {/*            {item.description}*/}
-          {/*          </p>*/}
-          {/*      ) : (*/}
-          {/*          <ul className="text-center md:text-left">*/}
-          {/*            {item.list.listItems.map((listItem, index) => (*/}
-          {/*                <li*/}
-          {/*                    key={index}*/}
-          {/*                    className="text-[var(--service-typo)] flex flex-row justify-center md:justify-start items-center"*/}
-          {/*                >*/}
-          {/*                  <Check className="me-2" />*/}
-
-          {/*                  {listItem.label}*/}
-          {/*                </li>*/}
-          {/*            ))}*/}
-          {/*          </ul>*/}
-          {/*      )}*/}
-          {/*    </div>*/}
-          {/*))}*/}
         </div>
       </div>
     </div>

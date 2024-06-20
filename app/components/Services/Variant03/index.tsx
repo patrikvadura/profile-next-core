@@ -2,11 +2,12 @@ import React from 'react'
 import data from '@/app/lib/data.json'
 import { ServiceVariantProps } from '@/app/lib/variants'
 import { ServicesData } from '@/app/lib/types'
-import Link from 'next/link'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ServiceIcon } from '@/app/ui/Icons/Service'
+import { ArrowDown } from '@/app/ui/Icons/Arrow/Down'
+import Link from 'next/link'
 
-export function ServicesVariant02({
+export function ServicesVariant03({
   layout,
   align,
   radius,
@@ -26,6 +27,9 @@ export function ServicesVariant02({
   servicesContentBox3Content,
   servicesContentBox3Icon,
   servicesContentBox3IconShow,
+  servicesContentBoxSpecial,
+  servicesContentBoxSpecialTitle,
+  servicesContentBoxSpecialLink,
   preview,
 }: ServiceVariantProps) {
   const services: ServicesData = data
@@ -48,6 +52,14 @@ export function ServicesVariant02({
   // @ts-ignore
   const alignsClass = aligns[align]
 
+  const radiuses = {
+    none: '',
+    rounded: 'rounded-2xl',
+  }
+
+  // @ts-ignore
+  const radiusClass = radiuses[radius]
+
   return (
     <div
       id="services"
@@ -58,17 +70,35 @@ export function ServicesVariant02({
       } ${layoutsClass} ${alignsClass} w-full pb-2 md:pb-8 lg:pb-20 pt-8 md:pt-20 lg:pt-40 flex items-center justify-center overflow-hidden`}
     >
       <div className="container">
-        <AnimatedTitle
-          title={services.services.title}
-          target="#services"
-          origin={!preview ? 'translate-y-[100px]' : null}
-          className="w-full text-[50px] font-bold text-[var(--service-typo)] dark:text-white text-center"
-        />
+        <div className="grid gap-12 grid-cols-1 md:grid-cols-3 items-center px-8">
+          <AnimatedTitle
+            title={servicesContentTitle || services.services.title}
+            target="#services"
+            origin={!preview ? 'translate-y-[100px]' : null}
+            className="md:col-span-2 w-full text-[80px] text-[var(--service-typo)] dark:text-white text-left md:pr-12"
+          />
 
-        <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
+          {servicesContentBoxSpecial && (
+            <Link
+              href={servicesContentBoxSpecialLink}
+              className="text-[var(--hero-typo)] dark:text-white"
+            >
+              <div
+                className={`${radiusClass} ${alignsClass} md:col-span-1 flex flex-col bg-[var(--service-accent-bg)] dark:bg-black hover:brightness-90 px-8 py-20 space-y-8 transition duration-300 ease-in-out`}
+              >
+                <h3 className="text-2xl text-[var(--service-accent-fg)] dark:text-white">
+                  {servicesContentBoxSpecialTitle}
+                </h3>
+                <ArrowDown className="size-[32px] text-[var(--service-accent-fg)] dark:text-white" />
+              </div>
+            </Link>
+          )}
+        </div>
+
+        <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 pt-10 pb-20">
           {servicesContentBox1 && (
             <div
-              className={`${alignsClass} flex flex-col items-center md:items-start text-center md:text-left dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
             >
               {servicesContentBox1IconShow && (
                 <ServiceIcon
@@ -76,12 +106,11 @@ export function ServicesVariant02({
                   className="size-[64px] text-[var(--service-box-icon)] dark:text-white"
                 />
               )}
-
               <h3 className="text-2xl text-[var(--service-box-typo)] dark:text-white font-bold">
                 {servicesContentBox1Title}
               </h3>
 
-              <p className="text-[var(--service-box-typo)] dark:text-white flex flex-row justify-center md:justify-start items-center">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox1Content}
               </p>
             </div>
@@ -89,7 +118,7 @@ export function ServicesVariant02({
 
           {servicesContentBox2 && (
             <div
-              className={`${alignsClass} flex flex-col items-center md:items-start text-center md:text-left dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
             >
               {servicesContentBox2IconShow && (
                 <ServiceIcon
@@ -97,12 +126,11 @@ export function ServicesVariant02({
                   className="size-[64px] text-[var(--service-box-icon)] dark:text-white"
                 />
               )}
-
               <h3 className="text-2xl text-[var(--service-box-typo)] dark:text-white font-bold">
                 {servicesContentBox2Title}
               </h3>
 
-              <p className="text-[var(--service-box-typo)] dark:text-white flex flex-row justify-center md:justify-start items-center">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox2Content}
               </p>
             </div>
@@ -110,7 +138,7 @@ export function ServicesVariant02({
 
           {servicesContentBox3 && (
             <div
-              className={`${alignsClass} flex flex-col items-center md:items-start text-center md:text-left dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
+              className={`${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`}
             >
               {servicesContentBox3IconShow && (
                 <ServiceIcon
@@ -122,7 +150,7 @@ export function ServicesVariant02({
                 {servicesContentBox3Title}
               </h3>
 
-              <p className="text-[var(--service-box-typo)] dark:text-white flex flex-row justify-center md:justify-start items-center">
+              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
                 {servicesContentBox3Content}
               </p>
             </div>

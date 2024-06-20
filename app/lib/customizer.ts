@@ -156,8 +156,6 @@ export const optionsService: CustomizerOptions = {
     { value: '01', label: 'Varianta 01', image: 'service/service_01' },
     { value: '02', label: 'Varianta 02', image: 'service/service_02' },
     { value: '03', label: 'Varianta 03', image: 'service/service_03' },
-    { value: '04', label: 'Varianta 04', image: 'service/service_04' },
-    { value: '05', label: 'Varianta 05', image: 'service/service_05' },
   ],
   layout: [
     { value: 'transparent', label: 'Transparent' },
@@ -166,7 +164,7 @@ export const optionsService: CustomizerOptions = {
   ],
   align: [
     { value: 'left', label: 'Left' },
-    { value: 'center', label: 'center' },
+    { value: 'center', label: 'Center' },
     { value: 'right', label: 'Right' },
   ],
   radius: [

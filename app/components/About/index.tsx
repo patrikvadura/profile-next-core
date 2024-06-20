@@ -9,6 +9,7 @@ const variantComponents = {
   '02': dynamic(() => import('@/app/components/About/Variant02').then(mod => mod.AboutVariant02)),
   '03': dynamic(() => import('@/app/components/About/Variant03').then(mod => mod.AboutVariant03)),
   '04': dynamic(() => import('@/app/components/About/Variant04').then(mod => mod.AboutVariant04)),
+  '05': dynamic(() => import('@/app/components/About/Variant05').then(mod => mod.AboutVariant05)),
 }
 
 export function About({

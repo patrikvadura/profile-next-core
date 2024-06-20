@@ -1,7 +1,7 @@
 // About
 
 export type AboutProps = {
-  variant: '01' | '02' | '03' | '04' | any
+  variant: '01' | '02' | '03' | '04' | '05' | any
   layout: 'transparent' | 'background' | 'border' | any
   align: 'left' | 'right' | 'full' | any
   order: 'asc' | 'desc' | any
@@ -26,7 +26,7 @@ export type AboutVariantProps = {
 // Hero
 
 export type HeroProps = {
-  variant: '01' | '02' | '03' | '04' | any
+  variant: '01' | '02' | '03' | '04' | '05' | any
   imageOpacity?: '100' | '80' | '50' | '30' | any
   align?: 'start' | 'center' | 'end' | any
   backgroundColor?: string | any
@@ -75,7 +75,7 @@ export type HeroVariantProps = {
 // Service
 
 export type ServiceProps = {
-  variant: '01' | '02' | '03' | '04' | any
+  variant: '01' | '02' | '03' | any
   layout: 'transparent' | 'background' | 'border' | any
   align: 'left' | 'right' | 'full' | any
   radius: 'none' | 'rounded' | any
@@ -102,6 +102,9 @@ export type ServiceProps = {
   servicesContentBox3Content?: string | undefined | any
   servicesContentBox3Icon?: string | undefined | any
   servicesContentBox3IconShow?: boolean
+  servicesContentBoxSpecial: boolean
+  servicesContentBoxSpecialTitle: string | undefined | any
+  servicesContentBoxSpecialLink: string | undefined | any
   preview?: boolean
 }
 
@@ -132,5 +135,29 @@ export type ServiceVariantProps = {
   servicesContentBox3Content?: string | undefined | any
   servicesContentBox3Icon?: string | undefined | any
   servicesContentBox3IconShow?: boolean
+  servicesContentBoxSpecial?: boolean
+  servicesContentBoxSpecialTitle?: string | undefined | any
+  servicesContentBoxSpecialLink?: string | undefined | any
+  preview?: boolean
+}
+
+export type ReferenceProps = {
+  variant: '01' | '02' | '03' | any
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  typoColor?: string | any
+  typoLgColor?: string | any
+  preview?: boolean
+}
+
+export type ReferenceVariantProps = {
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  typoColor?: string | any
+  typoLgColor?: string | any
   preview?: boolean
 }

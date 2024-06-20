@@ -1,17 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import data from '@/app/lib/dataLandingPage.json'
 import { BenefitsItems, DemoWebsiteItems } from '@/app/lib/types'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
-import DNSChecker from '@/app/components/LandingPage/DNSChecker'
-import Header from '@/app/components/LandingPage/Header'
-import { ContainerScroll } from '@/app/ui/Aceternity/container-scroll-animation'
-import { FlipWords } from '@/app/ui/Aceternity/flip-words'
-import { AuroraBackground } from '@/app/ui/Aceternity/aurora-background'
 import { DemoWebsites } from '@/app/components/LandingPage/DemoWebsites'
 import Hero from '@/app/components/LandingPage/Hero'
 

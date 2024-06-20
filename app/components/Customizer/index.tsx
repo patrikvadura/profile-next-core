@@ -332,21 +332,25 @@ export default function Customizer() {
               </div>
 
               <div className="space-y-4">
-                <OptionSelector
-                  title="Zarovnání"
-                  options={optionsAbout.align}
-                  selectedOption={about.aboutAlign}
-                  onChange={about.setAboutAlign}
-                />
+                {!['05'].includes(about.aboutVariant) && (
+                  <OptionSelector
+                    title="Zarovnání"
+                    options={optionsAbout.align}
+                    selectedOption={about.aboutAlign}
+                    onChange={about.setAboutAlign}
+                  />
+                )}
               </div>
 
               <div className="space-y-4">
-                <OptionSelector
-                  title="Pořadí"
-                  options={optionsAbout.order}
-                  selectedOption={about.aboutOrder}
-                  onChange={about.setAboutOrder}
-                />
+                {!['05'].includes(about.aboutVariant) && (
+                  <OptionSelector
+                    title="Pořadí"
+                    options={optionsAbout.order}
+                    selectedOption={about.aboutOrder}
+                    onChange={about.setAboutOrder}
+                  />
+                )}
               </div>
             </Dropdown>
 
@@ -386,18 +390,22 @@ export default function Customizer() {
                   selectedOption={service.serviceLayout}
                   onChange={service.setServiceLayout}
                 />
+
                 <OptionSelector
                   title="Zarovnání"
                   options={optionsService.align}
                   selectedOption={service.serviceAlign}
                   onChange={service.setServiceAlign}
                 />
-                <OptionSelector
-                  title="Radius"
-                  options={optionsService.radius}
-                  selectedOption={service.serviceRadius}
-                  onChange={service.setServiceRadius}
-                />
+
+                {!['02'].includes(service.serviceVariant) && (
+                  <OptionSelector
+                    title="Radius"
+                    options={optionsService.radius}
+                    selectedOption={service.serviceRadius}
+                    onChange={service.setServiceRadius}
+                  />
+                )}
               </div>
             </Dropdown>
 
@@ -798,6 +806,48 @@ export default function Customizer() {
                       </Dropdown>
                     </div>
                   </Dropdown>
+
+                  {['03'].includes(service.serviceVariant) && (
+                    <Dropdown
+                      label="Speciální box"
+                      id="contentServicesBoxSpecialToggle"
+                      checked={service.servicesContentBoxSpecial}
+                      onChange={() =>
+                        service.setServicesContentBoxSpecial(!service.servicesContentBoxSpecial)
+                      }
+                    >
+                      <div className="space-y-4">
+                        <Input
+                          type="text"
+                          value={service.servicesContentBoxSpecialTitle}
+                          onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                            service.setServicesContentBoxSpecialTitle(e.target.value)
+                          }
+                          label="Nadpis"
+                          classLabel="!text-black"
+                        />
+
+                        <Select
+                          title="Odkaz tlačítka"
+                          options={optionsHeroContent.buttonLink}
+                          selectedOption={service.servicesContentBoxSpecialLink}
+                          onChange={service.setServicesContentBoxSpecialLink}
+                        />
+
+                        {service.servicesContentBoxSpecialLink === null && (
+                          <Input
+                            type="text"
+                            value={service.servicesContentBoxSpecialCustomLink}
+                            onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
+                              service.setServicesContentBoxSpecialCustomLink(e.target.value)
+                            }
+                            label="Vlastní odkaz"
+                            classLabel="!text-black"
+                          />
+                        )}
+                      </div>
+                    </Dropdown>
+                  )}
                 </div>
               </Dropdown>
             )}
@@ -1421,11 +1471,18 @@ export default function Customizer() {
                   servicesContentBox3Content={service.servicesContentBox3Content}
                   servicesContentBox3Icon={service.servicesContentBox3Icon}
                   servicesContentBox3IconShow={service.servicesContentBox3IconShow}
+                  servicesContentBoxSpecial={service.servicesContentBoxSpecial}
+                  servicesContentBoxSpecialTitle={service.servicesContentBoxSpecialTitle}
+                  servicesContentBoxSpecialLink={
+                    service.servicesContentBoxSpecialLink === null
+                      ? service.servicesContentBoxSpecialCustomLink
+                      : service.servicesContentBoxSpecialLink
+                  }
                   preview
                 />
               )}
-              {visibility.showReference && <Reference />}
-              {visibility.showContact && <Contact />}
+              {visibility.showReference && <Reference preview />}
+              {visibility.showContact && <Contact preview />}
               <Footer />
             </div>
           </div>

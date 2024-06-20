@@ -1,12 +1,15 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
+import { AboutData } from '@/app/lib/types'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
 
 export function AboutVariant02({ layout, align, order, preview }: AboutVariantProps) {
   const classes = require('./index.module.scss')
+
+  const aboutItems: AboutData = data
 
   const layouts = {
     transparent: 'dark:bg-black',
@@ -48,7 +51,7 @@ export function AboutVariant02({ layout, align, order, preview }: AboutVariantPr
           <AnimatedTitle
             title={data.about.title}
             target="#about"
-            origin="translate-y-[100px]"
+            origin={!preview ? 'translate-y-[100px]' : null}
             className="text-[60px] md:text-[80px] leading-[1.3] text-[--about-typo] dark:text-white"
           />
 
@@ -68,17 +71,35 @@ export function AboutVariant02({ layout, align, order, preview }: AboutVariantPr
               : 'bg-[--about-background] dark:bg-black'
           } ${
             order === 'desc' ? classes.sideLeft : classes.sideRight
-          } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:px-12 py-20 md:py-12`}
+          } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:pl-12 py-20 md:py-12`}
         >
           <AnimatedDivider
             target="#about"
             transformOrigin={alignsDividerClass}
+            origin={!preview ? '' : null}
             className="bg-[--about-accent-bg] dark:bg-white h-1 w-4"
           />
 
-          <p className="mb-8 text-base font-normal text-[--about-typo] dark:text-white text-opacity-70">
-            {data.about.description}
-          </p>
+          <div className="flex flex-col space-y-8">
+            {aboutItems.about.items.map((item: any, index: any) => (
+              <div
+                key={index}
+                className={`${
+                  align === 'full' ? 'flex-col items-center' : 'flex-row items-start'
+                } flex space-x-2 w-full`}
+              >
+                <div className="text-xl text-[var(--about-typo)] dark:text-white opacity-50">
+                  {`0${index + 1}`}
+                </div>
+
+                <div className="text-[var(--about-typo)] dark:text-white space-y-2">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+
+                  <p className="text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -45,12 +45,13 @@ export function AboutVariant01({ layout, align, preview }: AboutVariantProps) {
         <AnimatedTitle
           title={data.about.title}
           target="#about"
-          origin="translate-y-[100px]"
+          origin={!preview ? 'translate-y-[100px]' : null}
           className={`max-w-screen-md text-[40px] md:text-[56px] leading-[1.3] font-bold text-[var(--about-typo)] dark:text-white`}
         />
 
         <AnimatedDivider
           target="#about"
+          origin={!preview ? '' : null}
           transformOrigin={alignsDividerClass}
           className={`bg-[var(--about-accent-bg)] dark:bg-white h-1 w-4`}
         />

@@ -58,6 +58,14 @@ interface ServiceState {
   setServicesContentBox3Icon: (value: React.SetStateAction<string>) => void
   servicesContentBox3IconShow: boolean
   setServicesContentBox3IconShow: (value: boolean) => void
+  servicesContentBoxSpecial: boolean
+  setServicesContentBoxSpecial: (value: boolean) => void
+  servicesContentBoxSpecialTitle: string | undefined | any
+  setServicesContentBoxSpecialTitle: (value: React.SetStateAction<string>) => void
+  servicesContentBoxSpecialLink: string | undefined | any
+  setServicesContentBoxSpecialLink: (value: React.SetStateAction<string>) => void
+  servicesContentBoxSpecialCustomLink: string | undefined | any
+  setServicesContentBoxSpecialCustomLink: (value: React.SetStateAction<string>) => void
 }
 
 export const useServiceState = (): ServiceState => {
@@ -83,6 +91,8 @@ export const useServiceState = (): ServiceState => {
 
   // Content
   const [servicesContentTitle, setServicesContentTitle] = useState<string>('Nabídka mých služeb')
+
+  // Box 1
   const [servicesContentBox1, setServicesContentBox1] = useState<boolean>(true)
   const [servicesContentBox1Title, setServicesContentBox1Title] = useState<string>('Úvěry')
   const [servicesContentBox1Content, setServicesContentBox1Content] = useState<string>(
@@ -92,6 +102,8 @@ export const useServiceState = (): ServiceState => {
     'streamline:money-bank-institution-money-saving-bank-payment-finance',
   )
   const [servicesContentBox1IconShow, setServicesContentBox1IconShow] = useState<boolean>(true)
+
+  // Box 2
   const [servicesContentBox2, setServicesContentBox2] = useState<boolean>(true)
   const [servicesContentBox2Title, setServicesContentBox2Title] = useState<string>('Investice')
   const [servicesContentBox2Content, setServicesContentBox2Content] = useState<string>(
@@ -101,6 +113,8 @@ export const useServiceState = (): ServiceState => {
     'material-symbols:finance-mode-rounded',
   )
   const [servicesContentBox2IconShow, setServicesContentBox2IconShow] = useState<boolean>(true)
+
+  // Box 3
   const [servicesContentBox3, setServicesContentBox3] = useState<boolean>(true)
   const [servicesContentBox3Title, setServicesContentBox3Title] = useState<string>('Pojištění')
   const [servicesContentBox3Content, setServicesContentBox3Content] = useState<string>(
@@ -110,6 +124,16 @@ export const useServiceState = (): ServiceState => {
     'material-symbols:ecg-heart-outline-sharp',
   )
   const [servicesContentBox3IconShow, setServicesContentBox3IconShow] = useState<boolean>(true)
+
+  // Box - special
+  const [servicesContentBoxSpecial, setServicesContentBoxSpecial] = useState<boolean>(true)
+  const [servicesContentBoxSpecialTitle, setServicesContentBoxSpecialTitle] = useState<string>(
+    'Máte zájem o nezávaznou poptávku?',
+  )
+  const [servicesContentBoxSpecialLink, setServicesContentBoxSpecialLink] =
+    useState<string>('#contact')
+  const [servicesContentBoxSpecialCustomLink, setServicesContentBoxSpecialCustomLink] =
+    useState<string>('#contact')
 
   return {
     serviceVariant,
@@ -166,5 +190,13 @@ export const useServiceState = (): ServiceState => {
     setServicesContentBox3Icon,
     servicesContentBox3IconShow,
     setServicesContentBox3IconShow,
+    servicesContentBoxSpecial,
+    setServicesContentBoxSpecial,
+    servicesContentBoxSpecialTitle,
+    setServicesContentBoxSpecialTitle,
+    servicesContentBoxSpecialLink,
+    setServicesContentBoxSpecialLink,
+    servicesContentBoxSpecialCustomLink,
+    setServicesContentBoxSpecialCustomLink,
   }
 }

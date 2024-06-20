@@ -1,17 +1,17 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
-import { AboutData } from '@/app/lib/types'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
+import { AboutData } from '@/app/lib/types'
 
-export function AboutVariant04({ layout, align, preview }: AboutVariantProps) {
-  const aboutItems: AboutData = data
+export function AboutVariant04({ layout, align, order, preview }: AboutVariantProps) {
+  const classes = require('./index.module.scss')
 
   const layouts = {
     transparent: 'dark:bg-black',
-    background: 'bg-[var(--about-background)] dark:bg-black',
+    background: 'bg-[--about-background] dark:bg-black',
     border: 'dark:bg-black',
   }
 
@@ -37,59 +37,50 @@ export function AboutVariant04({ layout, align, preview }: AboutVariantProps) {
   const alignsDividerClass = alignsDivider[align]
 
   return (
-    <div id="about" className={`${layoutsClass} md:pt-12 lg:pt-24 md:px-8 lg:px-24`}>
+    <div id="about" className={layoutsClass}>
       <div
         className={`${
-          layout === 'border'
-            ? `border-4 border-[var(--about-background)]`
-            : `bg-[var(--about-background)] dark:bg-black`
-        } ${alignsClass} lg:min-h-[650px] flex flex-col justify-center space-y-16 px-8 md:px-16 py-12`}
+          order === 'desc' ? 'flex-col-reverse md:flex-row-reverse' : 'flex-col md:flex-row'
+        } lg:min-h-screen flex flex-wrap px-0 md:px-16`}
       >
-        <div className="space-y-8">
+        <div
+          className={`${alignsClass} md:basis-7/12 flex flex-col justify-center space-y-8 px-8 md:px-16 py-20 md:py-12`}
+        >
           <AnimatedTitle
             title={data.about.title}
             target="#about"
-            origin="translate-y-[100px]"
-            className={`text-[40px] md:text-[56px] leading-[1.3] font-bold text-[var(--about-typo)] dark:text-white`}
+            origin={!preview ? 'translate-y-[100px]' : null}
+            className="text-[60px] md:text-[80px] leading-[1.3] text-[--about-typo] dark:text-white"
           />
 
+          <Button
+            asLink
+            href={data.about.cta.link}
+            className="mt-12 bg-[--about-accent-bg] dark:bg-white text-[--about-accent-fg] dark:text-black"
+          >
+            {data.about.cta.title}
+          </Button>
+        </div>
+
+        <div
+          className={`${
+            layout === 'border'
+              ? 'border-l-4 border-[--about-background]'
+              : 'bg-[--about-background] dark:bg-black'
+          } ${
+            order === 'desc' ? classes.sideLeft : classes.sideRight
+          } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:px-12 py-20 md:py-12`}
+        >
           <AnimatedDivider
             target="#about"
             transformOrigin={alignsDividerClass}
-            className={`bg-[var(--about-accent-bg)] dark:bg-white h-1 w-4`}
+            origin={!preview ? '' : null}
+            className="bg-[--about-accent-bg] dark:bg-white h-1 w-4"
           />
 
-          <p
-            className={`mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70`}
-          >
+          <p className="mb-8 text-base font-normal text-[--about-typo] dark:text-white text-opacity-70">
             {data.about.description}
           </p>
-
-          <div className="mt-12 space-x-4">
-            <Button
-              asLink
-              href={data.about.cta.link}
-              className={`bg-[var(--about-accent-bg)] dark:bg-white text-[var(--about-accent-fg)] dark:text-black`}
-            >
-              {data.about.cta.title}
-            </Button>
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row flex-wrap">
-          {aboutItems.about.items.map((item: any, index: any) => (
-            <div key={index} className="md:basis-1/3 flex flex-row items-start space-x-2">
-              <div className="text-xl text-[var(--about-typo)] dark:text-white opacity-50">
-                {`0${index + 1}`}
-              </div>
-
-              <div className="text-[var(--about-typo)] dark:text-white space-y-2">
-                <h3 className="text-xl font-bold">{item.title}</h3>
-
-                <p className="text-sm">{item.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
