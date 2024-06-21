@@ -53,6 +53,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import ModalView from '@/app/components/Customizer/ModalView'
 import ActionBar from '@/app/components/Customizer/ActionBar'
+import BreakpointSwitcher from '@/app/components/Customizer/Breakpoint/Switcher'
+import { useBreakpoint } from '@/app/components/Customizer/Breakpoint/Context'
 
 const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
@@ -67,6 +69,7 @@ export default function Customizer() {
   const { totalPrice, totalTime } = calculatePreviewState(visibility)
 
   const { domain, availability } = useDomain()
+  const { breakpoint } = useBreakpoint()
 
   const stateData = {
     ...hero,
@@ -95,26 +98,6 @@ export default function Customizer() {
 
   const toggleModalVisibility = () => {
     setIsModalVisible(!isModalVisible)
-  }
-
-  const breakpoints = [
-    {
-      size: 'sm',
-      icon: 'tabler:device-mobile',
-    },
-    {
-      size: 'md',
-      icon: 'tabler:device-ipad-horizontal',
-    },
-    {
-      size: 'lg',
-      icon: 'tabler:device-laptop',
-    },
-  ]
-
-  const cycleBreakpoint = () => {
-    const nextIndex = (other.currentBreakpoint + 1) % breakpoints.length
-    other.setCurrentBreakpoint(nextIndex)
   }
 
   const steps = ['Vzhled', 'Obsah', 'Doména', 'Nastavení', 'Shrnutí']
@@ -1411,7 +1394,8 @@ export default function Customizer() {
               {/*  style={{ border: 'none' }}*/}
               {/*  title="Preview"*/}
               {/*></iframe>*/}
-              <Header />
+              <Header breakpoint={breakpoint} preview />
+
               {visibility.showHero && (
                 <Hero
                   variant={hero.heroVariant}
@@ -1446,6 +1430,7 @@ export default function Customizer() {
                   }
                   imageMainWidth={hero.imageMainWidth}
                   imageMainHeight={hero.imageMainHeight}
+                  breakpoint={breakpoint}
                   preview
                 />
               )}
@@ -1552,12 +1537,10 @@ export default function Customizer() {
             <ThemeSwitcher previewMode />
           </ActionWrapper>
 
-          <ActionWrapper onClick={cycleBreakpoint}>
-            <Icon
-              icon={breakpoints[other.currentBreakpoint].icon}
-              className="text-opacity-100 text-primary hover:text-opacity-100 text-2xl"
-            />
-          </ActionWrapper>
+          <BreakpointSwitcher
+            state={other.currentBreakpoint}
+            setState={other.setCurrentBreakpoint}
+          />
 
           <ActionWrapper className="!font-bold">
             <CircularProgressbar

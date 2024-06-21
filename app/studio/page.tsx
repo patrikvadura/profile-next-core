@@ -1,11 +1,11 @@
 import React from 'react'
 import Customizer from '@/app/components/Customizer'
-import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
+import Providers from '@/app/studio/providers'
 
 export default function Preview() {
   return (
-    <DomainProvider>
+    <Providers>
       <Customizer />
-    </DomainProvider>
+    </Providers>
   )
 }

@@ -31,6 +31,7 @@ export function Hero({
   imageMainUrl,
   imageMainWidth,
   imageMainHeight,
+  breakpoint,
   preview,
 }: HeroProps) {
   // @ts-ignore
@@ -60,6 +61,7 @@ export function Hero({
         imageMainUrl={imageMainUrl}
         imageMainWidth={imageMainWidth}
         imageMainHeight={imageMainHeight}
+        breakpoint={breakpoint}
         preview={preview}
       />
     </>

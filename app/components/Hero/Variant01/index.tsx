@@ -9,6 +9,7 @@ import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedSubtitle } from '@/app/ui/Animations/Subtitle'
 import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 export function HeroVariant01({
   imageOpacity,
@@ -26,6 +27,7 @@ export function HeroVariant01({
   imageMainUrl,
   imageMainWidth,
   imageMainHeight,
+  breakpoint,
 }: HeroVariantProps) {
   const hero = useHeroState()
 
@@ -65,8 +67,14 @@ export function HeroVariant01({
         alt="Hero"
       />
 
-      <div className={`container flex flex-col items-start py-32 md:pt-0`}>
-        <div className="p-8 xl:p-0 z-20">
+      <div
+        className={getBreakpointStyles(
+          'container flex flex-col items-start py-32 md:pt-0',
+          breakpoint,
+          preview,
+        )}
+      >
+        <div className={getBreakpointStyles('p-8 xl:p-0 z-20', breakpoint, preview)}>
           <div className="max-w-screen-md text-left">
             <AnimatedSubtitle
               title={contentSubtitle || data.hero.subtitle}
@@ -79,7 +87,11 @@ export function HeroVariant01({
               title={contentTitle || data.hero.title}
               target="body"
               origin="translate-y-[100px]"
-              className="text-[40px] md:text-[70px] leading-[1.5] text-[var(--hero-typo)] dark:text-white font-bold"
+              className={getBreakpointStyles(
+                'text-[40px] md:text-[70px] leading-[1.5] text-[var(--hero-typo)] dark:text-white font-bold',
+                breakpoint,
+                preview,
+              )}
             />
 
             <div className="mt-12 space-x-4">

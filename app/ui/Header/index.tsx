@@ -5,28 +5,43 @@ import Link from 'next/link'
 import Logo from '@/app/ui/Logo'
 import { MobileNav } from '@/app/ui/Header/MobileNav'
 import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
-import classes from './index.module.scss'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export default function Header() {
+interface Props {
+  breakpoint?: string
+  preview?: boolean
+}
+
+export default function Header({ breakpoint = 'lg', preview = false }: Props) {
   const menu: MenuItems[] = data.menuItems
 
   return (
-    <div className={classes.navbar}>
+    <div
+      className={getBreakpointStyles(
+        'fixed w-full py-8 px-4 md:px-0 transition duration-300 ease-in-out z-50 bg-header-background',
+        breakpoint,
+        preview,
+      )}
+    >
       <div className="container flex flex-row justify-between items-center">
         <Logo />
 
         <div className="flex flex-row space-x-4">
-          <div className="hidden sm:flex gap-8">
+          <div className={getBreakpointStyles('gap-8 hidden md:flex lg:flex', breakpoint, preview)}>
             {menu.map((item, index) => (
-              <Link key={index} href={item.link ?? '#'} className={classes.link}>
+              <Link
+                key={index}
+                href={item.link ?? '#'}
+                className="text-header-menuItem dark:text-white hover:brightness-50 font-bold"
+              >
                 {item.title}
               </Link>
             ))}
           </div>
 
-          <MobileNav menuItems={menu} />
+          <MobileNav menuItems={menu} breakpoint={breakpoint} preview={preview} />
 
-          <div className="hidden md:inline">
+          <div className={getBreakpointStyles('hidden md:inline', breakpoint, preview)}>
             <ThemeSwitcher />
           </div>
         </div>

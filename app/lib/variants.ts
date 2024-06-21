@@ -9,6 +9,7 @@ export type AboutProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -20,6 +21,7 @@ export type AboutVariantProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -46,6 +48,7 @@ export type HeroProps = {
   imageMainUrl?: string | any
   imageMainWidth?: string | any
   imageMainHeight?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -69,6 +72,7 @@ export type HeroVariantProps = {
   imageMainUrl?: string | any
   imageMainWidth?: string | any
   imageMainHeight?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -105,6 +109,7 @@ export type ServiceProps = {
   servicesContentBoxSpecial: boolean
   servicesContentBoxSpecialTitle: string | undefined | any
   servicesContentBoxSpecialLink: string | undefined | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -138,6 +143,7 @@ export type ServiceVariantProps = {
   servicesContentBoxSpecial?: boolean
   servicesContentBoxSpecialTitle?: string | undefined | any
   servicesContentBoxSpecialLink?: string | undefined | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -149,6 +155,7 @@ export type ReferenceProps = {
   accentBgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
 
@@ -159,5 +166,6 @@ export type ReferenceVariantProps = {
   accentBgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  breakpoint?: string | any | undefined
   preview?: boolean
 }
