@@ -53,12 +53,20 @@ export function HeroVariant01({
   return (
     <div
       id="hero"
-      className={`${alignsClass} w-full relative md:h-screen lg:h-[950px] flex flex-col items-center overflow-hidden bg-[var(--hero-background)] dark:bg-black`}
+      className={getBreakpointStyles(
+        `${alignsClass} w-full relative md:h-screen lg:h-[950px] flex flex-col items-center overflow-hidden bg-[var(--hero-background)] dark:bg-black`,
+        breakpoint,
+        preview,
+      )}
     >
       <Image
         // @ts-ignore
         src={imageMainUrl}
-        className={`${opacityClass} absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] translate-x-[60px] z-0`}
+        className={getBreakpointStyles(
+          `${opacityClass} absolute right-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[1050px] lg:translate-y-[120px] md:translate-x-[60px] z-0`,
+          breakpoint,
+          preview,
+        )}
         width={imageMainWidth || 1050}
         height={imageMainHeight || 1050}
         quality={75}
@@ -75,12 +83,16 @@ export function HeroVariant01({
         )}
       >
         <div className={getBreakpointStyles('p-8 xl:p-0 z-20', breakpoint, preview)}>
-          <div className="max-w-screen-md text-left">
+          <div className={getBreakpointStyles('max-w-screen-md text-left', breakpoint, preview)}>
             <AnimatedSubtitle
               title={contentSubtitle || data.hero.subtitle}
               target="body"
               origin="translate-y-[50px]"
-              className="mb-8 text-xl font-normal tracking-[.3rem] text-[var(--hero-typo)] dark:text-white"
+              className={getBreakpointStyles(
+                'mb-8 text-xl font-normal tracking-[.3rem] text-[var(--hero-typo)] dark:text-white',
+                breakpoint,
+                preview,
+              )}
             />
 
             <AnimatedTitle
@@ -94,12 +106,16 @@ export function HeroVariant01({
               )}
             />
 
-            <div className="mt-12 space-x-4">
+            <div className={getBreakpointStyles('mt-12 space-x-4', breakpoint, preview)}>
               {contentButtonPrimary && (
                 <Button
                   asLink
                   href={contentButtonPrimaryLink || data.hero.cta.primary.link}
-                  className="bg-[var(--hero-accent-bg)] dark:bg-white text-[var(--hero-accent-fg)] dark:text-black"
+                  className={getBreakpointStyles(
+                    'bg-[var(--hero-accent-bg)] dark:bg-white text-[var(--hero-accent-fg)] dark:text-black',
+                    breakpoint,
+                    preview,
+                  )}
                 >
                   {contentButtonPrimaryText || data.hero.cta.primary.title}
 
@@ -111,7 +127,11 @@ export function HeroVariant01({
                 <Button
                   asLink
                   href={contentButtonSecondaryLink || data.hero.cta.secondary.link}
-                  className="bg-transparent text-[var(--hero-typo)] dark:text-white hover:underline"
+                  className={getBreakpointStyles(
+                    'bg-transparent text-[var(--hero-typo)] dark:text-white hover:underline',
+                    breakpoint,
+                    preview,
+                  )}
                 >
                   {contentButtonSecondaryText || data.hero.cta.secondary.title}
                 </Button>
@@ -122,7 +142,11 @@ export function HeroVariant01({
               title={contentLargeTitle || data.hero.largeTitle}
               target="body"
               origin={!preview ? '-translate-x-full' : null}
-              className="absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white"
+              className={getBreakpointStyles(
+                'absolute -left-[20px] bottom-0 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white',
+                breakpoint,
+                preview,
+              )}
             />
           </div>
         </div>

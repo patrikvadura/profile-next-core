@@ -8,6 +8,8 @@ const variantComponents = {
   '01': dynamic(() => import('@/app/components/Hero/Variant01').then(mod => mod.HeroVariant01)),
   '02': dynamic(() => import('@/app/components/Hero/Variant02').then(mod => mod.HeroVariant02)),
   '03': dynamic(() => import('@/app/components/Hero/Variant03').then(mod => mod.HeroVariant03)),
+  '04': dynamic(() => import('@/app/components/Hero/Variant04').then(mod => mod.HeroVariant04)),
+  '05': dynamic(() => import('@/app/components/Hero/Variant05').then(mod => mod.HeroVariant05)),
 }
 
 export function Hero({
@@ -31,6 +33,9 @@ export function Hero({
   imageMainUrl,
   imageMainWidth,
   imageMainHeight,
+  imageBackgroundUrl,
+  imageBackgroundHeight,
+  imageBackgroundWidth,
   breakpoint,
   preview,
 }: HeroProps) {
@@ -61,6 +66,9 @@ export function Hero({
         imageMainUrl={imageMainUrl}
         imageMainWidth={imageMainWidth}
         imageMainHeight={imageMainHeight}
+        imageBackgroundUrl={imageBackgroundUrl}
+        imageBackgroundHeight={imageBackgroundHeight}
+        imageBackgroundWidth={imageBackgroundWidth}
         breakpoint={breakpoint}
         preview={preview}
       />

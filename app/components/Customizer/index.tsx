@@ -55,6 +55,7 @@ import ModalView from '@/app/components/Customizer/ModalView'
 import ActionBar from '@/app/components/Customizer/ActionBar'
 import BreakpointSwitcher from '@/app/components/Customizer/Breakpoint/Switcher'
 import { useBreakpoint } from '@/app/components/Customizer/Breakpoint/Context'
+import ColorUpdaterHero from '@/app/components/Customizer/ColorUpdater/Hero'
 
 const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
@@ -156,12 +157,6 @@ export default function Customizer() {
                   secondaryGlobalColor={other.setGlobalSecondary}
                   accentGlobalColor={other.setGlobalPrimary}
                 />
-
-                <ColorUpdaterGlobal
-                  primaryGlobalColor={other.globalPrimary}
-                  secondaryGlobalColor={other.globalSecondary}
-                  accentGlobalColor={other.globalAccent}
-                />
               </div>
             </Dropdown>
 
@@ -254,12 +249,14 @@ export default function Customizer() {
                   />
                 )}
 
-                <OptionSelector
-                  title="Zarovnání"
-                  options={optionsHero.align}
-                  selectedOption={hero.heroAlign}
-                  onChange={hero.setHeroAlign}
-                />
+                {!['05'].includes(hero.heroVariant) && (
+                  <OptionSelector
+                    title="Zarovnání"
+                    options={optionsHero.align}
+                    selectedOption={hero.heroAlign}
+                    onChange={hero.setHeroAlign}
+                  />
+                )}
               </div>
             </Dropdown>
 
@@ -1387,13 +1384,12 @@ export default function Customizer() {
                 overflow: 'scroll',
               }}
             >
-              {/*<iframe*/}
-              {/*  src="/preview"*/}
-              {/*  width="100%"*/}
-              {/*  height="100%"*/}
-              {/*  style={{ border: 'none' }}*/}
-              {/*  title="Preview"*/}
-              {/*></iframe>*/}
+              <ColorUpdaterGlobal
+                primaryGlobalColor={other.globalPrimary}
+                secondaryGlobalColor={other.globalSecondary}
+                accentGlobalColor={other.globalAccent}
+              />
+
               <Header breakpoint={breakpoint} preview />
 
               {visibility.showHero && (
@@ -1430,6 +1426,9 @@ export default function Customizer() {
                   }
                   imageMainWidth={hero.imageMainWidth}
                   imageMainHeight={hero.imageMainHeight}
+                  imageBackgroundUrl={hero.imageBackgroundUrl}
+                  imageBackgroundWidth={hero.imageBackgroundWidth}
+                  imageBackgroundHeight={hero.imageBackgroundHeight}
                   breakpoint={breakpoint}
                   preview
                 />
@@ -1444,6 +1443,7 @@ export default function Customizer() {
                   accentBgColor={about.aboutAccentBg}
                   accentFgColor={about.aboutAccentFg}
                   typoColor={about.aboutTypo}
+                  breakpoint={breakpoint}
                   preview
                 />
               )}
@@ -1499,7 +1499,7 @@ export default function Customizer() {
                 />
               )}
               {visibility.showContact && <Contact />}
-              <Footer />
+              <Footer breakpoint={breakpoint} preview />
             </div>
           </div>
         </div>

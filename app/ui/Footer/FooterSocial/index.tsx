@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react'
 import Link from 'next/link'
 import { SocialItem, IconComponents } from '@/app/lib/types'
 import { Facebook, Instagram } from '@/app/ui/Icons/Social'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 const LazyCookieConsentComponent = lazy(() =>
   import('@/app/components/CookieConsent').then(module => ({
@@ -15,9 +16,16 @@ const socialIcons: IconComponents = {
   Instagram,
 }
 
-export default function FooterSocial() {
+interface Props {
+  breakpoint?: string
+  preview?: boolean
+}
+
+export default function FooterSocial({ breakpoint = 'lg', preview = false }: Props) {
   return (
-    <div className="flex flex-row items-center space-x-4">
+    <div
+      className={getBreakpointStyles('flex flex-row items-center space-x-4', breakpoint, preview)}
+    >
       {data.profile.cookie ? (
         <Suspense fallback={<div>Loading...</div>}>
           <LazyCookieConsentComponent />
@@ -30,9 +38,21 @@ export default function FooterSocial() {
         return (
           <Link key={index} href={item.link} aria-label={item.label}>
             {IconComponent ? (
-              <IconComponent className="fill-black dark:fill-white opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out" />
+              <IconComponent
+                className={getBreakpointStyles(
+                  'fill-black dark:fill-white opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out',
+                  breakpoint,
+                  preview,
+                )}
+              />
             ) : (
-              <div className="fill-black dark:fill-white opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out">
+              <div
+                className={getBreakpointStyles(
+                  'fill-black dark:fill-white opacity-75 hover:opacity-100 text-2xl transition duration-300 ease-in-out',
+                  breakpoint,
+                  preview,
+                )}
+              >
                 {item.label}
               </div>
             )}

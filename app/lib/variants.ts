@@ -48,6 +48,12 @@ export type HeroProps = {
   imageMainUrl?: string | any
   imageMainWidth?: string | any
   imageMainHeight?: string | any
+  imageBackgroundUrl?: string | undefined | any
+  setImageBackgroundUrl?: (value: React.SetStateAction<string | undefined>) => void
+  imageBackgroundHeight?: number | undefined | any
+  setImageBackgroundHeight?: (value: React.SetStateAction<number | undefined>) => void
+  imageBackgroundWidth?: number | undefined | any
+  setImageBackgroundWidth?: (value: React.SetStateAction<number | undefined>) => void
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -72,6 +78,12 @@ export type HeroVariantProps = {
   imageMainUrl?: string | any
   imageMainWidth?: string | any
   imageMainHeight?: string | any
+  imageBackgroundUrl?: string | undefined | any
+  setImageBackgroundUrl?: (value: React.SetStateAction<string | undefined>) => void
+  imageBackgroundHeight?: number | undefined | any
+  setImageBackgroundHeight?: (value: React.SetStateAction<number | undefined>) => void
+  imageBackgroundWidth?: number | undefined | any
+  setImageBackgroundWidth?: (value: React.SetStateAction<number | undefined>) => void
   breakpoint?: string | any | undefined
   preview?: boolean
 }

@@ -23,14 +23,14 @@ export const getBreakpointStyles = (
 
   const finalClassSet = new Set<string>()
 
-  // Add base classes
+  // Add base classes and dark classes
   classArray.forEach(cls => {
-    if (!cls.includes(':')) {
+    if (!cls.includes(':') || cls.startsWith('dark:')) {
       finalClassSet.add(cls)
     }
   })
 
-  console.log(`Base classes: ${Array.from(finalClassSet).join(' ')}`)
+  console.log(`Base and dark classes: ${Array.from(finalClassSet).join(' ')}`)
 
   // Add classes for relevant breakpoints, ensuring correct precedence
   relevantBreakpoints.forEach(bp => {

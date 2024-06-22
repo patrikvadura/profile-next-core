@@ -30,7 +30,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
       <button
         onClick={toggleMenu}
         aria-label="Mobilní navigace"
-        className="block bg-transparent text-[24px] text-header-accent dark:text-white no-underline cursor-pointer z-[999]"
+        className="block bg-transparent text-[24px] text-[var(--global-secondary)] dark:text-white no-underline cursor-pointer z-[999]"
       >
         {isOpen ? <Close /> : <Menu />}
       </button>
@@ -41,7 +41,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             <Link
               key={index}
               href={item.link ?? '#'}
-              className="block py-2 text-header-menuItem dark:text-white text-2xl font-bold no-underline"
+              className="block py-2 text-[var(--global-secondary)] dark:text-white text-2xl font-bold no-underline"
             >
               {item.title}
             </Link>

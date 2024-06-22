@@ -5,8 +5,9 @@ import { AboutData } from '@/app/lib/types'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function AboutVariant02({ layout, align, order, preview }: AboutVariantProps) {
+export function AboutVariant02({ layout, align, order, breakpoint, preview }: AboutVariantProps) {
   const classes = require('./index.module.scss')
 
   const aboutItems: AboutData = data
@@ -41,37 +42,57 @@ export function AboutVariant02({ layout, align, order, preview }: AboutVariantPr
   return (
     <div id="about" className={layoutsClass}>
       <div
-        className={`${
-          order === 'desc' ? 'flex-col-reverse md:flex-row-reverse' : 'flex-col md:flex-row'
-        } lg:min-h-screen flex flex-wrap px-0 md:px-16`}
+        className={getBreakpointStyles(
+          `${
+            order === 'desc' ? 'flex-col-reverse md:flex-row-reverse' : 'flex-col md:flex-row'
+          } lg:min-h-screen flex flex-wrap px-0 lg:px-16`,
+          breakpoint,
+          preview,
+        )}
       >
         <div
-          className={`${alignsClass} md:basis-7/12 flex flex-col justify-center space-y-8 px-8 md:px-16 py-20 md:py-12`}
+          className={getBreakpointStyles(
+            `${alignsClass} md:basis-7/12 flex flex-col justify-center space-y-8 px-8 md:px-16 py-20 md:py-24 lg:py-12`,
+            breakpoint,
+            preview,
+          )}
         >
           <AnimatedTitle
             title={data.about.title}
             target="#about"
             origin={!preview ? 'translate-y-[100px]' : null}
-            className="text-[60px] md:text-[80px] leading-[1.3] text-[--about-typo] dark:text-white"
+            className={getBreakpointStyles(
+              'text-[60px] lg:text-[80px] leading-[1.3] text-[--about-typo] dark:text-white',
+              breakpoint,
+              preview,
+            )}
           />
 
           <Button
             asLink
             href={data.about.cta.link}
-            className="mt-12 bg-[--about-accent-bg] dark:bg-white text-[--about-accent-fg] dark:text-black"
+            className={getBreakpointStyles(
+              'mt-12 bg-[--about-accent-bg] dark:bg-white text-[--about-accent-fg] dark:text-black',
+              breakpoint,
+              preview,
+            )}
           >
             {data.about.cta.title}
           </Button>
         </div>
 
         <div
-          className={`${
-            layout === 'border'
-              ? 'border-l-4 border-[--about-background]'
-              : 'bg-[--about-background] dark:bg-black'
-          } ${
-            order === 'desc' ? classes.sideLeft : classes.sideRight
-          } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 md:pl-12 py-20 md:py-12`}
+          className={getBreakpointStyles(
+            `${
+              layout === 'border'
+                ? 'border-l-4 border-[--about-background]'
+                : 'bg-[--about-background] dark:bg-black'
+            } ${
+              order === 'desc' ? classes.sideLeft : classes.sideRight
+            } ${alignsClass} shadow-[--about-background] dark:shadow-black md:basis-5/12 flex flex-col justify-center space-y-8 px-8 lg:pl-12 py-20 md:py-12`,
+            breakpoint,
+            preview,
+          )}
         >
           <AnimatedDivider
             target="#about"
@@ -84,15 +105,31 @@ export function AboutVariant02({ layout, align, order, preview }: AboutVariantPr
             {aboutItems.about.items.map((item: any, index: any) => (
               <div
                 key={index}
-                className={`${
-                  align === 'full' ? 'flex-col items-center' : 'flex-row items-start'
-                } flex space-x-2 w-full`}
+                className={getBreakpointStyles(
+                  `${
+                    align === 'full' ? 'flex-col items-center' : 'flex-row items-start'
+                  } flex space-x-2 w-full`,
+                  breakpoint,
+                  preview,
+                )}
               >
-                <div className="text-xl text-[var(--about-typo)] dark:text-white opacity-50">
+                <div
+                  className={getBreakpointStyles(
+                    'text-xl text-[var(--about-typo)] dark:text-white opacity-50',
+                    breakpoint,
+                    preview,
+                  )}
+                >
                   {`0${index + 1}`}
                 </div>
 
-                <div className="text-[var(--about-typo)] dark:text-white space-y-2">
+                <div
+                  className={getBreakpointStyles(
+                    'text-[var(--about-typo)] dark:text-white space-y-2',
+                    breakpoint,
+                    preview,
+                  )}
+                >
                   <h3 className="text-xl font-bold">{item.title}</h3>
 
                   <p className="text-sm">{item.description}</p>

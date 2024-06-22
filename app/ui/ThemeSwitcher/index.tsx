@@ -38,7 +38,7 @@ const ThemeSwitcher = ({ previewMode }: ThemeSwitcherProps) => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)
     localStorage.setItem('theme', newTheme)
-    window.dispatchEvent(new Event('storage')) // Vyvolání události `storage` pro synchronizaci
+    window.dispatchEvent(new Event('storage'))
   }
 
   return (
@@ -46,7 +46,7 @@ const ThemeSwitcher = ({ previewMode }: ThemeSwitcherProps) => {
       {theme === 'dark' ? (
         <ThemeLight size={20} className={`${previewMode ? '' : 'text-white'}`} />
       ) : (
-        <ThemeDark size={20} />
+        <ThemeDark size={20} className={`${previewMode ? '' : 'text-[var(--global-secondary)]'}`} />
       )}
     </button>
   )

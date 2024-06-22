@@ -45,6 +45,12 @@ interface HeroState {
   setImageMainHeight: (value: React.SetStateAction<number | undefined>) => void
   imageMainWidth: number | undefined | any
   setImageMainWidth: (value: React.SetStateAction<number | undefined>) => void
+  imageBackgroundUrl: string | undefined | any
+  setImageBackgroundUrl: (value: React.SetStateAction<string | undefined>) => void
+  imageBackgroundHeight: number | undefined | any
+  setImageBackgroundHeight: (value: React.SetStateAction<number | undefined>) => void
+  imageBackgroundWidth: number | undefined | any
+  setImageBackgroundWidth: (value: React.SetStateAction<number | undefined>) => void
 }
 
 export const useHeroState = (): HeroState => {
@@ -90,6 +96,13 @@ export const useHeroState = (): HeroState => {
   const [imageMainHeight, setImageMainHeight] = useState<number | undefined>(undefined)
   const [imageMainWidth, setImageMainWidth] = useState<number | undefined>(undefined)
 
+  // Image - background
+  const [imageBackgroundUrl, setImageBackgroundUrl] = useState<string | undefined>(
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/hero_background_image.webp',
+  )
+  const [imageBackgroundHeight, setImageBackgroundHeight] = useState<number | undefined>(undefined)
+  const [imageBackgroundWidth, setImageBackgroundWidth] = useState<number | undefined>(undefined)
+
   return {
     heroVariant,
     setHeroVariant,
@@ -133,5 +146,11 @@ export const useHeroState = (): HeroState => {
     setImageMainHeight,
     imageMainWidth,
     setImageMainWidth,
+    imageBackgroundUrl,
+    setImageBackgroundUrl,
+    imageBackgroundHeight,
+    setImageBackgroundHeight,
+    imageBackgroundWidth,
+    setImageBackgroundWidth,
   }
 }

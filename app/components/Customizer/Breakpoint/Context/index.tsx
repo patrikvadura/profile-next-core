@@ -10,7 +10,7 @@ interface BreakpointContextProps {
 const BreakpointContext = createContext<BreakpointContextProps | undefined>(undefined)
 
 export const BreakpointProvider = ({ children }: { children: ReactNode }) => {
-  const [breakpoint, setBreakpoint] = useState<string>('lg')
+  const [breakpoint, setBreakpoint] = useState<string>('xl')
 
   const changeBreakpoint = (bp: string) => {
     setBreakpoint(bp)

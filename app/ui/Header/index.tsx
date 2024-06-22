@@ -18,13 +18,13 @@ export default function Header({ breakpoint = 'lg', preview = false }: Props) {
   return (
     <div
       className={getBreakpointStyles(
-        'fixed w-full py-8 px-4 md:px-0 transition duration-300 ease-in-out z-50 bg-header-background',
+        'fixed w-full py-8 px-4 md:px-8 xl:px-0 bg-white dark:bg-black transition duration-300 ease-in-out z-50',
         breakpoint,
         preview,
       )}
     >
       <div className="container flex flex-row justify-between items-center">
-        <Logo />
+        <Logo breakpoint={breakpoint} preview={preview} />
 
         <div className="flex flex-row space-x-4">
           <div className={getBreakpointStyles('gap-8 hidden md:flex lg:flex', breakpoint, preview)}>
@@ -32,7 +32,7 @@ export default function Header({ breakpoint = 'lg', preview = false }: Props) {
               <Link
                 key={index}
                 href={item.link ?? '#'}
-                className="text-header-menuItem dark:text-white hover:brightness-50 font-bold"
+                className="text-[var(--global-secondary)] dark:text-white hover:brightness-50 font-bold"
               >
                 {item.title}
               </Link>

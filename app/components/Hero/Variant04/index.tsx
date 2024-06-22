@@ -6,15 +6,14 @@ import Button from '@/app/ui/Button'
 import { ArrowRight } from '@/app/ui/Icons/Arrow/Right'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedSubtitle } from '@/app/ui/Animations/Subtitle'
-import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function HeroVariant03({
+export function HeroVariant04({
   align,
+  imageOpacity,
   preview,
   contentTitle,
   contentSubtitle,
-  contentLargeTitle,
   contentButtonPrimary,
   contentButtonPrimaryText,
   contentButtonPrimaryLink,
@@ -24,8 +23,21 @@ export function HeroVariant03({
   imageMainUrl,
   imageMainWidth,
   imageMainHeight,
+  imageBackgroundUrl,
+  imageBackgroundHeight,
+  imageBackgroundWidth,
   breakpoint,
 }: HeroVariantProps) {
+  const opacityOptions = {
+    '100': 'opacity-100',
+    '80': 'opacity-80',
+    '50': 'opacity-50',
+    '30': 'opacity-30',
+  }
+
+  // @ts-ignore
+  const opacityClass = opacityOptions[imageOpacity]
+
   const aligns = {
     start: 'justify-start md:pt-40',
     center: 'justify-center md:pt-12',
@@ -44,24 +56,29 @@ export function HeroVariant03({
         preview,
       )}
     >
-      <AnimatedLargeTitle
-        title={contentLargeTitle || data.hero.largeTitle}
-        target="body"
-        origin={!preview ? 'translate-x-full' : null}
-        className={getBreakpointStyles(
-          'hidden md:flex verticalText absolute rotate-180 right-[14rem] -bottom-[2rem] z-10 text-[300px] leading-[0] font-bold text-[var(--hero-typo-lg)] dark:text-white',
-          breakpoint,
-          preview,
-        )}
-      />
-
       <div
         className={getBreakpointStyles(
-          `${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-gradient-to-r from-[var(--hero-background)] dark:from-black to-white dark:to-black from-100% md:from-70% to-100% md:to-70%`,
+          `${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-[var(--hero-background)] dark:black`,
           breakpoint,
           preview,
         )}
       >
+        <Image
+          // @ts-ignore
+          src={imageBackgroundUrl}
+          className={getBreakpointStyles(
+            `${opacityClass} absolute left-0 object-cover top-0 w-full h-full z-0`,
+            breakpoint,
+            preview,
+          )}
+          width={imageBackgroundWidth || 1050}
+          height={imageBackgroundHeight || 1050}
+          quality={75}
+          sizes="(max-width: 480px) 200px, (max-width: 800px) 600px, 1050px"
+          priority={true}
+          alt="Hero"
+        />
+
         <div
           className={getBreakpointStyles(
             'container flex flex-col items-start pt-32 md:py-32 md:pt-0',

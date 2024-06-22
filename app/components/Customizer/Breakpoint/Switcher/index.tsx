@@ -21,13 +21,13 @@ export default function BreakpointSwitcher({ state, setState }: Props) {
       icon: 'tabler:device-ipad-horizontal',
     },
     {
-      size: 'lg',
+      size: 'xl',
       icon: 'tabler:device-laptop',
     },
-    {
-      size: 'xl',
-      icon: 'tabler:device-desktop',
-    },
+    // {
+    //   size: 'xl',
+    //   icon: 'tabler:device-desktop',
+    // },
   ]
 
   const cycleBreakpoint = () => {

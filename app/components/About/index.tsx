@@ -21,6 +21,7 @@ export function About({
   accentBgColor = colors.about.accent.background,
   accentFgColor = colors.about.accent.foreground,
   typoColor = colors.about.typo,
+  breakpoint,
   preview,
 }: AboutProps) {
   // @ts-ignore
@@ -34,7 +35,13 @@ export function About({
         accentFgColor={accentFgColor}
         typoColor={typoColor}
       />
-      <VariantComponent layout={layout} align={align} order={order} preview={preview} />
+      <VariantComponent
+        layout={layout}
+        align={align}
+        order={order}
+        breakpoint={breakpoint}
+        preview={preview}
+      />
     </>
   )
 }
