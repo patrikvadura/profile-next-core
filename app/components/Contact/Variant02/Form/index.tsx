@@ -3,9 +3,14 @@
 import React, { useState } from 'react'
 import data from '@/app/lib/data.json'
 import Button from '@/app/ui/Button'
-import classes from './index.module.scss'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function Form() {
+interface Props {
+  breakpoint?: any | undefined
+  preview?: boolean
+}
+
+export function Form({ breakpoint, preview }: Props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -34,17 +39,29 @@ export function Form() {
           alert(data.contact.form.alerts.v04)
         }
       })
-    // .catch(err => {
-    //   alert(data.contact.form.alerts.v05)
-    // })
     return true
   }
 
+  const inputClass = 'flex flex-col gap-2'
+  const inputFieldClass =
+    'block w-full border-0 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+  const inputLabelClass =
+    'block text-sm font-semibold leading-6 text-[var(--contact-typo)] dark:text-white'
+  const textareaClass =
+    'block w-full border-0 px-3.5 py-2 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+  const textareaLabelClass = 'block text-sm font-semibold leading-6 text-[var(--contact-typo)]'
+
   return (
-    <form className={classes.main} onSubmit={handleSubmit}>
-      <div className={classes.columns}>
-        <div className={classes.input}>
-          <label htmlFor={data.contact.form.name.name} className={classes.inputLabel}>
+    <form
+      className={getBreakpointStyles('w-full flex flex-col gap-6', breakpoint, preview)}
+      onSubmit={handleSubmit}
+    >
+      <div className={getBreakpointStyles('grid grid-cols-1 gap-y-6', breakpoint, preview)}>
+        <div className={getBreakpointStyles(inputClass, breakpoint, preview)}>
+          <label
+            htmlFor={data.contact.form.name.name}
+            className={getBreakpointStyles(inputLabelClass, breakpoint, preview)}
+          >
             {data.contact.form.name.label}
           </label>
 
@@ -55,13 +72,16 @@ export function Form() {
             id={data.contact.form.name.name}
             autoComplete="name"
             required={data.contact.form.name.isRequired}
-            className={classes.inputField}
+            className={getBreakpointStyles(inputFieldClass, breakpoint, preview)}
             onChange={e => setName(e.target.value)}
           />
         </div>
 
-        <div className={classes.input}>
-          <label htmlFor={data.contact.form.email.name} className={classes.inputLabel}>
+        <div className={getBreakpointStyles(inputClass, breakpoint, preview)}>
+          <label
+            htmlFor={data.contact.form.email.name}
+            className={getBreakpointStyles(inputLabelClass, breakpoint, preview)}
+          >
             {data.contact.form.email.label}
           </label>
 
@@ -72,14 +92,17 @@ export function Form() {
             required={data.contact.form.email.isRequired}
             id={data.contact.form.email.name}
             autoComplete="email"
-            className={classes.inputField}
+            className={getBreakpointStyles(inputFieldClass, breakpoint, preview)}
             onChange={e => setEmail(e.target.value)}
           />
         </div>
       </div>
 
-      <div className={classes.input}>
-        <label htmlFor={data.contact.form.textarea.name} className={classes.textareaLabel}>
+      <div className={getBreakpointStyles(inputClass, breakpoint, preview)}>
+        <label
+          htmlFor={data.contact.form.textarea.name}
+          className={getBreakpointStyles(textareaLabelClass, breakpoint, preview)}
+        >
           {data.contact.form.textarea.placeholder}
         </label>
 
@@ -89,7 +112,7 @@ export function Form() {
           required={data.contact.form.textarea.isRequired}
           id={data.contact.form.textarea.name}
           rows={4}
-          className={classes.textarea}
+          className={getBreakpointStyles(textareaClass, breakpoint, preview)}
           onChange={e => setMessage(e.target.value)}
         ></textarea>
       </div>
@@ -97,7 +120,11 @@ export function Form() {
       <Button
         type="submit"
         href={data.about.cta.link}
-        className={classes.submit}
+        className={getBreakpointStyles(
+          'flex justify-center w-full text-center bg-[var(--contact-accent-bg)] dark:bg-white text-[var(--contact-accent-fg)] dark:text-black',
+          breakpoint,
+          preview,
+        )}
         ariaLabel={data.contact.form.submit}
       >
         {data.contact.form.submit}

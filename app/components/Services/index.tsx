@@ -47,6 +47,7 @@ export function Services({
   servicesContentBoxSpecial,
   servicesContentBoxSpecialTitle,
   servicesContentBoxSpecialLink,
+  breakpoint,
   preview,
 }: ServiceProps) {
   // @ts-ignore
@@ -86,6 +87,7 @@ export function Services({
         servicesContentBoxSpecial={servicesContentBoxSpecial}
         servicesContentBoxSpecialTitle={servicesContentBoxSpecialTitle}
         servicesContentBoxSpecialLink={servicesContentBoxSpecialLink}
+        breakpoint={breakpoint}
         preview={preview}
       />
     </>

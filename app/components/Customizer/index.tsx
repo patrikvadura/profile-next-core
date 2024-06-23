@@ -5,12 +5,14 @@ import {
   optionsAbout,
   optionsService,
   optionsReference,
+  optionsContact,
   optionsHeroContent,
 } from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
 import { useServiceState } from '@/app/lib/useState/useServiceState'
 import { useReferenceState } from '@/app/lib/useState/useReferenceState'
+import { useContactState } from '@/app/lib/useState/useContactState'
 import { useVisibilityState } from '@/app/lib/useState/useVisibilityState'
 import { useOtherState } from '@/app/lib/useState/useOtherState'
 import { calculatePreviewState } from '@/app/lib/calculatePreviewState'
@@ -30,6 +32,7 @@ import ColorPickerAbout from '@/app/components/Customizer/ColorPicker/About'
 import ColorPickerHero from '@/app/components/Customizer/ColorPicker/Hero'
 import ColorPickerService from '@/app/components/Customizer/ColorPicker/Service'
 import ColorPickerReference from '@/app/components/Customizer/ColorPicker/Reference'
+import ColorPickerContact from '@/app/components/Customizer/ColorPicker/Contact'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import Button from '@/app/ui/Button'
 import { Icon } from '@iconify/react'
@@ -64,6 +67,7 @@ export default function Customizer() {
   const about = useAboutState()
   const service = useServiceState()
   const reference = useReferenceState()
+  const contact = useContactState()
   const visibility = useVisibilityState()
   const other = useOtherState()
 
@@ -77,6 +81,7 @@ export default function Customizer() {
     ...about,
     ...service,
     ...reference,
+    ...contact,
     ...visibility,
     ...other,
     optionsHero,
@@ -84,6 +89,7 @@ export default function Customizer() {
     optionsAbout,
     optionsService,
     optionsReference,
+    optionsContact,
     domain,
     availability,
     totalPrice,
@@ -434,7 +440,44 @@ export default function Customizer() {
               link="#contact"
               preview
               onChange={() => visibility.setShowContact(!visibility.showContact)}
-            />
+            >
+              <div className="space-y-4">
+                <span className="mt-2 text-primary font-semibold">Barevnost sekce:</span>
+
+                <ColorPickerContact
+                  backgroundColor={contact.setContactBackground}
+                  accentBgColor={contact.setContactAccentBg}
+                  accentFgColor={contact.setContactAccentFg}
+                  typoColor={contact.setContactTypo}
+                />
+
+                <OptionSelector
+                  title="Varianta"
+                  options={optionsContact.variant}
+                  selectedOption={contact.contactVariant}
+                  onChange={contact.setContactVariant}
+                  visual
+                />
+              </div>
+
+              <div className="space-y-4">
+                {!['02'].includes(contact.contactVariant) && (
+                  <OptionSelector
+                    title="Layout"
+                    options={optionsContact.layout}
+                    selectedOption={contact.contactLayout}
+                    onChange={contact.setContactLayout}
+                  />
+                )}
+
+                <OptionSelector
+                  title="Zarovnání"
+                  options={optionsContact.align}
+                  selectedOption={contact.contactAlign}
+                  onChange={contact.setContactAlign}
+                />
+              </div>
+            </Dropdown>
           </div>
         </ModalView>
       )}
@@ -1365,7 +1408,13 @@ export default function Customizer() {
             }}
           >
             <div
-              className="fontDefault pb-12"
+              className={`${
+                other.currentBreakpoint === 0
+                  ? 'pb-12'
+                  : other.currentBreakpoint === 1
+                  ? 'pb-32'
+                  : 'pb-24'
+              } fontDefault`}
               style={{
                 transform:
                   other.currentBreakpoint === 0
@@ -1483,6 +1532,7 @@ export default function Customizer() {
                       ? service.servicesContentBoxSpecialCustomLink
                       : service.servicesContentBoxSpecialLink
                   }
+                  breakpoint={breakpoint}
                   preview
                 />
               )}
@@ -1495,10 +1545,24 @@ export default function Customizer() {
                   accentBgColor={reference.referenceAccentBg}
                   typoColor={reference.referenceTypo}
                   typoLgColor={reference.referenceTypoLg}
+                  breakpoint={breakpoint}
                   preview
                 />
               )}
-              {visibility.showContact && <Contact />}
+              {visibility.showContact && (
+                <Contact
+                  variant={contact.contactVariant}
+                  layout={contact.contactLayout}
+                  align={contact.contactAlign}
+                  order={contact.contactOrder}
+                  backgroundColor={contact.contactBackground}
+                  accentBgColor={contact.contactAccentBg}
+                  accentFgColor={contact.contactAccentFg}
+                  typoColor={contact.contactTypo}
+                  breakpoint={breakpoint}
+                  preview
+                />
+              )}
               <Footer breakpoint={breakpoint} preview />
             </div>
           </div>

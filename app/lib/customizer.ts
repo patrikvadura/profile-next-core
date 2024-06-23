@@ -190,3 +190,26 @@ export const optionsReference: CustomizerOptions = {
     { value: 'right', label: 'Right' },
   ],
 }
+
+export const optionsContact: CustomizerOptions = {
+  variant: [
+    { value: '01', label: 'Varianta 01', image: 'contact/contact_01' },
+    { value: '02', label: 'Varianta 02', image: 'contact/contact_02' },
+    { value: '03', label: 'Varianta 03', image: 'contact/contact_03' },
+    { value: '04', label: 'Varianta 04', image: 'contact/contact_04' },
+  ],
+  layout: [
+    { value: 'transparent', label: 'Transparent' },
+    { value: 'background', label: 'Background' },
+    { value: 'border', label: 'Border' },
+  ],
+  align: [
+    { value: 'left', label: 'Left' },
+    { value: 'full', label: 'Full' },
+    { value: 'right', label: 'Right' },
+  ],
+  order: [
+    { value: 'asc', label: 'Ascending' },
+    { value: 'desc', label: 'Descending' },
+  ],
+}

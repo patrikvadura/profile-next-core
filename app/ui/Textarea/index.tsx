@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import classes from '@/app/components/Contact/Form/index.module.scss'
+import classes from '@/app/components/Contact/Variant01/Form/index.module.scss'
 import data from '@/app/lib/data.json'
 
 type Props = {

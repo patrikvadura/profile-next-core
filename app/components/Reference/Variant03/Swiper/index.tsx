@@ -3,19 +3,15 @@
 import React from 'react'
 import { ReferenceItems } from '@/app/lib/types'
 import { Quote } from '@/app/ui/Icons/Quote'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation } from 'swiper/modules'
-
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 interface SwiperComponentProps {
   references: ReferenceItems
   accentBgColor: string
   typoColor: string
   align: string
+  breakpoint?: any | undefined
+  preview?: boolean
 }
 
 export function SwiperComponent({
@@ -23,6 +19,8 @@ export function SwiperComponent({
   accentBgColor,
   typoColor,
   align,
+  breakpoint,
+  preview,
 }: SwiperComponentProps) {
   const aligns = {
     left: 'items-start text-left',
@@ -34,22 +32,49 @@ export function SwiperComponent({
   const alignsClass = aligns[align]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div
+      className={getBreakpointStyles(
+        'grid grid-cols-1 md:grid-cols-2 gap-4 px-8 md:px-0',
+        breakpoint,
+        preview,
+      )}
+    >
       {references.items.map((item, index) => (
-        <div key={index}>
-          <div
-            className={`${alignsClass} flex flex-col justify-start w-full space-y-3 py-12 px-2 -translate-y-12`}
+        <div
+          key={index}
+          className={getBreakpointStyles(
+            `${alignsClass} flex flex-col justify-start w-full space-y-3 py-12 px-2 -translate-y-12`,
+            breakpoint,
+            preview,
+          )}
+        >
+          <Quote
+            className={getBreakpointStyles(
+              `${accentBgColor} dark:text-white size-[60px]`,
+              breakpoint,
+              preview,
+            )}
+          />
+
+          <p
+            className={getBreakpointStyles(
+              `${typoColor} max-w-screen-md mb-8 font-normal dark:text-white text-opacity-70`,
+              breakpoint,
+              preview,
+            )}
           >
-            <Quote className={`${accentBgColor} dark:text-white size-[60px]`} />
+            {item.description}
+          </p>
 
-            <p
-              className={`${typoColor} max-w-screen-md mb-8 font-normal dark:text-white text-opacity-70`}
-            >
-              {item.description}
-            </p>
-
-            <h3 className={`${typoColor} text-lg font-bold dark:text-white`}>{item.title}</h3>
-          </div>
+          <h3
+            className={getBreakpointStyles(
+              `${typoColor} text-lg font-bold dark:text-white`,
+              breakpoint,
+              preview,
+            )}
+          >
+            {item.title}
+          </h3>
         </div>
       ))}
     </div>

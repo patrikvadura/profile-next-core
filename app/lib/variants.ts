@@ -181,3 +181,30 @@ export type ReferenceVariantProps = {
   breakpoint?: string | any | undefined
   preview?: boolean
 }
+
+// Contact
+
+export type ContactProps = {
+  variant: '01' | '02' | '03' | '04' | '05' | any
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  order: 'asc' | 'desc' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  accentFgColor?: string | any
+  typoColor?: string | any
+  breakpoint?: string | any | undefined
+  preview?: boolean
+}
+
+export type ContactVariantProps = {
+  layout: 'transparent' | 'background' | 'border' | any
+  align: 'left' | 'right' | 'full' | any
+  order: 'asc' | 'desc' | any
+  backgroundColor?: string | any
+  accentBgColor?: string | any
+  accentFgColor?: string | any
+  typoColor?: string | any
+  breakpoint?: string | any | undefined
+  preview?: boolean
+}

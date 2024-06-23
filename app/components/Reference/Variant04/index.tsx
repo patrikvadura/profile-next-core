@@ -1,11 +1,11 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
 import { ReferenceItems } from '@/app/lib/types'
-import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { SwiperComponent } from './Swiper'
 import { ReferenceVariantProps } from '@/app/lib/variants'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function ReferenceVariant04({ layout, align, preview }: ReferenceVariantProps) {
+export function ReferenceVariant04({ layout, align, breakpoint, preview }: ReferenceVariantProps) {
   const references: ReferenceItems = data.reference
 
   const layouts = {
@@ -18,13 +18,24 @@ export function ReferenceVariant04({ layout, align, preview }: ReferenceVariantP
   const layoutsClass = layouts[layout]
 
   return (
-    <div id="reference" className={`${layoutsClass} relative w-full py-12`}>
-      <div className="container flex flex-col justify-center items-center text-center">
+    <div
+      id="reference"
+      className={getBreakpointStyles(`${layoutsClass} relative w-full py-12`, breakpoint, preview)}
+    >
+      <div
+        className={getBreakpointStyles(
+          'container flex flex-col justify-center items-center text-center',
+          breakpoint,
+          preview,
+        )}
+      >
         <SwiperComponent
           accentBgColor="text-[var(--reference-accent-bg)]"
           typoColor="text-[var(--reference-typo)]"
           align={align}
           references={references}
+          breakpoint={breakpoint}
+          preview={preview}
         />
       </div>
     </div>

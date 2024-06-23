@@ -3,6 +3,7 @@
 import React from 'react'
 import { ReferenceItems } from '@/app/lib/types'
 import { Quote } from '@/app/ui/Icons/Quote'
+import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
@@ -16,6 +17,8 @@ interface SwiperComponentProps {
   accentBgColor: string
   typoColor: string
   align: string
+  breakpoint?: any | undefined
+  preview?: boolean
 }
 
 export function SwiperComponent({
@@ -23,6 +26,8 @@ export function SwiperComponent({
   accentBgColor,
   typoColor,
   align,
+  breakpoint,
+  preview,
 }: SwiperComponentProps) {
   const aligns = {
     left: 'items-start text-left',
@@ -33,23 +38,52 @@ export function SwiperComponent({
   // @ts-ignore
   const alignsClass = aligns[align]
 
+  const slidesPerView = breakpoint === 'md' ? 2 : breakpoint === 'xl' ? 2 : 1
+
   return (
     <>
-      <Quote className={`${accentBgColor} mb-8 dark:text-white size-[100px] md:size-[150px]`} />
+      <Quote
+        className={getBreakpointStyles(
+          `${accentBgColor} mb-8 dark:text-white size-[100px] md:size-[150px]`,
+          breakpoint,
+          preview,
+        )}
+      />
 
-      <Swiper slidesPerView={2} loop={true} navigation={true} modules={[Autoplay, Navigation]}>
+      <Swiper
+        slidesPerView={preview ? slidesPerView : 1}
+        loop={true}
+        navigation={true}
+        modules={[Autoplay, Navigation]}
+      >
         {references.items.map((item, index) => (
           <SwiperSlide key={index}>
             <div
-              className={`${alignsClass} flex flex-col justify-start w-full h-full space-y-8 py-12 px-8 md:px-24 -translate-y-12`}
+              className={getBreakpointStyles(
+                `${alignsClass} flex flex-col justify-start w-full h-full space-y-8 py-12 px-16 md:px-24 -translate-y-12`,
+                breakpoint,
+                preview,
+              )}
             >
               <p
-                className={`${typoColor} max-w-screen-md mb-8 text-lg font-normal dark:text-white text-opacity-70`}
+                className={getBreakpointStyles(
+                  `${typoColor} max-w-screen-md mb-8 text-lg font-normal dark:text-white text-opacity-70`,
+                  breakpoint,
+                  preview,
+                )}
               >
                 {item.description}
               </p>
 
-              <h3 className={`${typoColor} text-xl font-bold dark:text-white`}>{item.title}</h3>
+              <h3
+                className={getBreakpointStyles(
+                  `${typoColor} text-xl font-bold dark:text-white`,
+                  breakpoint,
+                  preview,
+                )}
+              >
+                {item.title}
+              </h3>
             </div>
           </SwiperSlide>
         ))}
