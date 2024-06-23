@@ -76,6 +76,7 @@ export default function DNSChecker({
             }
             classInput={classInput}
             placeholder="Vložte doménové jméno"
+            isRequired
           />
 
           {availability !== null && !loading && (

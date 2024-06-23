@@ -1,9 +1,11 @@
+'use client'
+
 import React, { useState } from 'react'
-import { ModalViewProps } from '@/app/lib/customizer'
+import { ActionBarProps } from '@/app/lib/customizer'
 import { Icon } from '@iconify/react'
 import { ActionWrapper } from '@/app/ui/ActionWrapper'
 
-const ActionBar = ({ children }: ModalViewProps) => {
+const ActionBar = ({ children }: ActionBarProps) => {
   const [isHidden, setIsHidden] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })

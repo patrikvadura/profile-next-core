@@ -5,6 +5,11 @@ export interface ModalViewProps {
   title?: string
   isVisible?: boolean
   toggleVisibility?: any
+  steps?: any
+}
+
+export interface ActionBarProps {
+  children?: ReactNode
 }
 
 export interface PreviewContainerProps {
