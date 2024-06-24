@@ -1,7 +1,6 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
 import Link from 'next/link'
-import { Form } from './Form'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ContactVariantProps } from '@/app/lib/variants'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'

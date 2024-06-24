@@ -28,6 +28,10 @@ export function Contact({
   accentBgColor = colors.about.accent.background,
   accentFgColor = colors.about.accent.foreground,
   typoColor = colors.about.typo,
+  contactForm,
+  contactMap,
+  contactRecipient,
+  contactMapAddress,
   breakpoint,
   preview,
 }: ContactProps) {
@@ -46,6 +50,10 @@ export function Contact({
         layout={layout}
         align={align}
         order={order}
+        contactForm={contactForm}
+        contactMap={contactMap}
+        contactRecipient={contactRecipient}
+        contactMapAddress={contactMapAddress}
         breakpoint={breakpoint}
         preview={preview}
       />

@@ -8,6 +8,7 @@ export const calculatePreviewState = (visibility: any) => {
     reference: visibility.showReference,
     portfolio: visibility.showPortfolio,
     contact: visibility.showContact,
+    contactFormOrMap: visibility.showContactFormOrMap,
     analytics: visibility.showAnalytics,
     analyticsCode: !visibility.showAnalytics && visibility.showAnalyticsCode,
     analyticsSetup: !visibility.showAnalytics && visibility.showAnalyticsSetup,

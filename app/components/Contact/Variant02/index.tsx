@@ -6,7 +6,12 @@ import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ContactVariantProps } from '@/app/lib/variants'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function ContactVariant02({ breakpoint, preview }: ContactVariantProps) {
+export function ContactVariant02({
+  contactForm,
+  contactRecipient,
+  breakpoint,
+  preview,
+}: ContactVariantProps) {
   return (
     <div
       id="contact"
@@ -94,7 +99,9 @@ export function ContactVariant02({ breakpoint, preview }: ContactVariantProps) {
           </div>
         </div>
 
-        <Form breakpoint={breakpoint} preview={preview} />
+        {contactForm && (
+          <Form recipient={contactRecipient} breakpoint={breakpoint} preview={preview} />
+        )}
       </div>
     </div>
   )

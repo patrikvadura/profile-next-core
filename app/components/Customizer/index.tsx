@@ -99,20 +99,44 @@ export default function Customizer() {
 
   // Progress checker validation
   const [statesChanged, setStatesChanged] = useState({
-    domainChanged: false,
+    // Appearance
+    contactRecipientChanged: false,
+
+    // Content
     heroContentTitleChanged: false,
     heroContentSubtitleChanged: false,
+
+    // Domain
+    domainChanged: false,
   })
+
+  const progressItems = [
+    {
+      title: 'Zobrazení fromuláře',
+    },
+  ]
 
   const initialRender = useRef(true)
   const previousStates = useRef({
-    domain: domain,
+    // Appearance
+    contactRecipient: contact.contactRecipient,
+
+    // Content
     heroContentTitle: hero.heroContentTitle,
     heroContentSubtitle: hero.heroContentSubtitle,
+
+    // Domain
+    domain: domain,
   })
 
   useEffect(() => {
     if (!initialRender.current) {
+      // Appearance
+      if (contact.contactRecipient !== previousStates.current.contactRecipient) {
+        setStatesChanged(prevState => ({ ...prevState, contactRecipientChanged: true }))
+        previousStates.current.contactRecipient = contact.contactRecipient
+      }
+
       // Content
       if (hero.heroContentTitle !== previousStates.current.heroContentTitle) {
         setStatesChanged(prevState => ({ ...prevState, heroContentTitleChanged: true }))
@@ -129,7 +153,7 @@ export default function Customizer() {
         previousStates.current.domain = domain
       }
     }
-  }, [domain, hero.heroContentTitle, hero.heroContentSubtitle])
+  }, [domain, contact.contactRecipient, hero.heroContentTitle, hero.heroContentSubtitle])
 
   useEffect(() => {
     initialRender.current = false
@@ -323,6 +347,10 @@ export default function Customizer() {
             accentBgColor={contact.contactAccentBg}
             accentFgColor={contact.contactAccentFg}
             typoColor={contact.contactTypo}
+            contactForm={visibility.showContactFormOrMap}
+            contactMap={visibility.showContactFormOrMap}
+            contactRecipient={contact.contactRecipient}
+            contactMapAddress={contact.contactMapAddress}
             breakpoint={breakpoint}
             preview
           />

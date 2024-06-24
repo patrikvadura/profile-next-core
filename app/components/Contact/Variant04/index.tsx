@@ -1,12 +1,17 @@
 import React from 'react'
 import data from '@/app/lib/data.json'
 import Link from 'next/link'
-import { Form } from './Form'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ContactVariantProps } from '@/app/lib/variants'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function ContactVariant04({ layout, breakpoint, preview }: ContactVariantProps) {
+export function ContactVariant04({
+  layout,
+  contactMap,
+  contactMapAddress,
+  breakpoint,
+  preview,
+}: ContactVariantProps) {
   const layouts = {
     transparent: 'dark:bg-black',
     background: 'bg-[var(--contact-background)] dark:bg-black',
@@ -15,6 +20,13 @@ export function ContactVariant04({ layout, breakpoint, preview }: ContactVariant
 
   // @ts-ignore
   const layoutsClass = layouts[layout]
+
+  const getGoogleMapsEmbedURL = (address: string | number | boolean) => {
+    const baseUrl = 'https://www.google.com/maps/embed/v1/place'
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+    const encodedAddress = encodeURIComponent(address)
+    return `${baseUrl}?key=${apiKey}&q=${encodedAddress}`
+  }
 
   return (
     <div
@@ -103,14 +115,16 @@ export function ContactVariant04({ layout, breakpoint, preview }: ContactVariant
           </div>
         </div>
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2614.101727700836!2d17.457454976567984!3d49.06570097136109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471314370a9db87b%3A0xca48a5afeb22ac!2sStojanova%20508%2C%20686%2001%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B%201!5e0!3m2!1scs!2scz!4v1719143840506!5m2!1scs!2scz"
-          width="100%"
-          height="100%"
-          className="border-none min-h-[450px]"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        {contactMap && contactMapAddress && (
+          <iframe
+            src={getGoogleMapsEmbedURL(contactMapAddress)}
+            width="100%"
+            height="100%"
+            className="border-none min-h-[450px]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        )}
       </div>
     </div>
   )

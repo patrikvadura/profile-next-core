@@ -38,6 +38,7 @@ export default function ActionBarWrapper({
   domain,
 }: Props) {
   const [progressComplete, setProgressComplete] = useState(false)
+  const [popoverOpen, setPopoverOpen] = useState(false)
 
   const progress = calculateProgress()
 
@@ -106,7 +107,9 @@ export default function ActionBarWrapper({
         </ActionWrapper>
 
         <Button
-          className="bg-[#72E790] !px-4 h-10 !text-sm rounded-full !normal-case"
+          className={`${
+            !progressComplete ? 'bg-gray-200' : 'bg-[#72E790]'
+          } !px-4 h-10 !text-sm rounded-full !normal-case`}
           disabled={!progressComplete}
           onClick={() => {
             // Handle completion button click here

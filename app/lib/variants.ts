@@ -193,6 +193,10 @@ export type ContactProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  contactForm?: boolean
+  contactMap?: boolean
+  contactRecipient?: string | any
+  contactMapAddress?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -205,6 +209,10 @@ export type ContactVariantProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  contactForm?: boolean
+  contactMap?: boolean
+  contactRecipient?: string | any
+  contactMapAddress?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }

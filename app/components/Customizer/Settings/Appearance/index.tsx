@@ -10,6 +10,8 @@ import ColorPickerContact from '@/app/components/Customizer/ColorPicker/Contact'
 import ModalView from '@/app/components/Customizer/ModalView'
 import { Input } from '@/app/ui/Input'
 import Link from 'next/link'
+import Select from '@/app/ui/Select'
+import { Radio } from '@/app/ui/Radio'
 
 interface Props {
   isModalVisible: boolean
@@ -336,7 +338,58 @@ export default function SettingsAppearance({
               visual
             />
           </div>
+
           <div className="space-y-4">
+            {!['03', '04'].includes(contact.contactVariant) && (
+              <Dropdown
+                label="Kontaktní formulář"
+                id="contactFormOrMap"
+                checked={visibility.showContactFormOrMap}
+                onChange={() =>
+                  visibility.setShowContactFormOrMap(!visibility.showContactFormOrMap)
+                }
+              >
+                <div className="ml-4 flex flex-col justify-start space-y-4">
+                  <Input
+                    type="text"
+                    value={contact.contactRecipient}
+                    onChange={e => contact.setContactRecipient(e.target.value)}
+                    label="Kam se mají zprávy odeslat?"
+                    classLabel="!text-black"
+                  />
+
+                  <p className="text-black text-xs font-normal opacity-75">
+                    Uveďte vaši emailovou adresu, na kterou se budou vyplněné formuláře odesílat.
+                  </p>
+                </div>
+              </Dropdown>
+            )}
+
+            {['04'].includes(contact.contactVariant) && (
+              <Dropdown
+                label="Mapa"
+                id="contactFormOrMap"
+                checked={visibility.showContactFormOrMap}
+                onChange={() =>
+                  visibility.setShowContactFormOrMap(!visibility.showContactFormOrMap)
+                }
+              >
+                <div className="ml-4 flex flex-col justify-start space-y-4">
+                  <Input
+                    type="text"
+                    value={contact.contactMapAddress}
+                    onChange={e => contact.setContactMapAddress(e.target.value)}
+                    label="Adresa"
+                    classLabel="!text-black"
+                  />
+
+                  <p className="text-black text-xs font-normal opacity-75">
+                    Uveďte adresu vašeho bydliště nebo sídla firmy zobrazovanou na mapě.
+                  </p>
+                </div>
+              </Dropdown>
+            )}
+
             {!['02'].includes(contact.contactVariant) && (
               <OptionSelector
                 title="Layout"

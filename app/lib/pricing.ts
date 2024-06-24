@@ -15,6 +15,7 @@ const sections: Section[] = [
   { name: 'reference', price: 0, time: 0 },
   { name: 'portfolio', price: 1000, time: 0 },
   { name: 'contact', price: 0, time: 0 },
+  { name: 'contactFormOrMap', price: 500, time: 0 },
   { name: 'analytics', price: 2000, time: 1 },
   { name: 'analyticsCode', price: 1000, time: 1 },
   { name: 'analyticsSetup', price: 1000, time: 1 },

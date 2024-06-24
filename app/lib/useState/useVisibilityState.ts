@@ -14,6 +14,8 @@ interface VisibilityState {
   setShowPortfolio: (value: boolean) => void
   showContact: boolean
   setShowContact: (value: boolean) => void
+  showContactFormOrMap: boolean
+  setShowContactFormOrMap: (value: boolean) => void
   showAnalytics: boolean
   setShowAnalytics: (value: boolean) => void
   showAnalyticsCode: boolean
@@ -47,6 +49,7 @@ export const useVisibilityState = (): VisibilityState => {
   const [showReference, setShowReference] = useState<boolean>(true)
   const [showPortfolio, setShowPortfolio] = useState<boolean>(false)
   const [showContact, setShowContact] = useState<boolean>(true)
+  const [showContactFormOrMap, setShowContactFormOrMap] = useState<boolean>(false)
   const [showAnalytics, setShowAnalytics] = useState<boolean>(false)
   const [showAnalyticsCode, setShowAnalyticsCode] = useState<boolean>(false)
   const [showAnalyticsSetup, setShowAnalyticsSetup] = useState<boolean>(false)
@@ -75,6 +78,8 @@ export const useVisibilityState = (): VisibilityState => {
     setShowPortfolio,
     showContact,
     setShowContact,
+    showContactFormOrMap,
+    setShowContactFormOrMap,
     showAnalytics,
     setShowAnalytics,
     showAnalyticsCode,

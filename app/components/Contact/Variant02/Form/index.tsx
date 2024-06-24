@@ -6,11 +6,12 @@ import Button from '@/app/ui/Button'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 interface Props {
+  recipient: string
   breakpoint?: any | undefined
   preview?: boolean
 }
 
-export function Form({ breakpoint, preview }: Props) {
+export function Form({ recipient, breakpoint, preview }: Props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -26,7 +27,7 @@ export function Form({ breakpoint, preview }: Props) {
 
     await fetch('/api/send', {
       method: 'POST',
-      body: JSON.stringify({ name, email, message }),
+      body: JSON.stringify({ name, email, message, recipient }),
     })
       .then(res => res.json())
       .then(data => {

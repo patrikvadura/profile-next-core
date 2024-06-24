@@ -19,6 +19,10 @@ interface ContactState {
   setContactAccentFg: (value: string) => void
   contactTypo: string | undefined | any
   setContactTypo: (value: string) => void
+  contactRecipient: string | undefined | any
+  setContactRecipient: (value: string) => void
+  contactMapAddress: string | undefined | any
+  setContactMapAddress: (value: string) => void
 }
 
 export const useContactState = (): ContactState => {
@@ -37,6 +41,12 @@ export const useContactState = (): ContactState => {
   )
   const [contactTypo, setContactTypo] = useState<string | undefined>(colors.contact.typo)
 
+  // Contact form
+  const [contactRecipient, setContactRecipient] = useState<string>('hello@visiosnap.cz')
+
+  // Contact Map
+  const [contactMapAddress, setContactMapAddress] = useState<string>('Stojanova 508, Uh. Hradiště')
+
   return {
     contactVariant,
     setContactVariant,
@@ -54,5 +64,9 @@ export const useContactState = (): ContactState => {
     setContactAccentFg,
     contactTypo,
     setContactTypo,
+    contactRecipient,
+    setContactRecipient,
+    contactMapAddress,
+    setContactMapAddress,
   }
 }
