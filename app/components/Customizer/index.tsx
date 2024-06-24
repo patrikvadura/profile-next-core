@@ -233,7 +233,17 @@ export default function Customizer() {
           accentGlobalColor={other.globalAccent}
         />
 
-        <Header breakpoint={breakpoint} preview />
+        <Header
+          siteName={other.siteName}
+          siteNameClaim={other.siteNameClaim}
+          logoImage={other.logoImage}
+          logoImageUrl={other.logoImageUrl}
+          logoImageWidth={other.logoImageWidth}
+          logoImageHeight={other.logoImageHeight}
+          logoImageSize={other.logoImageSize}
+          breakpoint={breakpoint}
+          preview
+        />
 
         {visibility.showHero && (
           <Hero
@@ -295,6 +305,7 @@ export default function Customizer() {
                 ? about.aboutContentButtonCustomLink
                 : about.aboutContentButtonLink
             }
+            boxes={about.boxes}
             breakpoint={breakpoint}
             preview
           />

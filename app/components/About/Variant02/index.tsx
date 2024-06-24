@@ -1,7 +1,5 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
-import { AboutData } from '@/app/lib/types'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
@@ -16,12 +14,11 @@ export function AboutVariant02({
   contentButton,
   contentButtonText,
   contentButtonLink,
+  boxes,
   breakpoint,
   preview,
 }: AboutVariantProps) {
   const classes = require('./index.module.scss')
-
-  const aboutItems: AboutData = data
 
   const layouts = {
     transparent: 'dark:bg-black',
@@ -117,7 +114,8 @@ export function AboutVariant02({
           />
 
           <div className="flex flex-col space-y-8">
-            {aboutItems.about.items.map((item: any, index: any) => (
+            {/*//@ts-ignore*/}
+            {boxes.map((box, index) => (
               <div
                 key={index}
                 className={getBreakpointStyles(
@@ -145,9 +143,9 @@ export function AboutVariant02({
                     preview,
                   )}
                 >
-                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <h3 className="text-xl font-bold">{box.title}</h3>
 
-                  <p className="text-sm">{item.description}</p>
+                  <p className="text-sm">{box.description}</p>
                 </div>
               </div>
             ))}

@@ -14,6 +14,7 @@ export type AboutProps = {
   contentButton?: boolean
   contentButtonText?: string
   contentButtonLink?: string | any
+  boxes?: any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -31,6 +32,7 @@ export type AboutVariantProps = {
   contentButton?: boolean
   contentButtonText?: string
   contentButtonLink?: string | any
+  boxes?: any
   breakpoint?: string | any | undefined
   preview?: boolean
 }

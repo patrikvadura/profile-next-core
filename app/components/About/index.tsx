@@ -26,6 +26,7 @@ export function About({
   contentButton,
   contentButtonText,
   contentButtonLink,
+  boxes,
   breakpoint,
   preview,
 }: AboutProps) {
@@ -49,6 +50,7 @@ export function About({
         contentButton={contentButton}
         contentButtonText={contentButtonText}
         contentButtonLink={contentButtonLink}
+        boxes={boxes}
         breakpoint={breakpoint}
         preview={preview}
       />

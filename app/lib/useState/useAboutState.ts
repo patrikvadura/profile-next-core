@@ -2,6 +2,11 @@
 import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
+interface Box {
+  title: string
+  description: string
+}
+
 interface AboutState {
   aboutVariant: string | undefined | any
   setAboutVariant: (value: string) => void
@@ -29,6 +34,10 @@ interface AboutState {
   setAboutContentButtonLink: (value: React.SetStateAction<string>) => void
   aboutContentButtonCustomLink: string | undefined | any
   setAboutContentButtonCustomLink: (value: React.SetStateAction<string>) => void
+  boxes: Box[]
+  addBox: () => void
+  removeBox: (index: number) => void
+  updateBox: (index: number, key: string, value: string) => void
 }
 
 export const useAboutState = (): AboutState => {
@@ -60,6 +69,37 @@ export const useAboutState = (): AboutState => {
   const [aboutContentButtonCustomLink, setAboutContentButtonCustomLink] =
     useState<string>('https://vaseadresa.cz')
 
+  // Boxes
+  const [boxes, setBoxes] = useState<Box[]>([
+    {
+      title: 'Zkušenosti',
+      description:
+        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+    },
+    {
+      title: 'Profesionalita',
+      description:
+        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+    },
+    {
+      title: 'Komunikace',
+      description:
+        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+    },
+  ])
+
+  const addBox = () => {
+    setBoxes([...boxes, { title: '', description: '' }])
+  }
+
+  const removeBox = (index: number) => {
+    setBoxes(boxes.filter((_, i) => i !== index))
+  }
+
+  const updateBox = (index: number, key: string, value: string) => {
+    setBoxes(boxes.map((box, i) => (i === index ? { ...box, [key]: value } : box)))
+  }
+
   return {
     aboutVariant,
     setAboutVariant,
@@ -87,5 +127,9 @@ export const useAboutState = (): AboutState => {
     setAboutContentButtonLink,
     aboutContentButtonCustomLink,
     setAboutContentButtonCustomLink,
+    boxes,
+    addBox,
+    removeBox,
+    updateBox,
   }
 }

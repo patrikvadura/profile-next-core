@@ -1,4 +1,5 @@
 import React from 'react'
+import { Slider } from '@nextui-org/react'
 import Dropdown from '@/app/components/Customizer/Dropdown'
 import { Input } from '@/app/ui/Input'
 import { Textarea } from '@/app/ui/Textarea'
@@ -26,6 +27,7 @@ export default function SettingsContent({
   isModalVisible,
   toggleModalVisibility,
   visibility,
+  other,
   hero,
   about,
   service,
@@ -37,6 +39,60 @@ export default function SettingsContent({
   return (
     <ModalView title="Obsah" isVisible={isModalVisible} toggleVisibility={toggleModalVisibility}>
       <div className="flex flex-col space-y-4 pt-4">
+        <Dropdown label="Globální nastavení" id="contentGlobalToggle" toggled hideToggle>
+          <div className="space-y-4">
+            <h3 className="text-primary text-base font-bold">Logo / identita</h3>
+
+            <Input
+              type="text"
+              value={other.siteName}
+              onChange={e => other.setSiteName(e.target.value)}
+              label="Jméno"
+              classLabel="!text-black"
+            />
+            <Input
+              type="text"
+              value={other.siteNameClaim}
+              onChange={e => other.setSiteNameClaim(e.target.value)}
+              label="Claim"
+              classLabel="!text-black"
+            />
+
+            <Dropdown
+              label="Logo"
+              id="otherLogoToggle"
+              checked={other.logoImage}
+              onChange={() => other.setLogoImage(!other.logoImage)}
+            >
+              <div className="grid grid-cols-1 gap-4">
+                <UploadComponent
+                  imageUrl={other.logoImageUrl}
+                  imageWidth={other.logoImageWidth}
+                  imageHeight={other.logoImageHeight}
+                  setImageUrl={other.setLogoImageUrl}
+                  setImageWidth={other.setLogoImageWidth}
+                  setImageHeight={other.setLogoImageHeight}
+                />
+
+                <h4 className="text-primary text-sm font-semibold">Velikost loga</h4>
+
+                <Slider
+                  size="sm"
+                  step={1}
+                  maxValue={600}
+                  minValue={10}
+                  aria-label="Velikost loga"
+                  value={other.logoImageSize}
+                  onChange={value => other.setLogoImageSize(value)}
+                  className="max-w-md"
+                />
+              </div>
+            </Dropdown>
+          </div>
+        </Dropdown>
+
+        <hr className="border-primary border opacity-10" />
+
         {visibility.showHero && (
           <Dropdown
             label="Hero sekce"
@@ -172,7 +228,7 @@ export default function SettingsContent({
 
         <hr className="border-primary border opacity-10" />
 
-        {visibility.showContact && (
+        {visibility.showAbout && (
           <Dropdown label="O nás" id="contentAboutToggle" link="#about" preview toggled hideToggle>
             <div className="space-y-4">
               <Input
@@ -226,6 +282,59 @@ export default function SettingsContent({
                   )}
                 </div>
               </Dropdown>
+
+              {/*//@ts-ignore*/}
+              {about.boxes.map((box, index) => (
+                <Dropdown
+                  key={index}
+                  label={`Box ${index + 1}`}
+                  id={`contentAboutBox${index + 1}Toggle`}
+                  checked={true} // Add any condition if necessary
+                  onChange={() => {}} // Add any action if necessary
+                >
+                  <div className="space-y-4">
+                    <Input
+                      type="text"
+                      value={box.title}
+                      onChange={e => about.updateBox(index, 'title', e.target.value)}
+                      label="Nadpis"
+                      classLabel="!text-black"
+                    />
+
+                    <Textarea
+                      type="text"
+                      value={box.description}
+                      onChange={e => about.updateBox(index, 'description', e.target.value)}
+                      label="Popisek"
+                      classLabel="!text-black"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => about.removeBox(index)}
+                      className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
+                    >
+                      <Icon
+                        icon="material-symbols:delete-outline-rounded"
+                        className="mr-1 text-base"
+                      ></Icon>
+                      Odebrat
+                    </button>
+                  </div>
+                </Dropdown>
+              ))}
+
+              <button
+                type="button"
+                onClick={about.addBox}
+                className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
+              >
+                <Icon
+                  icon="material-symbols:add-circle-outline-rounded"
+                  className="mr-1 text-base"
+                ></Icon>
+                Přidat box
+              </button>
             </div>
           </Dropdown>
         )}

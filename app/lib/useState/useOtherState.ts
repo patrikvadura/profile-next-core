@@ -43,34 +43,55 @@ export interface OtherState {
   setMetaTitle: (value: React.SetStateAction<string>) => void
   metaDescription: string
   setMetaDescription: (value: React.SetStateAction<string>) => void
+  siteName: string
+  setSiteName: (value: React.SetStateAction<string>) => void
+  siteNameClaim: string
+  setSiteNameClaim: (value: React.SetStateAction<string>) => void
+  logoImage: boolean | null
+  setLogoImage: (value: any) => void
+  logoImageUrl: string
+  setLogoImageUrl: (value: React.SetStateAction<string>) => void
+  logoImageHeight: number | undefined | any
+  setLogoImageHeight: (value: React.SetStateAction<number | undefined>) => void
+  logoImageWidth: number | undefined | any
+  setLogoImageWidth: (value: React.SetStateAction<number | undefined>) => void
+  logoImageSize: number | undefined | any
+  setLogoImageSize: (value: React.SetStateAction<number | undefined>) => void
+  navigationItems: { title: string; href: string; visibilityState: string }[]
 }
 
 export const useOtherState = (): OtherState => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentBreakpoint, setCurrentBreakpoint] = useState<number>(2)
+
   // Typography
   const [fontName, setFontName] = useState<string>('Hind')
   const [fontWeights, setFontWeights] = useState<string>('400;700')
+
   // Global colors
   const [globalPrimary, setGlobalPrimary] = useState<string | undefined>(colors.global.primary)
   const [globalSecondary, setGlobalSecondary] = useState<string | undefined>(
     colors.global.secondary,
   )
   const [globalAccent, setGlobalAccent] = useState<string | undefined>(colors.global.accent)
+
   // Domain
   const [domain, setDomain] = useState<string>('')
   const [availability, setAvailability] = useState<boolean | null>(null)
   const [dnsTransferCode, setDnsTransferCode] = useState<string>('')
+
   // Contact Info
   const [contactName, setContactName] = useState<string>('')
   const [contactCompany, setContactCompany] = useState<string>('')
   const [contactEmail, setContactEmail] = useState<string>('')
   const [contactPhone, setContactPhone] = useState<string>('')
+
   // Buy domain
   const [domainBuyName, setDomainBuyName] = useState<string>('')
   const [domainBuyEmail, setDomainBuyEmail] = useState<string>('')
   const [domainBuyAddress, setDomainBuyAddress] = useState<string>('')
   const [domainBuyVAT, setDomainBuyVAT] = useState<string>('')
+
   // Meta
   const [metaTitle, setMetaTitle] = useState<string>(
     'Patrik Indra - Saroli | Finanční specialista a poradce',
@@ -78,6 +99,26 @@ export const useOtherState = (): OtherState => {
   const [metaDescription, setMetaDescription] = useState<string>(
     'Již více než 10 let pomáhám klientům v řešení finančního zázemí, zajištění příjmu v případě nemoci / úrazu a dále v přípravě na jejich budoucnost a cíle.',
   )
+
+  // Identity
+  const [siteName, setSiteName] = useState<string>('Patrik Indra')
+  const [siteNameClaim, setSiteNameClaim] = useState<string>('Finanční specialista')
+  const [logoImage, setLogoImage] = useState<boolean | null>(false)
+  const [logoImageUrl, setLogoImageUrl] = useState<string>(
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap.svg',
+  )
+  const [logoImageHeight, setLogoImageHeight] = useState<number | undefined>(undefined)
+  const [logoImageWidth, setLogoImageWidth] = useState<number | undefined>(undefined)
+  const [logoImageSize, setLogoImageSize] = useState<number | undefined>(160)
+
+  // Navigation items
+  const navigationItems = [
+    { title: 'O nás', href: '#about', visibilityState: 'showAbout' },
+    { title: 'Služby', href: '#services', visibilityState: 'showServices' },
+    { title: 'Reference', href: '#reference', visibilityState: 'showReference' },
+    { title: 'Portfolio', href: '#portfolio', visibilityState: 'showPortfolio' },
+    { title: 'Kontakt', href: '#contact', visibilityState: 'showContact' },
+  ]
 
   return {
     currentStep,
@@ -120,5 +161,20 @@ export const useOtherState = (): OtherState => {
     setMetaTitle,
     metaDescription,
     setMetaDescription,
+    siteName,
+    setSiteName,
+    siteNameClaim,
+    setSiteNameClaim,
+    logoImage,
+    setLogoImage,
+    logoImageUrl,
+    setLogoImageUrl,
+    logoImageHeight,
+    setLogoImageHeight,
+    logoImageWidth,
+    setLogoImageWidth,
+    logoImageSize,
+    setLogoImageSize,
+    navigationItems,
   }
 }

@@ -8,11 +8,28 @@ import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 interface Props {
+  siteName: string
+  siteNameClaim: string
+  logoImage: boolean | null
+  logoImageUrl: string
+  logoImageHeight: number | undefined | any
+  logoImageWidth: number | undefined | any
+  logoImageSize: number | undefined | any
   breakpoint?: string
   preview?: boolean
 }
 
-export default function Header({ breakpoint = 'lg', preview = false }: Props) {
+export default function Header({
+  siteName,
+  siteNameClaim,
+  logoImage,
+  logoImageUrl,
+  logoImageWidth,
+  logoImageHeight,
+  logoImageSize,
+  breakpoint = 'lg',
+  preview = false,
+}: Props) {
   const menu: MenuItems[] = data.menuItems
 
   return (
@@ -24,7 +41,17 @@ export default function Header({ breakpoint = 'lg', preview = false }: Props) {
       )}
     >
       <div className="container flex flex-row justify-between items-center">
-        <Logo breakpoint={breakpoint} preview={preview} />
+        <Logo
+          siteName={siteName}
+          siteNameClaim={siteNameClaim}
+          logoImage={logoImage}
+          logoImageUrl={logoImageUrl}
+          logoImageWidth={logoImageWidth}
+          logoImageHeight={logoImageHeight}
+          logoImageSize={logoImageSize}
+          breakpoint={breakpoint}
+          preview={preview}
+        />
 
         <div className="flex flex-row space-x-4">
           <div className={getBreakpointStyles('gap-8 hidden md:flex lg:flex', breakpoint, preview)}>

@@ -1,7 +1,5 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
-import { AboutData } from '@/app/lib/types'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
@@ -16,11 +14,10 @@ export function AboutVariant03({
   contentButton,
   contentButtonText,
   contentButtonLink,
+  boxes,
   breakpoint,
   preview,
 }: AboutVariantProps) {
-  const aboutItems: AboutData = data
-
   const layouts = {
     transparent: 'dark:bg-black',
     background: 'bg-[var(--about-background)] dark:bg-black',
@@ -122,16 +119,17 @@ export function AboutVariant03({
 
         <div
           className={getBreakpointStyles(
-            'flex flex-col md:flex-row flex-wrap space-y-8 md:space-y-0',
+            'grid grid-cols-1 md:grid-cols-3 gap-8',
             breakpoint,
             preview,
           )}
         >
-          {aboutItems.about.items.map((item: any, index: any) => (
+          {/*//@ts-ignore*/}
+          {boxes.map((box, index) => (
             <div
               key={index}
               className={getBreakpointStyles(
-                'md:basis-1/3 flex flex-row items-start space-x-2',
+                'flex flex-row items-start space-x-2',
                 breakpoint,
                 preview,
               )}
@@ -147,9 +145,9 @@ export function AboutVariant03({
               </div>
 
               <div className="text-[var(--about-typo)] dark:text-white space-y-2">
-                <h3 className="text-xl font-bold">{item.title}</h3>
+                <h3 className="text-xl font-bold">{box.title}</h3>
 
-                <p className="text-sm">{item.description}</p>
+                <p className="text-sm">{box.description}</p>
               </div>
             </div>
           ))}
