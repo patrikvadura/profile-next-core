@@ -101,61 +101,72 @@ export default function Customizer() {
 
   // Progress checker validation
   const [statesChanged, setStatesChanged] = useState({
-    // Appearance
-    contactRecipientChanged: false,
-
-    // Content
-    heroContentTitleChanged: false,
-    heroContentSubtitleChanged: false,
-
     // Domain
     domainChanged: false,
-  })
 
-  const progressItems = [
-    {
-      title: 'Zobrazení fromuláře',
-    },
-  ]
+    // Settings
+    metaTitleChanged: false,
+    metaDescriptionChanged: false,
+    contactNameChanged: false,
+    contactEmailChanged: false,
+    contactPhoneChanged: false,
+  })
 
   const initialRender = useRef(true)
   const previousStates = useRef({
-    // Appearance
-    contactRecipient: contact.contactRecipient,
-
-    // Content
-    heroContentTitle: hero.heroContentTitle,
-    heroContentSubtitle: hero.heroContentSubtitle,
-
     // Domain
     domain: domain,
+
+    // Settings
+    metaTitle: other.metaTitle,
+    metaDescription: other.metaDescription,
+    contactName: other.contactName,
+    contactEmail: other.contactEmail,
+    contactPhone: other.contactPhone,
   })
 
   useEffect(() => {
     if (!initialRender.current) {
-      // Appearance
-      if (contact.contactRecipient !== previousStates.current.contactRecipient) {
-        setStatesChanged(prevState => ({ ...prevState, contactRecipientChanged: true }))
-        previousStates.current.contactRecipient = contact.contactRecipient
-      }
-
-      // Content
-      if (hero.heroContentTitle !== previousStates.current.heroContentTitle) {
-        setStatesChanged(prevState => ({ ...prevState, heroContentTitleChanged: true }))
-        previousStates.current.heroContentTitle = hero.heroContentTitle
-      }
-      if (hero.heroContentSubtitle !== previousStates.current.heroContentSubtitle) {
-        setStatesChanged(prevState => ({ ...prevState, heroContentSubtitleChanged: true }))
-        previousStates.current.heroContentSubtitle = hero.heroContentSubtitle
-      }
-
       // Domain
       if (domain !== previousStates.current.domain) {
         setStatesChanged(prevState => ({ ...prevState, domainChanged: true }))
         previousStates.current.domain = domain
       }
+
+      // Settings
+      if (other.metaTitle !== previousStates.current.metaTitle) {
+        setStatesChanged(prevState => ({ ...prevState, metaTitleChanged: true }))
+        previousStates.current.metaTitle = other.metaTitle
+      }
+
+      if (other.metaDescription !== previousStates.current.metaDescription) {
+        setStatesChanged(prevState => ({ ...prevState, metaDescriptionChanged: true }))
+        previousStates.current.metaDescription = other.metaDescription
+      }
+
+      if (other.contactName !== previousStates.current.contactName) {
+        setStatesChanged(prevState => ({ ...prevState, contactNameChanged: true }))
+        previousStates.current.contactName = other.contactName
+      }
+
+      if (other.contactEmail !== previousStates.current.contactEmail) {
+        setStatesChanged(prevState => ({ ...prevState, contactEmailChanged: true }))
+        previousStates.current.contactEmail = other.contactEmail
+      }
+
+      if (other.contactPhone !== previousStates.current.contactPhone) {
+        setStatesChanged(prevState => ({ ...prevState, contactPhoneChanged: true }))
+        previousStates.current.contactPhone = other.contactPhone
+      }
     }
-  }, [domain, contact.contactRecipient, hero.heroContentTitle, hero.heroContentSubtitle])
+  }, [
+    domain,
+    other.metaTitle,
+    other.metaDescription,
+    other.contactName,
+    other.contactEmail,
+    other.contactPhone,
+  ])
 
   useEffect(() => {
     initialRender.current = false
@@ -203,6 +214,7 @@ export default function Customizer() {
           contact={contact}
           optionsHeroContent={optionsHeroContent}
           optionsAboutContent={optionsAboutContent}
+          navigationItems={other.navigationItems}
         />
       )}
 
@@ -241,6 +253,8 @@ export default function Customizer() {
           logoImageWidth={other.logoImageWidth}
           logoImageHeight={other.logoImageHeight}
           logoImageSize={other.logoImageSize}
+          visibility={visibility}
+          navigationItems={other.navigationItems}
           breakpoint={breakpoint}
           preview
         />

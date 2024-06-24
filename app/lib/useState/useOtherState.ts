@@ -57,7 +57,12 @@ export interface OtherState {
   setLogoImageWidth: (value: React.SetStateAction<number | undefined>) => void
   logoImageSize: number | undefined | any
   setLogoImageSize: (value: React.SetStateAction<number | undefined>) => void
-  navigationItems: { title: string; href: string; visibilityState: string }[]
+  navigationItems: {
+    title: string | any
+    href: string | any
+    visibilityState: string | any
+    setTitle: (value: string) => void | any
+  }[]
 }
 
 export const useOtherState = (): OtherState => {
@@ -112,13 +117,50 @@ export const useOtherState = (): OtherState => {
   const [logoImageSize, setLogoImageSize] = useState<number | undefined>(160)
 
   // Navigation items
-  const navigationItems = [
-    { title: 'O nás', href: '#about', visibilityState: 'showAbout' },
-    { title: 'Služby', href: '#services', visibilityState: 'showServices' },
-    { title: 'Reference', href: '#reference', visibilityState: 'showReference' },
-    { title: 'Portfolio', href: '#portfolio', visibilityState: 'showPortfolio' },
-    { title: 'Kontakt', href: '#contact', visibilityState: 'showContact' },
-  ]
+  const [navigationItems, setNavigationItems] = useState([
+    {
+      title: 'O nás',
+      href: '#about',
+      visibilityState: 'showAbout',
+      setTitle: (value: string) =>
+        setNavigationItems(prevState => updateNavItem(prevState, 0, value)),
+    },
+    {
+      title: 'Služby',
+      href: '#services',
+      visibilityState: 'showServices',
+      setTitle: (value: string) =>
+        setNavigationItems(prevState => updateNavItem(prevState, 1, value)),
+    },
+    {
+      title: 'Reference',
+      href: '#reference',
+      visibilityState: 'showReference',
+      setTitle: (value: string) =>
+        setNavigationItems(prevState => updateNavItem(prevState, 2, value)),
+    },
+    {
+      title: 'Portfolio',
+      href: '#portfolio',
+      visibilityState: 'showPortfolio',
+      setTitle: (value: string) =>
+        setNavigationItems(prevState => updateNavItem(prevState, 3, value)),
+    },
+    {
+      title: 'Kontakt',
+      href: '#contact',
+      visibilityState: 'showContact',
+      setTitle: (value: string) =>
+        setNavigationItems(prevState => updateNavItem(prevState, 4, value)),
+    },
+  ])
+
+  //@ts-ignore
+  const updateNavItem = (items, index, value) => {
+    const newItems = [...items]
+    newItems[index].title = value
+    return newItems
+  }
 
   return {
     currentStep,

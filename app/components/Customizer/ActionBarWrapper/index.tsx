@@ -115,7 +115,7 @@ export default function ActionBarWrapper({
             // Handle completion button click here
           }}
         >
-          {!progressComplete ? 'Ještě není hotovo' : 'Dokončit'}
+          {!progressComplete ? 'Něco chybí' : 'Dokončit'}
         </Button>
       </div>
     </ActionBar>

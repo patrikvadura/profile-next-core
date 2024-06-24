@@ -40,7 +40,7 @@ export default function BreakpointPreview({ currentBreakpoint, children }: Props
                   ? 'scale(0.73)'
                   : currentBreakpoint === 1
                   ? 'scale(0.90)'
-                  : 'scale(0.90)',
+                  : 'scale(0.91)',
               transformOrigin: 'top left',
               width: currentBreakpoint === 0 ? '28vw' : currentBreakpoint === 1 ? '73vw' : '100vw',
               height: '100vh',

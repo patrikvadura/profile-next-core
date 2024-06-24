@@ -1,6 +1,6 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
-import { MenuItems } from '@/app/lib/types'
+import { useVisibilityState } from '@/app/lib/useState/useVisibilityState'
+import { useOtherState } from '@/app/lib/useState/useOtherState'
 import Link from 'next/link'
 import Logo from '@/app/ui/Logo'
 import { MobileNav } from '@/app/ui/Header/MobileNav'
@@ -15,6 +15,8 @@ interface Props {
   logoImageHeight: number | undefined | any
   logoImageWidth: number | undefined | any
   logoImageSize: number | undefined | any
+  visibility: any
+  navigationItems: any
   breakpoint?: string
   preview?: boolean
 }
@@ -27,11 +29,11 @@ export default function Header({
   logoImageWidth,
   logoImageHeight,
   logoImageSize,
+  visibility,
+  navigationItems,
   breakpoint = 'lg',
   preview = false,
 }: Props) {
-  const menu: MenuItems[] = data.menuItems
-
   return (
     <div
       className={getBreakpointStyles(
@@ -55,18 +57,28 @@ export default function Header({
 
         <div className="flex flex-row space-x-4">
           <div className={getBreakpointStyles('gap-8 hidden md:flex lg:flex', breakpoint, preview)}>
-            {menu.map((item, index) => (
-              <Link
-                key={index}
-                href={item.link ?? '#'}
-                className="text-[var(--global-secondary)] dark:text-white hover:brightness-50 font-bold"
-              >
-                {item.title}
-              </Link>
-            ))}
+            {navigationItems.map(
+              // @ts-ignore
+              (item, index) =>
+                // @ts-ignore
+                visibility[item.visibilityState] && (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="text-[var(--global-secondary)] dark:text-white hover:brightness-50 font-bold"
+                  >
+                    {item.title}
+                  </Link>
+                ),
+            )}
           </div>
 
-          <MobileNav menuItems={menu} breakpoint={breakpoint} preview={preview} />
+          <MobileNav
+            menuItems={navigationItems}
+            visibility={visibility}
+            breakpoint={breakpoint}
+            preview={preview}
+          />
 
           <div className={getBreakpointStyles('hidden md:inline', breakpoint, preview)}>
             <ThemeSwitcher />

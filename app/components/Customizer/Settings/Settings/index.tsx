@@ -153,7 +153,7 @@ export default function SettingsSettings({
                 </div>
               </div>
 
-              <div>
+              <div className="pt-4">
                 <h3 className="font-bold">{other.metaTitle}</h3>
                 <p className="text-sm opacity-75">{other.metaDescription}</p>
               </div>
@@ -182,7 +182,6 @@ export default function SettingsSettings({
             value={other.contactCompany}
             onChange={e => other.setContactCompany(e.target.value)}
             label="Firma"
-            isRequired
             classLabel="!text-black"
           />
 
