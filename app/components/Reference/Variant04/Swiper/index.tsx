@@ -1,25 +1,26 @@
 'use client'
 
 import React from 'react'
-import data from '@/app/lib/data.json'
-import { ReferenceItems } from '@/app/lib/types'
+import { Box } from '@/app/lib/customizer'
 import { Quote } from '@/app/ui/Icons/Quote'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 interface SwiperComponentProps {
-  references: ReferenceItems
+  boxes: Box[]
   accentBgColor: string
   typoColor: string
   align: string
+  referenceContentTitle?: string | undefined
   breakpoint?: any | undefined
   preview?: boolean
 }
 
 export function SwiperComponent({
-  references,
+  boxes,
   accentBgColor,
   typoColor,
   align,
+  referenceContentTitle,
   breakpoint,
   preview,
 }: SwiperComponentProps) {
@@ -35,7 +36,7 @@ export function SwiperComponent({
   return (
     <div
       className={getBreakpointStyles(
-        'grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 px-8 md:px-0',
+        'grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 px-8 md:px-0 w-full',
         breakpoint,
         preview,
       )}
@@ -47,7 +48,7 @@ export function SwiperComponent({
           preview,
         )}
       >
-        {references.items.map((item, index) => (
+        {boxes.map((box, index) => (
           <div key={index}>
             <div
               className={getBreakpointStyles(
@@ -63,7 +64,7 @@ export function SwiperComponent({
                   preview,
                 )}
               >
-                {item.description}
+                {box.description}
               </p>
 
               <h3
@@ -73,7 +74,7 @@ export function SwiperComponent({
                   preview,
                 )}
               >
-                {item.title}
+                {box.title}
               </h3>
             </div>
           </div>
@@ -88,8 +89,9 @@ export function SwiperComponent({
         )}
       >
         <h2 className={getBreakpointStyles(`${typoColor} text-5xl font-bold`, breakpoint, preview)}>
-          {data.reference.largeTitle}
+          {referenceContentTitle}
         </h2>
+
         <Quote
           className={getBreakpointStyles(
             `${accentBgColor} dark:text-white size-[350px]`,

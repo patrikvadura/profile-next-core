@@ -13,21 +13,7 @@ export function ServicesVariant03({
   align,
   radius,
   servicesContentTitle,
-  servicesContentBox1,
-  servicesContentBox1Title,
-  servicesContentBox1Content,
-  servicesContentBox1Icon,
-  servicesContentBox1IconShow,
-  servicesContentBox2,
-  servicesContentBox2Title,
-  servicesContentBox2Content,
-  servicesContentBox2Icon,
-  servicesContentBox2IconShow,
-  servicesContentBox3,
-  servicesContentBox3Title,
-  servicesContentBox3Content,
-  servicesContentBox3Icon,
-  servicesContentBox3IconShow,
+  boxes,
   servicesContentBoxSpecial,
   servicesContentBoxSpecialTitle,
   servicesContentBoxSpecialLink,
@@ -124,17 +110,19 @@ export function ServicesVariant03({
             preview,
           )}
         >
-          {servicesContentBox1 && (
+          {/*//@ts-ignore*/}
+          {boxes.map((box, index) => (
             <div
+              key={index}
               className={getBreakpointStyles(
                 `${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`,
                 breakpoint,
                 preview,
               )}
             >
-              {servicesContentBox1IconShow && (
+              {box.iconShow && (
                 <ServiceIcon
-                  icon={servicesContentBox1Icon}
+                  icon={box.icon}
                   className={getBreakpointStyles(
                     'size-[64px] text-[var(--service-box-icon)] dark:text-white',
                     breakpoint,
@@ -149,7 +137,7 @@ export function ServicesVariant03({
                   preview,
                 )}
               >
-                {servicesContentBox1Title}
+                {box.title}
               </h3>
 
               <p
@@ -159,90 +147,10 @@ export function ServicesVariant03({
                   preview,
                 )}
               >
-                {servicesContentBox1Content}
+                {box.content}
               </p>
             </div>
-          )}
-
-          {servicesContentBox2 && (
-            <div
-              className={getBreakpointStyles(
-                `${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`,
-                breakpoint,
-                preview,
-              )}
-            >
-              {servicesContentBox2IconShow && (
-                <ServiceIcon
-                  icon={servicesContentBox2Icon}
-                  className={getBreakpointStyles(
-                    'size-[64px] text-[var(--service-box-icon)] dark:text-white',
-                    breakpoint,
-                    preview,
-                  )}
-                />
-              )}
-              <h3
-                className={getBreakpointStyles(
-                  'text-2xl text-[var(--service-box-typo)] dark:text-white font-bold',
-                  breakpoint,
-                  preview,
-                )}
-              >
-                {servicesContentBox2Title}
-              </h3>
-
-              <p
-                className={getBreakpointStyles(
-                  'text-[var(--service-box-typo)] dark:text-white text-opacity-75',
-                  breakpoint,
-                  preview,
-                )}
-              >
-                {servicesContentBox2Content}
-              </p>
-            </div>
-          )}
-
-          {servicesContentBox3 && (
-            <div
-              className={getBreakpointStyles(
-                `${radiusClass} ${alignsClass} flex flex-col bg-[var(--service-box-background)] dark:bg-black hover:brightness-90 p-8 space-y-4 transition duration-300 ease-in-out`,
-                breakpoint,
-                preview,
-              )}
-            >
-              {servicesContentBox3IconShow && (
-                <ServiceIcon
-                  icon={servicesContentBox3Icon}
-                  className={getBreakpointStyles(
-                    'size-[64px] text-[var(--service-box-icon)] dark:text-white',
-                    breakpoint,
-                    preview,
-                  )}
-                />
-              )}
-              <h3
-                className={getBreakpointStyles(
-                  'text-2xl text-[var(--service-box-typo)] dark:text-white font-bold',
-                  breakpoint,
-                  preview,
-                )}
-              >
-                {servicesContentBox3Title}
-              </h3>
-
-              <p
-                className={getBreakpointStyles(
-                  'text-[var(--service-box-typo)] dark:text-white text-opacity-75',
-                  breakpoint,
-                  preview,
-                )}
-              >
-                {servicesContentBox3Content}
-              </p>
-            </div>
-          )}
+          ))}
         </div>
       </div>
     </div>

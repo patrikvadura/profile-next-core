@@ -40,6 +40,8 @@ interface VisibilityState {
   setShowHeroContentButtonPrimary: (value: boolean) => void
   showHeroContentButtonSecondary: boolean
   setShowHeroContentButtonSecondary: (value: boolean) => void
+  showAboutContentButton: boolean
+  setShowAboutContentButton: (value: boolean) => void
 }
 
 export const useVisibilityState = (): VisibilityState => {
@@ -64,6 +66,7 @@ export const useVisibilityState = (): VisibilityState => {
   const [showHeroContentButtonPrimary, setShowHeroContentButtonPrimary] = useState<boolean>(true)
   const [showHeroContentButtonSecondary, setShowHeroContentButtonSecondary] =
     useState<boolean>(true)
+  const [showAboutContentButton, setShowAboutContentButton] = useState<boolean>(true)
 
   return {
     showHero,
@@ -104,5 +107,7 @@ export const useVisibilityState = (): VisibilityState => {
     setShowHeroContentButtonPrimary,
     showHeroContentButtonSecondary,
     setShowHeroContentButtonSecondary,
+    showAboutContentButton,
+    setShowAboutContentButton,
   }
 }

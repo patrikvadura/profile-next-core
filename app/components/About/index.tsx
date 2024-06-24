@@ -21,6 +21,11 @@ export function About({
   accentBgColor = colors.about.accent.background,
   accentFgColor = colors.about.accent.foreground,
   typoColor = colors.about.typo,
+  contentTitle,
+  contentDescription,
+  contentButton,
+  contentButtonText,
+  contentButtonLink,
   breakpoint,
   preview,
 }: AboutProps) {
@@ -39,6 +44,11 @@ export function About({
         layout={layout}
         align={align}
         order={order}
+        contentTitle={contentTitle}
+        contentDescription={contentDescription}
+        contentButton={contentButton}
+        contentButtonText={contentButtonText}
+        contentButtonLink={contentButtonLink}
         breakpoint={breakpoint}
         preview={preview}
       />

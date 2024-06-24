@@ -23,6 +23,16 @@ interface ContactState {
   setContactRecipient: (value: string) => void
   contactMapAddress: string | undefined | any
   setContactMapAddress: (value: string) => void
+  contactContentTitle: string | undefined | any
+  setContactContentTitle: (value: string) => void
+  contactContentSubtitle: string | undefined | any
+  setContactContentSubtitle: (value: string) => void
+  contactContentInfoEmail: string | undefined | any
+  setContactContentInfoEmail: (value: string) => void
+  contactContentInfoPhone: string | undefined | any
+  setContactContentInfoPhone: (value: string) => void
+  contactContentInfoAddress: string | undefined | any
+  setContactContentInfoAddress: (value: string) => void
 }
 
 export const useContactState = (): ContactState => {
@@ -47,6 +57,19 @@ export const useContactState = (): ContactState => {
   // Contact Map
   const [contactMapAddress, setContactMapAddress] = useState<string>('Stojanova 508, Uh. Hradiště')
 
+  // Content
+  const [contactContentTitle, setContactContentTitle] = useState<string>(
+    'Již více než 10 let pomáhám klientům v řešení finančního zázemí.',
+  )
+  const [contactContentSubtitle, setContactContentSubtitle] = useState<string>(
+    'Pojďme začít spolupracovat',
+  )
+  const [contactContentInfoEmail, setContactContentInfoEmail] = useState<string>('indra@saroli.cz')
+  const [contactContentInfoPhone, setContactContentInfoPhone] = useState<string>('+420 123 456 789')
+  const [contactContentInfoAddress, setContactContentInfoAddress] = useState<string>(
+    'Stojanova 508, Uh. Hradiště',
+  )
+
   return {
     contactVariant,
     setContactVariant,
@@ -68,5 +91,15 @@ export const useContactState = (): ContactState => {
     setContactRecipient,
     contactMapAddress,
     setContactMapAddress,
+    contactContentTitle,
+    setContactContentTitle,
+    contactContentSubtitle,
+    setContactContentSubtitle,
+    contactContentInfoEmail,
+    setContactContentInfoEmail,
+    contactContentInfoPhone,
+    setContactContentInfoPhone,
+    contactContentInfoAddress,
+    setContactContentInfoAddress,
   }
 }

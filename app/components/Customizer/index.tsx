@@ -8,6 +8,7 @@ import {
   optionsReference,
   optionsContact,
   optionsHeroContent,
+  optionsAboutContent,
 } from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
@@ -64,6 +65,7 @@ export default function Customizer() {
     optionsHero,
     optionsHeroContent,
     optionsAbout,
+    optionsAboutContent,
     optionsService,
     optionsReference,
     optionsContact,
@@ -195,8 +197,12 @@ export default function Customizer() {
           other={other}
           visibility={visibility}
           hero={hero}
+          about={about}
           service={service}
+          reference={reference}
+          contact={contact}
           optionsHeroContent={optionsHeroContent}
+          optionsAboutContent={optionsAboutContent}
         />
       )}
 
@@ -280,6 +286,15 @@ export default function Customizer() {
             accentBgColor={about.aboutAccentBg}
             accentFgColor={about.aboutAccentFg}
             typoColor={about.aboutTypo}
+            contentTitle={about.aboutContentTitle}
+            contentDescription={about.aboutContentDescription}
+            contentButton={visibility.showAboutContentButton}
+            contentButtonText={about.aboutContentButtonTitle}
+            contentButtonLink={
+              about.aboutContentButtonLink === null
+                ? about.aboutContentButtonCustomLink
+                : about.aboutContentButtonLink
+            }
             breakpoint={breakpoint}
             preview
           />
@@ -298,21 +313,7 @@ export default function Customizer() {
             boxTypoColor={service.serviceBoxTypo}
             boxIconColor={service.serviceBoxIcon}
             servicesContentTitle={service.servicesContentTitle}
-            servicesContentBox1={service.servicesContentBox1}
-            servicesContentBox1Title={service.servicesContentBox1Title}
-            servicesContentBox1Content={service.servicesContentBox1Content}
-            servicesContentBox1Icon={service.servicesContentBox1Icon}
-            servicesContentBox1IconShow={service.servicesContentBox1IconShow}
-            servicesContentBox2={service.servicesContentBox2}
-            servicesContentBox2Title={service.servicesContentBox2Title}
-            servicesContentBox2Content={service.servicesContentBox2Content}
-            servicesContentBox2Icon={service.servicesContentBox2Icon}
-            servicesContentBox2IconShow={service.servicesContentBox2IconShow}
-            servicesContentBox3={service.servicesContentBox3}
-            servicesContentBox3Title={service.servicesContentBox3Title}
-            servicesContentBox3Content={service.servicesContentBox3Content}
-            servicesContentBox3Icon={service.servicesContentBox3Icon}
-            servicesContentBox3IconShow={service.servicesContentBox3IconShow}
+            boxes={service.boxes}
             servicesContentBoxSpecial={service.servicesContentBoxSpecial}
             servicesContentBoxSpecialTitle={service.servicesContentBoxSpecialTitle}
             servicesContentBoxSpecialLink={
@@ -333,6 +334,8 @@ export default function Customizer() {
             accentBgColor={reference.referenceAccentBg}
             typoColor={reference.referenceTypo}
             typoLgColor={reference.referenceTypoLg}
+            referenceContentTitle={reference.referenceContentTitle}
+            boxes={reference.boxes}
             breakpoint={breakpoint}
             preview
           />
@@ -351,6 +354,11 @@ export default function Customizer() {
             contactMap={visibility.showContactFormOrMap}
             contactRecipient={contact.contactRecipient}
             contactMapAddress={contact.contactMapAddress}
+            contactContentTitle={contact.contactContentTitle}
+            contactContentSubtitle={contact.contactContentSubtitle}
+            contactContentInfoEmail={contact.contactContentInfoEmail}
+            contactContentInfoPhone={contact.contactContentInfoPhone}
+            contactContentInfoAddress={contact.contactContentInfoAddress}
             breakpoint={breakpoint}
             preview
           />

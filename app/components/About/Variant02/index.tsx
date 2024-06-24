@@ -6,8 +6,19 @@ import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
+import { ArrowRight } from '@/app/ui/Icons/Arrow/Right'
 
-export function AboutVariant02({ layout, align, order, breakpoint, preview }: AboutVariantProps) {
+export function AboutVariant02({
+  layout,
+  align,
+  order,
+  contentTitle,
+  contentButton,
+  contentButtonText,
+  contentButtonLink,
+  breakpoint,
+  preview,
+}: AboutVariantProps) {
   const classes = require('./index.module.scss')
 
   const aboutItems: AboutData = data
@@ -58,7 +69,7 @@ export function AboutVariant02({ layout, align, order, breakpoint, preview }: Ab
           )}
         >
           <AnimatedTitle
-            title={data.about.title}
+            title={contentTitle}
             target="#about"
             origin={!preview ? 'translate-y-[100px]' : null}
             className={getBreakpointStyles(
@@ -68,17 +79,21 @@ export function AboutVariant02({ layout, align, order, breakpoint, preview }: Ab
             )}
           />
 
-          <Button
-            asLink
-            href={data.about.cta.link}
-            className={getBreakpointStyles(
-              'mt-12 bg-[--about-accent-bg] dark:bg-white text-[--about-accent-fg] dark:text-black',
-              breakpoint,
-              preview,
-            )}
-          >
-            {data.about.cta.title}
-          </Button>
+          {contentButton && (
+            <Button
+              asLink
+              href={contentButtonLink}
+              className={getBreakpointStyles(
+                'bg-[var(--about-accent-bg)] dark:bg-white text-[var(--about-accent-fg)] dark:text-black',
+                breakpoint,
+                preview,
+              )}
+            >
+              {contentButtonText}
+
+              <ArrowRight size={24} />
+            </Button>
+          )}
         </div>
 
         <div

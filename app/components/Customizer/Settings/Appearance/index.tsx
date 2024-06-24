@@ -10,8 +10,6 @@ import ColorPickerContact from '@/app/components/Customizer/ColorPicker/Contact'
 import ModalView from '@/app/components/Customizer/ModalView'
 import { Input } from '@/app/ui/Input'
 import Link from 'next/link'
-import Select from '@/app/ui/Select'
-import { Radio } from '@/app/ui/Radio'
 
 interface Props {
   isModalVisible: boolean
@@ -305,14 +303,15 @@ export default function SettingsAppearance({
             />
           </div>
         </Dropdown>
-        <Dropdown
-          label="Portfolio"
-          id="portfolioToggle"
-          checked={visibility.showPortfolio}
-          link="#portfolio"
-          preview
-          onChange={() => visibility.setShowPortfolio(!visibility.showPortfolio)}
-        />
+
+        {/*<Dropdown*/}
+        {/*  label="Portfolio"*/}
+        {/*  id="portfolioToggle"*/}
+        {/*  checked={visibility.showPortfolio}*/}
+        {/*  link="#portfolio"*/}
+        {/*  preview*/}
+        {/*  onChange={() => visibility.setShowPortfolio(!visibility.showPortfolio)}*/}
+        {/*/>*/}
 
         <Dropdown
           label="Kontakt"

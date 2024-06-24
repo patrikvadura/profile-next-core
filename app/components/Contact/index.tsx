@@ -32,6 +32,11 @@ export function Contact({
   contactMap,
   contactRecipient,
   contactMapAddress,
+  contactContentTitle,
+  contactContentSubtitle,
+  contactContentInfoEmail,
+  contactContentInfoPhone,
+  contactContentInfoAddress,
   breakpoint,
   preview,
 }: ContactProps) {
@@ -54,6 +59,11 @@ export function Contact({
         contactMap={contactMap}
         contactRecipient={contactRecipient}
         contactMapAddress={contactMapAddress}
+        contactContentTitle={contactContentTitle}
+        contactContentSubtitle={contactContentSubtitle}
+        contactContentInfoEmail={contactContentInfoEmail}
+        contactContentInfoPhone={contactContentInfoPhone}
+        contactContentInfoAddress={contactContentInfoAddress}
         breakpoint={breakpoint}
         preview={preview}
       />

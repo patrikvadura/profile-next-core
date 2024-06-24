@@ -9,6 +9,11 @@ export type AboutProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  contentTitle?: string
+  contentDescription?: string
+  contentButton?: boolean
+  contentButtonText?: string
+  contentButtonLink?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -21,6 +26,11 @@ export type AboutVariantProps = {
   accentBgColor?: string | any
   accentFgColor?: string | any
   typoColor?: string | any
+  contentTitle?: string
+  contentDescription?: string
+  contentButton?: boolean
+  contentButtonText?: string
+  contentButtonLink?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -103,21 +113,7 @@ export type ServiceProps = {
   boxTypoColor?: string | any
   boxIconColor?: string | any
   servicesContentTitle?: string | undefined | any
-  servicesContentBox1?: boolean
-  servicesContentBox1Title?: string | undefined | any
-  servicesContentBox1Content?: string | undefined | any
-  servicesContentBox1Icon?: string | undefined | any
-  servicesContentBox1IconShow?: boolean
-  servicesContentBox2?: boolean
-  servicesContentBox2Title?: string | undefined | any
-  servicesContentBox2Content?: string | undefined | any
-  servicesContentBox2Icon?: string | undefined | any
-  servicesContentBox2IconShow?: boolean
-  servicesContentBox3?: boolean
-  servicesContentBox3Title?: string | undefined | any
-  servicesContentBox3Content?: string | undefined | any
-  servicesContentBox3Icon?: string | undefined | any
-  servicesContentBox3IconShow?: boolean
+  boxes?: any
   servicesContentBoxSpecial: boolean
   servicesContentBoxSpecialTitle: string | undefined | any
   servicesContentBoxSpecialLink: string | undefined | any
@@ -137,21 +133,7 @@ export type ServiceVariantProps = {
   boxTypoColor?: string | any
   boxIconColor?: string | any
   servicesContentTitle?: string | undefined | any
-  servicesContentBox1?: boolean
-  servicesContentBox1Title?: string | undefined | any
-  servicesContentBox1Content?: string | undefined | any
-  servicesContentBox1Icon?: string | undefined | any
-  servicesContentBox1IconShow?: boolean
-  servicesContentBox2?: boolean
-  servicesContentBox2Title?: string | undefined | any
-  servicesContentBox2Content?: string | undefined | any
-  servicesContentBox2Icon?: string | undefined | any
-  servicesContentBox2IconShow?: boolean
-  servicesContentBox3?: boolean
-  servicesContentBox3Title?: string | undefined | any
-  servicesContentBox3Content?: string | undefined | any
-  servicesContentBox3Icon?: string | undefined | any
-  servicesContentBox3IconShow?: boolean
+  boxes?: any
   servicesContentBoxSpecial?: boolean
   servicesContentBoxSpecialTitle?: string | undefined | any
   servicesContentBoxSpecialLink?: string | undefined | any
@@ -167,6 +149,8 @@ export type ReferenceProps = {
   accentBgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  referenceContentTitle?: string | any
+  boxes?: any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -178,6 +162,8 @@ export type ReferenceVariantProps = {
   accentBgColor?: string | any
   typoColor?: string | any
   typoLgColor?: string | any
+  referenceContentTitle?: string | any
+  boxes?: any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -197,6 +183,11 @@ export type ContactProps = {
   contactMap?: boolean
   contactRecipient?: string | any
   contactMapAddress?: string | any
+  contactContentTitle?: string | any
+  contactContentSubtitle?: string | any
+  contactContentInfoEmail?: string | any
+  contactContentInfoPhone?: string | any
+  contactContentInfoAddress?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }
@@ -213,6 +204,11 @@ export type ContactVariantProps = {
   contactMap?: boolean
   contactRecipient?: string | any
   contactMapAddress?: string | any
+  contactContentTitle?: string | any
+  contactContentSubtitle?: string | any
+  contactContentInfoEmail?: string | any
+  contactContentInfoPhone?: string | any
+  contactContentInfoAddress?: string | any
   breakpoint?: string | any | undefined
   preview?: boolean
 }

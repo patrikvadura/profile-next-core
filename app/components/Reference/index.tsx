@@ -27,6 +27,8 @@ export function Reference({
   accentBgColor = colors.reference.accent.background,
   typoColor = colors.reference.typo,
   typoLgColor = colors.reference.typoLg,
+  referenceContentTitle,
+  boxes,
   breakpoint,
   preview,
 }: ReferenceProps) {
@@ -41,7 +43,14 @@ export function Reference({
         typoColor={typoColor}
         typoLgColor={typoLgColor}
       />
-      <VariantComponent layout={layout} align={align} breakpoint={breakpoint} preview={preview} />
+      <VariantComponent
+        layout={layout}
+        align={align}
+        referenceContentTitle={referenceContentTitle}
+        boxes={boxes}
+        breakpoint={breakpoint}
+        preview={preview}
+      />
     </>
   )
 }

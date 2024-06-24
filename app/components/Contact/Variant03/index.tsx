@@ -5,7 +5,16 @@ import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { ContactVariantProps } from '@/app/lib/variants'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function ContactVariant03({ layout, breakpoint, preview }: ContactVariantProps) {
+export function ContactVariant03({
+  layout,
+  contactContentTitle,
+  contactContentSubtitle,
+  contactContentInfoEmail,
+  contactContentInfoPhone,
+  contactContentInfoAddress,
+  breakpoint,
+  preview,
+}: ContactVariantProps) {
   const layouts = {
     transparent: 'dark:bg-black',
     background: 'bg-[var(--contact-background)] dark:bg-black',
@@ -38,11 +47,11 @@ export function ContactVariant03({ layout, breakpoint, preview }: ContactVariant
             preview,
           )}
         >
-          {data.contact.subtitle}
+          {contactContentSubtitle}
         </h4>
 
         <AnimatedTitle
-          dangerouslySetInnerHTML={{ __html: data.contact.title }}
+          title={contactContentTitle}
           target="#contact"
           type="scale"
           origin={!preview ? 'scale-0' : ''}
@@ -62,25 +71,25 @@ export function ContactVariant03({ layout, breakpoint, preview }: ContactVariant
           )}
         >
           <Link
-            href={`mailto:${data.contact.email}`}
+            href={`mailto:${contactContentInfoEmail}`}
             className={getBreakpointStyles(
               'text-[var(--contact-typo)] text-lg font-semibold tracking-wider',
               breakpoint,
               preview,
             )}
           >
-            {data.contact.email}
+            {contactContentInfoEmail}
           </Link>
 
           <Link
-            href={`tel:${data.contact.phone}`}
+            href={`tel:${contactContentInfoPhone}`}
             className={getBreakpointStyles(
               'text-[var(--contact-typo)] text-lg font-semibold tracking-wider',
               breakpoint,
               preview,
             )}
           >
-            {data.contact.phone}
+            {contactContentInfoPhone}
           </Link>
 
           <p
@@ -90,7 +99,7 @@ export function ContactVariant03({ layout, breakpoint, preview }: ContactVariant
               preview,
             )}
           >
-            {data.contact.address}
+            {contactContentInfoAddress}
           </p>
         </div>
       </div>

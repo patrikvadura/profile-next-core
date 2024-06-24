@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { ReferenceItems } from '@/app/lib/types'
+import { Box } from '@/app/lib/customizer'
 import { Quote } from '@/app/ui/Icons/Quote'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
 interface SwiperComponentProps {
-  references: ReferenceItems
+  boxes: Box[]
   accentBgColor: string
   typoColor: string
   align: string
@@ -15,7 +15,7 @@ interface SwiperComponentProps {
 }
 
 export function SwiperComponent({
-  references,
+  boxes,
   accentBgColor,
   typoColor,
   align,
@@ -34,16 +34,16 @@ export function SwiperComponent({
   return (
     <div
       className={getBreakpointStyles(
-        'grid grid-cols-1 md:grid-cols-2 gap-4 px-8 md:px-0',
+        'grid grid-cols-1 md:grid-cols-2 gap-4 px-8 md:px-0 w-full',
         breakpoint,
         preview,
       )}
     >
-      {references.items.map((item, index) => (
+      {boxes.map((box, index) => (
         <div
           key={index}
           className={getBreakpointStyles(
-            `${alignsClass} flex flex-col justify-start w-full space-y-3 py-12 px-2 -translate-y-12`,
+            `${alignsClass} flex flex-col justify-start items-center w-full space-y-3 py-12 px-2 -translate-y-12`,
             breakpoint,
             preview,
           )}
@@ -63,7 +63,7 @@ export function SwiperComponent({
               preview,
             )}
           >
-            {item.description}
+            {box.description}
           </p>
 
           <h3
@@ -73,7 +73,7 @@ export function SwiperComponent({
               preview,
             )}
           >
-            {item.title}
+            {box.title}
           </h3>
         </div>
       ))}

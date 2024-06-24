@@ -1,5 +1,10 @@
 import { ReactNode } from 'react'
 
+export interface Box {
+  title: string
+  description: string
+}
+
 export interface ModalViewProps {
   children?: ReactNode
   title?: string
@@ -31,7 +36,7 @@ export interface ToggleDropdownProps {
   id: string
   label: string
   link?: string | undefined
-  checked?: boolean | undefined
+  checked?: boolean | undefined | any
   toggled?: boolean
   hideToggle?: boolean
   onChange?: any
@@ -153,6 +158,18 @@ export const optionsAbout: CustomizerOptions = {
   order: [
     { value: 'asc', label: 'Ascending' },
     { value: 'desc', label: 'Descending' },
+  ],
+}
+
+export const optionsAboutContent: CustomizerOptionsContent = {
+  buttonLink: [
+    { value: null, label: 'Vlastní odkaz' },
+    { value: '#hero', label: 'Hero' },
+    { value: '#about', label: 'O nás' },
+    { value: '#services', label: 'Služby' },
+    { value: '#reference', label: 'Reference' },
+    { value: '#portfolio', label: 'Portfolio' },
+    { value: '#contact', label: 'Kontakt' },
   ],
 }
 

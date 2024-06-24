@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ReferenceItems } from '@/app/lib/types'
+import { Box } from '@/app/lib/customizer'
 import { Quote } from '@/app/ui/Icons/Quote'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
@@ -13,7 +13,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 interface SwiperComponentProps {
-  references: ReferenceItems
+  boxes: Box[]
   accentBgColor: string
   typoColor: string
   align: string
@@ -22,7 +22,7 @@ interface SwiperComponentProps {
 }
 
 export function SwiperComponent({
-  references,
+  boxes,
   accentBgColor,
   typoColor,
   align,
@@ -56,7 +56,7 @@ export function SwiperComponent({
         navigation={true}
         modules={[Autoplay, Navigation]}
       >
-        {references.items.map((item, index) => (
+        {boxes.map((box, index) => (
           <SwiperSlide key={index}>
             <div
               className={getBreakpointStyles(
@@ -72,7 +72,7 @@ export function SwiperComponent({
                   preview,
                 )}
               >
-                {item.description}
+                {box.description}
               </p>
 
               <h3
@@ -82,7 +82,7 @@ export function SwiperComponent({
                   preview,
                 )}
               >
-                {item.title}
+                {box.title}
               </h3>
             </div>
           </SwiperSlide>

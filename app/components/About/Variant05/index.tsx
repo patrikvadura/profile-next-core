@@ -1,12 +1,21 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
 import { AnimatedDivider } from '@/app/ui/Animations/Divider'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
+import { ArrowRight } from '@/app/ui/Icons/Arrow/Right'
 
-export function AboutVariant05({ layout, breakpoint, preview }: AboutVariantProps) {
+export function AboutVariant05({
+  layout,
+  contentTitle,
+  contentDescription,
+  contentButton,
+  contentButtonText,
+  contentButtonLink,
+  breakpoint,
+  preview,
+}: AboutVariantProps) {
   const layouts = {
     transparent: 'dark:bg-black',
     background: 'bg-[var(--about-background)] dark:bg-black',
@@ -44,7 +53,7 @@ export function AboutVariant05({ layout, breakpoint, preview }: AboutVariantProp
           )}
         >
           <AnimatedTitle
-            title={data.about.title}
+            title={contentTitle}
             target="#about"
             origin={!preview ? 'translate-y-[100px]' : null}
             className={getBreakpointStyles(
@@ -72,17 +81,25 @@ export function AboutVariant05({ layout, breakpoint, preview }: AboutVariantProp
               preview,
             )}
           >
-            {data.about.description}
+            {contentDescription}
           </p>
 
           <div className={getBreakpointStyles('mt-12 space-x-4', breakpoint, preview)}>
-            <Button
-              asLink
-              href={data.about.cta.link}
-              className="bg-[var(--about-accent-bg)] dark:bg-white text-[var(--about-accent-fg)] dark:text-black"
-            >
-              {data.about.cta.title}
-            </Button>
+            {contentButton && (
+              <Button
+                asLink
+                href={contentButtonLink}
+                className={getBreakpointStyles(
+                  'bg-[var(--about-accent-bg)] dark:bg-white text-[var(--about-accent-fg)] dark:text-black',
+                  breakpoint,
+                  preview,
+                )}
+              >
+                {contentButtonText}
+
+                <ArrowRight size={24} />
+              </Button>
+            )}
           </div>
         </div>
       </div>

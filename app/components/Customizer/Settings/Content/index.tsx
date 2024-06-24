@@ -6,6 +6,7 @@ import Select from '@/app/ui/Select'
 import Link from 'next/link'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
 import ModalView from '@/app/components/Customizer/ModalView'
+import { Icon } from '@iconify/react'
 
 interface Props {
   isModalVisible: boolean
@@ -13,8 +14,12 @@ interface Props {
   other: any
   visibility: any
   hero: any
+  about: any
   service: any
+  reference: any
+  contact: any
   optionsHeroContent: any
+  optionsAboutContent: any
 }
 
 export default function SettingsContent({
@@ -22,8 +27,12 @@ export default function SettingsContent({
   toggleModalVisibility,
   visibility,
   hero,
+  about,
   service,
+  reference,
+  contact,
   optionsHeroContent,
+  optionsAboutContent,
 }: Props) {
   return (
     <ModalView title="Obsah" isVisible={isModalVisible} toggleVisibility={toggleModalVisibility}>
@@ -62,7 +71,6 @@ export default function SettingsContent({
                 minLength={4}
                 classLabel="!text-black"
               />
-
               {!['01', '02', '05'].includes(hero.heroVariant) ? (
                 <UploadComponent
                   imageUrl={hero.imageMainAlternativeUrl}
@@ -93,7 +101,7 @@ export default function SettingsContent({
                   )
                 }
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <Input
                     type="text"
                     value={hero.heroContentButtonPrimaryText}
@@ -131,7 +139,7 @@ export default function SettingsContent({
                   )
                 }
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <Input
                     type="text"
                     value={hero.heroContentButtonSecondaryText}
@@ -161,6 +169,69 @@ export default function SettingsContent({
             </div>
           </Dropdown>
         )}
+
+        <hr className="border-primary border opacity-10" />
+
+        {visibility.showContact && (
+          <Dropdown label="O nás" id="contentAboutToggle" link="#about" preview toggled hideToggle>
+            <div className="space-y-4">
+              <Input
+                type="text"
+                value={about.aboutContentTitle}
+                onChange={e => about.setAboutContentTitle(e.target.value)}
+                label="Hlavní nadpis"
+                classLabel="!text-black"
+              />
+
+              <Textarea
+                type="text"
+                value={about.aboutContentDescription}
+                onChange={e => about.setAboutContentDescription(e.target.value)}
+                label="Popisek"
+                classLabel="!text-black"
+              />
+
+              <Dropdown
+                label="Zobrazit tlačítko"
+                id="aboutButtonToggle"
+                checked={visibility.showAboutContentButton}
+                onChange={() =>
+                  visibility.setShowAboutContentButton(!visibility.showAboutContentButton)
+                }
+              >
+                <div className="grid grid-cols-1 gap-4">
+                  <Input
+                    type="text"
+                    value={about.aboutContentButtonTitle}
+                    onChange={e => about.setAboutContentButtonTitle(e.target.value)}
+                    label="Text tlačítka"
+                    classLabel="!text-black"
+                  />
+
+                  <Select
+                    title="Odkaz tlačítka"
+                    options={optionsAboutContent.buttonLink}
+                    selectedOption={about.aboutContentButtonLink}
+                    onChange={about.setAboutContentButtonLink}
+                  />
+
+                  {about.aboutContentButtonLink === null && (
+                    <Input
+                      type="text"
+                      value={about.aboutContentButtonCustomLink}
+                      onChange={e => about.setAboutContentButtonCustomLink(e.target.value)}
+                      label="Vlastní odkaz"
+                      classLabel="!text-black"
+                    />
+                  )}
+                </div>
+              </Dropdown>
+            </div>
+          </Dropdown>
+        )}
+
+        <hr className="border-primary border opacity-10" />
+
         {visibility.showServices && (
           <Dropdown
             label="Služby"
@@ -179,208 +250,274 @@ export default function SettingsContent({
                 classLabel="!text-black"
               />
 
-              <Dropdown
-                label="První box"
-                id="contentServicesBox1Toggle"
-                checked={service.servicesContentBox1}
-                onChange={() => service.setServicesContentBox1(!service.servicesContentBox1)}
-              >
-                <div className="space-y-4">
-                  <Input
-                    type="text"
-                    value={service.servicesContentBox1Title}
-                    onChange={e => service.setServicesContentBox1Title(e.target.value)}
-                    label="Nadpis"
-                    classLabel="!text-black"
-                  />
-
-                  <Textarea
-                    type="text"
-                    value={service.servicesContentBox1Content}
-                    onChange={e => service.setServicesContentBox1Content(e.target.value)}
-                    label="Popisek"
-                    classLabel="!text-black"
-                  />
-
-                  <Dropdown
-                    label="Chci zobrazit ikonku"
-                    id="contentServicesIcon1Toggle"
-                    checked={service.servicesContentBox1IconShow}
-                    onChange={() =>
-                      service.setServicesContentBox1IconShow(!service.servicesContentBox1IconShow)
-                    }
-                  >
-                    <div className="space-y-4">
-                      <Input
-                        type="text"
-                        value={service.servicesContentBox1Icon}
-                        onChange={e => service.setServicesContentBox1Icon(e.target.value)}
-                        label="Název ikonky"
-                        classLabel="!text-black"
-                      />
-                      <p className="text-sm text-black text-opacity-75">
-                        Vybrat vlastní ikonku si můžete z téhle databáze{' '}
-                        <Link
-                          href="https://icones.js.org/collection/all"
-                          target="_blank"
-                          className="underline"
-                        >
-                          Iconify
-                        </Link>
-                        . Stačí zkopírovat její názv a vložit sem.
-                      </p>
-                    </div>
-                  </Dropdown>
-                </div>
-              </Dropdown>
-
-              <Dropdown
-                label="Druhý box"
-                id="contentServicesBox2Toggle"
-                checked={service.servicesContentBox2}
-                onChange={() => service.setServicesContentBox2(!service.servicesContentBox2)}
-              >
-                <div className="space-y-4">
-                  <Input
-                    type="text"
-                    value={service.servicesContentBox2Title}
-                    onChange={e => service.setServicesContentBox2Title(e.target.value)}
-                    label="Nadpis"
-                    classLabel="!text-black"
-                  />
-
-                  <Textarea
-                    type="text"
-                    value={service.servicesContentBox2Content}
-                    onChange={e => service.setServicesContentBox2Content(e.target.value)}
-                    label="Popisek"
-                    classLabel="!text-black"
-                  />
-
-                  <Dropdown
-                    label="Chci zobrazit ikonku"
-                    id="contentServicesIcon2Toggle"
-                    checked={service.servicesContentBox2IconShow}
-                    onChange={() =>
-                      service.setServicesContentBox2IconShow(!service.servicesContentBox2IconShow)
-                    }
-                  >
-                    <div className="space-y-4">
-                      <Input
-                        type="text"
-                        value={service.servicesContentBox1Icon}
-                        onChange={e => service.setServicesContentBox1Icon(e.target.value)}
-                        label="Název ikonky"
-                        classLabel="!text-black"
-                      />
-                      <p className="text-sm text-black text-opacity-75">
-                        Vybrat vlastní ikonku si můžete z téhle databáze{' '}
-                        <Link
-                          href="https://icones.js.org/collection/all"
-                          target="_blank"
-                          className="underline"
-                        >
-                          Iconify
-                        </Link>
-                        . Stačí zkopírovat její názv a vložit sem.
-                      </p>
-                    </div>
-                  </Dropdown>
-                </div>
-              </Dropdown>
-
-              <Dropdown
-                label="Třetí box"
-                id="contentServicesBox3Toggle"
-                checked={service.servicesContentBox3}
-                onChange={() => service.setServicesContentBox3(!service.servicesContentBox3)}
-              >
-                <div className="space-y-4">
-                  <Input
-                    type="text"
-                    value={service.servicesContentBox3Title}
-                    onChange={e => service.setServicesContentBox3Title(e.target.value)}
-                    label="Nadpis"
-                    classLabel="!text-black"
-                  />
-
-                  <Textarea
-                    type="text"
-                    value={service.servicesContentBox3Content}
-                    onChange={e => service.setServicesContentBox3Content(e.target.value)}
-                    label="Popisek"
-                    classLabel="!text-black"
-                  />
-
-                  <Dropdown
-                    label="Chci zobrazit ikonku"
-                    id="contentServicesIcon3Toggle"
-                    checked={service.servicesContentBox3IconShow}
-                    onChange={() =>
-                      service.setServicesContentBox3IconShow(!service.servicesContentBox3IconShow)
-                    }
-                  >
-                    <div className="space-y-4">
-                      <Input
-                        type="text"
-                        value={service.servicesContentBox3Icon}
-                        onChange={e => service.setServicesContentBox3Icon(e.target.value)}
-                        label="Název ikonky"
-                        classLabel="!text-black"
-                      />
-                      <p className="text-sm text-black text-opacity-75">
-                        Vybrat vlastní ikonku si můžete z téhle databáze{' '}
-                        <Link
-                          href="https://icones.js.org/collection/all"
-                          target="_blank"
-                          className="underline"
-                        >
-                          Iconify
-                        </Link>
-                        . Stačí zkopírovat její názv a vložit sem.
-                      </p>
-                    </div>
-                  </Dropdown>
-                </div>
-              </Dropdown>
-
-              {['03'].includes(service.serviceVariant) && (
+              {/*//@ts-ignore*/}
+              {service.boxes.map((box, index) => (
                 <Dropdown
-                  label="Speciální box"
-                  id="contentServicesBoxSpecialToggle"
-                  checked={service.servicesContentBoxSpecial}
-                  onChange={() =>
-                    service.setServicesContentBoxSpecial(!service.servicesContentBoxSpecial)
-                  }
+                  key={index}
+                  label={`Služba ${index + 1}`}
+                  id={`contentServicesBox${index + 1}Toggle`}
+                  checked={box.iconShow}
+                  onChange={() => service.updateBox(index, 'iconShow', !box.iconShow)}
                 >
                   <div className="space-y-4">
                     <Input
                       type="text"
-                      value={service.servicesContentBoxSpecialTitle}
-                      onChange={e => service.setServicesContentBoxSpecialTitle(e.target.value)}
+                      value={box.title}
+                      onChange={e => service.updateBox(index, 'title', e.target.value)}
                       label="Nadpis"
                       classLabel="!text-black"
                     />
-                    <Select
-                      title="Odkaz tlačítka"
-                      options={optionsHeroContent.buttonLink}
-                      selectedOption={service.servicesContentBoxSpecialLink}
-                      onChange={service.setServicesContentBoxSpecialLink}
+
+                    <Textarea
+                      type="text"
+                      value={box.content}
+                      onChange={e => service.updateBox(index, 'content', e.target.value)}
+                      label="Popisek"
+                      classLabel="!text-black"
                     />
-                    {service.servicesContentBoxSpecialLink === null && (
-                      <Input
-                        type="text"
-                        value={service.servicesContentBoxSpecialCustomLink}
-                        onChange={e =>
-                          service.setServicesContentBoxSpecialCustomLink(e.target.value)
-                        }
-                        label="Vlastní odkaz"
-                        classLabel="!text-black"
-                      />
-                    )}
+
+                    <Dropdown
+                      label="Chci zobrazit ikonku"
+                      id={`contentServicesIcon${index + 1}Toggle`}
+                      checked={box.iconShow}
+                      onChange={() => service.updateBox(index, 'iconShow', !box.iconShow)}
+                    >
+                      <div className="space-y-4">
+                        <Input
+                          type="text"
+                          value={box.icon}
+                          onChange={e => service.updateBox(index, 'icon', e.target.value)}
+                          label="Název ikonky"
+                          classLabel="!text-black"
+                        />
+                        <p className="text-sm text-black text-opacity-75">
+                          Vybrat vlastní ikonku si můžete z téhle databáze{' '}
+                          <Link
+                            href="https://icones.js.org/collection/all"
+                            target="_blank"
+                            className="underline"
+                          >
+                            Iconify
+                          </Link>
+                          . Stačí zkopírovat její název a vložit sem.
+                        </p>
+                      </div>
+                    </Dropdown>
+
+                    <button
+                      type="button"
+                      onClick={() => service.removeBox(index)}
+                      className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
+                    >
+                      <Icon
+                        icon="material-symbols:delete-outline-rounded"
+                        className="mr-1 text-base"
+                      ></Icon>
+                      Odebrat
+                    </button>
                   </div>
                 </Dropdown>
+              ))}
+
+              <button
+                type="button"
+                onClick={service.addBox}
+                className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
+              >
+                <Icon
+                  icon="material-symbols:add-circle-outline-rounded"
+                  className="mr-1 text-base"
+                ></Icon>
+                Přidat službu
+              </button>
+
+              {['03'].includes(service.serviceVariant) && (
+                <>
+                  <hr className="border-primary opacity-10" />
+
+                  <Dropdown
+                    label="Speciální box"
+                    id="contentServicesBoxSpecialToggle"
+                    checked={service.servicesContentBoxSpecial}
+                    onChange={() =>
+                      service.setServicesContentBoxSpecial(!service.servicesContentBoxSpecial)
+                    }
+                  >
+                    <div className="space-y-4">
+                      <Input
+                        type="text"
+                        value={service.servicesContentBoxSpecialTitle}
+                        onChange={e => service.setServicesContentBoxSpecialTitle(e.target.value)}
+                        label="Nadpis"
+                        classLabel="!text-black"
+                      />
+                      <Select
+                        title="Odkaz tlačítka"
+                        options={optionsHeroContent.buttonLink}
+                        selectedOption={service.servicesContentBoxSpecialLink}
+                        onChange={service.setServicesContentBoxSpecialLink}
+                      />
+                      {service.servicesContentBoxSpecialLink === null && (
+                        <Input
+                          type="text"
+                          value={service.servicesContentBoxSpecialCustomLink}
+                          onChange={e =>
+                            service.setServicesContentBoxSpecialCustomLink(e.target.value)
+                          }
+                          label="Vlastní odkaz"
+                          classLabel="!text-black"
+                        />
+                      )}
+                    </div>
+                  </Dropdown>
+                </>
               )}
+            </div>
+          </Dropdown>
+        )}
+
+        <hr className="border-primary border opacity-10" />
+
+        {visibility.showReference && (
+          <Dropdown
+            label="Reference"
+            id="contentReferenceToggle"
+            link="#reference"
+            preview
+            toggled
+            hideToggle
+          >
+            <div className="space-y-4">
+              {!['04'].includes(reference.referenceVariant) ? (
+                <Input
+                  type="text"
+                  value={reference.referenceContentTitle}
+                  onChange={e => reference.setReferenceContentTitle(e.target.value)}
+                  label="Hlavní nadpis"
+                  withLimit
+                  maxLength={9}
+                  minLength={4}
+                  classLabel="!text-black"
+                />
+              ) : (
+                <Input
+                  type="text"
+                  value={reference.referenceContentTitle}
+                  onChange={e => reference.setReferenceContentTitle(e.target.value)}
+                  label="Hlavní nadpis"
+                  classLabel="!text-black"
+                />
+              )}
+
+              {/*//@ts-ignore*/}
+              {reference.boxes.map((box, index) => (
+                <Dropdown
+                  key={index}
+                  label={`Reference ${index + 1}`}
+                  id={`contentReferenceBox${index + 1}Toggle`}
+                  checked={true} // Add any condition if necessary
+                  onChange={() => {}} // Add any action if necessary
+                >
+                  <div className="space-y-4">
+                    <Input
+                      type="text"
+                      value={box.title}
+                      onChange={e => reference.updateBox(index, 'title', e.target.value)}
+                      label="Nadpis"
+                      classLabel="!text-black"
+                    />
+
+                    <Textarea
+                      type="text"
+                      value={box.description}
+                      onChange={e => reference.updateBox(index, 'description', e.target.value)}
+                      label="Popisek"
+                      classLabel="!text-black"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => reference.removeBox(index)}
+                      className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
+                    >
+                      <Icon
+                        icon="material-symbols:delete-outline-rounded"
+                        className="mr-1 text-base"
+                      ></Icon>
+                      Odebrat
+                    </button>
+                  </div>
+                </Dropdown>
+              ))}
+
+              <button
+                type="button"
+                onClick={reference.addBox}
+                className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
+              >
+                <Icon
+                  icon="material-symbols:add-circle-outline-rounded"
+                  className="mr-1 text-base"
+                ></Icon>
+                Přidat referenci
+              </button>
+            </div>
+          </Dropdown>
+        )}
+
+        <hr className="border-primary border opacity-10" />
+
+        {visibility.showContact && (
+          <Dropdown
+            label="Kontakt"
+            id="contentContactToggle"
+            link="#contact"
+            preview
+            toggled
+            hideToggle
+          >
+            <div className="space-y-4">
+              <Input
+                type="text"
+                value={contact.contactContentTitle}
+                onChange={e => contact.setContactContentTitle(e.target.value)}
+                label="Hlavní nadpis"
+                classLabel="!text-black"
+              />
+
+              <Input
+                type="text"
+                value={contact.contactContentSubtitle}
+                onChange={e => contact.setContactContentSubtitle(e.target.value)}
+                label="Podnadpis"
+                classLabel="!text-black"
+              />
+
+              <h3 className="text-primary text-base font-bold pt-4">Kontaktní informace</h3>
+
+              <Input
+                type="text"
+                value={contact.contactContentInfoEmail}
+                onChange={e => contact.setContactContentInfoEmail(e.target.value)}
+                label="Emailová adresa"
+                classLabel="!text-black"
+              />
+
+              <Input
+                type="text"
+                value={contact.contactContentInfoPhone}
+                onChange={e => contact.setContactContentInfoPhone(e.target.value)}
+                label="Telefonní číslo"
+                classLabel="!text-black"
+              />
+
+              <Input
+                type="text"
+                value={contact.contactContentInfoAddress}
+                onChange={e => contact.setContactContentInfoAddress(e.target.value)}
+                label="Adresa"
+                classLabel="!text-black"
+              />
             </div>
           </Dropdown>
         )}

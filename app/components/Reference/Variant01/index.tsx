@@ -1,14 +1,17 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
-import { ReferenceItems } from '@/app/lib/types'
 import { AnimatedLargeTitle } from '@/app/ui/Animations/LargeTitle'
 import { SwiperComponent } from './Swiper'
 import { ReferenceVariantProps } from '@/app/lib/variants'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
 
-export function ReferenceVariant01({ layout, align, breakpoint, preview }: ReferenceVariantProps) {
-  const references: ReferenceItems = data.reference
-
+export function ReferenceVariant01({
+  layout,
+  align,
+  referenceContentTitle,
+  boxes,
+  breakpoint,
+  preview,
+}: ReferenceVariantProps) {
   const layouts = {
     transparent: 'bg-transparent dark:bg-black',
     background: 'bg-[var(--reference-background)] dark:bg-black',
@@ -38,14 +41,14 @@ export function ReferenceVariant01({ layout, align, breakpoint, preview }: Refer
           accentBgColor="text-[var(--reference-accent-bg)]"
           typoColor="text-[var(--reference-typo)]"
           align={align}
-          references={references}
+          boxes={boxes}
           breakpoint={breakpoint}
           preview={preview}
         />
       </div>
 
       <AnimatedLargeTitle
-        title={data.reference.largeTitle}
+        title={referenceContentTitle}
         target="#reference"
         origin={!preview ? '-translate-x-full' : null}
         className={getBreakpointStyles(
