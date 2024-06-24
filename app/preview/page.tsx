@@ -5,7 +5,7 @@ import { Hero } from '@/app/components/Hero'
 import { About } from '@/app/components/About'
 import { Services } from '@/app/components/Services'
 import { Reference } from '@/app/components/Reference'
-import { Contact } from '@/app/components/Contact/Variant01'
+import { Contact } from '@/app/components/Contact'
 import Header from '@/app/ui/Header'
 import Footer from '@/app/ui/Footer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
@@ -13,55 +13,39 @@ import { useAboutState } from '@/app/lib/useState/useAboutState'
 import { useServiceState } from '@/app/lib/useState/useServiceState'
 import { useVisibilityState } from '@/app/lib/useState/useVisibilityState'
 import { useOtherState } from '@/app/lib/useState/useOtherState'
-import { calculatePreviewState } from '@/app/lib/calculatePreviewState'
-import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
-import { optionsAbout, optionsHero, optionsHeroContent, optionsService } from '@/app/lib/customizer'
+import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
+import { useReferenceState } from '@/app/lib/useState/useReferenceState'
+import { useContactState } from '@/app/lib/useState/useContactState'
 
 export default function Home() {
   const hero = useHeroState()
   const about = useAboutState()
   const service = useServiceState()
+  const reference = useReferenceState()
+  const contact = useContactState()
   const visibility = useVisibilityState()
   const other = useOtherState()
 
-  const { totalPrice, totalTime } = calculatePreviewState(visibility)
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
-  const { domain, availability } = useDomain()
-
-  const stateData = {
-    ...hero,
-    ...about,
-    ...service,
-    ...visibility,
-    ...other,
-    optionsHero,
-    optionsHeroContent,
-    optionsAbout,
-    optionsService,
-    domain,
-    availability,
-    totalPrice,
-    totalTime,
-  }
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const newTheme = localStorage.getItem('theme')
-      if (newTheme) {
-        setTheme(newTheme)
-      }
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-    }
-  }, [])
-
   return (
     <>
-      <Header />
+      <ColorUpdaterGlobal
+        primaryGlobalColor={other.globalPrimary}
+        secondaryGlobalColor={other.globalSecondary}
+        accentGlobalColor={other.globalAccent}
+      />
+
+      <Header
+        siteName={other.siteName}
+        siteNameClaim={other.siteNameClaim}
+        logoImage={other.logoImage}
+        logoImageUrl={other.logoImageUrl}
+        logoImageWidth={other.logoImageWidth}
+        logoImageHeight={other.logoImageHeight}
+        logoImageSize={other.logoImageSize}
+        visibility={visibility}
+        navigationItems={other.navigationItems}
+      />
+
       {visibility.showHero && (
         <Hero
           variant={hero.heroVariant}
@@ -96,7 +80,9 @@ export default function Home() {
           }
           imageMainWidth={hero.imageMainWidth}
           imageMainHeight={hero.imageMainHeight}
-          //preview
+          imageBackgroundUrl={hero.imageBackgroundUrl}
+          imageBackgroundWidth={hero.imageBackgroundWidth}
+          imageBackgroundHeight={hero.imageBackgroundHeight}
         />
       )}
       {visibility.showAbout && (
@@ -109,7 +95,16 @@ export default function Home() {
           accentBgColor={about.aboutAccentBg}
           accentFgColor={about.aboutAccentFg}
           typoColor={about.aboutTypo}
-          //preview
+          contentTitle={about.aboutContentTitle}
+          contentDescription={about.aboutContentDescription}
+          contentButton={visibility.showAboutContentButton}
+          contentButtonText={about.aboutContentButtonTitle}
+          contentButtonLink={
+            about.aboutContentButtonLink === null
+              ? about.aboutContentButtonCustomLink
+              : about.aboutContentButtonLink
+          }
+          boxes={about.boxes}
         />
       )}
       {visibility.showServices && (
@@ -126,26 +121,50 @@ export default function Home() {
           boxTypoColor={service.serviceBoxTypo}
           boxIconColor={service.serviceBoxIcon}
           servicesContentTitle={service.servicesContentTitle}
-          servicesContentBox1={service.servicesContentBox1}
-          servicesContentBox1Title={service.servicesContentBox1Title}
-          servicesContentBox1Content={service.servicesContentBox1Content}
-          servicesContentBox1Icon={service.servicesContentBox1Icon}
-          servicesContentBox1IconShow={service.servicesContentBox1IconShow}
-          servicesContentBox2={service.servicesContentBox2}
-          servicesContentBox2Title={service.servicesContentBox2Title}
-          servicesContentBox2Content={service.servicesContentBox2Content}
-          servicesContentBox2Icon={service.servicesContentBox2Icon}
-          servicesContentBox2IconShow={service.servicesContentBox2IconShow}
-          servicesContentBox3={service.servicesContentBox3}
-          servicesContentBox3Title={service.servicesContentBox3Title}
-          servicesContentBox3Content={service.servicesContentBox3Content}
-          servicesContentBox3Icon={service.servicesContentBox3Icon}
-          servicesContentBox3IconShow={service.servicesContentBox3IconShow}
-          //preview
+          boxes={service.boxes}
+          servicesContentBoxSpecial={service.servicesContentBoxSpecial}
+          servicesContentBoxSpecialTitle={service.servicesContentBoxSpecialTitle}
+          servicesContentBoxSpecialLink={
+            service.servicesContentBoxSpecialLink === null
+              ? service.servicesContentBoxSpecialCustomLink
+              : service.servicesContentBoxSpecialLink
+          }
         />
       )}
-      {visibility.showReference && <Reference />}
-      {visibility.showContact && <Contact />}
+      {visibility.showReference && (
+        <Reference
+          variant={reference.referenceVariant}
+          layout={reference.referenceLayout}
+          align={reference.referenceAlign}
+          backgroundColor={reference.referenceBackground}
+          accentBgColor={reference.referenceAccentBg}
+          typoColor={reference.referenceTypo}
+          typoLgColor={reference.referenceTypoLg}
+          referenceContentTitle={reference.referenceContentTitle}
+          boxes={reference.boxes}
+        />
+      )}
+      {visibility.showContact && (
+        <Contact
+          variant={contact.contactVariant}
+          layout={contact.contactLayout}
+          align={contact.contactAlign}
+          order={contact.contactOrder}
+          backgroundColor={contact.contactBackground}
+          accentBgColor={contact.contactAccentBg}
+          accentFgColor={contact.contactAccentFg}
+          typoColor={contact.contactTypo}
+          contactForm={visibility.showContactFormOrMap}
+          contactMap={visibility.showContactFormOrMap}
+          contactRecipient={contact.contactRecipient}
+          contactMapAddress={contact.contactMapAddress}
+          contactContentTitle={contact.contactContentTitle}
+          contactContentSubtitle={contact.contactContentSubtitle}
+          contactContentInfoEmail={contact.contactContentInfoEmail}
+          contactContentInfoPhone={contact.contactContentInfoPhone}
+          contactContentInfoAddress={contact.contactContentInfoAddress}
+        />
+      )}
       <Footer />
     </>
   )

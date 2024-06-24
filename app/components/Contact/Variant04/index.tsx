@@ -89,7 +89,7 @@ export function ContactVariant04({
             <Link
               href={`mailto:${contactContentInfoEmail}`}
               className={getBreakpointStyles(
-                'text-[var(--contact-typo)] text-lg font-semibold tracking-wider',
+                'text-[var(--contact-typo)] dark:text-white text-lg font-semibold tracking-wider',
                 breakpoint,
                 preview,
               )}
@@ -100,7 +100,7 @@ export function ContactVariant04({
             <Link
               href={`tel:${contactContentInfoPhone}`}
               className={getBreakpointStyles(
-                'text-[var(--contact-typo)] text-lg font-semibold tracking-wider',
+                'text-[var(--contact-typo)] dark:text-white text-lg font-semibold tracking-wider',
                 breakpoint,
                 preview,
               )}
@@ -110,7 +110,7 @@ export function ContactVariant04({
 
             <p
               className={getBreakpointStyles(
-                'text-[var(--contact-typo)] text-lg font-semibold tracking-wider',
+                'text-[var(--contact-typo)] dark:text-white text-lg font-semibold tracking-wider',
                 breakpoint,
                 preview,
               )}

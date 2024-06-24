@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import data from '@/app/lib/dataCustomizer.json'
 import Script from 'next/script'
 import Providers from '@/app/providers'
-import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
 import HeaderCustomizer from '@/app/components/Customizer/HeaderCustomizer'
 import '@/app/globals.css'
 
@@ -75,13 +74,10 @@ export default function RootLayout({
           ) : (
             ''
           )}
-          <DeviceCheck>
-            <div className="bg-primary w-screen h-screen flex flex-row overflow-hidden">
-              <HeaderCustomizer />
-
-              {children}
-            </div>
-          </DeviceCheck>
+          <div className="bg-primary w-screen h-screen flex flex-row overflow-hidden">
+            <HeaderCustomizer />
+            {children}
+          </div>
         </body>
       </Providers>
     </html>
