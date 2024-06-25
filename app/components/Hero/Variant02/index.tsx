@@ -54,7 +54,7 @@ export function HeroVariant02({
         // @ts-ignore
         src={imageMainUrl}
         className={getBreakpointStyles(
-          'absolute left-0 object-cover bottom-0 size-[600px] md:size-[850px] lg:size-[920px] md:translate-y-[140px] lg:translate-y-[120px] md:translate-x-[40px] lg:translate-x-[60px] z-1',
+          'absolute left-0 object-contain bottom-0 size-[600px] md:size-[850px] lg:size-[920px] md:translate-y-[140px] lg:translate-y-[60px] md:translate-x-[40px] lg:translate-x-[60px] z-1',
           breakpoint,
           preview,
         )}

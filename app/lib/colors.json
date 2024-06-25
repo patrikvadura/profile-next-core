@@ -1,60 +1,60 @@
 {
   "global": {
-    "primary": "#5B329B",
-    "secondary": "#191A44",
-    "accent": "#EDF1F4"
+    "primary": "#73E790",
+    "secondary": "#29349A",
+    "accent": "#FCA4ED"
   },
   "header": {
     "background": "#ffffff",
     "accent": "#191A44",
-    "name": "#191A44",
-    "menuItem": "#191A44"
+    "name": "#29349A",
+    "menuItem": "#29349A"
   },
   "hero": {
-    "background": "#191A44",
+    "background": "#29349A",
     "accent": {
-      "background": "#5B319B",
-      "foreground": "#ffffff"
+      "background": "#73E790",
+      "foreground": "#29349A"
     },
     "typo": "#ffffff",
-    "typoLg": "#EDF1F4"
+    "typoLg": "#ffffff"
   },
   "about": {
-    "background": "#EDF1F4",
+    "background": "#F4F4F4",
     "accent": {
-      "background": "#5B319B",
-      "foreground": "#ffffff"
+      "background": "#73E790",
+      "foreground": "#29349A"
     },
-    "typo": "#191A44"
+    "typo": "#29349A"
   },
   "service": {
     "background": "#ffffff",
     "accent": {
-      "background": "#5B319B",
-      "foreground": "#ffffff"
+      "background": "#73E790",
+      "foreground": "#29349A"
     },
     "box": {
-      "background": "#EDF1F4",
-      "typo": "#191A44",
-      "icon": "#5B319B"
+      "background": "#F4F4F4",
+      "typo": "#29349A",
+      "icon": "#29349A"
     },
-    "typo": "#191A44"
+    "typo": "#29349A"
   },
   "reference": {
-    "background": "#191A44",
+    "background": "#29349A",
     "accent": {
-      "background": "#5B319B",
-      "foreground": "#ffffff"
+      "background": "#73E790",
+      "foreground": "#29349A"
     },
     "typo": "#ffffff",
     "typoLg": "#ffffff"
   },
   "contact": {
-    "background": "#EDF1F4",
+    "background": "#F4F4F4",
     "accent": {
-      "background": "#5B319B",
-      "foreground": "#ffffff"
+      "background": "#73E790",
+      "foreground": "#29349A"
     },
-    "typo": "#191A44"
+    "typo": "#29349A"
   }
 }

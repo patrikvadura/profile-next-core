@@ -58,10 +58,10 @@ export const useAboutState = (): AboutState => {
 
   // Content
   const [aboutContentTitle, setAboutContentTitle] = useState<string>(
-    'Pomůžu zajistit vaši budoucnost a cíle',
+    'Vytvoření webové vizitky nikdy nebylo jednodušší',
   )
   const [aboutContentDescription, setAboutContentDescription] = useState<string>(
-    'Již více než 10 let pomáhám klientům v řešení finančního zázemí, zajištění příjmu v případě nemoci / úrazu a dále v přípravě na jejich budoucnost a cíle. Spolupráci si zakládám na fér jednání, zodpovědném přístupu a na kvalitě předávaných informací. Věřím, že jen poctivě odvedená práce může naši spolupráci posunout dále. Pokud právě tyto hodnoty ve financích hledáte, už víte, na koho se obrátit.',
+    'Pomocí našeho VisoSnap Studia si můžete sami snadno a rychle nakonfigurovat svoji vlastní webovou vizitku, stránku pro prezentaci eventu, svatební pozvánku či jakýkoliv jiný jednoduchý web. Vytvoření je snadné a zvládne to úplně každý. Nejedná se o tradiční lety přežité vizitky, ale o moderní a nekompromisně rychlé řešení využívající nejnovějších trendů a moderních technologií.',
   )
   const [aboutContentButtonTitle, setAboutContentButtonTitle] =
     useState<string>('Nezávazná konzultace')
@@ -72,19 +72,16 @@ export const useAboutState = (): AboutState => {
   // Boxes
   const [boxes, setBoxes] = useState<Box[]>([
     {
-      title: 'Zkušenosti',
-      description:
-        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+      title: 'Rychlost',
+      description: 'Vysoce optimalizovaný s výsledky PageInsight testů 99%',
     },
     {
-      title: 'Profesionalita',
-      description:
-        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+      title: 'Vlastní rozvržení',
+      description: 'Svoji vizitku si můžete přizpůsobit svému vlastnímu stylu.',
     },
     {
-      title: 'Komunikace',
-      description:
-        'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.',
+      title: 'Bezpečnost',
+      description: 'Špičkové moderní technologie a zabezpečení s vlastním SSL certifikátem.',
     },
   ])
 

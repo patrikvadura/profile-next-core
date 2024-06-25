@@ -59,13 +59,14 @@ export const useContactState = (): ContactState => {
 
   // Content
   const [contactContentTitle, setContactContentTitle] = useState<string>(
-    'Již více než 10 let pomáhám klientům v řešení finančního zázemí.',
+    'Kontaktujte nás a vytvořme společně web dle vašich potřeb',
   )
   const [contactContentSubtitle, setContactContentSubtitle] = useState<string>(
-    'Pojďme začít spolupracovat',
+    'Pojďme vytvořit váš vysněný web',
   )
-  const [contactContentInfoEmail, setContactContentInfoEmail] = useState<string>('indra@saroli.cz')
-  const [contactContentInfoPhone, setContactContentInfoPhone] = useState<string>('+420 123 456 789')
+  const [contactContentInfoEmail, setContactContentInfoEmail] =
+    useState<string>('hello@visiosnap.cz')
+  const [contactContentInfoPhone, setContactContentInfoPhone] = useState<string>('+420 725 007 655')
   const [contactContentInfoAddress, setContactContentInfoAddress] = useState<string>(
     'Stojanova 508, Uh. Hradiště',
   )

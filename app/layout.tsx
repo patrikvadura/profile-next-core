@@ -4,10 +4,10 @@ import data from '@/app/lib/data.json'
 import Script from 'next/script'
 import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 import Providers from '@/app/providers'
-import { Lato } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
-const customizerFont = Lato({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
+const customizerFont = Inter({ subsets: ['latin'], weight: ['300', '400', '700'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),

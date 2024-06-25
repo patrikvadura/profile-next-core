@@ -52,24 +52,24 @@ export const useReferenceState = (): ReferenceState => {
   // Boxes
   const [boxes, setBoxes] = useState<Box[]>([
     {
-      title: 'Manželé V. | Brno',
+      title: 'Patrik Indra | Finanční specialista',
       description:
-        'S Patrikem jsme se setkali kvůli pojištění nemovitosti. V jednoduchosti nám vysvětlil rozdíly mezi pojišťovnami a vybral pro nás nejlepší variantu. Od té doby s ním konzultujeme životní pojištění a veškeré investice. Jeho celkový přehled a upřímné jednání jsme ve financích hledali.',
+        'S webovou vizitkou od VisioSnap jsem velmi spokojen. Na širokém trhu jsem nenašel žádnou podobnou službu, která by byla takhle jednoduchá, rychlá a levná. Zcela mě tohle řešení vyhouje pro můj firemní profil, respektive webovou vizitku.',
     },
     {
-      title: 'Libor N. | Uherský Brod',
+      title: 'Kreativní Duo | marketing a sociální sítě',
       description:
-        'S Patrikem se známe už řadu let a naši spolupráci si nemohu vynachválit. Vím, že potřeby klienta jsou pro něj na prvním místě. V oblasti financí vždy dokáže věci srozumitelně vysvětlit a následně poradit s výběrem ideálního řešení. K mé velké spokojenosti spolu řešíme také otázky ohledně povinného ručení, životního pojištění, investic i penze.',
+        'Jakmile jsme se dozvěděli, že VisioSnap vyšli na trh se svým řešením webových vizitek, ani vteřinu jsme neváhaly a okamžitě za jejich pomoci vytvořily webovou stránku pro prezentaci našich kreaktivních služeb.',
     },
     {
-      title: 'Libor O. | Uherský Brod',
+      title: 'Kavárna La Dolce Vita',
       description:
-        'S Patrikem se známe od malička a řeším s ním všechny své pojištění i investice. O všechno se mi skvěle stará, dokázal pro mě najít nejvhodnější finanční nástroje a vždy se na něj můžu obrátit. Mohu jedině doporučit.',
+        'Jsem nadšený z naší nové webové vizitky od VisioSnap. Proces byl neuvěřitelně rychlý a jednoduchý, a výsledná stránka perfektně reflektuje atmosféru naší kavárny. Doporučujeme všem podnikům, které hledají efektivní a cenově dostupné řešení pro svou online prezentaci.',
     },
     {
-      title: 'Manželé J. | Uherský Brod',
+      title: 'Svatební agentura',
       description:
-        'Před několika lety jsme se potkali přes doporučení s panem Indrou kvůli hypotéce. Od první schůzky byla jeho práce profesionální a efektivní. Během 3 týdnů bylo vše vyřešeno a my mohli čerpat peníze. Navíc připravil finanční plán, díky kterému můžeme hypotéku splatit dříve a tím pádem ušetřit nemalé peníze. Spolupráci s panem Indrou jen doporučujeme.',
+        'VisioSnap nám vytvořili nádhernou webovou vizitku, která elegantně představuje naše svatební služby. Celý proces byl hladký a rychlý, a výsledná stránka je přesně to, co jsme hledali. Moc děkujeme za skvělou spolupráci!',
     },
   ])
 

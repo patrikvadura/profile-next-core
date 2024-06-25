@@ -71,26 +71,26 @@ export const useServiceState = (): ServiceState => {
   const [serviceBoxIcon, setServiceBoxIcon] = useState<string | undefined>(colors.service.box.icon)
 
   // Content
-  const [servicesContentTitle, setServicesContentTitle] = useState<string>('Nabídka mých služeb')
+  const [servicesContentTitle, setServicesContentTitle] = useState<string>('Co vám můžu nabídnout?')
 
   // Boxes
   const [boxes, setBoxes] = useState<Box[]>([
     {
-      title: 'Úvěry',
-      content: data.services.description,
-      icon: 'streamline:money-bank-institution-money-saving-bank-payment-finance',
+      title: 'Nulové náklady',
+      content: 'Vaši vizitku umístíme na moderní, výkoné a spolehlivé servery Vercel - ZDARMA.',
+      icon: 'material-symbols:exposure-zero',
       iconShow: true,
     },
     {
-      title: 'Investice',
-      content: data.services.description,
-      icon: 'material-symbols:finance-mode-rounded',
+      title: 'SEO optimalizace',
+      content: 'Vše již od počátku plně nastaveno pro vyhledávače.',
+      icon: 'hugeicons:seo',
       iconShow: true,
     },
     {
-      title: 'Pojištění',
-      content: data.services.description,
-      icon: 'material-symbols:ecg-heart-outline-sharp',
+      title: 'Dark Mode',
+      content: 'Tmavý režim, který obohatí vizuální dojem vaší vizitky.',
+      icon: 'material-symbols:dark-mode-outline',
       iconShow: true,
     },
   ])

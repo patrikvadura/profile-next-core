@@ -4,7 +4,10 @@ import data from '@/app/lib/dataCustomizer.json'
 import Script from 'next/script'
 import Providers from '@/app/providers'
 import HeaderCustomizer from '@/app/components/Customizer/HeaderCustomizer'
+import { Inter } from 'next/font/google'
 import '@/app/globals.css'
+
+const customizerFont = Inter({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),
@@ -61,7 +64,7 @@ export default function RootLayout({
         ''
       )}
       <Providers>
-        <body suppressHydrationWarning>
+        <body className={customizerFont.className} suppressHydrationWarning>
           {data.gtm.status ? (
             <noscript>
               <iframe

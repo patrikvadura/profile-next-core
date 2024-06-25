@@ -69,10 +69,12 @@ export const useHeroState = (): HeroState => {
 
   // Content
   const [heroContentTitle, setHeroContentTitle] = useState<string>(
-    'Ve financích se na mě můžete spolehnout',
+    'Pomůžu vám vytvořit vysněnou vizitku',
   )
-  const [heroContentSubtitle, setHeroContentSubtitle] = useState<string>('Finanční specialista')
-  const [heroContentLargeTitle, setHeroContentLargeTitle] = useState<string>('Finance')
+  const [heroContentSubtitle, setHeroContentSubtitle] = useState<string>(
+    'Specialista na webové vizitky',
+  )
+  const [heroContentLargeTitle, setHeroContentLargeTitle] = useState<string>('Webovky')
   const [heroContentButtonPrimaryText, setHeroContentButtonPrimaryText] =
     useState<string>('Nezávazná konzultace')
   const [heroContentButtonPrimaryLink, setHeroContentButtonPrimaryLink] =
@@ -88,17 +90,17 @@ export const useHeroState = (): HeroState => {
 
   // Image
   const [imageMainUrl, setImageMainUrl] = useState<string | undefined>(
-    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/profileImage.webp',
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_hero_image_01.webp',
   )
   const [imageMainAlternativeUrl, setImageMainAlternativeUrl] = useState<string | undefined>(
-    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/image_without-bg.webp',
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_hero_image_01.webp',
   )
   const [imageMainHeight, setImageMainHeight] = useState<number | undefined>(undefined)
   const [imageMainWidth, setImageMainWidth] = useState<number | undefined>(undefined)
 
   // Image - background
   const [imageBackgroundUrl, setImageBackgroundUrl] = useState<string | undefined>(
-    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/hero_background_image.webp',
+    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_hero_background_01.webp',
   )
   const [imageBackgroundHeight, setImageBackgroundHeight] = useState<number | undefined>(undefined)
   const [imageBackgroundWidth, setImageBackgroundWidth] = useState<number | undefined>(undefined)

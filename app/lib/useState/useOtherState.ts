@@ -70,7 +70,7 @@ export const useOtherState = (): OtherState => {
   const [currentBreakpoint, setCurrentBreakpoint] = useState<number>(2)
 
   // Typography
-  const [fontName, setFontName] = useState<string>('Hind')
+  const [fontName, setFontName] = useState<string>('Inter')
   const [fontWeights, setFontWeights] = useState<string>('400;700')
 
   // Global colors
@@ -99,15 +99,15 @@ export const useOtherState = (): OtherState => {
 
   // Meta
   const [metaTitle, setMetaTitle] = useState<string>(
-    'Patrik Indra - Saroli | Finanční specialista a poradce',
+    'Patrik Vaďura | Specialista na webové vizitky',
   )
   const [metaDescription, setMetaDescription] = useState<string>(
-    'Již více než 10 let pomáhám klientům v řešení finančního zázemí, zajištění příjmu v případě nemoci / úrazu a dále v přípravě na jejich budoucnost a cíle.',
+    'Pomůžu vám levně a bez starostí vytvořit profesionální moderní webovou vizitku. Celou vizitku si můžete sami nakonfigurovat - je to snadné!',
   )
 
   // Identity
-  const [siteName, setSiteName] = useState<string>('Patrik Indra')
-  const [siteNameClaim, setSiteNameClaim] = useState<string>('Finanční specialista')
+  const [siteName, setSiteName] = useState<string>('Patrik Vaďura')
+  const [siteNameClaim, setSiteNameClaim] = useState<string>('Specialista na webové vizitky')
   const [logoImage, setLogoImage] = useState<boolean | null>(false)
   const [logoImageUrl, setLogoImageUrl] = useState<string>(
     'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap.svg',
