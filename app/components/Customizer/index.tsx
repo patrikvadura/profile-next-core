@@ -9,6 +9,7 @@ import {
   optionsContact,
   optionsHeroContent,
   optionsAboutContent,
+  optionsGlobal,
 } from '@/app/lib/customizer'
 import { useHeroState } from '@/app/lib/useState/useHeroState'
 import { useAboutState } from '@/app/lib/useState/useAboutState'
@@ -69,6 +70,7 @@ export default function Customizer() {
     optionsService,
     optionsReference,
     optionsContact,
+    optionsGlobal,
     domain,
     availability,
     totalPrice,
@@ -214,6 +216,7 @@ export default function Customizer() {
           contact={contact}
           optionsHeroContent={optionsHeroContent}
           optionsAboutContent={optionsAboutContent}
+          optionsGlobal={optionsGlobal}
           navigationItems={other.navigationItems}
         />
       )}
@@ -388,7 +391,7 @@ export default function Customizer() {
             preview
           />
         )}
-        <Footer breakpoint={breakpoint} preview />
+        <Footer cookieShow={false} boxes={other.boxesSocialSites} breakpoint={breakpoint} preview />
       </BreakpointPreview>
 
       <ActionBarWrapper

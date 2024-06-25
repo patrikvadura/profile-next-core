@@ -1,20 +1,16 @@
 {
   "meta": {
-    "title": "Patrik Indra - Saroli | Finanční specialista",
-    "description": "Jsem tu pro vás v oblasti finančního poradenství, hypoték a pojištění již více než 5 let.",
+    "title": "Online konfigurátor webu | VisioSnap - studio",
+    "description": "Náš moderní online konfiguráto webových vizitek vám umožňuje levně, rychle a efektivně vytvořit webovou stránku pro různé příležitosti.",
     "openGraph": {
-      "image": "/assets/img/openGraph.jpg",
-      "imageOpacity": ".2",
-      "alt": "Patrik Indra",
-      "background": "#191A44",
-      "foreground": "#fff"
+      "image": "/assets/img/studio/openGraph.jpg",
+      "alt": "VisioSnap - Studio"
     },
     "favicon": {
-      "label": "PI",
-      "background": "#5B319B",
-      "foreground": "#fff"
+      "url": "/assets/img/studio/favicon.ico"
     }
   },
+  "cookie": false,
   "gtm": {
     "status": false,
     "id": ""

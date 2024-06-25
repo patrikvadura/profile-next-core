@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Head from 'next/head'
 import data from '@/app/lib/dataLandingPage.json'
 import { BenefitsItems, DemoWebsiteItems } from '@/app/lib/types'
 import { Icon } from '@iconify/react'
@@ -29,6 +30,13 @@ export default function Preview() {
 
   return (
     <>
+      <Head>
+        <title>{data.meta.title}</title>
+        <meta name="description" content={data.meta.description} />
+        <meta property="og:title" content={data.meta.title} />
+        <meta property="og:description" content={data.meta.description} />
+      </Head>
+
       <Hero />
 
       <div className="bg-light pt-[20rem]">

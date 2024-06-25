@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import data from '@/app/lib/data.json'
+import data from '@/app/lib/dataLandingPage.json'
 import Script from 'next/script'
 import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 import Providers from '@/app/providers'
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `<generated>`,
+        url: data.meta.openGraph.image,
         width: 1200,
         height: 630,
         alt: data.meta.openGraph.alt,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: `/icon?<generated>`,
+        url: data.meta.favicon.url,
         sizes: '32x32',
         type: 'image/png',
       },
@@ -40,11 +40,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const gtmCustomizerID: string | undefined = data.profile.gtm.id
+  const gtmCustomizerID: string | undefined = data.gtm.id
 
   return (
     <html lang="cs-CZ" className="scroll-smooth" suppressHydrationWarning>
-      {data.profile.gtm.status ? (
+      {data.gtm.status ? (
         <Script
           id="Google Analytics"
           data-category="analytics"
@@ -65,7 +65,7 @@ export default function RootLayout({
       )}
       <Providers>
         <body className={customizerFont.className} suppressHydrationWarning>
-          {data.profile.gtm.status ? (
+          {data.gtm.status ? (
             <noscript>
               <iframe
                 src={`https://www.googletagmanager.com/ns.html?id=${gtmCustomizerID}`}

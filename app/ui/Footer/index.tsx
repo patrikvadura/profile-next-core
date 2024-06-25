@@ -2,14 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import FooterSocial from './FooterSocial'
 import { getBreakpointStyles } from '@/app/lib/breakpointHelper'
-import classes from './index.module.scss'
 
 interface Props {
+  cookieShow?: any
+  boxes?: any
   breakpoint?: string
   preview?: boolean
 }
 
-export default function Footer({ breakpoint = 'lg', preview = false }: Props) {
+export default function Footer({ cookieShow, boxes, breakpoint = 'lg', preview = false }: Props) {
   return (
     <footer className="bg-white dark:bg-black">
       <div
@@ -43,7 +44,12 @@ export default function Footer({ breakpoint = 'lg', preview = false }: Props) {
           </svg>
         </Link>
 
-        <FooterSocial breakpoint={breakpoint} preview={preview} />
+        <FooterSocial
+          cookieShow={cookieShow}
+          boxes={boxes}
+          breakpoint={breakpoint}
+          preview={preview}
+        />
       </div>
     </footer>
   )

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: `/assets/img/studio/openGraph.jpg`,
+        url: data.meta.openGraph.image,
         width: 1200,
         height: 630,
         alt: data.meta.openGraph.alt,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: `/assets/img/studio/favicon.ico`,
+        url: data.meta.favicon.url,
         sizes: '32x32',
         type: 'image/png',
       },

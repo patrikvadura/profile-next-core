@@ -2,6 +2,12 @@
 import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
+interface BoxSocialSites {
+  value: string
+  href: string
+  icon: string
+}
+
 export interface OtherState {
   currentStep: number
   setCurrentStep: (value: number) => void
@@ -63,6 +69,11 @@ export interface OtherState {
     visibilityState: string | any
     setTitle: (value: string) => void | any
   }[]
+  boxesSocialSites: BoxSocialSites[]
+  addBoxSocialSites: () => void
+  removeBoxSocialSites: (index: number) => void
+  updateBoxSocialSites: (index: number, key: string, value: string) => void
+  handleSocialSiteChange: any
 }
 
 export const useOtherState = (): OtherState => {
@@ -162,6 +173,43 @@ export const useOtherState = (): OtherState => {
     return newItems
   }
 
+  // Sociální sítě
+  const [boxesSocialSites, setBoxesSocialSites] = useState<BoxSocialSites[]>([
+    {
+      value: 'facebook',
+      href: 'https://facebook.com',
+      icon: 'ic:baseline-facebook',
+    },
+    {
+      value: 'instagram',
+      href: 'https://instagram.com',
+      icon: 'ph:instagram-logo-bold',
+    },
+  ])
+
+  const addBoxSocialSites = () => {
+    setBoxesSocialSites([...boxesSocialSites, { value: '', href: '', icon: '' }])
+  }
+
+  const removeBoxSocialSites = (index: number) => {
+    setBoxesSocialSites(boxesSocialSites.filter((_, i) => i !== index))
+  }
+
+  const updateBoxSocialSites = (index: number, key: string, value: string) => {
+    setBoxesSocialSites(
+      boxesSocialSites.map((box, i) => (i === index ? { ...box, [key]: value } : box)),
+    )
+  }
+
+  const handleSocialSiteChange = (
+    index: number,
+    selectedOption: { value: string; icon: string },
+  ) => {
+    const { value, icon } = selectedOption
+    updateBoxSocialSites(index, 'value', value)
+    updateBoxSocialSites(index, 'icon', icon)
+  }
+
   return {
     currentStep,
     setCurrentStep,
@@ -218,5 +266,10 @@ export const useOtherState = (): OtherState => {
     logoImageSize,
     setLogoImageSize,
     navigationItems,
+    boxesSocialSites,
+    addBoxSocialSites,
+    removeBoxSocialSites,
+    updateBoxSocialSites,
+    handleSocialSiteChange,
   }
 }

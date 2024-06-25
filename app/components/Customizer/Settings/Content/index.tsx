@@ -8,6 +8,7 @@ import Link from 'next/link'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
 import ModalView from '@/app/components/Customizer/ModalView'
 import { Icon } from '@iconify/react'
+import { optionsGlobal } from '@/app/lib/customizer'
 
 interface Props {
   isModalVisible: boolean
@@ -21,6 +22,7 @@ interface Props {
   contact: any
   optionsHeroContent: any
   optionsAboutContent: any
+  optionsGlobal: any
   navigationItems: any
 }
 
@@ -36,6 +38,7 @@ export default function SettingsContent({
   contact,
   optionsHeroContent,
   optionsAboutContent,
+  optionsGlobal,
   navigationItems,
 }: Props) {
   return (
@@ -124,6 +127,68 @@ export default function SettingsContent({
                 ))}
               </div>
             </Dropdown>
+
+            <Dropdown label="Sociální sítě" id="socialSitesSettingsToggle" toggled hideToggle>
+              <div className="space-y-4">
+                {/*//@ts-ignore*/}
+                {other.boxesSocialSites.map((box, index) => (
+                  <Dropdown
+                    key={index}
+                    label={`Sociální síť ${index + 1}`}
+                    id={`socialSitesBox${index + 1}Toggle`}
+                    checked={true}
+                    hideToggle
+                    onChange={() => {}}
+                  >
+                    <div className="space-y-4">
+                      <Select
+                        title="Sociální síť"
+                        options={optionsGlobal.socialSites}
+                        selectedOption={box.value}
+                        onChange={value => {
+                          const selectedOption = optionsGlobal.socialSites.find(
+                            (option: { value: string }) => option.value === value,
+                          )
+                          other.handleSocialSiteChange(index, selectedOption)
+                        }}
+                      />
+
+                      <Input
+                        type="text"
+                        value={box.href}
+                        onChange={e => other.updateBoxSocialSites(index, 'href', e.target.value)}
+                        label="Odkaz"
+                        classLabel="!text-black"
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => other.removeBoxSocialSites(index)}
+                        className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
+                      >
+                        <Icon
+                          icon="material-symbols:delete-outline-rounded"
+                          className="mr-1 text-base"
+                        />
+                        Odebrat
+                      </button>
+                    </div>
+                  </Dropdown>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={other.addBoxSocialSites}
+                  className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
+                >
+                  <Icon
+                    icon="material-symbols:add-circle-outline-rounded"
+                    className="mr-1 text-base"
+                  />
+                  Přidat box
+                </button>
+              </div>
+            </Dropdown>
           </div>
         </Dropdown>
 
@@ -164,7 +229,7 @@ export default function SettingsContent({
                   minLength={4}
                   classLabel="!text-black"
                 />
-                {!['01', '02', '05'].includes(hero.heroVariant) ? (
+                {!['01', '05'].includes(hero.heroVariant) && (
                   <UploadComponent
                     imageUrl={hero.imageMainAlternativeUrl}
                     imageWidth={hero.imageMainWidth}
@@ -173,7 +238,9 @@ export default function SettingsContent({
                     setImageWidth={hero.setImageMainWidth}
                     setImageHeight={hero.setImageMainHeight}
                   />
-                ) : (
+                )}
+
+                {!['05'].includes(hero.heroVariant) && (
                   <UploadComponent
                     imageUrl={hero.imageMainUrl}
                     imageWidth={hero.imageMainWidth}
@@ -181,6 +248,17 @@ export default function SettingsContent({
                     setImageUrl={hero.setImageMainUrl}
                     setImageWidth={hero.setImageMainWidth}
                     setImageHeight={hero.setImageMainHeight}
+                  />
+                )}
+
+                {['04', '05'].includes(hero.heroVariant) && (
+                  <UploadComponent
+                    imageUrl={hero.imageBackgroundUrl}
+                    imageWidth={hero.imageBackgroundWidth}
+                    imageHeight={hero.imageBackgroundHeight}
+                    setImageUrl={hero.setImageBackgroundUrl}
+                    setImageWidth={hero.setImageBackgroundWidth}
+                    setImageHeight={hero.setImageBackgroundHeight}
                   />
                 )}
 

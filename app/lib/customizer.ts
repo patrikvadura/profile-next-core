@@ -48,6 +48,7 @@ export interface Option {
   value: string
   label: string
   image?: string | any
+  icon?: string | any
 }
 
 export interface OptionContent {
@@ -62,6 +63,7 @@ export interface CustomizerOptions {
   align?: Option[] | any
   order?: Option[] | any
   radius?: Option[] | any
+  socialSites?: Option[] | any
 }
 
 export interface CustomizerOptionsContent {
@@ -233,5 +235,14 @@ export const optionsContact: CustomizerOptions = {
   order: [
     { value: 'asc', label: 'Ascending' },
     { value: 'desc', label: 'Descending' },
+  ],
+}
+
+export const optionsGlobal: CustomizerOptions = {
+  socialSites: [
+    { value: 'facebook', label: 'Facebook', icon: 'ic:baseline-facebook' },
+    { value: 'instagram', label: 'Instagram', icon: 'ph:instagram-logo-bold' },
+    { value: 'linkedin', label: 'LinkedIn', icon: 'ph:linkedin-logo-bold' },
+    { value: 'x', label: 'X', icon: 'mingcute:social-x-fill' },
   ],
 }

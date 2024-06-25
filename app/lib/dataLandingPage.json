@@ -1,4 +1,20 @@
 {
+  "meta": {
+    "title": "Webové vizitky levně | VisioSnap",
+    "description": "Náš moderní online konfiguráto webových vizitek vám umožňuje levně, rychle a efektivně vytvořit webovou stránku pro různé příležitosti.",
+    "openGraph": {
+      "image": "/assets/img/studio/openGraph.jpg",
+      "alt": "VisioSnap - Studio"
+    },
+    "favicon": {
+      "url": "/assets/img/studio/favicon.ico"
+    }
+  },
+  "cookie": false,
+  "gtm": {
+    "status": false,
+    "id": ""
+  },
   "menu": {
     "createLink": {
       "title": "Vytvořit nový web",
