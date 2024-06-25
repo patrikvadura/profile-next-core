@@ -1,9 +1,8 @@
 'use client'
 import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
-import data from '@/app/lib/data.json'
 
-interface Box {
+interface BoxService {
   title: string
   content: string
   icon: string
@@ -35,10 +34,10 @@ interface ServiceState {
   setServiceBoxIcon: (value: string) => void
   servicesContentTitle: string | undefined | any
   setServicesContentTitle: (value: React.SetStateAction<string>) => void
-  boxes: Box[]
-  addBox: () => void
-  removeBox: (index: number) => void
-  updateBox: (index: number, field: string, value: any) => void
+  boxesService: BoxService[]
+  addBoxService: () => void
+  removeBoxService: (index: number) => void
+  updateBoxService: (index: number, field: string, value: any) => void
   servicesContentBoxSpecial: boolean
   setServicesContentBoxSpecial: (value: boolean) => void
   servicesContentBoxSpecialTitle: string | undefined | any
@@ -74,7 +73,7 @@ export const useServiceState = (): ServiceState => {
   const [servicesContentTitle, setServicesContentTitle] = useState<string>('Co vám můžu nabídnout?')
 
   // Boxes
-  const [boxes, setBoxes] = useState<Box[]>([
+  const [boxesService, setBoxesService] = useState<BoxService[]>([
     {
       title: 'Nulové náklady',
       content: 'Vaši vizitku umístíme na moderní, výkoné a spolehlivé servery Vercel - ZDARMA.',
@@ -95,16 +94,16 @@ export const useServiceState = (): ServiceState => {
     },
   ])
 
-  const addBox = () => {
-    setBoxes([...boxes, { title: '', content: '', icon: '', iconShow: false }])
+  const addBoxService = () => {
+    setBoxesService([...boxesService, { title: '', content: '', icon: '', iconShow: false }])
   }
 
-  const removeBox = (index: number) => {
-    setBoxes(boxes.filter((_, i) => i !== index))
+  const removeBoxService = (index: number) => {
+    setBoxesService(boxesService.filter((_, i) => i !== index))
   }
 
-  const updateBox = (index: number, field: string, value: any) => {
-    setBoxes(boxes.map((box, i) => (i === index ? { ...box, [field]: value } : box)))
+  const updateBoxService = (index: number, field: string, value: any) => {
+    setBoxesService(boxesService.map((box, i) => (i === index ? { ...box, [field]: value } : box)))
   }
 
   // Box - special
@@ -142,10 +141,10 @@ export const useServiceState = (): ServiceState => {
     setServiceBoxIcon,
     servicesContentTitle,
     setServicesContentTitle,
-    boxes,
-    addBox,
-    removeBox,
-    updateBox,
+    boxesService,
+    addBoxService,
+    removeBoxService,
+    updateBoxService,
     servicesContentBoxSpecial,
     setServicesContentBoxSpecial,
     servicesContentBoxSpecialTitle,

@@ -329,7 +329,7 @@ export default function SettingsContent({
                 </Dropdown>
 
                 {/*//@ts-ignore*/}
-                {about.boxes.map((box, index) => (
+                {about.boxesAbout.map((box, index) => (
                   <Dropdown
                     key={index}
                     label={`Box ${index + 1}`}
@@ -341,7 +341,7 @@ export default function SettingsContent({
                       <Input
                         type="text"
                         value={box.title}
-                        onChange={e => about.updateBox(index, 'title', e.target.value)}
+                        onChange={e => about.updateBoxAbout(index, 'title', e.target.value)}
                         label="Nadpis"
                         classLabel="!text-black"
                       />
@@ -349,14 +349,14 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.description}
-                        onChange={e => about.updateBox(index, 'description', e.target.value)}
+                        onChange={e => about.updateBoxAbout(index, 'description', e.target.value)}
                         label="Popisek"
                         classLabel="!text-black"
                       />
 
                       <button
                         type="button"
-                        onClick={() => about.removeBox(index)}
+                        onClick={() => about.removeBoxAbout(index)}
                         className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
                       >
                         <Icon
@@ -371,7 +371,7 @@ export default function SettingsContent({
 
                 <button
                   type="button"
-                  onClick={about.addBox}
+                  onClick={about.addBoxAbout}
                   className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
                 >
                   <Icon
@@ -407,7 +407,7 @@ export default function SettingsContent({
                 />
 
                 {/*//@ts-ignore*/}
-                {service.boxes.map((box, index) => (
+                {service.boxesService.map((box, index) => (
                   <Dropdown
                     key={index}
                     label={`Služba ${index + 1}`}
@@ -419,7 +419,7 @@ export default function SettingsContent({
                       <Input
                         type="text"
                         value={box.title}
-                        onChange={e => service.updateBox(index, 'title', e.target.value)}
+                        onChange={e => service.updateBoxService(index, 'title', e.target.value)}
                         label="Nadpis"
                         classLabel="!text-black"
                       />
@@ -427,7 +427,7 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.content}
-                        onChange={e => service.updateBox(index, 'content', e.target.value)}
+                        onChange={e => service.updateBoxService(index, 'content', e.target.value)}
                         label="Popisek"
                         classLabel="!text-black"
                       />
@@ -436,13 +436,13 @@ export default function SettingsContent({
                         label="Chci zobrazit ikonku"
                         id={`contentServicesIcon${index + 1}Toggle`}
                         checked={box.iconShow}
-                        onChange={() => service.updateBox(index, 'iconShow', !box.iconShow)}
+                        onChange={() => service.updateBoxService(index, 'iconShow', !box.iconShow)}
                       >
                         <div className="space-y-4">
                           <Input
                             type="text"
                             value={box.icon}
-                            onChange={e => service.updateBox(index, 'icon', e.target.value)}
+                            onChange={e => service.updateBoxService(index, 'icon', e.target.value)}
                             label="Název ikonky"
                             classLabel="!text-black"
                           />
@@ -462,7 +462,7 @@ export default function SettingsContent({
 
                       <button
                         type="button"
-                        onClick={() => service.removeBox(index)}
+                        onClick={() => service.removeBoxService(index)}
                         className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
                       >
                         <Icon
@@ -477,7 +477,7 @@ export default function SettingsContent({
 
                 <button
                   type="button"
-                  onClick={service.addBox}
+                  onClick={service.addBoxService}
                   className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
                 >
                   <Icon
@@ -568,7 +568,7 @@ export default function SettingsContent({
                 )}
 
                 {/*//@ts-ignore*/}
-                {reference.boxes.map((box, index) => (
+                {reference.boxesReference.map((box, index) => (
                   <Dropdown
                     key={index}
                     label={`Reference ${index + 1}`}
@@ -580,7 +580,7 @@ export default function SettingsContent({
                       <Input
                         type="text"
                         value={box.title}
-                        onChange={e => reference.updateBox(index, 'title', e.target.value)}
+                        onChange={e => reference.updateBoxReference(index, 'title', e.target.value)}
                         label="Nadpis"
                         classLabel="!text-black"
                       />
@@ -588,14 +588,16 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.description}
-                        onChange={e => reference.updateBox(index, 'description', e.target.value)}
+                        onChange={e =>
+                          reference.updateBoxReference(index, 'description', e.target.value)
+                        }
                         label="Popisek"
                         classLabel="!text-black"
                       />
 
                       <button
                         type="button"
-                        onClick={() => reference.removeBox(index)}
+                        onClick={() => reference.removeBoxReference(index)}
                         className="w-full flex flex-row justify-end items-center text-red-500 text-xs font-bold"
                       >
                         <Icon
@@ -610,7 +612,7 @@ export default function SettingsContent({
 
                 <button
                   type="button"
-                  onClick={reference.addBox}
+                  onClick={reference.addBoxReference}
                   className="w-full flex flex-row justify-end items-center text-primary text-xs font-bold"
                 >
                   <Icon

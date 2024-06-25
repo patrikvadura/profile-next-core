@@ -26,7 +26,7 @@ const getImageDimensions = (url: string): Promise<{ width: number; height: numbe
 }
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024 // 2 MB
-const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']
 
 export default function UploadComponent({
   imageUrl,
@@ -45,7 +45,7 @@ export default function UploadComponent({
 
     if (!ALLOWED_FILE_TYPES.includes(file.type)) {
       alert(
-        'Váš soubor je v nesprávném formátu. Prosím nahrajte soubor v jednom z následujících formátů - .jpg, .png, .webp.',
+        'Váš soubor je v nesprávném formátu. Prosím nahrajte soubor v jednom z následujících formátů - .jpg, .png, .webp, .svg.',
       )
       return
     }

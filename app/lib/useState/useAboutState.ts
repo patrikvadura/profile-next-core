@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
-interface Box {
+interface BoxAbout {
   title: string
   description: string
 }
@@ -34,10 +34,10 @@ interface AboutState {
   setAboutContentButtonLink: (value: React.SetStateAction<string>) => void
   aboutContentButtonCustomLink: string | undefined | any
   setAboutContentButtonCustomLink: (value: React.SetStateAction<string>) => void
-  boxes: Box[]
-  addBox: () => void
-  removeBox: (index: number) => void
-  updateBox: (index: number, key: string, value: string) => void
+  boxesAbout: BoxAbout[]
+  addBoxAbout: () => void
+  removeBoxAbout: (index: number) => void
+  updateBoxAbout: (index: number, key: string, value: string) => void
 }
 
 export const useAboutState = (): AboutState => {
@@ -70,7 +70,7 @@ export const useAboutState = (): AboutState => {
     useState<string>('https://vaseadresa.cz')
 
   // Boxes
-  const [boxes, setBoxes] = useState<Box[]>([
+  const [boxesAbout, setBoxesAbout] = useState<BoxAbout[]>([
     {
       title: 'Rychlost',
       description: 'Vysoce optimalizovaný s výsledky PageInsight testů 99%',
@@ -85,16 +85,16 @@ export const useAboutState = (): AboutState => {
     },
   ])
 
-  const addBox = () => {
-    setBoxes([...boxes, { title: '', description: '' }])
+  const addBoxAbout = () => {
+    setBoxesAbout([...boxesAbout, { title: '', description: '' }])
   }
 
-  const removeBox = (index: number) => {
-    setBoxes(boxes.filter((_, i) => i !== index))
+  const removeBoxAbout = (index: number) => {
+    setBoxesAbout(boxesAbout.filter((_, i) => i !== index))
   }
 
-  const updateBox = (index: number, key: string, value: string) => {
-    setBoxes(boxes.map((box, i) => (i === index ? { ...box, [key]: value } : box)))
+  const updateBoxAbout = (index: number, key: string, value: string) => {
+    setBoxesAbout(boxesAbout.map((box, i) => (i === index ? { ...box, [key]: value } : box)))
   }
 
   return {
@@ -124,9 +124,9 @@ export const useAboutState = (): AboutState => {
     setAboutContentButtonLink,
     aboutContentButtonCustomLink,
     setAboutContentButtonCustomLink,
-    boxes,
-    addBox,
-    removeBox,
-    updateBox,
+    boxesAbout,
+    addBoxAbout,
+    removeBoxAbout,
+    updateBoxAbout,
   }
 }

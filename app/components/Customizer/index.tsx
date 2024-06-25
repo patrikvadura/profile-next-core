@@ -319,7 +319,7 @@ export default function Customizer() {
                 ? about.aboutContentButtonCustomLink
                 : about.aboutContentButtonLink
             }
-            boxes={about.boxes}
+            boxes={about.boxesAbout}
             breakpoint={breakpoint}
             preview
           />
@@ -338,7 +338,7 @@ export default function Customizer() {
             boxTypoColor={service.serviceBoxTypo}
             boxIconColor={service.serviceBoxIcon}
             servicesContentTitle={service.servicesContentTitle}
-            boxes={service.boxes}
+            boxes={service.boxesService}
             servicesContentBoxSpecial={service.servicesContentBoxSpecial}
             servicesContentBoxSpecialTitle={service.servicesContentBoxSpecialTitle}
             servicesContentBoxSpecialLink={
@@ -360,7 +360,7 @@ export default function Customizer() {
             typoColor={reference.referenceTypo}
             typoLgColor={reference.referenceTypoLg}
             referenceContentTitle={reference.referenceContentTitle}
-            boxes={reference.boxes}
+            boxes={reference.boxesReference}
             breakpoint={breakpoint}
             preview
           />

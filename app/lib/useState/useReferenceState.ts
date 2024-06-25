@@ -3,7 +3,7 @@ import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 import data from '@/app/lib/data.json'
 
-interface Box {
+interface BoxReference {
   title: string
   description: string
 }
@@ -25,10 +25,10 @@ interface ReferenceState {
   setReferenceTypoLg: (value: string) => void
   referenceContentTitle: string | undefined | any
   setReferenceContentTitle: (value: string) => void
-  boxes: Box[]
-  addBox: () => void
-  removeBox: (index: number) => void
-  updateBox: (index: number, field: string, value: any) => void
+  boxesReference: BoxReference[]
+  addBoxReference: () => void
+  removeBoxReference: (index: number) => void
+  updateBoxReference: (index: number, field: string, value: any) => void
 }
 
 export const useReferenceState = (): ReferenceState => {
@@ -50,7 +50,7 @@ export const useReferenceState = (): ReferenceState => {
   const [referenceContentTitle, setReferenceContentTitle] = useState<string>('Reference')
 
   // Boxes
-  const [boxes, setBoxes] = useState<Box[]>([
+  const [boxesReference, setBoxesReference] = useState<BoxReference[]>([
     {
       title: 'Patrik Indra | Finanční specialista',
       description:
@@ -73,16 +73,18 @@ export const useReferenceState = (): ReferenceState => {
     },
   ])
 
-  const addBox = () => {
-    setBoxes([...boxes, { title: '', description: '' }])
+  const addBoxReference = () => {
+    setBoxesReference([...boxesReference, { title: '', description: '' }])
   }
 
-  const removeBox = (index: number) => {
-    setBoxes(boxes.filter((_, i) => i !== index))
+  const removeBoxReference = (index: number) => {
+    setBoxesReference(boxesReference.filter((_, i) => i !== index))
   }
 
-  const updateBox = (index: number, field: string, value: any) => {
-    setBoxes(boxes.map((box, i) => (i === index ? { ...box, [field]: value } : box)))
+  const updateBoxReference = (index: number, field: string, value: any) => {
+    setBoxesReference(
+      boxesReference.map((box, i) => (i === index ? { ...box, [field]: value } : box)),
+    )
   }
 
   return {
@@ -102,9 +104,9 @@ export const useReferenceState = (): ReferenceState => {
     setReferenceTypoLg,
     referenceContentTitle,
     setReferenceContentTitle,
-    boxes,
-    addBox,
-    removeBox,
-    updateBox,
+    boxesReference,
+    addBoxReference,
+    removeBoxReference,
+    updateBoxReference,
   }
 }

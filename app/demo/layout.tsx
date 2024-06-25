@@ -1,4 +1,5 @@
 import React from 'react'
+import Providers from '@/app/demo/providers'
 import '@/app/globals.css'
 
 export default function RootLayout({
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs-CZ" className="scroll-smooth" suppressHydrationWarning>
-      {children}
+      <Providers>{children}</Providers>
     </html>
   )
 }
