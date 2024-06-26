@@ -22,7 +22,7 @@ export async function generateMetadata({
     throw new Error('Failed to fetch data')
   }
 
-  const { data } = await res.json()
+  const { data } = (await res.json()) || {}
 
   const metaTitleComputed = data.metaTitle || 'Webová vizitka | VisioSnap'
   const metaDescriptionComputed =

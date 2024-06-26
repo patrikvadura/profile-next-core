@@ -38,7 +38,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
   let data
   try {
     data = await fetchData(uniqueKey)
-    //console.log('Fetched data:', data)
+    console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
     return notFound()
