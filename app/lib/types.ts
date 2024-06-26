@@ -3,9 +3,14 @@ import React from 'react'
 // Menu
 
 export interface MenuItems {
-  title?: string
-  link?: string | undefined
+  title: string | undefined | any
+  link: string | undefined | any
   icon?: string | undefined | any
+}
+
+export interface MenuItemsLandingPage {
+  title: string | undefined | any
+  link: string | undefined | any
 }
 
 // About

@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { MenuItems } from '@/app/lib/types'
+import { MenuItemsLandingPage } from '@/app/lib/types'
 import { Menu } from '@/app/ui/Icons/Menu'
 import { Close } from '@/app/ui/Icons/Close'
 import classes from './index.module.scss'
 import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 
 interface MobileNavProps {
-  menuItems: MenuItems[]
+  menuItems: MenuItemsLandingPage[]
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({ menuItems }) => {

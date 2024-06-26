@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import data from '@/app/lib/dataLandingPage.json'
-import { MenuItems } from '@/app/lib/types'
+import { MenuItemsLandingPage } from '@/app/lib/types'
 import Link from 'next/link'
-import { MobileNav } from '@/app/ui/Header/MobileNav'
+import { MobileNav } from '@/app/components/LandingPage/Header/MobileNav'
 import CustomizerLogo from '@/app/components/Customizer/Logo'
 import ThemeSwitcher from '@/app/ui/ThemeSwitcher'
 import classes from './index.module.scss'
 import { Icon } from '@iconify/react'
 
 export default function Header() {
-  const menu: MenuItems[] = data.menu.items
+  const menu: MenuItemsLandingPage[] = data.menu.items
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
