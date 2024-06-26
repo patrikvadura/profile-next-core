@@ -5,6 +5,7 @@
     "logo": null,
     "logoDark": null,
     "image": "/assets/img/profileImage.webp",
+    "imageAlternative": "/assets/img/profileImageAlternative.webp",
     "cookie": false,
     "gtm": {
       "status": false,
@@ -48,16 +49,31 @@
     "cta": {
       "title": "Nezávazná konzultace",
       "link": "#form"
-    }
+    },
+    "items": [
+      {
+        "title": "Zkušenosti",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      },
+      {
+        "title": "Profesionalita",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      },
+      {
+        "title": "Komunikace",
+        "description": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+      }
+    ]
   },
   "services": {
     "title": "Nabídka mých služeb",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "items": [
       {
         "title": "Úvěry",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_uvery.svg",
-        "imageDark": "/assets/icons/icon_uvery.svg",
+        "icon": "streamline:money-bank-institution-money-saving-bank-payment-finance",
+        "image": "",
+        "imageDark": "",
         "list": {
           "listItems": [
             {
@@ -78,8 +94,8 @@
       },
       {
         "title": "Investice",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_investice.svg",
+        "icon": "material-symbols:finance-mode-rounded",
+        "image": "",
         "imageDark": "",
         "list": {
           "listItems": [
@@ -101,8 +117,8 @@
       },
       {
         "title": "Pojištění",
-        "icon": "material-symbols:arrow-forward-rounded",
-        "image": "/assets/icons/icon_pojisteni.svg",
+        "icon": "material-symbols:ecg-heart-outline-sharp",
+        "image": "",
         "imageDark": "",
         "list": {
           "listItems": [

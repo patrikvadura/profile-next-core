@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Online konfigurátor webu | VisioSnap - studio",
+    "description": "Náš moderní online konfiguráto webových vizitek vám umožňuje levně, rychle a efektivně vytvořit webovou stránku pro různé příležitosti.",
+    "openGraph": {
+      "image": "/assets/img/studio/openGraph.jpg",
+      "alt": "VisioSnap - Studio"
+    },
+    "favicon": {
+      "url": "/assets/img/studio/favicon.ico"
+    }
+  },
+  "cookie": false,
+  "gtm": {
+    "status": false,
+    "id": ""
+  },
+  "menu": {
+    "createLink": {
+      "title": "Vytvořit nový web",
+      "link": "/studio"
+    },
+    "items": [
+      {
+        "title": "Nástěnka",
+        "icon": "material-symbols:dashboard-customize-outline",
+        "link": "/studio/dashboard"
+      },
+      {
+        "title": "Tvoje weby",
+        "icon": "material-symbols:inbox-outline-rounded",
+        "link": "/studio/websites"
+      },
+      {
+        "title": "Nastavení",
+        "icon": "material-symbols:settings-outline-rounded",
+        "link": "/studio/settings"
+      },
+      {
+        "title": "Tickety",
+        "icon": "ci:chat-conversation-circle",
+        "link": "/studio/tickets"
+      }
+    ]
+  },
+  "dashboard": {
+    "title": "Nástěnka"
+  },
+  "settings": {
+    "title": "Nastavení"
+  },
+  "tickets": {
+    "title": "Přehled ticketů"
+  },
+  "websites": {
+    "title": "Přehled tvých webů"
+  }
+}

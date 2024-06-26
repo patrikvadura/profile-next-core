@@ -1,63 +1,67 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
-import { ServicesData } from '@/app/lib/types'
-import Image from 'next/image'
-import { Check } from '@/app/ui/Icons/Check'
-import { AnimatedTitle } from '@/app/ui/Animations/Title'
-import classes from './index.module.scss'
+import dynamic from 'next/dynamic'
+import colors from '@/app/lib/colors.json'
+import { ServiceProps } from '@/app/lib/variants'
+import ColorUpdaterService from '@/app/components/Customizer/ColorUpdater/Service'
 
-export function Services() {
-  const services: ServicesData = data
+const variantComponents = {
+  '01': dynamic(() =>
+    import('@/app/components/Services/Variant01').then(mod => mod.ServicesVariant01),
+  ),
+  '02': dynamic(() =>
+    import('@/app/components/Services/Variant02').then(mod => mod.ServicesVariant02),
+  ),
+  '03': dynamic(() =>
+    import('@/app/components/Services/Variant03').then(mod => mod.ServicesVariant03),
+  ),
+}
+
+export function Services({
+  variant = '01',
+  layout = 'background',
+  align = 'left',
+  radius = 'asc',
+  backgroundColor = colors.service.background,
+  accentBgColor = colors.service.accent.background,
+  accentFgColor = colors.service.accent.foreground,
+  typoColor = colors.service.typo,
+  boxBackgroundColor = colors.service.box.background,
+  boxTypoColor = colors.service.box.typo,
+  boxIconColor = colors.service.box.icon,
+  servicesContentTitle,
+  boxes,
+  servicesContentBoxSpecial,
+  servicesContentBoxSpecialTitle,
+  servicesContentBoxSpecialLink,
+  breakpoint,
+  preview,
+}: ServiceProps) {
+  // @ts-ignore
+  const VariantComponent = variantComponents[variant]
 
   return (
-    <div id="services" className={classes.main}>
-      <div className="container">
-        <AnimatedTitle
-          title={services.services.title}
-          target="#services"
-          origin="translate-y-[100px]"
-          className={classes.title}
-        />
-
-        <div className="grid gap-12 grid-cols-1 md:grid-cols-3 px-8 md:px-8 py-20">
-          {services.services.items.map((item, index) => (
-            <div key={index} className={classes.item}>
-              {item.image ? (
-                <Image
-                  src={item.image}
-                  width={80}
-                  height={80}
-                  quality={50}
-                  sizes="(max-width: 800px) 60px, 80px"
-                  className={classes.image}
-                  loading="lazy"
-                  alt={item.title}
-                />
-              ) : (
-                <div className="text-[40px]">{item.icon}</div>
-              )}
-              <h3 className={classes.subtitle}>{item.title}</h3>
-
-              {item.description ? (
-                <p className={classes.text}>{item.description}</p>
-              ) : (
-                <ul className="text-center md:text-left">
-                  {item.list.listItems.map((listItem, index) => (
-                    <li
-                      key={index}
-                      className={`${classes.text} flex flex-row justify-center md:justify-start items-center`}
-                    >
-                      <Check className="me-2" />
-
-                      {listItem.label}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <>
+      <ColorUpdaterService
+        backgroundColor={backgroundColor}
+        accentBgColor={accentBgColor}
+        accentFgColor={accentFgColor}
+        typoColor={typoColor}
+        boxBackgroundColor={boxBackgroundColor}
+        boxTypoColor={boxTypoColor}
+        boxIconColor={boxIconColor}
+      />
+      <VariantComponent
+        layout={layout}
+        align={align}
+        radius={radius}
+        servicesContentTitle={servicesContentTitle}
+        boxes={boxes}
+        servicesContentBoxSpecial={servicesContentBoxSpecial}
+        servicesContentBoxSpecialTitle={servicesContentBoxSpecialTitle}
+        servicesContentBoxSpecialLink={servicesContentBoxSpecialLink}
+        breakpoint={breakpoint}
+        preview={preview}
+      />
+    </>
   )
 }

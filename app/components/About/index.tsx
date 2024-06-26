@@ -1,33 +1,59 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
-import Button from '@/app/ui/Button'
-import { AnimatedTitle } from '@/app/ui/Animations/Title'
-import { AnimatedDivider } from '@/app/ui/Animations/Divider'
-import classes from './index.module.scss'
+import dynamic from 'next/dynamic'
+import colors from '@/app/lib/colors.json'
+import { AboutProps } from '@/app/lib/variants'
+import ColorUpdaterAbout from '@/app/components/Customizer/ColorUpdater/About'
 
-export function About() {
+const variantComponents = {
+  '01': dynamic(() => import('@/app/components/About/Variant01').then(mod => mod.AboutVariant01)),
+  '02': dynamic(() => import('@/app/components/About/Variant02').then(mod => mod.AboutVariant02)),
+  '03': dynamic(() => import('@/app/components/About/Variant03').then(mod => mod.AboutVariant03)),
+  '04': dynamic(() => import('@/app/components/About/Variant04').then(mod => mod.AboutVariant04)),
+  '05': dynamic(() => import('@/app/components/About/Variant05').then(mod => mod.AboutVariant05)),
+}
+
+export function About({
+  variant = '01',
+  layout = 'background',
+  align = 'left',
+  order = 'asc',
+  backgroundColor = colors.about.background,
+  accentBgColor = colors.about.accent.background,
+  accentFgColor = colors.about.accent.foreground,
+  typoColor = colors.about.typo,
+  contentTitle,
+  contentDescription,
+  contentButton,
+  contentButtonText,
+  contentButtonLink,
+  boxes,
+  breakpoint,
+  preview,
+}: AboutProps) {
+  // @ts-ignore
+  const VariantComponent = variantComponents[variant]
+
   return (
-    <div id="about" className="md:pt-12 lg:pt-24 md:px-8 lg:px-24 dark:bg-black">
-      <div className={classes.main}>
-        <div className="max-w-screen-md space-y-8 text-left py-12 px-8 md:p-16">
-          <AnimatedTitle
-            title={data.about.title}
-            target="#about"
-            origin="translate-y-[100px]"
-            className={classes.title}
-          />
-
-          <AnimatedDivider target="#about" className={classes.divider} />
-
-          <p className={classes.description}>{data.about.description}</p>
-
-          <div className="mt-12 space-x-4">
-            <Button asLink href={data.about.cta.link} className={classes.cta}>
-              {data.about.cta.title}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <ColorUpdaterAbout
+        backgroundColor={backgroundColor}
+        accentBgColor={accentBgColor}
+        accentFgColor={accentFgColor}
+        typoColor={typoColor}
+      />
+      <VariantComponent
+        layout={layout}
+        align={align}
+        order={order}
+        contentTitle={contentTitle}
+        contentDescription={contentDescription}
+        contentButton={contentButton}
+        contentButtonText={contentButtonText}
+        contentButtonLink={contentButtonLink}
+        boxes={boxes}
+        breakpoint={breakpoint}
+        preview={preview}
+      />
+    </>
   )
 }

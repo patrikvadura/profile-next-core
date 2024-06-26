@@ -10,20 +10,22 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
 }
 
-type ServicesProps = {
+type Props = {
   target?: string
   className?: string
-  origin?: string
+  style?: any
+  transformOrigin?: string | any
+  origin?: string | any
 }
 
-export function AnimatedDivider({ target, className, origin }: ServicesProps) {
+export function AnimatedDivider({ target, className, style, transformOrigin, origin }: Props) {
   const dividerRef = useRef<HTMLElement | any>()
 
   useGSAP(() => {
     gsap.to(dividerRef.current, {
       y: 0,
       scaleX: 10,
-      transformOrigin: 'left center',
+      transformOrigin: transformOrigin || 'center center',
       duration: 1,
       scrollTrigger: {
         trigger: target,
@@ -32,5 +34,5 @@ export function AnimatedDivider({ target, className, origin }: ServicesProps) {
     })
   }, [target])
 
-  return <div className={`${className} ${origin}`} ref={dividerRef} />
+  return <div className={`${className} ${origin}`} style={style} ref={dividerRef} />
 }

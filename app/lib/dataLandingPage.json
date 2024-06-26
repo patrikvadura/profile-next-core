@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "title": "Webové vizitky levně | VisioSnap",
+    "description": "Náš moderní online konfiguráto webových vizitek vám umožňuje levně, rychle a efektivně vytvořit webovou stránku pro různé příležitosti.",
+    "openGraph": {
+      "image": "/assets/img/studio/openGraph.jpg",
+      "alt": "VisioSnap - Studio"
+    },
+    "favicon": {
+      "url": "/assets/img/studio/favicon.ico"
+    }
+  },
+  "cookie": false,
+  "gtm": {
+    "status": false,
+    "id": ""
+  },
+  "menu": {
+    "createLink": {
+      "title": "Vytvořit nový web",
+      "link": "/studio"
+    },
+    "items": [
+      {
+        "title": "Jak to funguje?",
+        "link": "#about"
+      },
+      {
+        "title": "Proč naše řešení?",
+        "link": "#services"
+      },
+      {
+        "title": "Ukázky webů",
+        "link": "#reference"
+      },
+      {
+        "title": "Ceník",
+        "link": "#contact"
+      }
+    ]
+  },
+  "benefits": {
+    "items": [
+      {
+        "title": "Lehkost a rychlost",
+        "description": "Vysoce optimalizovaný s výsledky PageInsight testů 99%",
+        "icon": "ph:feather"
+      },
+      {
+        "title": "Vlastní rozvržení",
+        "description": "Svoji vizitku si můžete přizpůsobit svému vlastnímu stylu.",
+        "icon": "ph:layout-bold"
+      },
+      {
+        "title": "Moderní a bezpečné",
+        "description": "Špičkové moderní technologie a zabezpečení s vlastním SSL certifikátem.",
+        "icon": "mingcute:safety-certificate-fill"
+      },
+      {
+        "title": "Nulové náklady",
+        "description": "Vaši vizitku umístíme na moderní, výkoné a spolehlivé servery Vercel - ZDARMA.",
+        "icon": "material-symbols:exposure-zero"
+      },
+      {
+        "title": "SEO optimalizace",
+        "description": "Vše již od počátku plně nastaveno pro vyhledávače.",
+        "icon": "hugeicons:seo"
+      },
+      {
+        "title": "Dark Mode",
+        "description": "Tmavý režim, který obohatí vizuální dojem vaší vizitky.",
+        "icon": "material-symbols:dark-mode-outline"
+      },
+      {
+        "title": "Ořezání fotografi jedním kliknutím",
+        "description": "Naše aplikace nabízí celou řadu šikovných nástrojů včetně tohoto.",
+        "icon": "material-symbols:background-replace-outline-rounded"
+      },
+      {
+        "title": "Systém správy vašich webů",
+        "description": "K vašemu účtu máte k dispozici správu vašeho webu. Snadno si tak můžete svůj web přizpůsobit.",
+        "icon": "material-symbols:settings-outline-rounded"
+      }
+    ]
+  },
+  "demoWebsites": {
+    "title": "Vytvořte si webovou stránku podle svého gusta",
+    "description": "Neztrácejte čas ani finance tvorbou webových stránek na míru, které většinou ani nepotřebujete. Vsaťte na jistotu s rychlostí a bezkonkurenční cenou od VisionSnap.",
+    "items": [
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_01.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_02.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_03.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_04.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_05.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_06.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_07.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_05.webp"
+      },
+      {
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_04.webp"
+      }
+    ]
+  }
+}

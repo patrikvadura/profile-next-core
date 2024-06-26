@@ -6,11 +6,11 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { name, email, message } = JSON.parse(req.body)
+    const { name, email, message, recipient } = JSON.parse(req.body)
 
     const data = await resend.sendEmail({
       from: `${process.env.FROM_EMAIL}`,
-      to: `${process.env.TO_EMAIL}`,
+      to: recipient,
       subject: '🎉Máte novou zprávu z vašeho webu!',
       html: '',
       //@ts-ignore

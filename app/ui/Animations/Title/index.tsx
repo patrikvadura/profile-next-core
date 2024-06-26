@@ -14,8 +14,9 @@ type ServicesProps = {
   target?: string
   title?: string
   className?: string
+  style?: any
   type?: 'move' | 'opacity' | 'scale'
-  origin?: string
+  origin?: string | any
   as?: ElementType
   dangerouslySetInnerHTML?: { __html: string } | undefined
 }
@@ -24,6 +25,7 @@ export function AnimatedTitle({
   target,
   title,
   className,
+  style,
   type = 'move',
   origin,
   as: Component = 'h2',
@@ -63,6 +65,7 @@ export function AnimatedTitle({
     return (
       <Component
         className={`${className} ${origin}`}
+        style={style}
         ref={titleRef}
         dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       />
@@ -70,7 +73,7 @@ export function AnimatedTitle({
   }
 
   return (
-    <Component className={`${className} ${origin}`} ref={titleRef}>
+    <Component className={`${className} ${origin}`} style={style} ref={titleRef}>
       {title}
     </Component>
   )

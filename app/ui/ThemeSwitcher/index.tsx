@@ -1,9 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { ThemeSwitcherProps } from '@/app/lib/types'
 import { ThemeLight } from '@/app/ui/Icons/Theme/Light'
 import { ThemeDark } from '@/app/ui/Icons/Theme/Dark'
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = ({ previewMode }: ThemeSwitcherProps) => {
   const [theme, setTheme] = useState(
     typeof window !== 'undefined' && localStorage.getItem('theme')
       ? localStorage.getItem('theme')
@@ -18,15 +19,35 @@ const ThemeSwitcher = () => {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
+
+    const handleStorageChange = () => {
+      const newTheme = localStorage.getItem('theme')
+      if (newTheme) {
+        setTheme(newTheme)
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+    }
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    window.dispatchEvent(new Event('storage'))
   }
 
   return (
     <button onClick={toggleTheme} aria-label="Přepněte schéma">
-      {theme === 'dark' ? <ThemeLight size={20} className="fill-white" /> : <ThemeDark size={20} />}
+      {theme === 'dark' ? (
+        <ThemeLight size={20} className={`${previewMode ? '' : 'text-white'}`} />
+      ) : (
+        <ThemeDark size={20} className={`${previewMode ? '' : 'text-[var(--global-secondary)]'}`} />
+      )}
     </button>
   )
 }

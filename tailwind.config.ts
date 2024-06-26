@@ -1,7 +1,12 @@
+const { nextui } = require('@nextui-org/react')
 import type { Config } from 'tailwindcss'
+const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: ['class', "[class~='dark']"],
   theme: {
     container: {
@@ -9,8 +14,10 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: '#5B319B',
-        secondary: '#191A44',
+        primary: '#28349a',
+        secondary: '#05e988',
+        accent: '#fca4ed',
+        light: '#f0f1f8',
         header: {
           background: '#fff',
           accent: '#191A44',
@@ -69,8 +76,31 @@ const config: Config = {
           typo: '#191A44',
         },
       },
+      animation: {
+        aurora: 'aurora 60s linear infinite',
+      },
+      keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%, 50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%, 350% 50%',
+          },
+        },
+      },
     },
   },
+  plugins: [nextui(), addVariablesForColors],
 }
 
 export default config
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme('colors'))
+  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]))
+
+  addBase({
+    ':root': newVars,
+  })
+}

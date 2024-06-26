@@ -3,8 +3,28 @@ import React from 'react'
 // Menu
 
 export interface MenuItems {
-  title?: string
-  link?: string | undefined
+  title: string | undefined | any
+  link: string | undefined | any
+  icon?: string | undefined | any
+}
+
+export interface MenuItemsLandingPage {
+  title: string | undefined | any
+  link: string | undefined | any
+}
+
+// About
+
+export interface AboutItem {
+  title?: string | any | undefined
+  description?: string | any | undefined
+}
+
+export interface AboutData {
+  about: {
+    items?: AboutItem[] | any
+    title?: string
+  }
 }
 
 // Service
@@ -14,10 +34,10 @@ export interface ListItem {
 }
 
 export interface ServiceItem {
-  title: string
-  icon?: string | null
-  image?: string | null
-  description?: string | null
+  title?: string | any
+  icon?: string | any
+  image?: string | any
+  description?: string | any
   list: { listItems: ListItem[] }
 }
 
@@ -40,6 +60,12 @@ export interface ReferenceItems {
   title?: string
 }
 
+// ThemeSwitcher
+
+export interface ThemeSwitcherProps {
+  previewMode?: boolean
+}
+
 // Footer
 
 export interface SocialItem {
@@ -49,4 +75,16 @@ export interface SocialItem {
 
 export type IconComponents = {
   [key: string]: React.ComponentType<{ size?: string | number; color?: string; className?: string }>
+}
+
+// LandingPage
+
+export interface BenefitsItems {
+  title?: string
+  description?: string
+  icon?: string | undefined | any
+}
+
+export interface DemoWebsiteItems {
+  image: string | any
 }
