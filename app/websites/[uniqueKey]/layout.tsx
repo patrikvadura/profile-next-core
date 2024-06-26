@@ -24,19 +24,23 @@ export async function generateMetadata({
 
   const { data } = await res.json()
 
+  const metaTitleComputed = data.metaTitle || 'Webová vizitka | VisioSnap'
+
+  const metaDescriptionComputed =
+    data.metaDescription ||
+    'Webová vizitka vytvořeno službou VisioSnap. Levné a efektivní řešení webových vizitek, prezentačních webů pro svatby, události a další příležitosti. Neutrácejte za drahé řešení - vsaďte na jistotu.'
+
   return {
     metadataBase: new URL(`${websiteURL}`),
-    title: data.metaTitle || 'Webová vizitka | VisioSnap',
-    description:
-      data.metaDescription ||
-      'Webová vizitka vytvořeno službou VisioSnap. Levné a efektivní řešení webových vizitek, prezentačních webů pro svatby, události a další příležitosti. Neutrácejte za drahé řešení - vsaďte na jistotu.',
+    title: metaTitleComputed,
+    description: metaDescriptionComputed,
     openGraph: {
       images: [
         {
           url: `<generated>`,
           width: 1200,
           height: 630,
-          alt: data.metaTitle || 'OpenGraph Image',
+          alt: 'OpenGraph Image',
           type: 'image/jpeg',
         },
       ],

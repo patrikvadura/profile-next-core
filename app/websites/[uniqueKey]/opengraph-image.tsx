@@ -147,7 +147,7 @@ export default async function Image({ params }: { params: { uniqueKey: string } 
                 opacity: '.75',
               }}
             >
-              {data.heroContentSubtitle}
+              {data.heroContentSubtitle || ''}
             </h3>
 
             <h2
@@ -156,7 +156,7 @@ export default async function Image({ params }: { params: { uniqueKey: string } 
                 color: contrastColor,
               }}
             >
-              {data.heroContentTitle}
+              {data.heroContentTitle || ''}
             </h2>
           </div>
         </div>

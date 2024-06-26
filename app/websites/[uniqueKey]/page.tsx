@@ -63,7 +63,10 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
 
   return (
     <>
-      <DynamicFontLoader fontName={data.fontName} fontWeights={data.fontWeights} />
+      <DynamicFontLoader
+        fontName={data.fontName || 'Inter'}
+        fontWeights={data.fontWeights || '400;700'}
+      />
 
       <ColorUpdaterGlobal
         primaryGlobalColor={data.globalPrimary || ''}
