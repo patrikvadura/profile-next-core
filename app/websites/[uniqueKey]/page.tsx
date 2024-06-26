@@ -18,23 +18,20 @@ async function fetchData(uniqueKey: string) {
 
   const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
 
-  console.log('Fetching data from URL:', url)
+  //console.log(`Fetching data from URL: ${url}`)
 
   const res = await fetch(url)
   if (!res.ok) {
-    console.error('Failed to fetch data', res.status, res.statusText)
     throw new Error('Failed to fetch data')
   }
-  const json = await res.json()
-  console.log('API response JSON:', json)
-  return json.data || {}
+  const data = await res.json()
+  return data.data || {}
 }
 
 export default async function Home({ params }: { params: { uniqueKey: string } }) {
   const uniqueKey = params.uniqueKey
 
   if (!uniqueKey) {
-    console.error('Unique key not found in params')
     return notFound()
   }
 
@@ -47,8 +44,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
     return notFound()
   }
 
-  if (!data || Object.keys(data).length === 0) {
-    console.error('No data found for the given unique key')
+  if (!data) {
     return notFound()
   }
 

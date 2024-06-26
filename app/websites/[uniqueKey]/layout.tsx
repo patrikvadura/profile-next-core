@@ -16,20 +16,13 @@ export async function generateMetadata({
       : 'http://localhost:3000/'
 
   const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
-
-  console.log('Fetching metadata from URL:', url)
-
   const res = await fetch(url)
 
   if (!res.ok) {
-    console.error('Failed to fetch metadata', res.status, res.statusText)
-    throw new Error('Failed to fetch metadata')
+    throw new Error('Failed to fetch data')
   }
 
-  const json = await res.json()
-  const data = json.data || {}
-
-  console.log('Fetched metadata:', data)
+  const { data } = (await res.json()) || {}
 
   const metaTitleComputed = data.metaTitle || 'Webová vizitka | VisioSnap'
   const metaDescriptionComputed =
