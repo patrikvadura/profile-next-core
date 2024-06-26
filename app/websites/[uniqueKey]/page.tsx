@@ -104,117 +104,119 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
 
         {visibility.showHero && (
           <Hero
-            variant={data.heroVariant}
-            imageOpacity={data.heroImageOpacity}
-            align={data.heroAlign}
-            backgroundColor={data.heroBackground}
-            accentBgColor={data.heroAccentBg}
-            accentFgColor={data.heroAccentFg}
-            typoColor={data.heroTypo}
-            typoLgColor={data.heroTypoLg}
-            contentTitle={data.heroContentTitle}
-            contentSubtitle={data.heroContentSubtitle}
-            contentLargeTitle={data.heroContentLargeTitle}
+            variant={data.heroVariant || 'defaultVariant'}
+            imageOpacity={data.heroImageOpacity || '1'}
+            align={data.heroAlign || 'center'}
+            backgroundColor={data.heroBackground || '#FFFFFF'}
+            accentBgColor={data.heroAccentBg || '#000000'}
+            accentFgColor={data.heroAccentFg || '#FFFFFF'}
+            typoColor={data.heroTypo || '#000000'}
+            typoLgColor={data.heroTypoLg || '#FFFFFF'}
+            contentTitle={data.heroContentTitle || 'Default Title'}
+            contentSubtitle={data.heroContentSubtitle || 'Default Subtitle'}
+            contentLargeTitle={data.heroContentLargeTitle || 'Default Large Title'}
             contentButtonPrimary={visibility.showHeroContentButtonPrimary}
-            contentButtonPrimaryText={data.heroContentButtonPrimaryText}
+            contentButtonPrimaryText={data.heroContentButtonPrimaryText || 'Default Button Text'}
             contentButtonPrimaryLink={
               data.heroContentButtonPrimaryLink === null
-                ? data.heroContentButtonPrimaryCustomLink
+                ? data.heroContentButtonPrimaryCustomLink || '#'
                 : data.heroContentButtonPrimaryLink
             }
             contentButtonSecondary={visibility.showHeroContentButtonSecondary}
-            contentButtonSecondaryText={data.heroContentButtonSecondaryText}
+            contentButtonSecondaryText={
+              data.heroContentButtonSecondaryText || 'Default Button Text'
+            }
             contentButtonSecondaryLink={
               data.heroContentButtonSecondaryLink === null
-                ? data.heroContentButtonSecondaryCustomLink
+                ? data.heroContentButtonSecondaryCustomLink || '#'
                 : data.heroContentButtonSecondaryLink
             }
-            imageMainUrl={data.imageMainUrl}
-            imageMainWidth={data.imageMainWidth}
-            imageMainHeight={data.imageMainHeight}
-            imageBackgroundUrl={data.imageBackgroundUrl}
-            imageBackgroundWidth={data.imageBackgroundWidth}
-            imageBackgroundHeight={data.imageBackgroundHeight}
+            imageMainUrl={data.imageMainUrl || ''}
+            imageMainWidth={data.imageMainWidth || 0}
+            imageMainHeight={data.imageMainHeight || 0}
+            imageBackgroundUrl={data.imageBackgroundUrl || ''}
+            imageBackgroundWidth={data.imageBackgroundWidth || 0}
+            imageBackgroundHeight={data.imageBackgroundHeight || 0}
           />
         )}
         {visibility.showAbout && (
           <About
-            variant={data.aboutVariant}
-            layout={data.aboutLayout}
-            align={data.aboutAlign}
-            order={data.aboutOrder}
-            backgroundColor={data.aboutBackground}
-            accentBgColor={data.aboutAccentBg}
-            accentFgColor={data.aboutAccentFg}
-            typoColor={data.aboutTypo}
-            contentTitle={data.aboutContentTitle}
-            contentDescription={data.aboutContentDescription}
+            variant={data.aboutVariant || 'defaultVariant'}
+            layout={data.aboutLayout || 'defaultLayout'}
+            align={data.aboutAlign || 'left'}
+            order={data.aboutOrder || 'asc'}
+            backgroundColor={data.aboutBackground || '#FFFFFF'}
+            accentBgColor={data.aboutAccentBg || '#000000'}
+            accentFgColor={data.aboutAccentFg || '#FFFFFF'}
+            typoColor={data.aboutTypo || '#000000'}
+            contentTitle={data.aboutContentTitle || 'Default Title'}
+            contentDescription={data.aboutContentDescription || 'Default Description'}
             contentButton={visibility.showAboutContentButton}
-            contentButtonText={data.aboutContentButtonTitle}
+            contentButtonText={data.aboutContentButtonTitle || 'Default Button Text'}
             contentButtonLink={
               data.aboutContentButtonLink === null
-                ? data.aboutContentButtonCustomLink
+                ? data.aboutContentButtonCustomLink || '#'
                 : data.aboutContentButtonLink
             }
-            boxes={data.boxesAbout}
+            boxes={data.boxesAbout || []}
           />
         )}
         {visibility.showServices && (
           <Services
-            variant={data.serviceVariant}
-            layout={data.serviceLayout}
-            align={data.serviceAlign}
-            radius={data.serviceRadius}
-            backgroundColor={data.serviceBackground}
-            accentBgColor={data.serviceAccentBg}
-            accentFgColor={data.serviceAccentFg}
-            typoColor={data.serviceTypo}
-            boxBackgroundColor={data.serviceBoxBackground}
-            boxTypoColor={data.serviceBoxTypo}
-            boxIconColor={data.serviceBoxIcon}
-            servicesContentTitle={data.servicesContentTitle}
-            boxes={data.boxesService}
-            servicesContentBoxSpecial={data.servicesContentBoxSpecial}
-            servicesContentBoxSpecialTitle={data.servicesContentBoxSpecialTitle}
+            variant={data.serviceVariant || 'defaultVariant'}
+            layout={data.serviceLayout || 'defaultLayout'}
+            align={data.serviceAlign || 'left'}
+            radius={data.serviceRadius || 'defaultRadius'}
+            backgroundColor={data.serviceBackground || '#FFFFFF'}
+            accentBgColor={data.serviceAccentBg || '#000000'}
+            accentFgColor={data.serviceAccentFg || '#FFFFFF'}
+            typoColor={data.serviceTypo || '#000000'}
+            boxBackgroundColor={data.serviceBoxBackground || '#FFFFFF'}
+            boxTypoColor={data.serviceBoxTypo || '#000000'}
+            boxIconColor={data.serviceBoxIcon || '#000000'}
+            servicesContentTitle={data.servicesContentTitle || 'Default Content Title'}
+            boxes={data.boxesService || []}
+            servicesContentBoxSpecial={data.servicesContentBoxSpecial || false}
+            servicesContentBoxSpecialTitle={data.servicesContentBoxSpecialTitle || 'Default Title'}
             servicesContentBoxSpecialLink={
               data.servicesContentBoxSpecialLink === null
-                ? data.servicesContentBoxSpecialCustomLink
+                ? data.servicesContentBoxSpecialCustomLink || '#'
                 : data.servicesContentBoxSpecialLink
             }
           />
         )}
         {visibility.showReference && (
           <Reference
-            variant={data.referenceVariant}
-            layout={data.referenceLayout}
-            align={data.referenceAlign}
-            backgroundColor={data.referenceBackground}
-            accentBgColor={data.referenceAccentBg}
-            typoColor={data.referenceTypo}
-            typoLgColor={data.referenceTypoLg}
-            referenceContentTitle={data.referenceContentTitle}
-            boxes={data.boxesReference}
+            variant={data.referenceVariant || 'defaultVariant'}
+            layout={data.referenceLayout || 'defaultLayout'}
+            align={data.referenceAlign || 'left'}
+            backgroundColor={data.referenceBackground || '#FFFFFF'}
+            accentBgColor={data.referenceAccentBg || '#000000'}
+            typoColor={data.referenceTypo || '#000000'}
+            typoLgColor={data.referenceTypoLg || '#FFFFFF'}
+            referenceContentTitle={data.referenceContentTitle || 'Default Title'}
+            boxes={data.boxesReference || []}
           />
         )}
         {visibility.showContact && (
           <Contact
-            variant={data.contactVariant}
-            layout={data.contactLayout}
-            align={data.contactAlign}
-            order={data.contactOrder}
-            backgroundColor={data.contactBackground}
-            accentBgColor={data.contactAccentBg}
-            accentFgColor={data.contactAccentFg}
-            typoColor={data.contactTypo}
+            variant={data.contactVariant || 'defaultVariant'}
+            layout={data.contactLayout || 'defaultLayout'}
+            align={data.contactAlign || 'left'}
+            order={data.contactOrder || 'asc'}
+            backgroundColor={data.contactBackground || '#FFFFFF'}
+            accentBgColor={data.contactAccentBg || '#000000'}
+            accentFgColor={data.contactAccentFg || '#FFFFFF'}
+            typoColor={data.contactTypo || '#000000'}
             contactForm={visibility.showContactFormOrMap}
             contactMap={visibility.showContactFormOrMap}
-            contactRecipient={data.contactRecipient}
-            contactMapAddress={data.contactMapAddress}
-            contactContentTitle={data.contactContentTitle}
-            contactContentSubtitle={data.contactContentSubtitle}
-            contactContentInfoEmail={data.contactContentInfoEmail}
-            contactContentInfoPhone={data.contactContentInfoPhone}
-            contactContentInfoAddress={data.contactContentInfoAddress}
+            contactRecipient={data.contactRecipient || 'default@contact.com'}
+            contactMapAddress={data.contactMapAddress || 'Default Address'}
+            contactContentTitle={data.contactContentTitle || 'Default Title'}
+            contactContentSubtitle={data.contactContentSubtitle || 'Default Subtitle'}
+            contactContentInfoEmail={data.contactContentInfoEmail || 'default@contact.com'}
+            contactContentInfoPhone={data.contactContentInfoPhone || '000-000-0000'}
+            contactContentInfoAddress={data.contactContentInfoAddress || 'Default Address'}
           />
         )}
         <Footer cookieShow={cookieShow} boxes={boxesSocialSites} />
