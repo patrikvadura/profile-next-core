@@ -9,26 +9,26 @@ interface BoxReference {
 }
 
 interface ReferenceState {
-  referenceVariant: string | undefined | any
+  referenceVariant: string | undefined
   setReferenceVariant: (value: string) => void
-  referenceLayout: string | undefined | any
+  referenceLayout: string | undefined
   setReferenceLayout: (value: string) => void
-  referenceAlign: string | undefined | any
+  referenceAlign: string | undefined
   setReferenceAlign: (value: string) => void
-  referenceBackground: string | undefined | any
-  setReferenceBackground: (value: string) => void
-  referenceAccentBg: string | undefined | any
-  setReferenceAccentBg: (value: string) => void
-  referenceTypo: string | undefined | any
-  setReferenceTypo: (value: string) => void
-  referenceTypoLg: string | undefined | any
-  setReferenceTypoLg: (value: string) => void
-  referenceContentTitle: string | undefined | any
+  referenceBackground: string | undefined
+  setReferenceBackground: (value: string | undefined) => void
+  referenceAccentBg: string | undefined
+  setReferenceAccentBg: (value: string | undefined) => void
+  referenceTypo: string | undefined
+  setReferenceTypo: (value: string | undefined) => void
+  referenceTypoLg: string | undefined
+  setReferenceTypoLg: (value: string | undefined) => void
+  referenceContentTitle: string
   setReferenceContentTitle: (value: string) => void
   boxesReference: BoxReference[]
   addBoxReference: () => void
   removeBoxReference: (index: number) => void
-  updateBoxReference: (index: number, field: string, value: any) => void
+  updateBoxReference: (index: number, field: string, value: string) => void
 }
 
 export const useReferenceState = (): ReferenceState => {
@@ -54,12 +54,12 @@ export const useReferenceState = (): ReferenceState => {
     {
       title: 'Patrik Indra | Finanční specialista',
       description:
-        'S webovou vizitkou od VisioSnap jsem velmi spokojen. Na širokém trhu jsem nenašel žádnou podobnou službu, která by byla takhle jednoduchá, rychlá a levná. Zcela mě tohle řešení vyhouje pro můj firemní profil, respektive webovou vizitku.',
+        'S webovou vizitkou od VisioSnap jsem velmi spokojen. Na širokém trhu jsem nenašel žádnou podobnou službu, která by byla takhle jednoduchá, rychlá a levná. Zcela mě tohle řešení vyhovuje pro můj firemní profil, respektive webovou vizitku.',
     },
     {
       title: 'Kreativní Duo | marketing a sociální sítě',
       description:
-        'Jakmile jsme se dozvěděli, že VisioSnap vyšli na trh se svým řešením webových vizitek, ani vteřinu jsme neváhaly a okamžitě za jejich pomoci vytvořily webovou stránku pro prezentaci našich kreaktivních služeb.',
+        'Jakmile jsme se dozvěděli, že VisioSnap vyšli na trh se svým řešením webových vizitek, ani vteřinu jsme neváhaly a okamžitě za jejich pomoci vytvořily webovou stránku pro prezentaci našich kreativních služeb.',
     },
     {
       title: 'Kavárna La Dolce Vita',
@@ -81,7 +81,7 @@ export const useReferenceState = (): ReferenceState => {
     setBoxesReference(boxesReference.filter((_, i) => i !== index))
   }
 
-  const updateBoxReference = (index: number, field: string, value: any) => {
+  const updateBoxReference = (index: number, field: string, value: string) => {
     setBoxesReference(
       boxesReference.map((box, i) => (i === index ? { ...box, [field]: value } : box)),
     )

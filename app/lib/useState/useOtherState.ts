@@ -8,6 +8,13 @@ interface BoxSocialSites {
   icon: string
 }
 
+interface NavigationItem {
+  title: string
+  href: string
+  visibilityState: string
+  setTitle: (value: string) => void
+}
+
 export interface OtherState {
   currentStep: number
   setCurrentStep: (value: number) => void
@@ -63,12 +70,7 @@ export interface OtherState {
   setLogoImageWidth: (value: React.SetStateAction<number | undefined>) => void
   logoImageSize: number | undefined | any
   setLogoImageSize: (value: React.SetStateAction<number | undefined>) => void
-  navigationItems: {
-    title: string | any
-    href: string | any
-    visibilityState: string | any
-    setTitle: (value: string) => void | any
-  }[]
+  navigationItems: NavigationItem[]
   boxesSocialSites: BoxSocialSites[]
   addBoxSocialSites: () => void
   removeBoxSocialSites: (index: number) => void
@@ -127,8 +129,15 @@ export const useOtherState = (): OtherState => {
   const [logoImageWidth, setLogoImageWidth] = useState<number | undefined>(undefined)
   const [logoImageSize, setLogoImageSize] = useState<number | undefined>(160)
 
+  //@ts-ignore
+  const updateNavItem = (items: NavigationItem[], index: number, value: string) => {
+    const newItems = [...items]
+    newItems[index].title = value
+    return newItems
+  }
+
   // Navigation items
-  const [navigationItems, setNavigationItems] = useState([
+  const initialNavigationItems: NavigationItem[] = [
     {
       title: 'O nás',
       href: '#about',
@@ -164,14 +173,9 @@ export const useOtherState = (): OtherState => {
       setTitle: (value: string) =>
         setNavigationItems(prevState => updateNavItem(prevState, 4, value)),
     },
-  ])
+  ]
 
-  //@ts-ignore
-  const updateNavItem = (items, index, value) => {
-    const newItems = [...items]
-    newItems[index].title = value
-    return newItems
-  }
+  const [navigationItems, setNavigationItems] = useState<NavigationItem[]>(initialNavigationItems)
 
   // Sociální sítě
   const [boxesSocialSites, setBoxesSocialSites] = useState<BoxSocialSites[]>([
@@ -190,7 +194,6 @@ export const useOtherState = (): OtherState => {
   const addBoxSocialSites = () => {
     setBoxesSocialSites([...boxesSocialSites, { value: '', href: '', icon: '' }])
   }
-
   const removeBoxSocialSites = (index: number) => {
     setBoxesSocialSites(boxesSocialSites.filter((_, i) => i !== index))
   }

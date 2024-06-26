@@ -3,51 +3,51 @@ import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
 interface HeroState {
-  heroVariant: string | undefined | any
+  heroVariant: string | undefined
   setHeroVariant: (value: string) => void
-  heroImageOpacity: string | undefined | any
+  heroImageOpacity: string | undefined
   setHeroImageOpacity: (value: string) => void
-  heroAlign: string | undefined | any
+  heroAlign: string | undefined
   setHeroAlign: (value: string) => void
-  heroBackground: string | undefined | any
-  setHeroBackground: (value: string) => void
-  heroAccentBg: string | undefined | any
-  setHeroAccentBg: (value: string) => void
-  heroAccentFg: string | undefined | any
-  setHeroAccentFg: (value: string) => void
-  heroTypo: string | undefined | any
-  setHeroTypo: (value: string) => void
-  heroTypoLg: string | undefined | any
-  setHeroTypoLg: (value: string) => void
-  heroContentTitle: string | undefined | any
+  heroBackground: string | undefined
+  setHeroBackground: (value: string | undefined) => void
+  heroAccentBg: string | undefined
+  setHeroAccentBg: (value: string | undefined) => void
+  heroAccentFg: string | undefined
+  setHeroAccentFg: (value: string | undefined) => void
+  heroTypo: string | undefined
+  setHeroTypo: (value: string | undefined) => void
+  heroTypoLg: string | undefined
+  setHeroTypoLg: (value: string | undefined) => void
+  heroContentTitle: string
   setHeroContentTitle: (value: React.SetStateAction<string>) => void
-  heroContentSubtitle: string | undefined | any
+  heroContentSubtitle: string
   setHeroContentSubtitle: (value: React.SetStateAction<string>) => void
-  heroContentLargeTitle: string | undefined | any
+  heroContentLargeTitle: string
   setHeroContentLargeTitle: (value: React.SetStateAction<string>) => void
-  heroContentButtonPrimaryText: string | undefined | any
+  heroContentButtonPrimaryText: string
   setHeroContentButtonPrimaryText: (value: React.SetStateAction<string>) => void
-  heroContentButtonPrimaryLink: string | undefined | any
+  heroContentButtonPrimaryLink: string
   setHeroContentButtonPrimaryLink: (value: React.SetStateAction<string>) => void
-  heroContentButtonPrimaryCustomLink: string | undefined | any
+  heroContentButtonPrimaryCustomLink: string
   setHeroContentButtonPrimaryCustomLink: (value: React.SetStateAction<string>) => void
-  heroContentButtonSecondaryText: string | undefined | any
+  heroContentButtonSecondaryText: string
   setHeroContentButtonSecondaryText: (value: React.SetStateAction<string>) => void
-  heroContentButtonSecondaryLink: string | undefined | any
+  heroContentButtonSecondaryLink: string
   setHeroContentButtonSecondaryLink: (value: React.SetStateAction<string>) => void
-  heroContentButtonSecondaryCustomLink: string | undefined | any
+  heroContentButtonSecondaryCustomLink: string
   setHeroContentButtonSecondaryCustomLink: (value: React.SetStateAction<string>) => void
-  imageMainUrl: string | undefined | any
+  imageMainUrl: string | undefined
   setImageMainUrl: (value: React.SetStateAction<string | undefined>) => void
-  imageMainHeight: number | undefined | any
+  imageMainHeight: number | undefined
   setImageMainHeight: (value: React.SetStateAction<number | undefined>) => void
-  imageMainWidth: number | undefined | any
+  imageMainWidth: number | undefined
   setImageMainWidth: (value: React.SetStateAction<number | undefined>) => void
-  imageBackgroundUrl: string | undefined | any
+  imageBackgroundUrl: string | undefined
   setImageBackgroundUrl: (value: React.SetStateAction<string | undefined>) => void
-  imageBackgroundHeight: number | undefined | any
+  imageBackgroundHeight: number | undefined
   setImageBackgroundHeight: (value: React.SetStateAction<number | undefined>) => void
-  imageBackgroundWidth: number | undefined | any
+  imageBackgroundWidth: number | undefined
   setImageBackgroundWidth: (value: React.SetStateAction<number | undefined>) => void
 }
 

@@ -10,41 +10,41 @@ interface BoxService {
 }
 
 interface ServiceState {
-  serviceVariant: string | undefined | any
+  serviceVariant: string | undefined
   setServiceVariant: (value: string) => void
-  serviceLayout: string | undefined | any
+  serviceLayout: string | undefined
   setServiceLayout: (value: string) => void
-  serviceAlign: string | undefined | any
+  serviceAlign: string | undefined
   setServiceAlign: (value: string) => void
-  serviceRadius: string | undefined | any
+  serviceRadius: string | undefined
   setServiceRadius: (value: string) => void
-  serviceBackground: string | undefined | any
-  setServiceBackground: (value: string) => void
-  serviceAccentBg: string | undefined | any
-  setServiceAccentBg: (value: string) => void
-  serviceAccentFg: string | undefined | any
-  setServiceAccentFg: (value: string) => void
-  serviceTypo: string | undefined | any
-  setServiceTypo: (value: string) => void
-  serviceBoxBackground: string | undefined | any
-  setServiceBoxBackground: (value: string) => void
-  serviceBoxTypo: string | undefined | any
-  setServiceBoxTypo: (value: string) => void
-  serviceBoxIcon: string | undefined | any
-  setServiceBoxIcon: (value: string) => void
-  servicesContentTitle: string | undefined | any
+  serviceBackground: string | undefined
+  setServiceBackground: (value: string | undefined) => void
+  serviceAccentBg: string | undefined
+  setServiceAccentBg: (value: string | undefined) => void
+  serviceAccentFg: string | undefined
+  setServiceAccentFg: (value: string | undefined) => void
+  serviceTypo: string | undefined
+  setServiceTypo: (value: string | undefined) => void
+  serviceBoxBackground: string | undefined
+  setServiceBoxBackground: (value: string | undefined) => void
+  serviceBoxTypo: string | undefined
+  setServiceBoxTypo: (value: string | undefined) => void
+  serviceBoxIcon: string | undefined
+  setServiceBoxIcon: (value: string | undefined) => void
+  servicesContentTitle: string
   setServicesContentTitle: (value: React.SetStateAction<string>) => void
   boxesService: BoxService[]
   addBoxService: () => void
   removeBoxService: (index: number) => void
-  updateBoxService: (index: number, field: string, value: any) => void
+  updateBoxService: (index: number, field: string, value: string | boolean) => void
   servicesContentBoxSpecial: boolean
   setServicesContentBoxSpecial: (value: boolean) => void
-  servicesContentBoxSpecialTitle: string | undefined | any
+  servicesContentBoxSpecialTitle: string
   setServicesContentBoxSpecialTitle: (value: React.SetStateAction<string>) => void
-  servicesContentBoxSpecialLink: string | undefined | any
+  servicesContentBoxSpecialLink: string
   setServicesContentBoxSpecialLink: (value: React.SetStateAction<string>) => void
-  servicesContentBoxSpecialCustomLink: string | undefined | any
+  servicesContentBoxSpecialCustomLink: string
   setServicesContentBoxSpecialCustomLink: (value: React.SetStateAction<string>) => void
 }
 
@@ -102,7 +102,7 @@ export const useServiceState = (): ServiceState => {
     setBoxesService(boxesService.filter((_, i) => i !== index))
   }
 
-  const updateBoxService = (index: number, field: string, value: any) => {
+  const updateBoxService = (index: number, field: string, value: string | boolean) => {
     setBoxesService(boxesService.map((box, i) => (i === index ? { ...box, [field]: value } : box)))
   }
 

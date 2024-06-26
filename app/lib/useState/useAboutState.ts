@@ -8,31 +8,31 @@ interface BoxAbout {
 }
 
 interface AboutState {
-  aboutVariant: string | undefined | any
+  aboutVariant: string | undefined
   setAboutVariant: (value: string) => void
-  aboutLayout: string | undefined | any
+  aboutLayout: string | undefined
   setAboutLayout: (value: string) => void
-  aboutAlign: string | undefined | any
+  aboutAlign: string | undefined
   setAboutAlign: (value: string) => void
-  aboutOrder: string | undefined | any
+  aboutOrder: string | undefined
   setAboutOrder: (value: string) => void
-  aboutBackground: string | undefined | any
-  setAboutBackground: (value: string) => void
-  aboutAccentBg: string | undefined | any
-  setAboutAccentBg: (value: string) => void
-  aboutAccentFg: string | undefined | any
-  setAboutAccentFg: (value: string) => void
-  aboutTypo: string | undefined | any
-  setAboutTypo: (value: string) => void
-  aboutContentTitle: string | undefined | any
+  aboutBackground: string | undefined
+  setAboutBackground: (value: string | undefined) => void
+  aboutAccentBg: string | undefined
+  setAboutAccentBg: (value: string | undefined) => void
+  aboutAccentFg: string | undefined
+  setAboutAccentFg: (value: string | undefined) => void
+  aboutTypo: string | undefined
+  setAboutTypo: (value: string | undefined) => void
+  aboutContentTitle: string
   setAboutContentTitle: (value: string) => void
-  aboutContentDescription: string | undefined | any
+  aboutContentDescription: string
   setAboutContentDescription: (value: string) => void
-  aboutContentButtonTitle: string | undefined | any
+  aboutContentButtonTitle: string
   setAboutContentButtonTitle: (value: string) => void
-  aboutContentButtonLink: string | undefined | any
+  aboutContentButtonLink: string
   setAboutContentButtonLink: (value: React.SetStateAction<string>) => void
-  aboutContentButtonCustomLink: string | undefined | any
+  aboutContentButtonCustomLink: string
   setAboutContentButtonCustomLink: (value: React.SetStateAction<string>) => void
   boxesAbout: BoxAbout[]
   addBoxAbout: () => void

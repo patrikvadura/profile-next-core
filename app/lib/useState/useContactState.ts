@@ -3,36 +3,36 @@ import { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
 interface ContactState {
-  contactVariant: string | undefined | any
+  contactVariant: string | undefined
   setContactVariant: (value: string) => void
-  contactLayout: string | undefined | any
+  contactLayout: string | undefined
   setContactLayout: (value: string) => void
-  contactAlign: string | undefined | any
+  contactAlign: string | undefined
   setContactAlign: (value: string) => void
-  contactOrder: string | undefined | any
+  contactOrder: string | undefined
   setContactOrder: (value: string) => void
-  contactBackground: string | undefined | any
-  setContactBackground: (value: string) => void
-  contactAccentBg: string | undefined | any
-  setContactAccentBg: (value: string) => void
-  contactAccentFg: string | undefined | any
-  setContactAccentFg: (value: string) => void
-  contactTypo: string | undefined | any
-  setContactTypo: (value: string) => void
-  contactRecipient: string | undefined | any
+  contactBackground: string | undefined
+  setContactBackground: (value: string | undefined) => void
+  contactAccentBg: string | undefined
+  setContactAccentBg: (value: string | undefined) => void
+  contactAccentFg: string | undefined
+  setContactAccentFg: (value: string | undefined) => void
+  contactTypo: string | undefined
+  setContactTypo: (value: string | undefined) => void
+  contactRecipient: string
   setContactRecipient: (value: string) => void
-  contactMapAddress: string | undefined | any
+  contactMapAddress: string
   setContactMapAddress: (value: string) => void
-  contactContentTitle: string | undefined | any
-  setContactContentTitle: (value: string) => void
-  contactContentSubtitle: string | undefined | any
-  setContactContentSubtitle: (value: string) => void
-  contactContentInfoEmail: string | undefined | any
-  setContactContentInfoEmail: (value: string) => void
-  contactContentInfoPhone: string | undefined | any
-  setContactContentInfoPhone: (value: string) => void
-  contactContentInfoAddress: string | undefined | any
-  setContactContentInfoAddress: (value: string) => void
+  contactContentTitle: string
+  setContactContentTitle: (value: React.SetStateAction<string>) => void
+  contactContentSubtitle: string
+  setContactContentSubtitle: (value: React.SetStateAction<string>) => void
+  contactContentInfoEmail: string
+  setContactContentInfoEmail: (value: React.SetStateAction<string>) => void
+  contactContentInfoPhone: string
+  setContactContentInfoPhone: (value: React.SetStateAction<string>) => void
+  contactContentInfoAddress: string
+  setContactContentInfoAddress: (value: React.SetStateAction<string>) => void
 }
 
 export const useContactState = (): ContactState => {
