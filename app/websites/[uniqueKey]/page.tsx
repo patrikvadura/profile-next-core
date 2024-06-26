@@ -11,26 +11,25 @@ import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 
 async function fetchData(uniqueKey: string) {
-  // Logování environment variables
   console.log('NODE_ENV:', process.env.NODE_ENV)
   console.log('VERCEL_PROJECT_PRODUCTION_URL:', process.env.VERCEL_PROJECT_PRODUCTION_URL)
   console.log('VERCEL_URL:', process.env.VERCEL_URL)
 
-  // Zajištění, že environment variables mají správné hodnoty
   const projectProductionURL = process.env.VERCEL_PROJECT_PRODUCTION_URL || ''
   const vercelURL = process.env.VERCEL_URL || ''
 
-  // Fallback URL
   const websiteURL =
     process.env.NODE_ENV === 'production'
       ? `https://${projectProductionURL || vercelURL || 'fallback-url.com'}`
-      : 'http://localhost:3000/'
+      : ''
 
   console.log(`projectProductionURL: ${projectProductionURL}`)
   console.log(`vercelURL: ${vercelURL}`)
   console.log(`websiteURL: ${websiteURL}`)
 
-  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = websiteURL
+    ? `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+    : `/api/getData?uniqueKey=${uniqueKey}`
 
   //console.log(`Fetching data from URL: ${url}`)
 
