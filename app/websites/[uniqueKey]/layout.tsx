@@ -25,7 +25,6 @@ export async function generateMetadata({
   const { data } = await res.json()
 
   const metaTitleComputed = data.metaTitle || 'Webová vizitka | VisioSnap'
-
   const metaDescriptionComputed =
     data.metaDescription ||
     'Webová vizitka vytvořeno službou VisioSnap. Levné a efektivní řešení webových vizitek, prezentačních webů pro svatby, události a další příležitosti. Neutrácejte za drahé řešení - vsaďte na jistotu.'

@@ -25,7 +25,7 @@ async function fetchData(uniqueKey: string) {
     throw new Error('Failed to fetch data')
   }
   const data = await res.json()
-  return data.data
+  return data.data || {}
 }
 
 export default async function Home({ params }: { params: { uniqueKey: string } }) {
@@ -78,13 +78,13 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
         <Header
           siteName={data.siteName || ''}
           siteNameClaim={data.siteNameClaim || ''}
-          logoImage={data.logoImage || ''}
+          logoImage={data.logoImage || false}
           logoImageUrl={data.logoImageUrl || ''}
-          logoImageWidth={data.logoImageWidth || ''}
-          logoImageHeight={data.logoImageHeight || ''}
-          logoImageSize={data.logoImageSize || ''}
-          visibility={visibility || ''}
-          navigationItems={navigationItems || ''}
+          logoImageWidth={data.logoImageWidth || 0}
+          logoImageHeight={data.logoImageHeight || 0}
+          logoImageSize={data.logoImageSize || 0}
+          visibility={visibility}
+          navigationItems={navigationItems}
         />
 
         {visibility.showHero && (
@@ -115,11 +115,11 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
                 : data.heroContentButtonSecondaryLink
             }
             imageMainUrl={data.imageMainUrl || ''}
-            imageMainWidth={data.imageMainWidth || ''}
-            imageMainHeight={data.imageMainHeight || ''}
+            imageMainWidth={data.imageMainWidth || 0}
+            imageMainHeight={data.imageMainHeight || 0}
             imageBackgroundUrl={data.imageBackgroundUrl || ''}
-            imageBackgroundWidth={data.imageBackgroundWidth || ''}
-            imageBackgroundHeight={data.imageBackgroundHeight || ''}
+            imageBackgroundWidth={data.imageBackgroundWidth || 0}
+            imageBackgroundHeight={data.imageBackgroundHeight || 0}
           />
         )}
         {visibility.showAbout && (
@@ -202,7 +202,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
             contactContentInfoAddress={data.contactContentInfoAddress || ''}
           />
         )}
-        <Footer cookieShow={data.cookieShow || false} boxes={data.boxesSocialSites || ''} />
+        <Footer cookieShow={data.cookieShow || false} boxes={data.boxesSocialSites || []} />
       </div>
     </>
   )
