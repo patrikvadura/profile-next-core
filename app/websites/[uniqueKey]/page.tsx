@@ -11,7 +11,12 @@ import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 
 async function fetchData(uniqueKey: string) {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/getData?uniqueKey=${uniqueKey}`
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : 'http://localhost:3000/'
+
+  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
 
   //console.log(`Fetching data from URL: ${url}`)
 
