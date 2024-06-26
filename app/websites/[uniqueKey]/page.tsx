@@ -26,7 +26,9 @@ async function fetchData(uniqueKey: string) {
       ? `https://${projectProductionURL || vercelURL || 'fallback-url.com'}`
       : 'http://localhost:3000/'
 
-  console.log(`websiteURL: ${websiteURL}`) // Přidejte logování pro kontrolu hodnoty
+  console.log(`projectProductionURL: ${projectProductionURL}`)
+  console.log(`vercelURL: ${vercelURL}`)
+  console.log(`websiteURL: ${websiteURL}`)
 
   const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
 
