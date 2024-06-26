@@ -58,7 +58,7 @@ export function HeroVariant04({
     >
       <div
         className={getBreakpointStyles(
-          `${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-[var(--hero-background)] dark:black`,
+          `${alignsClass} relative md:h-screen lg:h-[950px] flex flex-col items-start overflow-hidden bg-[var(--hero-background)] dark:bg-black`,
           breakpoint,
           preview,
         )}

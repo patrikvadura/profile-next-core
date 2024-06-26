@@ -13,7 +13,7 @@ import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 async function fetchData(uniqueKey: string) {
   const websiteURL =
     process.env.NODE_ENV === 'production'
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000/'
 
   const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
