@@ -39,8 +39,6 @@ interface HeroState {
   setHeroContentButtonSecondaryCustomLink: (value: React.SetStateAction<string>) => void
   imageMainUrl: string | undefined | any
   setImageMainUrl: (value: React.SetStateAction<string | undefined>) => void
-  imageMainAlternativeUrl: string | undefined | any
-  setImageMainAlternativeUrl: (value: React.SetStateAction<string | undefined>) => void
   imageMainHeight: number | undefined | any
   setImageMainHeight: (value: React.SetStateAction<number | undefined>) => void
   imageMainWidth: number | undefined | any
@@ -92,9 +90,6 @@ export const useHeroState = (): HeroState => {
   const [imageMainUrl, setImageMainUrl] = useState<string | undefined>(
     'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_hero_image_01.webp',
   )
-  const [imageMainAlternativeUrl, setImageMainAlternativeUrl] = useState<string | undefined>(
-    'https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_hero_image_01.webp',
-  )
   const [imageMainHeight, setImageMainHeight] = useState<number | undefined>(undefined)
   const [imageMainWidth, setImageMainWidth] = useState<number | undefined>(undefined)
 
@@ -142,8 +137,6 @@ export const useHeroState = (): HeroState => {
     setHeroContentButtonSecondaryCustomLink,
     imageMainUrl,
     setImageMainUrl,
-    imageMainAlternativeUrl,
-    setImageMainAlternativeUrl,
     imageMainHeight,
     setImageMainHeight,
     imageMainWidth,

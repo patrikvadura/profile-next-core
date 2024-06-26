@@ -1,5 +1,9 @@
 .picker {
-  @apply flex items-center rounded-full size-8 mr-2 mb-2 shadow;
+  @apply relative flex items-center rounded-full size-8 mr-2 mb-2 shadow;
+}
+
+.pickerSmaller {
+  @apply flex items-center rounded-full size-4 mb-2 shadow;
 }
 
 input[type="color"].picker::-webkit-color-swatch-wrapper {
@@ -8,4 +12,8 @@ input[type="color"].picker::-webkit-color-swatch-wrapper {
 
 input[type="color"].picker::-webkit-color-swatch {
   @apply rounded-full;
+}
+
+input[type="text"].hex {
+  @apply border border-gray-200 px-4 py-2 rounded;
 }

@@ -13,6 +13,7 @@
     "@aws-sdk/lib-storage": "^3.582.0",
     "@gsap/react": "^2.1.0",
     "@headlessui/react": "^2.1.0",
+    "@jaames/iro": "^5.5.2",
     "@nextui-org/react": "^2.4.1",
     "aws-sdk": "^2.1626.0",
     "axios": "^1.7.2",

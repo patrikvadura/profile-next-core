@@ -289,11 +289,7 @@ export default function Customizer() {
                 ? hero.heroContentButtonSecondaryCustomLink
                 : hero.heroContentButtonSecondaryLink
             }
-            imageMainUrl={
-              !['01', '02', '05'].includes(hero.heroVariant)
-                ? hero.imageMainAlternativeUrl
-                : hero.imageMainUrl
-            }
+            imageMainUrl={hero.imageMainUrl}
             imageMainWidth={hero.imageMainWidth}
             imageMainHeight={hero.imageMainHeight}
             imageBackgroundUrl={hero.imageBackgroundUrl}

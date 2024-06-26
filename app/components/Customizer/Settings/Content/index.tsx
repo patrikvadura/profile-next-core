@@ -44,7 +44,7 @@ export default function SettingsContent({
   return (
     <ModalView title="Obsah" isVisible={isModalVisible} toggleVisibility={toggleModalVisibility}>
       <div className="flex flex-col space-y-4 pt-4">
-        <Dropdown label="Globální nastavení" id="contentGlobalToggle" toggled hideToggle>
+        <Dropdown label="Globální nastavení" id="contentGlobalToggle" hideToggle>
           <div className="space-y-4">
             <h3 className="text-primary text-base font-bold">Logo / identita</h3>
 
@@ -96,7 +96,7 @@ export default function SettingsContent({
 
             <hr className="border-primary border opacity-10" />
 
-            <Dropdown label="Navigace" id="navigationSettingsToggle" toggled hideToggle>
+            <Dropdown label="Navigace" id="navigationSettingsToggle" hideToggle>
               <div className="space-y-4">
                 {/*//@ts-ignore*/}
                 {navigationItems.map((item, index) => (
@@ -128,7 +128,7 @@ export default function SettingsContent({
               </div>
             </Dropdown>
 
-            <Dropdown label="Sociální sítě" id="socialSitesSettingsToggle" toggled hideToggle>
+            <Dropdown label="Sociální sítě" id="socialSitesSettingsToggle" hideToggle>
               <div className="space-y-4">
                 {/*//@ts-ignore*/}
                 {other.boxesSocialSites.map((box, index) => (
@@ -185,7 +185,7 @@ export default function SettingsContent({
                     icon="material-symbols:add-circle-outline-rounded"
                     className="mr-1 text-base"
                   />
-                  Přidat box
+                  Přidat síť
                 </button>
               </div>
             </Dropdown>
@@ -196,14 +196,7 @@ export default function SettingsContent({
           <>
             <hr className="border-primary border opacity-10" />
 
-            <Dropdown
-              label="Hero sekce"
-              id="contentHeroToggle"
-              link="#hero"
-              preview
-              toggled
-              hideToggle
-            >
+            <Dropdown label="Hero sekce" id="contentHeroToggle" link="#hero" preview hideToggle>
               <div className="space-y-4">
                 <Input
                   type="text"
@@ -229,37 +222,33 @@ export default function SettingsContent({
                   minLength={4}
                   classLabel="!text-black"
                 />
-                {!['01', '05'].includes(hero.heroVariant) && (
-                  <UploadComponent
-                    imageUrl={hero.imageMainAlternativeUrl}
-                    imageWidth={hero.imageMainWidth}
-                    imageHeight={hero.imageMainHeight}
-                    setImageUrl={hero.setImageMainAlternativeUrl}
-                    setImageWidth={hero.setImageMainWidth}
-                    setImageHeight={hero.setImageMainHeight}
-                  />
-                )}
 
                 {!['05'].includes(hero.heroVariant) && (
-                  <UploadComponent
-                    imageUrl={hero.imageMainUrl}
-                    imageWidth={hero.imageMainWidth}
-                    imageHeight={hero.imageMainHeight}
-                    setImageUrl={hero.setImageMainUrl}
-                    setImageWidth={hero.setImageMainWidth}
-                    setImageHeight={hero.setImageMainHeight}
-                  />
+                  <>
+                    <h4 className="text-sm font-semibold">Profilová fotografie</h4>
+                    <UploadComponent
+                      imageUrl={hero.imageMainUrl}
+                      imageWidth={hero.imageMainWidth}
+                      imageHeight={hero.imageMainHeight}
+                      setImageUrl={hero.setImageMainUrl}
+                      setImageWidth={hero.setImageMainWidth}
+                      setImageHeight={hero.setImageMainHeight}
+                    />
+                  </>
                 )}
 
                 {['04', '05'].includes(hero.heroVariant) && (
-                  <UploadComponent
-                    imageUrl={hero.imageBackgroundUrl}
-                    imageWidth={hero.imageBackgroundWidth}
-                    imageHeight={hero.imageBackgroundHeight}
-                    setImageUrl={hero.setImageBackgroundUrl}
-                    setImageWidth={hero.setImageBackgroundWidth}
-                    setImageHeight={hero.setImageBackgroundHeight}
-                  />
+                  <>
+                    <h4 className="text-sm font-semibold">Pozadí</h4>
+                    <UploadComponent
+                      imageUrl={hero.imageBackgroundUrl}
+                      imageWidth={hero.imageBackgroundWidth}
+                      imageHeight={hero.imageBackgroundHeight}
+                      setImageUrl={hero.setImageBackgroundUrl}
+                      setImageWidth={hero.setImageBackgroundWidth}
+                      setImageHeight={hero.setImageBackgroundHeight}
+                    />
+                  </>
                 )}
 
                 <Dropdown
@@ -345,14 +334,7 @@ export default function SettingsContent({
         {visibility.showAbout && (
           <>
             <hr className="border-primary border opacity-10" />
-            <Dropdown
-              label="O nás"
-              id="contentAboutToggle"
-              link="#about"
-              preview
-              toggled
-              hideToggle
-            >
+            <Dropdown label="O nás" id="contentAboutToggle" link="#about" preview hideToggle>
               <div className="space-y-4">
                 <Input
                   type="text"
@@ -467,14 +449,7 @@ export default function SettingsContent({
           <>
             <hr className="border-primary border opacity-10" />
 
-            <Dropdown
-              label="Služby"
-              id="contentServicesToggle"
-              link="#services"
-              preview
-              toggled
-              hideToggle
-            >
+            <Dropdown label="Služby" id="contentServicesToggle" link="#services" preview hideToggle>
               <div className="space-y-4">
                 <Input
                   type="text"
@@ -620,7 +595,6 @@ export default function SettingsContent({
               id="contentReferenceToggle"
               link="#reference"
               preview
-              toggled
               hideToggle
             >
               <div className="space-y-4">
@@ -708,14 +682,7 @@ export default function SettingsContent({
           <>
             <hr className="border-primary border opacity-10" />
 
-            <Dropdown
-              label="Kontakt"
-              id="contentContactToggle"
-              link="#contact"
-              preview
-              toggled
-              hideToggle
-            >
+            <Dropdown label="Kontakt" id="contentContactToggle" link="#contact" preview hideToggle>
               <div className="space-y-4">
                 <Input
                   type="text"

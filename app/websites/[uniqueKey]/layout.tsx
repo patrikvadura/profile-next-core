@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import Providers from '@/app/demo/providers'
+import Providers from '@/app/websites/providers'
 import '@/app/globals.css'
 
 export async function generateMetadata({
