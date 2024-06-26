@@ -16,6 +16,7 @@ import { useOtherState } from '@/app/lib/useState/useOtherState'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import { useReferenceState } from '@/app/lib/useState/useReferenceState'
 import { useContactState } from '@/app/lib/useState/useContactState'
+import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 
 export default function Home() {
   const hero = useHeroState()
@@ -28,6 +29,8 @@ export default function Home() {
 
   return (
     <>
+      <DynamicFontLoader fontName={other.fontName} fontWeights={other.fontWeights} />
+
       <ColorUpdaterGlobal
         primaryGlobalColor={other.globalPrimary}
         secondaryGlobalColor={other.globalSecondary}
@@ -73,11 +76,7 @@ export default function Home() {
               ? hero.heroContentButtonSecondaryCustomLink
               : hero.heroContentButtonSecondaryLink
           }
-          imageMainUrl={
-            !['01', '02', '05'].includes(hero.heroVariant)
-              ? hero.imageMainAlternativeUrl
-              : hero.imageMainUrl
-          }
+          imageMainUrl={hero.imageMainUrl}
           imageMainWidth={hero.imageMainWidth}
           imageMainHeight={hero.imageMainHeight}
           imageBackgroundUrl={hero.imageBackgroundUrl}
@@ -104,7 +103,7 @@ export default function Home() {
               ? about.aboutContentButtonCustomLink
               : about.aboutContentButtonLink
           }
-          boxes={about.boxes}
+          boxes={about.boxesAbout}
         />
       )}
       {visibility.showServices && (
@@ -121,7 +120,7 @@ export default function Home() {
           boxTypoColor={service.serviceBoxTypo}
           boxIconColor={service.serviceBoxIcon}
           servicesContentTitle={service.servicesContentTitle}
-          boxes={service.boxes}
+          boxes={service.boxesService}
           servicesContentBoxSpecial={service.servicesContentBoxSpecial}
           servicesContentBoxSpecialTitle={service.servicesContentBoxSpecialTitle}
           servicesContentBoxSpecialLink={
@@ -141,7 +140,7 @@ export default function Home() {
           typoColor={reference.referenceTypo}
           typoLgColor={reference.referenceTypoLg}
           referenceContentTitle={reference.referenceContentTitle}
-          boxes={reference.boxes}
+          boxes={reference.boxesReference}
         />
       )}
       {visibility.showContact && (
@@ -165,7 +164,7 @@ export default function Home() {
           contactContentInfoAddress={contact.contactContentInfoAddress}
         />
       )}
-      <Footer />
+      <Footer cookieShow={false} boxes={other.boxesSocialSites} />
     </>
   )
 }

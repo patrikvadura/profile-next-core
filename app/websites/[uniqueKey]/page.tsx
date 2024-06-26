@@ -111,11 +111,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
                 ? data.heroContentButtonSecondaryCustomLink
                 : data.heroContentButtonSecondaryLink
             }
-            imageMainUrl={
-              !['01', '02', '05'].includes(data.heroVariant)
-                ? data.imageMainAlternativeUrl
-                : data.imageMainUrl
-            }
+            imageMainUrl={data.imageMainUrl}
             imageMainWidth={data.imageMainWidth}
             imageMainHeight={data.imageMainHeight}
             imageBackgroundUrl={data.imageBackgroundUrl}
