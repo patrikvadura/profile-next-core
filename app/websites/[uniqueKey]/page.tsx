@@ -11,17 +11,10 @@ import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 
 async function fetchData(uniqueKey: string) {
-  const websiteURL = (() => {
-    if (process.env.NODE_ENV === 'production') {
-      if (process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL) {
-        return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      }
-      if (process.env.RENDER_EXTERNAL_URL) {
-        return `https://${process.env.RENDER_EXTERNAL_URL}`
-      }
-    }
-    return 'http://localhost:3000/'
-  })()
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000/'
 
   const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
 
