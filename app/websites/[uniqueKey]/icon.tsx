@@ -45,7 +45,12 @@ export default async function Icon({ params }: { params: { uniqueKey: string } }
     throw new Error('uniqueKey is required')
   }
 
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/getData?uniqueKey=${uniqueKey}`
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000/'
+
+  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
   const res = await fetch(url)
 
   if (!res.ok) {

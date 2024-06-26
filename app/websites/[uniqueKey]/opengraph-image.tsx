@@ -40,7 +40,7 @@ export default async function Image({ params }: { params: { uniqueKey: string } 
     throw new Error('uniqueKey is required')
   }
 
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
   const res = await fetch(url)
 
   if (!res.ok) {

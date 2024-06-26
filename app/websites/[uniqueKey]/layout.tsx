@@ -9,7 +9,13 @@ export async function generateMetadata({
   params: { uniqueKey: string }
 }): Promise<Metadata> {
   const uniqueKey = params.uniqueKey
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/getData?uniqueKey=${uniqueKey}`
+
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000/'
+
+  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
   const res = await fetch(url)
 
   if (!res.ok) {
@@ -19,7 +25,7 @@ export async function generateMetadata({
   const { data } = await res.json()
 
   return {
-    metadataBase: new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`),
+    metadataBase: new URL(`${websiteURL}`),
     title: data.metaTitle || 'Webová vizitka | VisioSnap',
     description:
       data.metaDescription ||
