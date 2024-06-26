@@ -48,6 +48,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
     return notFound()
   }
 
+  // Nastavení výchozích hodnot pro případ, že některé vlastnosti chybí
   const navigationItems = data.navigationItems || []
   const visibility = {
     showHero: data.showHero || false,
@@ -61,25 +62,42 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
     showContactFormOrMap: data.showContactFormOrMap || false,
   }
 
+  const metaTitle = data.metaTitle || 'Default Meta Title'
+  const metaDescription = data.metaDescription || 'Default Meta Description'
+  const fontName = data.fontName || 'Default Font'
+  const fontWeights = data.fontWeights || '400;700'
+  const globalPrimary = data.globalPrimary || '#000000'
+  const globalSecondary = data.globalSecondary || '#FFFFFF'
+  const globalAccent = data.globalAccent || '#FF0000'
+  const siteName = data.siteName || 'Default Site Name'
+  const siteNameClaim = data.siteNameClaim || 'Default Site Claim'
+  const logoImage = data.logoImage || false
+  const logoImageUrl = data.logoImageUrl || ''
+  const logoImageWidth = data.logoImageWidth || 0
+  const logoImageHeight = data.logoImageHeight || 0
+  const logoImageSize = data.logoImageSize || 100
+  const cookieShow = data.cookieShow || false
+  const boxesSocialSites = data.boxesSocialSites || []
+
   return (
     <>
-      <DynamicFontLoader fontName={data.fontName} fontWeights={data.fontWeights} />
+      <DynamicFontLoader fontName={fontName} fontWeights={fontWeights} />
 
       <ColorUpdaterGlobal
-        primaryGlobalColor={data.globalPrimary}
-        secondaryGlobalColor={data.globalSecondary}
-        accentGlobalColor={data.globalAccent}
+        primaryGlobalColor={globalPrimary}
+        secondaryGlobalColor={globalSecondary}
+        accentGlobalColor={globalAccent}
       />
 
       <div className="fontDefault">
         <Header
-          siteName={data.siteName}
-          siteNameClaim={data.siteNameClaim}
-          logoImage={data.logoImage}
-          logoImageUrl={data.logoImageUrl}
-          logoImageWidth={data.logoImageWidth}
-          logoImageHeight={data.logoImageHeight}
-          logoImageSize={data.logoImageSize}
+          siteName={siteName}
+          siteNameClaim={siteNameClaim}
+          logoImage={logoImage}
+          logoImageUrl={logoImageUrl}
+          logoImageWidth={logoImageWidth}
+          logoImageHeight={logoImageHeight}
+          logoImageSize={logoImageSize}
           visibility={visibility}
           navigationItems={navigationItems}
         />
@@ -199,7 +217,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
             contactContentInfoAddress={data.contactContentInfoAddress}
           />
         )}
-        <Footer cookieShow={data.cookieShow} boxes={data.boxesSocialSites} />
+        <Footer cookieShow={cookieShow} boxes={boxesSocialSites} />
       </div>
     </>
   )
