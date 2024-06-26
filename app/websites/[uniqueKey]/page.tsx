@@ -48,36 +48,111 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
     return notFound()
   }
 
-  // Nastavení výchozích hodnot pro případ, že některé vlastnosti chybí
-  const navigationItems = data.navigationItems || []
-  const visibility = {
-    showHero: data.showHero || false,
-    showAbout: data.showAbout || false,
-    showServices: data.showServices || false,
-    showReference: data.showReference || false,
-    showContact: data.showContact || false,
-    showHeroContentButtonPrimary: data.showHeroContentButtonPrimary || false,
-    showHeroContentButtonSecondary: data.showHeroContentButtonSecondary || false,
-    showAboutContentButton: data.showAboutContentButton || false,
-    showContactFormOrMap: data.showContactFormOrMap || false,
-  }
-
-  const metaTitle = data.metaTitle || 'Default Meta Title'
-  const metaDescription = data.metaDescription || 'Default Meta Description'
-  const fontName = data.fontName || 'Default Font'
-  const fontWeights = data.fontWeights || '400;700'
-  const globalPrimary = data.globalPrimary || '#000000'
-  const globalSecondary = data.globalSecondary || '#FFFFFF'
-  const globalAccent = data.globalAccent || '#FF0000'
-  const siteName = data.siteName || 'Default Site Name'
-  const siteNameClaim = data.siteNameClaim || 'Default Site Claim'
-  const logoImage = data.logoImage || false
-  const logoImageUrl = data.logoImageUrl || ''
-  const logoImageWidth = data.logoImageWidth || 0
-  const logoImageHeight = data.logoImageHeight || 0
-  const logoImageSize = data.logoImageSize || 100
-  const cookieShow = data.cookieShow || false
-  const boxesSocialSites = data.boxesSocialSites || []
+  // Destrukturování dat s výchozími hodnotami
+  const {
+    navigationItems = [],
+    fontName = 'Default Font',
+    fontWeights = '400;700',
+    globalPrimary = '#000000',
+    globalSecondary = '#FFFFFF',
+    globalAccent = '#FF0000',
+    siteName = 'Default Site Name',
+    siteNameClaim = 'Default Site Claim',
+    logoImage = false,
+    logoImageUrl = '',
+    logoImageWidth = 0,
+    logoImageHeight = 0,
+    logoImageSize = 100,
+    cookieShow = false,
+    boxesSocialSites = [],
+    heroVariant = 'defaultVariant',
+    heroImageOpacity = '1',
+    heroAlign = 'center',
+    heroBackground = '#FFFFFF',
+    heroAccentBg = '#000000',
+    heroAccentFg = '#FFFFFF',
+    heroTypo = '#000000',
+    heroTypoLg = '#FFFFFF',
+    heroContentTitle = 'Default Title',
+    heroContentSubtitle = 'Default Subtitle',
+    heroContentLargeTitle = 'Default Large Title',
+    heroContentButtonPrimaryText = 'Default Button Text',
+    heroContentButtonPrimaryLink = '#',
+    heroContentButtonPrimaryCustomLink = '#',
+    heroContentButtonSecondaryText = 'Default Button Text',
+    heroContentButtonSecondaryLink = '#',
+    heroContentButtonSecondaryCustomLink = '#',
+    imageMainUrl = '',
+    imageMainWidth = 0,
+    imageMainHeight = 0,
+    imageBackgroundUrl = '',
+    imageBackgroundWidth = 0,
+    imageBackgroundHeight = 0,
+    showHero = false,
+    showAbout = false,
+    showServices = false,
+    showReference = false,
+    showContact = false,
+    showHeroContentButtonPrimary = false,
+    showHeroContentButtonSecondary = false,
+    showAboutContentButton = false,
+    showContactFormOrMap = false,
+    aboutVariant = 'defaultVariant',
+    aboutLayout = 'defaultLayout',
+    aboutAlign = 'left',
+    aboutOrder = 'asc',
+    aboutBackground = '#FFFFFF',
+    aboutAccentBg = '#000000',
+    aboutAccentFg = '#FFFFFF',
+    aboutTypo = '#000000',
+    aboutContentTitle = 'Default Title',
+    aboutContentDescription = 'Default Description',
+    aboutContentButtonTitle = 'Default Button Text',
+    aboutContentButtonLink = '#',
+    aboutContentButtonCustomLink = '#',
+    boxesAbout = [],
+    serviceVariant = 'defaultVariant',
+    serviceLayout = 'defaultLayout',
+    serviceAlign = 'left',
+    serviceRadius = 'defaultRadius',
+    serviceBackground = '#FFFFFF',
+    serviceAccentBg = '#000000',
+    serviceAccentFg = '#FFFFFF',
+    serviceTypo = '#000000',
+    serviceBoxBackground = '#FFFFFF',
+    serviceBoxTypo = '#000000',
+    serviceBoxIcon = '#000000',
+    servicesContentTitle = 'Default Content Title',
+    boxesService = [],
+    servicesContentBoxSpecial = false,
+    servicesContentBoxSpecialTitle = 'Default Title',
+    servicesContentBoxSpecialLink = '#',
+    servicesContentBoxSpecialCustomLink = '#',
+    referenceVariant = 'defaultVariant',
+    referenceLayout = 'defaultLayout',
+    referenceAlign = 'left',
+    referenceBackground = '#FFFFFF',
+    referenceAccentBg = '#000000',
+    referenceTypo = '#000000',
+    referenceTypoLg = '#FFFFFF',
+    referenceContentTitle = 'Default Title',
+    boxesReference = [],
+    contactVariant = 'defaultVariant',
+    contactLayout = 'defaultLayout',
+    contactAlign = 'left',
+    contactOrder = 'asc',
+    contactBackground = '#FFFFFF',
+    contactAccentBg = '#000000',
+    contactAccentFg = '#FFFFFF',
+    contactTypo = '#000000',
+    contactRecipient = 'default@contact.com',
+    contactMapAddress = 'Default Address',
+    contactContentTitle = 'Default Title',
+    contactContentSubtitle = 'Default Subtitle',
+    contactContentInfoEmail = 'default@contact.com',
+    contactContentInfoPhone = '000-000-0000',
+    contactContentInfoAddress = 'Default Address',
+  } = data
 
   return (
     <>
@@ -98,94 +173,92 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
           logoImageWidth={logoImageWidth}
           logoImageHeight={logoImageHeight}
           logoImageSize={logoImageSize}
-          visibility={visibility}
+          visibility={{ showHero, showAbout, showServices, showReference, showContact }}
           navigationItems={navigationItems}
         />
 
-        {visibility.showHero && (
+        {showHero && (
           <Hero
-            variant={data.heroVariant || 'defaultVariant'}
-            imageOpacity={data.heroImageOpacity || '1'}
-            align={data.heroAlign || 'center'}
-            backgroundColor={data.heroBackground || '#FFFFFF'}
-            accentBgColor={data.heroAccentBg || '#000000'}
-            accentFgColor={data.heroAccentFg || '#FFFFFF'}
-            typoColor={data.heroTypo || '#000000'}
-            typoLgColor={data.heroTypoLg || '#FFFFFF'}
-            contentTitle={data.heroContentTitle || 'Default Title'}
-            contentSubtitle={data.heroContentSubtitle || 'Default Subtitle'}
-            contentLargeTitle={data.heroContentLargeTitle || 'Default Large Title'}
-            contentButtonPrimary={visibility.showHeroContentButtonPrimary}
-            contentButtonPrimaryText={data.heroContentButtonPrimaryText || 'Default Button Text'}
+            variant={heroVariant}
+            imageOpacity={heroImageOpacity}
+            align={heroAlign}
+            backgroundColor={heroBackground}
+            accentBgColor={heroAccentBg}
+            accentFgColor={heroAccentFg}
+            typoColor={heroTypo}
+            typoLgColor={heroTypoLg}
+            contentTitle={heroContentTitle}
+            contentSubtitle={heroContentSubtitle}
+            contentLargeTitle={heroContentLargeTitle}
+            contentButtonPrimary={showHeroContentButtonPrimary}
+            contentButtonPrimaryText={heroContentButtonPrimaryText}
             contentButtonPrimaryLink={
-              data.heroContentButtonPrimaryLink === null
-                ? data.heroContentButtonPrimaryCustomLink || '#'
-                : data.heroContentButtonPrimaryLink
+              heroContentButtonPrimaryLink === null
+                ? heroContentButtonPrimaryCustomLink
+                : heroContentButtonPrimaryLink
             }
-            contentButtonSecondary={visibility.showHeroContentButtonSecondary}
-            contentButtonSecondaryText={
-              data.heroContentButtonSecondaryText || 'Default Button Text'
-            }
+            contentButtonSecondary={showHeroContentButtonSecondary}
+            contentButtonSecondaryText={heroContentButtonSecondaryText}
             contentButtonSecondaryLink={
-              data.heroContentButtonSecondaryLink === null
-                ? data.heroContentButtonSecondaryCustomLink || '#'
-                : data.heroContentButtonSecondaryLink
+              heroContentButtonSecondaryLink === null
+                ? heroContentButtonSecondaryCustomLink
+                : heroContentButtonSecondaryLink
             }
-            imageMainUrl={data.imageMainUrl || ''}
-            imageMainWidth={data.imageMainWidth || 0}
-            imageMainHeight={data.imageMainHeight || 0}
-            imageBackgroundUrl={data.imageBackgroundUrl || ''}
-            imageBackgroundWidth={data.imageBackgroundWidth || 0}
-            imageBackgroundHeight={data.imageBackgroundHeight || 0}
+            imageMainUrl={imageMainUrl}
+            imageMainWidth={imageMainWidth}
+            imageMainHeight={imageMainHeight}
+            imageBackgroundUrl={imageBackgroundUrl}
+            imageBackgroundWidth={imageBackgroundWidth}
+            imageBackgroundHeight={imageBackgroundHeight}
           />
         )}
-        {visibility.showAbout && (
+        {showAbout && (
           <About
-            variant={data.aboutVariant || 'defaultVariant'}
-            layout={data.aboutLayout || 'defaultLayout'}
-            align={data.aboutAlign || 'left'}
-            order={data.aboutOrder || 'asc'}
-            backgroundColor={data.aboutBackground || '#FFFFFF'}
-            accentBgColor={data.aboutAccentBg || '#000000'}
-            accentFgColor={data.aboutAccentFg || '#FFFFFF'}
-            typoColor={data.aboutTypo || '#000000'}
-            contentTitle={data.aboutContentTitle || 'Default Title'}
-            contentDescription={data.aboutContentDescription || 'Default Description'}
-            contentButton={visibility.showAboutContentButton}
-            contentButtonText={data.aboutContentButtonTitle || 'Default Button Text'}
+            variant={aboutVariant}
+            layout={aboutLayout}
+            align={aboutAlign}
+            order={aboutOrder}
+            backgroundColor={aboutBackground}
+            accentBgColor={aboutAccentBg}
+            accentFgColor={aboutAccentFg}
+            typoColor={aboutTypo}
+            contentTitle={aboutContentTitle}
+            contentDescription={aboutContentDescription}
+            contentButton={showAboutContentButton}
+            contentButtonText={aboutContentButtonTitle}
             contentButtonLink={
-              data.aboutContentButtonLink === null
-                ? data.aboutContentButtonCustomLink || '#'
-                : data.aboutContentButtonLink
+              aboutContentButtonLink === null
+                ? aboutContentButtonCustomLink
+                : aboutContentButtonLink
             }
-            boxes={data.boxesAbout || []}
+            boxes={boxesAbout}
           />
         )}
-        {visibility.showServices && (
+        {showServices && (
           <Services
-            variant={data.serviceVariant || 'defaultVariant'}
-            layout={data.serviceLayout || 'defaultLayout'}
-            align={data.serviceAlign || 'left'}
-            radius={data.serviceRadius || 'defaultRadius'}
-            backgroundColor={data.serviceBackground || '#FFFFFF'}
-            accentBgColor={data.serviceAccentBg || '#000000'}
-            accentFgColor={data.serviceAccentFg || '#FFFFFF'}
-            typoColor={data.serviceTypo || '#000000'}
-            boxBackgroundColor={data.serviceBoxBackground || '#FFFFFF'}
-            boxTypoColor={data.serviceBoxTypo || '#000000'}
-            boxIconColor={data.serviceBoxIcon || '#000000'}
-            servicesContentTitle={data.servicesContentTitle || 'Default Content Title'}
-            boxes={data.boxesService || []}
-            servicesContentBoxSpecial={data.servicesContentBoxSpecial || false}
-            servicesContentBoxSpecialTitle={data.servicesContentBoxSpecialTitle || 'Default Title'}
+            variant={serviceVariant}
+            layout={serviceLayout}
+            align={serviceAlign}
+            radius={serviceRadius}
+            backgroundColor={serviceBackground}
+            accentBgColor={serviceAccentBg}
+            accentFgColor={serviceAccentFg}
+            typoColor={serviceTypo}
+            boxBackgroundColor={serviceBoxBackground}
+            boxTypoColor={serviceBoxTypo}
+            boxIconColor={serviceBoxIcon}
+            servicesContentTitle={servicesContentTitle}
+            boxes={boxesService}
+            servicesContentBoxSpecial={servicesContentBoxSpecial}
+            servicesContentBoxSpecialTitle={servicesContentBoxSpecialTitle}
             servicesContentBoxSpecialLink={
-              data.servicesContentBoxSpecialLink === null
-                ? data.servicesContentBoxSpecialCustomLink || '#'
-                : data.servicesContentBoxSpecialLink
+              servicesContentBoxSpecialLink === null
+                ? servicesContentBoxSpecialCustomLink
+                : servicesContentBoxSpecialLink
             }
           />
         )}
-        {visibility.showReference && (
+        {showReference && (
           <Reference
             variant={data.referenceVariant || 'defaultVariant'}
             layout={data.referenceLayout || 'defaultLayout'}
@@ -198,7 +271,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
             boxes={data.boxesReference || []}
           />
         )}
-        {visibility.showContact && (
+        {showContact && (
           <Contact
             variant={data.contactVariant || 'defaultVariant'}
             layout={data.contactLayout || 'defaultLayout'}
@@ -208,8 +281,8 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
             accentBgColor={data.contactAccentBg || '#000000'}
             accentFgColor={data.contactAccentFg || '#FFFFFF'}
             typoColor={data.contactTypo || '#000000'}
-            contactForm={visibility.showContactFormOrMap}
-            contactMap={visibility.showContactFormOrMap}
+            contactForm={showContactFormOrMap}
+            contactMap={showContactFormOrMap}
             contactRecipient={data.contactRecipient || 'default@contact.com'}
             contactMapAddress={data.contactMapAddress || 'Default Address'}
             contactContentTitle={data.contactContentTitle || 'Default Title'}
@@ -219,7 +292,7 @@ export default async function Home({ params }: { params: { uniqueKey: string } }
             contactContentInfoAddress={data.contactContentInfoAddress || 'Default Address'}
           />
         )}
-        <Footer cookieShow={cookieShow} boxes={boxesSocialSites} />
+        <Footer cookieShow={data.cookieShow || false} boxes={data.boxesSocialSites || []} />
       </div>
     </>
   )
