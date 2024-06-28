@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import data from '@/app/lib/dataCustomizer.json'
 import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 

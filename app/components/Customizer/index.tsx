@@ -114,6 +114,8 @@ export default function Customizer() {
     contactPhoneChanged: false,
   })
 
+  const [isValidDomain, setIsValidDomain] = useState<boolean>(false)
+
   const initialRender = useRef(true)
   const previousStates = useRef({
     // Domain
@@ -127,13 +129,41 @@ export default function Customizer() {
     contactPhone: other.contactPhone,
   })
 
+  const checkDomainValidity = async (domain: string) => {
+    try {
+      const response = await fetch('/api/verify-domain', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ domain }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        return data.available
+      } else {
+        return false
+      }
+    } catch (err) {
+      return false
+    }
+  }
+
   useEffect(() => {
-    if (!initialRender.current) {
-      // Domain
+    const validateDomain = async () => {
       if (domain !== previousStates.current.domain) {
-        setStatesChanged(prevState => ({ ...prevState, domainChanged: true }))
+        const isValid = await checkDomainValidity(domain)
+        setIsValidDomain(isValid)
+        setStatesChanged(prevState => ({ ...prevState, domainChanged: isValid }))
         previousStates.current.domain = domain
       }
+    }
+
+    if (!initialRender.current) {
+      // Validate domain
+      validateDomain()
 
       // Settings
       if (other.metaTitle !== previousStates.current.metaTitle) {

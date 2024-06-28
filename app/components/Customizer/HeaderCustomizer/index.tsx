@@ -69,20 +69,8 @@ export default function HeaderCustomizer() {
             {data.menu.createLink.title}
           </Link>
 
-          <div className="flex flex-row items-center text-white text-sm text-opacity-50 border-l-2 border-white border-opacity-10 pl-4 space-x-4">
-            <Image
-              src="/assets/img/studio/profile_dummy.jpg"
-              width={100}
-              height={100}
-              alt="Profile"
-              className="size-6 rounded-full"
-            />
-
-            <span>Patrik Vaďura</span>
-          </div>
-
           <Link
-            href="/"
+            href="/auth/logout"
             className="flex flex-row items-center text-white text-sm text-opacity-50 hover:text-opacity-100 transiton duration-300 ease-in-out"
           >
             <Icon icon="material-symbols:logout" className="text-xl" />

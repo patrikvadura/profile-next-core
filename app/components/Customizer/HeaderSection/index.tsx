@@ -9,15 +9,15 @@ interface Props {
 }
 
 export default function HeaderSection({ fontName, fontWeights }: Props) {
+  // @ts-ignore
   return (
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </Head>
-      {/*@ts-ignore*/}
+
       <DynamicFontLoader fontName={fontName} fontWeights={fontWeights} />
-      <HeaderCustomizer />
     </>
   )
 }

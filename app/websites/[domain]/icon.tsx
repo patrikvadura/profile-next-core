@@ -38,11 +38,11 @@ function getInitials(siteName: string): string {
     .toUpperCase()
 }
 
-export default async function Icon({ params }: { params: { uniqueKey: string } }) {
-  const uniqueKey = params.uniqueKey
+export default async function Icon({ params }: { params: { domain: string } }) {
+  const domain = params.domain
 
-  if (!uniqueKey) {
-    throw new Error('uniqueKey is required')
+  if (!domain) {
+    throw new Error('domain is required')
   }
 
   const websiteURL =
@@ -50,7 +50,7 @@ export default async function Icon({ params }: { params: { uniqueKey: string } }
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000/'
 
-  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = `${websiteURL}/api/getData?domain=${domain}`
   const res = await fetch(url)
 
   if (!res.ok) {

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 
 type Props = {
@@ -14,6 +16,7 @@ type Props = {
   withLimit?: boolean
   maxLength?: number
   minLength?: number
+  defaultValue?: string | undefined
 }
 
 export function Input({
@@ -30,6 +33,7 @@ export function Input({
   withLimit = false,
   maxLength = 160,
   minLength = 150,
+  defaultValue,
 }: Props) {
   const [inputValue, setInputValue] = useState(value || '')
   const [remaining, setRemaining] = useState(maxLength)
@@ -84,6 +88,7 @@ export function Input({
         autoComplete="true"
         className={`${classInput} block w-full border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
         onChange={handleChange}
+        defaultValue={defaultValue}
       />
 
       {withLimit && (

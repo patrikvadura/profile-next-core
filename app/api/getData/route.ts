@@ -7,12 +7,12 @@ export async function GET(req: NextRequest) {
     const db = client.db('studioDatabase')
     const collection = db.collection('websitesData')
 
-    const uniqueKey = req.nextUrl.searchParams.get('uniqueKey')
-    if (!uniqueKey) {
-      return NextResponse.json({ success: false, error: 'uniqueKey is required' })
+    const domain = req.nextUrl.searchParams.get('domain')
+    if (!domain) {
+      return NextResponse.json({ success: false, error: 'Domain is required' })
     }
 
-    const data = await collection.findOne({ uniqueKey })
+    const data = await collection.findOne({ domain: domain })
     if (!data) {
       return NextResponse.json({ success: false, error: 'Data not found' })
     }

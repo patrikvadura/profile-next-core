@@ -10,6 +10,7 @@ interface ButtonProps {
   onClick?: () => void
   href?: string
   asLink?: boolean
+  target?: '_blank' | '_self'
   disabled?: boolean
   ariaLabel?: string
 }
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   href,
   asLink = false,
+  target = '_blank',
   disabled = false,
   ariaLabel,
   ...props
@@ -30,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (asLink && href) {
     return (
-      <Link href={href} className={buttonClass} style={style} {...props} passHref>
+      <Link href={href} className={buttonClass} target={target} style={style} {...props} passHref>
         {children}
       </Link>
     )

@@ -6,16 +6,16 @@ import '@/app/globals.css'
 export async function generateMetadata({
   params,
 }: {
-  params: { uniqueKey: string }
+  params: { domain: string }
 }): Promise<Metadata> {
-  const uniqueKey = params.uniqueKey
+  const domain = params.domain
 
   const websiteURL =
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000/'
 
-  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = `${websiteURL}/api/getData?domain=${domain}`
   const res = await fetch(url)
 
   if (!res.ok) {

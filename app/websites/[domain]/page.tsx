@@ -10,13 +10,13 @@ import { Contact } from '@/app/components/Contact'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
 
-async function fetchData(uniqueKey: string) {
+async function fetchData(domain: string) {
   const websiteURL =
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000/'
 
-  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = `${websiteURL}/api/getData?domain=${domain}`
 
   //console.log(`Fetching data from URL: ${url}`)
 
@@ -28,17 +28,17 @@ async function fetchData(uniqueKey: string) {
   return data.data || {}
 }
 
-export default async function Home({ params }: { params: { uniqueKey: string } }) {
-  const uniqueKey = params.uniqueKey
+export default async function Home({ params }: { params: { domain: string } }) {
+  const domain = params.domain
 
-  if (!uniqueKey) {
+  if (!domain) {
     return notFound()
   }
 
   let data
   try {
-    data = await fetchData(uniqueKey)
-    console.log('Fetched data:', data)
+    data = await fetchData(domain)
+    //console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
     return notFound()

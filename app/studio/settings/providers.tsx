@@ -5,7 +5,7 @@ import { BreakpointProvider } from '@/app/components/Customizer/Breakpoint/Conte
 import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 import Preloader from '@/app/ui/Preloader/Studio'
 import DeviceCheck from '@/app/components/Customizer/DeviceCheck'
-// import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 
 interface Props {
   children?: React.ReactNode
@@ -29,12 +29,12 @@ export default function Providers({ children }: Props) {
   console.log('Rendering Providers with SessionProvider')
 
   return (
-    // <SessionProvider>
-    <DomainProvider>
-      <BreakpointProvider>
-        <DeviceCheck>{children}</DeviceCheck>
-      </BreakpointProvider>
-    </DomainProvider>
-    // </SessionProvider>
+    <SessionProvider>
+      <DomainProvider>
+        <BreakpointProvider>
+          <DeviceCheck>{children}</DeviceCheck>
+        </BreakpointProvider>
+      </DomainProvider>
+    </SessionProvider>
   )
 }

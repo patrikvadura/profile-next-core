@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import withAuth from '@/app/lib/withAuth'
 import data from '@/app/lib/dataCustomizer.json'
 import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainContext'
 
-export default function StudioTickets() {
+const StudioTickets = () => {
   const pageData = data.dashboard
   return (
     <DomainProvider>
@@ -18,3 +19,5 @@ export default function StudioTickets() {
     </DomainProvider>
   )
 }
+
+export default withAuth(StudioTickets)

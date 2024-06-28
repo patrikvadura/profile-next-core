@@ -43,6 +43,15 @@
       }
     ]
   },
+  "signIn": {
+    "title": "Přihlášení"
+  },
+  "signUp": {
+    "title": "Registrace"
+  },
+  "logOut": {
+    "title": "Díky za návštěvu. Zase někdy!"
+  },
   "dashboard": {
     "title": "Nástěnka"
   },

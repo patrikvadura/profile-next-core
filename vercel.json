@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "middleware.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "pages/**/*",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/middleware.js"
+    }
+  ]
+}

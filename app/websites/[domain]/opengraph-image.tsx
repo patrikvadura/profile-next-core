@@ -33,14 +33,14 @@ function getContrastColor(hex: string): string {
   return brightness > 128 ? '#000000' : '#FFFFFF'
 }
 
-export default async function Image({ params }: { params: { uniqueKey: string } }) {
-  const uniqueKey = params.uniqueKey
+export default async function Image({ params }: { params: { domain: string } }) {
+  const domain = params.domain
 
-  if (!uniqueKey) {
-    throw new Error('uniqueKey is required')
+  if (!domain) {
+    throw new Error('domain is required')
   }
 
-  const url = `${websiteURL}/api/getData?uniqueKey=${uniqueKey}`
+  const url = `${websiteURL}/api/getData?domain=${domain}`
   const res = await fetch(url)
 
   if (!res.ok) {
