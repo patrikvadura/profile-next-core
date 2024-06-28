@@ -6,6 +6,7 @@ import { DomainProvider } from '@/app/components/Customizer/DNSChecker/DomainCon
 import Providers from '@/app/providers'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NextAuthSessionProvider from '@/providers/SessionProvider'
 
 const customizerFont = Inter({ subsets: ['latin'], weight: ['300', '400', '700'] })
 
@@ -77,7 +78,9 @@ export default function RootLayout({
           ) : (
             ''
           )}
-          <DomainProvider>{children}</DomainProvider>
+          <DomainProvider>
+            <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+          </DomainProvider>
         </body>
       </Providers>
     </html>
