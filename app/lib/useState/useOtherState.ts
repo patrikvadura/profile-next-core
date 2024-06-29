@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import colors from '@/app/lib/colors.json'
 
 interface BoxSocialSites {
@@ -76,6 +76,12 @@ export interface OtherState {
   removeBoxSocialSites: (index: number) => void
   updateBoxSocialSites: (index: number, key: string, value: string) => void
   handleSocialSiteChange: any
+  customHeadCode: string
+  setCustomHeadCode: (value: React.SetStateAction<any>) => void
+  customBodyStartCode: string
+  setCustomBodyStartCode: (value: React.SetStateAction<any>) => void
+  customFooterCode: string
+  setCustomFooterCode: (value: React.SetStateAction<any>) => void
 }
 
 export const useOtherState = (): OtherState => {
@@ -213,6 +219,10 @@ export const useOtherState = (): OtherState => {
     updateBoxSocialSites(index, 'icon', icon)
   }
 
+  const [customHeadCode, setCustomHeadCode] = useState('')
+  const [customBodyStartCode, setCustomBodyStartCode] = useState('')
+  const [customFooterCode, setCustomFooterCode] = useState('')
+
   return {
     currentStep,
     setCurrentStep,
@@ -274,5 +284,11 @@ export const useOtherState = (): OtherState => {
     removeBoxSocialSites,
     updateBoxSocialSites,
     handleSocialSiteChange,
+    customHeadCode,
+    setCustomHeadCode,
+    customBodyStartCode,
+    setCustomBodyStartCode,
+    customFooterCode,
+    setCustomFooterCode,
   }
 }

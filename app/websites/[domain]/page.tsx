@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { notFound } from 'next/navigation'
+import Head from 'next/head'
 import Header from '@/app/ui/Header'
 import Footer from '@/app/ui/Footer'
 import { Hero } from '@/app/components/Hero'
@@ -63,6 +64,11 @@ export default async function Home({ params }: { params: { domain: string } }) {
 
   return (
     <>
+      <Head>
+        {/*@ts-ignore*/}
+        <Fragment dangerouslySetInnerHTML={{ __html: data.customHeadCode || '' }} />
+      </Head>
+
       <DynamicFontLoader
         fontName={data.fontName || 'Inter'}
         fontWeights={data.fontWeights || '400;700'}
@@ -74,7 +80,9 @@ export default async function Home({ params }: { params: { domain: string } }) {
         accentGlobalColor={data.globalAccent || ''}
       />
 
-      <div className="fontDefault">
+      <body className="fontDefault">
+        <div dangerouslySetInnerHTML={{ __html: data.customBodyStartCode || '' }} />
+
         <Header
           siteName={data.siteName || ''}
           siteNameClaim={data.siteNameClaim || ''}
@@ -203,7 +211,9 @@ export default async function Home({ params }: { params: { domain: string } }) {
           />
         )}
         <Footer cookieShow={data.cookieShow || false} boxes={data.boxesSocialSites || []} />
-      </div>
+
+        <div dangerouslySetInnerHTML={{ __html: data.customFooterCode || '' }} />
+      </body>
     </>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import ModalView from '@/app/components/Customizer/ModalView'
 import { Input } from '@/app/ui/Input'
-import { Radio } from '@/app/ui/Radio'
 import Dropdown from '@/app/components/Customizer/Dropdown'
 import OpenGraphPreview from '@/app/components/Customizer/OpenGraphPreview'
 import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
@@ -158,6 +157,47 @@ export default function SettingsSettings({
                 <p className="text-sm opacity-75">{other.metaDescription}</p>
               </div>
             </div>
+          </div>
+        </Dropdown>
+
+        <Dropdown label="Custom kód" id="customCodeToggle" hideToggle>
+          <div className="flex flex-col justify-start space-y-4">
+            <p className="text-black text-sm font-normal opacity-75">
+              Vložte svůj vlastní HTML, CSS nebo JavaScript kód do různých částí stránky.
+            </p>
+
+            <h3
+              dangerouslySetInnerHTML={{ __html: 'Záhlaví "head"' }}
+              className="text-primary text-sm font-semibold"
+            />
+
+            <textarea
+              className="w-full h-32 border rounded p-2"
+              value={other.customHeadCode}
+              onChange={e => other.setCustomHeadCode(e.target.value)}
+            ></textarea>
+
+            <h3
+              dangerouslySetInnerHTML={{ __html: 'Začátek tagu "body"' }}
+              className="text-primary text-sm font-semibold"
+            />
+
+            <textarea
+              className="w-full h-32 border rounded p-2"
+              value={other.customBodyStartCode}
+              onChange={e => other.setCustomBodyStartCode(e.target.value)}
+            ></textarea>
+
+            <h3
+              dangerouslySetInnerHTML={{ __html: 'Konec tagu "body"' }}
+              className="text-primary text-sm font-semibold"
+            />
+
+            <textarea
+              className="w-full h-32 border rounded p-2"
+              value={other.customFooterCode}
+              onChange={e => other.setCustomFooterCode(e.target.value)}
+            ></textarea>
           </div>
         </Dropdown>
 
