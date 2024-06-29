@@ -12,12 +12,10 @@ export const getBreakpointStyles = (
   preview: boolean = false,
 ): string => {
   if (!preview) {
-    //console.log(`Preview is false, returning original classes: ${classes}`)
     return classes
   }
 
   const relevantBreakpoints = getRelevantBreakpoints(breakpoint)
-  //console.log(`Relevant breakpoints for ${breakpoint}: ${relevantBreakpoints}`)
 
   const classArray = classes.split(' ')
 
@@ -25,12 +23,10 @@ export const getBreakpointStyles = (
 
   // Add base classes and dark classes
   classArray.forEach(cls => {
-    if (!cls.includes(':') || cls.startsWith('dark:')) {
+    if (!cls.includes(':') || cls.startsWith('dark:') || cls.startsWith('prose-')) {
       finalClassSet.add(cls)
     }
   })
-
-  //console.log(`Base and dark classes: ${Array.from(finalClassSet).join(' ')}`)
 
   // Add classes for relevant breakpoints, ensuring correct precedence
   relevantBreakpoints.forEach(bp => {
@@ -42,7 +38,6 @@ export const getBreakpointStyles = (
   })
 
   const finalClasses = Array.from(finalClassSet).join(' ')
-  //console.log(`Final classes for breakpoint ${breakpoint}: ${finalClasses}`)
 
   return finalClasses
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import data from '@/app/lib/data.json'
 import { AboutVariantProps } from '@/app/lib/variants'
 import Button from '@/app/ui/Button'
 import { AnimatedTitle } from '@/app/ui/Animations/Title'
@@ -114,15 +113,15 @@ export function AboutVariant04({
             className="bg-[--about-accent-bg] dark:bg-white h-1 w-4"
           />
 
-          <p
+          <div
+            //@ts-ignore
+            dangerouslySetInnerHTML={{ __html: contentDescription }}
             className={getBreakpointStyles(
-              'mb-8 text-base font-normal text-[--about-typo] dark:text-white text-opacity-70',
+              'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-none mb-8 text-base font-normal text-[--about-typo] dark:text-white text-opacity-70',
               breakpoint,
               preview,
             )}
-          >
-            {contentDescription}
-          </p>
+          />
         </div>
       </div>
     </div>

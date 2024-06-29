@@ -106,9 +106,16 @@ export function ServicesVariant01({
               >
                 {box.title}
               </h3>
-              <p className="text-[var(--service-box-typo)] dark:text-white text-opacity-75">
-                {box.content}
-              </p>
+
+              <div
+                //@ts-ignore
+                dangerouslySetInnerHTML={{ __html: box.content }}
+                className={getBreakpointStyles(
+                  'prose prose-p:text-[var(--service-box-typo)] prose-em:text-[var(--service-box-typo)] prose-ul:text-[var(--service-box-typo)] prose-li:text-[var(--service-box-typo)] prose-a:text-[var(--service-box-typo)] prose-strong:text-[var(--service-box-typo)] max-w-screen-md text-[var(--service-box-typo)] dark:text-white text-opacity-75',
+                  breakpoint,
+                  preview,
+                )}
+              />
             </div>
           ))}
         </div>

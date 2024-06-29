@@ -74,15 +74,15 @@ export function AboutVariant05({
             )}
           />
 
-          <p
+          <div
+            //@ts-ignore
+            dangerouslySetInnerHTML={{ __html: contentDescription }}
             className={getBreakpointStyles(
-              'mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
+              'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-none mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
               breakpoint,
               preview,
             )}
-          >
-            {contentDescription}
-          </p>
+          />
 
           <div className={getBreakpointStyles('mt-12 space-x-4', breakpoint, preview)}>
             {contentButton && (

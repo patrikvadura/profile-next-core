@@ -1,6 +1,10 @@
+'use client'
 import React, { useState, useEffect } from 'react'
-import classes from '@/app/components/Contact/Variant01/Form/index.module.scss'
-import data from '@/app/lib/data.json'
+import dynamic from 'next/dynamic'
+import TipTap from '@/app/components/Customizer/TipTap'
+
+// Dynamické načítání Tiptap editoru pouze na klientské straně
+// const TipTap = dynamic(() => import('@/app/components/Customizer/TipTap'), { ssr: false })
 
 type Props = {
   id?: string
@@ -10,12 +14,13 @@ type Props = {
   value?: string
   isRequired?: boolean
   placeholder?: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (value: any) => void
   classLabel?: string
   classInput?: string
   withLimit?: boolean
   maxLength?: number
   minLength?: number
+  useWysiwyg?: boolean
 }
 
 export function Textarea({
@@ -32,6 +37,7 @@ export function Textarea({
   withLimit = false,
   maxLength = 160,
   minLength = 150,
+  useWysiwyg = false,
 }: Props) {
   const [inputValue, setInputValue] = useState(value || '')
   const [remaining, setRemaining] = useState(maxLength)
@@ -42,13 +48,14 @@ export function Textarea({
     }
   }, [inputValue, maxLength, withLimit])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value
-    if (!withLimit || newValue.length <= maxLength) {
-      setInputValue(newValue)
-      if (onChange) {
-        onChange(e)
-      }
+  useEffect(() => {
+    setInputValue(value || '')
+  }, [value])
+
+  const handleChange = (value: string) => {
+    setInputValue(value)
+    if (onChange) {
+      onChange(value)
     }
   }
 
@@ -71,21 +78,23 @@ export function Textarea({
         >
           {label}
         </label>
-      ) : (
-        ''
-      )}
+      ) : null}
 
-      <textarea
-        name={name}
-        value={inputValue}
-        required={isRequired}
-        id={id}
-        rows={4}
-        placeholder={placeholder}
-        className={`${classInput} block w-full border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
-        // @ts-ignore
-        onChange={handleChange}
-      ></textarea>
+      {useWysiwyg ? (
+        //@ts-ignore
+        <TipTap content={inputValue} onChange={handleChange} />
+      ) : (
+        <textarea
+          name={name}
+          value={inputValue}
+          required={isRequired}
+          id={id}
+          rows={4}
+          placeholder={placeholder}
+          className={`${classInput} block w-full border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+          onChange={e => handleChange(e.target.value)}
+        ></textarea>
+      )}
 
       {withLimit && (
         <div className={`text-xs ${getRemainingTextColor()}`}>Zbývající znaky: {remaining}</div>

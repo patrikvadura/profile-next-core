@@ -88,15 +88,15 @@ export function AboutVariant03({
             )}
           />
 
-          <p
+          <div
+            //@ts-ignore
+            dangerouslySetInnerHTML={{ __html: contentDescription }}
             className={getBreakpointStyles(
-              'mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
+              'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-none mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
               breakpoint,
               preview,
             )}
-          >
-            {contentDescription}
-          </p>
+          />
 
           <div className="mt-12 space-x-4">
             {contentButton && (
@@ -147,7 +147,15 @@ export function AboutVariant03({
               <div className="text-[var(--about-typo)] dark:text-white space-y-2">
                 <h3 className="text-xl font-bold">{box.title}</h3>
 
-                <p className="text-sm">{box.description}</p>
+                <div
+                  //@ts-ignore
+                  dangerouslySetInnerHTML={{ __html: box.description }}
+                  className={getBreakpointStyles(
+                    'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-screen-md text-sm text-[var(--about-typo)]',
+                    breakpoint,
+                    preview,
+                  )}
+                />
               </div>
             </div>
           ))}

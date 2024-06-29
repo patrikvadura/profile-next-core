@@ -60,7 +60,7 @@ export function AboutVariant01({
             layout === 'border'
               ? `border-4 border-[var(--about-background)]`
               : `bg-[var(--about-background)] dark:bg-black`
-          } ${alignsClass} container md:h-[650px] flex flex-col justify-center space-y-8 px-8 md:px-16 py-24 md:py-12`,
+          } ${alignsClass} container md:min-h-[650px] flex flex-col justify-center space-y-8 px-8 md:px-16 py-24 md:py-12`,
           breakpoint,
           preview,
         )}
@@ -87,15 +87,15 @@ export function AboutVariant01({
           )}
         />
 
-        <p
+        <div
+          //@ts-ignore
+          dangerouslySetInnerHTML={{ __html: contentDescription }}
           className={getBreakpointStyles(
-            'max-w-screen-md mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
+            'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-screen-md mb-8 text-base font-normal text-[var(--about-typo)] dark:text-white text-opacity-70',
             breakpoint,
             preview,
           )}
-        >
-          {contentDescription}
-        </p>
+        />
 
         <div className="mt-12 space-x-4">
           {contentButton && (

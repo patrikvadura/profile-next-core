@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Slider } from '@nextui-org/react'
 import Dropdown from '@/app/components/Customizer/Dropdown'
@@ -8,7 +9,6 @@ import Link from 'next/link'
 import UploadComponent from '@/app/components/Customizer/UploadComponent'
 import ModalView from '@/app/components/Customizer/ModalView'
 import { Icon } from '@iconify/react'
-import { optionsGlobal } from '@/app/lib/customizer'
 
 interface Props {
   isModalVisible: boolean
@@ -41,6 +41,18 @@ export default function SettingsContent({
   optionsGlobal,
   navigationItems,
 }: Props) {
+  const handleAboutDescriptionChange = (value: string) => {
+    about.setAboutContentDescription(value)
+  }
+
+  const handleBoxDescriptionChange = (index: number, value: string) => {
+    about.updateBoxAbout(index, 'description', value)
+  }
+
+  const handleBoxServiceContentChange = (index: number, value: string) => {
+    service.updateBoxService(index, 'content', value)
+  }
+
   return (
     <ModalView title="Obsah" isVisible={isModalVisible} toggleVisibility={toggleModalVisibility}>
       <div className="flex flex-col space-y-4 pt-4">
@@ -347,9 +359,10 @@ export default function SettingsContent({
                 <Textarea
                   type="text"
                   value={about.aboutContentDescription}
-                  onChange={e => about.setAboutContentDescription(e.target.value)}
+                  onChange={handleAboutDescriptionChange}
                   label="Popisek"
                   classLabel="!text-black"
+                  useWysiwyg
                 />
 
                 <Dropdown
@@ -409,9 +422,10 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.description}
-                        onChange={e => about.updateBoxAbout(index, 'description', e.target.value)}
+                        onChange={value => handleBoxDescriptionChange(index, value)}
                         label="Popisek"
                         classLabel="!text-black"
+                        useWysiwyg
                       />
 
                       <button
@@ -480,9 +494,10 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.content}
-                        onChange={e => service.updateBoxService(index, 'content', e.target.value)}
+                        onChange={value => handleBoxServiceContentChange(index, value)}
                         label="Popisek"
                         classLabel="!text-black"
+                        useWysiwyg
                       />
 
                       <Dropdown

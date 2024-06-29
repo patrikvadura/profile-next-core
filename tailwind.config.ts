@@ -91,7 +91,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [nextui(), addVariablesForColors],
+  plugins: [require('@tailwindcss/typography'), nextui(), addVariablesForColors],
 }
 
 export default config
