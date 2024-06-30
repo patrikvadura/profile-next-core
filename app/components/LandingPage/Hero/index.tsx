@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-import data from '@/app/lib/dataLandingPage.json'
+import React, { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
@@ -10,6 +9,7 @@ import Header from '@/app/components/LandingPage/Header'
 import { ContainerScroll } from '@/app/ui/Aceternity/container-scroll-animation'
 import { FlipWords } from '@/app/ui/Aceternity/flip-words'
 import { AuroraBackground } from '@/app/ui/Aceternity/aurora-background'
+import Video from '@/app/components/LandingPage/Hero/Video'
 
 export default function Hero() {
   const { domain, availability } = useDomain()
@@ -76,14 +76,21 @@ export default function Hero() {
             </div>
           }
         >
-          <Image
-            src={`/assets/img/landingPage/hero/hero_device_preview.png`}
-            alt="VisioSnap"
-            height={720}
-            width={1400}
-            className="mx-auto rounded-2xl object-cover h-full object-left-top"
-            draggable={false}
-          />
+          <div className="mx-auto rounded-2xl object-cover h-full object-left-top">
+            <Suspense
+              fallback={
+                <Image
+                  src={`/assets/img/landingPage/hero/hero_device_preview.png`}
+                  alt="VisioSnap"
+                  height={720}
+                  width={1400}
+                  draggable={false}
+                />
+              }
+            >
+              <Video height={720} width={1400} />
+            </Suspense>
+          </div>
         </ContainerScroll>
       </div>
     </div>

@@ -149,7 +149,7 @@ export function AboutVariant02({
                     //@ts-ignore
                     dangerouslySetInnerHTML={{ __html: box.description }}
                     className={getBreakpointStyles(
-                      'prose prose-p:text-[var(--about-typo)] prose-em:text-[var(--about-typo)] prose-ul:text-[var(--about-typo)] prose-li:text-[var(--about-typo)] prose-a:text-[var(--about-typo)] prose-strong:text-[var(--about-typo)] max-w-screen-md text-sm text-[var(--about-typo)]',
+                      'prose prose-p:text-[var(--about-typo)] dark:prose-p:text-white prose-em:text-[var(--about-typo)] dark:prose-em:text-white prose-ul:text-[var(--about-typo)] dark:prose-ul:text-white prose-li:text-[var(--about-typo)] dark:prose-li:text-white prose-a:text-[var(--about-typo)] dark:prose-a:text-white prose-strong:text-[var(--about-typo)] dark:prose-strong:text-white max-w-screen-md text-sm text-[var(--about-typo)]',
                       breakpoint,
                       preview,
                     )}

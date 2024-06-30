@@ -48,17 +48,17 @@ export const DemoWebsites = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-16 mb-16">
           {firstRow.map(website => (
             <Item website={website} translate={translateX} key={website.image} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row mb-16 space-x-16 ">
           {secondRow.map(website => (
             <Item website={website} translate={translateXReverse} key={website.image} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-16">
           {thirdRow.map(website => (
             <Item website={website} translate={translateX} key={website.image} />
           ))}
@@ -108,7 +108,7 @@ export const Item = ({
         y: -20,
       }}
       key={website.image}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
+      className="group/product h-[20rem] w-[35rem] relative flex-shrink-0"
     >
       <Image
         src={website.image}
