@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og'
-import { MongoClient } from 'mongodb'
 
-export const runtime = 'nodejs' // Změňte runtime na nodejs
+export const runtime = 'edge'
 
 export const size = {
   width: 32,
@@ -40,18 +39,18 @@ function getInitials(siteName: string): string {
 }
 
 async function fetchData(domain: string) {
-  const client = await MongoClient.connect(process.env.MONGODB_URI!)
-  const db = client.db('studioDatabase')
-  const collection = db.collection('websitesData')
+  const url = `${
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+  }/api/getData?domain=${domain}`
 
-  const data = await collection.findOne({ domain: domain })
-  client.close()
-
-  if (!data) {
-    throw new Error('Data not found')
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
   }
-
-  return data
+  const data = await res.json()
+  return data.data || null
 }
 
 export default async function Icon({ params }: { params: { domain: string } }) {
