@@ -10,6 +10,10 @@
     {
       "source": "/",
       "destination": "/websites/test01.visiosnap.cz"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/websites/test01.visiosnap.cz/:path*"
     }
   ]
 }
