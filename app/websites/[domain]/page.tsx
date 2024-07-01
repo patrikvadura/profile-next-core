@@ -9,24 +9,21 @@ import { Reference } from '@/app/components/Reference'
 import { Contact } from '@/app/components/Contact'
 import ColorUpdaterGlobal from '@/app/components/Customizer/ColorUpdater/Global'
 import DynamicFontLoader from '@/app/components/Customizer/DynamicFontLoader'
+import { MongoClient } from 'mongodb'
 
 async function fetchData(domain: string) {
-  const websiteURL =
-    process.env.NODE_ENV === 'production'
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      : 'http://localhost:3000'
+  const client = await MongoClient.connect(process.env.MONGODB_URI!)
+  const db = client.db('studioDatabase')
+  const collection = db.collection('websitesData')
 
-  const url = `${websiteURL}/api/getData?domain=${domain}`
+  const data = await collection.findOne({ domain: domain })
+  client.close()
 
-  console.log(`Fetching data from URL: ${url}`)
-
-  const res = await fetch(url)
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  if (!data) {
+    throw new Error('Data not found')
   }
-  const data = await res.json()
-  console.log('Fetched data:', data)
-  return data.data || null
+
+  return data
 }
 
 export default async function Page({ params }: { params: { domain: string } }) {
@@ -43,9 +40,6 @@ export default async function Page({ params }: { params: { domain: string } }) {
     console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
-  }
-
-  if (!data) {
     return notFound()
   }
 

@@ -3,8 +3,8 @@ import clientPromise from '@/app/lib/mongodb'
 
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url)
-    const domain = searchParams.get('domain')
+    const url = new URL(req.url)
+    const domain = url.searchParams.get('domain')
 
     if (!domain) {
       return NextResponse.json({ success: false, error: 'Domain is required' })
