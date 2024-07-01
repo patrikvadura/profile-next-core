@@ -18,11 +18,14 @@ async function fetchData(domain: string) {
 
   const url = `${websiteURL}/api/getData?domain=${domain}`
 
+  console.log(`Fetching data from URL: ${url}`)
+
   const res = await fetch(url)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   const data = await res.json()
+  console.log('Fetched data:', data)
   return data.data || null
 }
 
