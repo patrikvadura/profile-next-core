@@ -53,6 +53,10 @@ export default function SettingsContent({
     service.updateBoxService(index, 'content', value)
   }
 
+  const handleBoxReferenceDescriptionChange = (index: number, value: string) => {
+    reference.updateBoxReference(index, 'description', value)
+  }
+
   return (
     <ModalView title="Obsah" isVisible={isModalVisible} toggleVisibility={toggleModalVisibility}>
       <div className="flex flex-col space-y-4 pt-4">
@@ -655,11 +659,10 @@ export default function SettingsContent({
                       <Textarea
                         type="text"
                         value={box.description}
-                        onChange={e =>
-                          reference.updateBoxReference(index, 'description', e.target.value)
-                        }
+                        onChange={value => handleBoxReferenceDescriptionChange(index, value)}
                         label="Popisek"
                         classLabel="!text-black"
+                        useWysiwyg
                       />
 
                       <button

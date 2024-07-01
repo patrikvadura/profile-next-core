@@ -39,6 +39,12 @@
       }
     ]
   },
+  "hero": {
+    "video": "https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/hero_video_demo_01.mp4",
+    "videoThumbnail": "/assets/img/landingPage/hero/hero_device_preview.png",
+    "symbols": "/assets/img/landingPage/hero/hero_symbols.svg",
+    "background": "https://profile-next-core.s3.eu-north-1.amazonaws.com/images/andrej-lisakov-W3RqrBgKEro-unsplash.jpeg"
+  },
   "benefits": {
     "items": [
       {

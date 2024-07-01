@@ -57,15 +57,15 @@ export function SwiperComponent({
               )}
             />
 
-            <p
+            <div
+              //@ts-ignore
+              dangerouslySetInnerHTML={{ __html: box.description }}
               className={getBreakpointStyles(
-                `${typoColor} max-w-screen-md mb-8 text-xl font-normal dark:text-white text-opacity-70`,
+                `prose prose-p:text-[var(--reference-typo)] dark:prose-p:text-white prose-em:text-[var(--reference-typo)] dark:prose-em:text-white prose-ul:text-[var(--reference-typo)] dark:prose-ul:text-white prose-li:text-[var(--reference-typo)] dark:prose-li:text-white prose-a:text-[var(--reference-typo)] dark:prose-a:text-white prose-strong:text-[var(--reference-typo)] dark:prose-strong:text-white ${typoColor} dark:text-white max-w-screen-md mb-8 text-xl font-normal text-opacity-70`,
                 breakpoint,
                 preview,
               )}
-            >
-              {box.description}
-            </p>
+            />
 
             <h3
               className={getBreakpointStyles(

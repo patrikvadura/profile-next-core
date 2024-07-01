@@ -2,18 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "middleware.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "package.json",
       "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/middleware.js"
     }
   ]
 }

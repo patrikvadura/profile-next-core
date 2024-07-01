@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
+import data from '@/app/lib/dataLandingPage.json'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useDomain } from '@/app/components/Customizer/DNSChecker/DomainContext'
@@ -31,7 +32,7 @@ export default function Hero() {
   return (
     <div className="relative bg-primary dark:bg-black h-screen w-screen flex flex-col justify-start items-center">
       <Image
-        src="https://profile-next-core.s3.eu-north-1.amazonaws.com/images/andrej-lisakov-W3RqrBgKEro-unsplash.jpeg"
+        src={data.hero.background}
         width={1920}
         height={1920}
         className="absolute left-0 top-0 mx-auto h-full w-full object-cover object-center z-0 opacity-70 dark:opacity-10 dark:grayscale mix-blend-multiply dark:mix-blend-normal"
@@ -55,7 +56,7 @@ export default function Hero() {
 
       <div className="relative w-[120vw] -mt-[105vh] z-10">
         <Image
-          src="/assets/img/landingPage/hero/hero_symbols.svg"
+          src={data.hero.symbols}
           width={1920}
           height={1920}
           className="absolute left-1/2 -translate-x-1/2 top-[15rem] h-auto w-full object-cover object-center z-0"
@@ -80,7 +81,7 @@ export default function Hero() {
             <Suspense
               fallback={
                 <Image
-                  src={`/assets/img/landingPage/hero/hero_device_preview.png`}
+                  src={data.hero.videoThumbnail}
                   alt="VisioSnap"
                   height={720}
                   width={1400}
@@ -88,7 +89,7 @@ export default function Hero() {
                 />
               }
             >
-              <Video height={720} width={1400} />
+              <Video height={720} width={1400} video={data.hero.video} />
             </Suspense>
           </div>
         </ContainerScroll>
