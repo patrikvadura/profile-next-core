@@ -5,5 +5,15 @@
       "src": "package.json",
       "use": "@vercel/next"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/websites/:domain"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/websites/:domain/:path*"
+    }
   ]
 }
