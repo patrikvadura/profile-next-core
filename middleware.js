@@ -14,7 +14,15 @@ export default withAuth(
       return NextResponse.next()
     }
 
-    return NextResponse.next()
+    // Extract the full hostname (e.g., subdomain.domain.com)
+    const fullDomain = hostname
+    console.log('Full domain:', fullDomain)
+
+    // Rewrite to the corresponding path based on the full domain
+    url.pathname = `/websites/${fullDomain}${url.pathname}`
+    console.log('Rewritten URL:', url.href)
+
+    return NextResponse.rewrite(url)
   },
   {
     pages: {
@@ -24,5 +32,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ['/studio/:path*'],
+  matcher: ['/:path*'],
 }

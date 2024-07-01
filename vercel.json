@@ -5,15 +5,5 @@
       "src": "package.json",
       "use": "@vercel/next"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/websites/test01.visiosnap.cz"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/websites/test01.visiosnap.cz/:path*"
-    }
   ]
 }
