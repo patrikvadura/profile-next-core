@@ -32,9 +32,15 @@ async function fetchData(domain: string) {
 export default async function Page({ params }: { params: { domain: string } }) {
   const { domain } = params
 
+  if (!domain) {
+    console.error('Domain parameter is missing')
+    return notFound()
+  }
+
   let data = null
   try {
     data = await fetchData(domain)
+    console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
   }

@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     const db = client.db('studioDatabase')
     const collection = db.collection('websitesData')
 
-    const data = await collection.findOne({ domain })
+    const data = await collection.findOne({ domain: domain })
     if (!data) {
       return NextResponse.json({ success: false, error: 'Data not found' })
     }
