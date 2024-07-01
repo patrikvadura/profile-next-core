@@ -26,7 +26,8 @@ async function fetchData(domain: string) {
     throw new Error('Failed to fetch data')
   }
   const data = await res.json()
-  return data.data || {}
+  console.log('Fetched data:', data)
+  return data.data || null
 }
 
 export default async function Home({ params }: { params: { domain: string } }) {
