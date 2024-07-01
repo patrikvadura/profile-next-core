@@ -19,7 +19,7 @@ async function fetchData(domain: string) {
 
   const url = `${websiteURL}/api/getData?domain=${domain}`
 
-  //console.log(`Fetching data from URL: ${url}`)
+  console.log(`Fetching data from URL: ${url}`)
 
   const res = await fetch(url)
   if (!res.ok) {
@@ -39,7 +39,7 @@ export default async function Home({ params }: { params: { domain: string } }) {
   let data
   try {
     data = await fetchData(domain)
-    //console.log('Fetched data:', data)
+    console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
     return notFound()
