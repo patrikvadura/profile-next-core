@@ -8,11 +8,11 @@
   ],
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:domain",
       "destination": "/websites/:domain"
     },
     {
-      "source": "/:path*",
+      "source": "/:domain/:path*",
       "destination": "/websites/:domain/:path*"
     }
   ]
