@@ -63,6 +63,7 @@ export default function Select({ title, options, selectedOption, onChange }: Opt
                     }`}
                     id={`listbox-option-${index}`}
                     role="option"
+                    aria-selected={selectedOption === option.value}
                     onClick={() => {
                       onChange(option.value)
                       setIsDropdownOpen(false)

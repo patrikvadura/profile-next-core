@@ -9,13 +9,11 @@ export default withAuth(
     console.log('Request URL:', url.href)
     console.log('Hostname:', hostname)
 
-    // Pokud hostname je null nebo undefined, přejdeme na další middleware
     if (!hostname) {
       console.log('Hostname not found')
       return NextResponse.next()
     }
 
-    // Autentizace je již řešena pomocí withAuth, takže pokračujeme
     return NextResponse.next()
   },
   {

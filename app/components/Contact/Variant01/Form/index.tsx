@@ -13,31 +13,47 @@ export function Form({ recipient, breakpoint, preview }: Props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  //@ts-ignore
-  const handleSubmit = async e => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSubmitting(true)
+    setError(null)
 
-    if (name == '' && email == '') {
-      alert(data.contact.form.alerts.v01)
+    if (name === '' && email === '') {
+      alert('Prosím vyplňte jméno i emailovou adresu.')
+      setIsSubmitting(false)
       return false
     }
 
-    await fetch('/api/send', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, message, recipient }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.id) {
-          alert(`${data.contact.form.alerts.v02} ${name}! ${data.contact.form.alerts.v03}!`)
-          setName('')
-          setEmail('')
-          setMessage('')
-        } else {
-          alert(data.contact.form.alerts.v04)
-        }
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message, recipient }),
       })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setName('')
+        setEmail('')
+        setMessage('')
+      } else {
+        setError('Omlouváme se, zkuste to znovu později.')
+      }
+    } catch (error) {
+      console.error('An error occurred while sending the form:', error)
+      setError('Omlouváme se, zkuste to znovu později.')
+    } finally {
+      setIsSubmitting(false)
+    }
+
     return true
   }
 
@@ -122,18 +138,24 @@ export function Form({ recipient, breakpoint, preview }: Props) {
         ></textarea>
       </div>
 
-      <Button
-        type="submit"
-        href={data.about.cta.link}
-        className={getBreakpointStyles(
-          'flex justify-center w-full text-center bg-[var(--contact-accent-bg)] dark:bg-white text-[var(--contact-accent-fg)] dark:text-black',
-          breakpoint,
-          preview,
-        )}
-        ariaLabel={data.contact.form.submit}
-      >
-        {data.contact.form.submit}
-      </Button>
+      {isSubmitted ? (
+        <p className="text-green-600 font-semibold text-center">Děkujeme za vaši zprávu</p>
+      ) : (
+        <Button
+          type="submit"
+          className={getBreakpointStyles(
+            'flex justify-center w-full text-center bg-[var(--contact-accent-bg)] dark:bg-white text-[var(--contact-accent-fg)] dark:text-black',
+            breakpoint,
+            preview,
+          )}
+          ariaLabel="Odeslat zprávu"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Odesílám zprávu...' : 'Odeslat zprávu'}
+        </Button>
+      )}
+
+      {error && <p className="text-red-500 font-semibold text-center">{error}</p>}
     </form>
   )
 }

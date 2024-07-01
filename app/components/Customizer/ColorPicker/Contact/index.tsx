@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react'
 import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
@@ -35,49 +35,64 @@ const ColorPickerContact: React.FC<ColorPickerProps> = ({
     setColorHistory(savedHistory)
   }, [])
 
+  const updateColorHistory = useCallback(
+    (newColor: string) => {
+      const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
+        0,
+        10,
+      )
+      setColorHistory(updatedHistory)
+      localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
+    },
+    [colorHistory],
+  )
+
   useEffect(() => {
     if (backgroundColor) {
       backgroundColor(backgroundColorValue)
     }
-  }, [backgroundColorValue])
+  }, [backgroundColor, backgroundColorValue])
 
   useEffect(() => {
     if (accentBgColor) {
       accentBgColor(accentBgColorValue)
     }
-  }, [accentBgColorValue])
+  }, [accentBgColor, accentBgColorValue])
 
   useEffect(() => {
     if (accentFgColor) {
       accentFgColor(accentFgColorValue)
     }
-  }, [accentFgColorValue])
+  }, [accentFgColor, accentFgColorValue])
 
   useEffect(() => {
     if (typoColor) {
       typoColor(typoColorValue)
     }
-  }, [typoColorValue])
+  }, [typoColor, typoColorValue])
 
-  const initializePicker = (
-    ref: React.RefObject<HTMLDivElement>,
-    color: string,
-    setColor: React.Dispatch<React.SetStateAction<string>>,
-    colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
-  ) => {
-    if (ref.current && !colorPickerRef.current) {
-      // @ts-ignore
-      colorPickerRef.current = new iro.ColorPicker(ref.current, {
-        width: 220,
-        color,
-      })
-      // @ts-ignore
-      colorPickerRef.current.on(['color:init', 'color:change'], color => {
-        setColor(color.hexString)
-        updateColorHistory(color.hexString)
-      })
-    }
-  }
+  const initializePicker = useCallback(
+    (
+      ref: React.RefObject<HTMLDivElement>,
+      color: string,
+      setColor: React.Dispatch<React.SetStateAction<string>>,
+      colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
+    ) => {
+      if (ref.current && !colorPickerRef.current) {
+        // @ts-ignore
+        colorPickerRef.current = new iro.ColorPicker(ref.current, {
+          width: 220,
+          color,
+        })
+        // @ts-ignore
+        colorPickerRef.current.on(['color:init', 'color:change'], color => {
+          setColor(color.hexString)
+          updateColorHistory(color.hexString)
+        })
+      }
+    },
+    [updateColorHistory],
+  )
 
   useEffect(() => {
     if (visiblePicker === 'background') {
@@ -92,7 +107,7 @@ const ColorPickerContact: React.FC<ColorPickerProps> = ({
       backgroundColorPicker.current.off(['color:init', 'color:change'])
       backgroundColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, backgroundColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'accentBg') {
@@ -102,7 +117,7 @@ const ColorPickerContact: React.FC<ColorPickerProps> = ({
       accentBgColorPicker.current.off(['color:init', 'color:change'])
       accentBgColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, accentBgColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'accentFg') {
@@ -112,7 +127,7 @@ const ColorPickerContact: React.FC<ColorPickerProps> = ({
       accentFgColorPicker.current.off(['color:init', 'color:change'])
       accentFgColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, accentFgColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'typo') {
@@ -122,16 +137,7 @@ const ColorPickerContact: React.FC<ColorPickerProps> = ({
       typoColorPicker.current.off(['color:init', 'color:change'])
       typoColorPicker.current = null
     }
-  }, [visiblePicker])
-
-  const updateColorHistory = (newColor: string) => {
-    const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
-      0,
-      5,
-    )
-    setColorHistory(updatedHistory)
-    localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
-  }
+  }, [initializePicker, visiblePicker, typoColorValue])
 
   const handleHexInputChange = (
     colorSetter: React.Dispatch<React.SetStateAction<string>>,

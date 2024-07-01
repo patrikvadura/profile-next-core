@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Image from 'next/image'
 
 interface EmailTemplateProps {
   name: string
@@ -58,7 +57,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name, email, messa
                 marginRight: '0px',
               }}
             >
-              Máte novou zprávu z webu od <b>{name}</b>
+              Máte novou zprávu z webu od <b style={{ color: '#27349A' }}>{name}</b>
             </h1>
             <p
               style={{
@@ -94,9 +93,9 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name, email, messa
                         textDecoration: 'none',
                         display: 'inline-block',
                         maxWidth: '100%',
-                        backgroundColor: 'rgb(0,0,0)',
+                        backgroundColor: '#07E988',
                         borderRadius: '0.25rem',
-                        color: 'rgb(255,255,255)',
+                        color: '#27349A',
                         fontSize: '12px',
                         fontWeight: 600,
                         textDecorationLine: 'none',
@@ -149,11 +148,14 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name, email, messa
               }}
             >
               Powered by
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt="Patrik Vaďura"
                 width="65"
-                src="https://res.cloudinary.com/patrik-vadura/image/upload/v1715011999/patrikvadura.cz/emailing/logo_v3kisw.webp"
+                src="https://profile-next-core.s3.eu-north-1.amazonaws.com/next-s3-uploads/default/visiosnap_logo.png"
                 style={{
+                  width: '65px',
+                  height: '14.5px',
                   display: 'inline',
                   outline: 'none',
                   border: 'none',

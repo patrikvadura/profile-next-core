@@ -86,5 +86,6 @@ export interface BenefitsItems {
 }
 
 export interface DemoWebsiteItems {
-  image: string | any
+  link: string | undefined | any
+  image: string | undefined | any
 }

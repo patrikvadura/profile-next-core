@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react'
 import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
@@ -31,43 +31,58 @@ const ColorPickerGlobal: React.FC<ColorPickerProps> = ({
     setColorHistory(savedHistory)
   }, [])
 
+  const updateColorHistory = useCallback(
+    (newColor: string) => {
+      const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
+        0,
+        10,
+      )
+      setColorHistory(updatedHistory)
+      localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
+    },
+    [colorHistory],
+  )
+
   useEffect(() => {
     if (primaryGlobalColor) {
       primaryGlobalColor(primaryGlobalColorValue)
     }
-  }, [primaryGlobalColorValue])
+  }, [primaryGlobalColor, primaryGlobalColorValue])
 
   useEffect(() => {
     if (secondaryGlobalColor) {
       secondaryGlobalColor(secondaryGlobalColorValue)
     }
-  }, [secondaryGlobalColorValue])
+  }, [secondaryGlobalColor, secondaryGlobalColorValue])
 
   useEffect(() => {
     if (accentGlobalColor) {
       accentGlobalColor(accentGlobalColorValue)
     }
-  }, [accentGlobalColorValue])
+  }, [accentGlobalColor, accentGlobalColorValue])
 
-  const initializePicker = (
-    ref: React.RefObject<HTMLDivElement>,
-    color: string,
-    setColor: React.Dispatch<React.SetStateAction<string>>,
-    colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
-  ) => {
-    if (ref.current && !colorPickerRef.current) {
-      // @ts-ignore
-      colorPickerRef.current = new iro.ColorPicker(ref.current, {
-        width: 220,
-        color,
-      })
-      // @ts-ignore
-      colorPickerRef.current.on(['color:init', 'color:change'], color => {
-        setColor(color.hexString)
-        updateColorHistory(color.hexString)
-      })
-    }
-  }
+  const initializePicker = useCallback(
+    (
+      ref: React.RefObject<HTMLDivElement>,
+      color: string,
+      setColor: React.Dispatch<React.SetStateAction<string>>,
+      colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
+    ) => {
+      if (ref.current && !colorPickerRef.current) {
+        // @ts-ignore
+        colorPickerRef.current = new iro.ColorPicker(ref.current, {
+          width: 220,
+          color,
+        })
+        // @ts-ignore
+        colorPickerRef.current.on(['color:init', 'color:change'], color => {
+          setColor(color.hexString)
+          updateColorHistory(color.hexString)
+        })
+      }
+    },
+    [updateColorHistory],
+  )
 
   useEffect(() => {
     if (visiblePicker === 'primary') {
@@ -82,7 +97,7 @@ const ColorPickerGlobal: React.FC<ColorPickerProps> = ({
       primaryColorPicker.current.off(['color:init', 'color:change'])
       primaryColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, primaryGlobalColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'secondary') {
@@ -97,7 +112,7 @@ const ColorPickerGlobal: React.FC<ColorPickerProps> = ({
       secondaryColorPicker.current.off(['color:init', 'color:change'])
       secondaryColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, secondaryGlobalColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'accent') {
@@ -112,16 +127,7 @@ const ColorPickerGlobal: React.FC<ColorPickerProps> = ({
       accentColorPicker.current.off(['color:init', 'color:change'])
       accentColorPicker.current = null
     }
-  }, [visiblePicker])
-
-  const updateColorHistory = (newColor: string) => {
-    const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
-      0,
-      5,
-    )
-    setColorHistory(updatedHistory)
-    localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
-  }
+  }, [initializePicker, visiblePicker, accentGlobalColorValue])
 
   const handleHexInputChange = (
     colorSetter: React.Dispatch<React.SetStateAction<string>>,

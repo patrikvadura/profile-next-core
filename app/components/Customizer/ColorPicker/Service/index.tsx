@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react'
 import colors from '@/app/lib/colors.json'
 import { ColorPickerProps } from '@/app/lib/customizer'
@@ -47,67 +47,82 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
     setColorHistory(savedHistory)
   }, [])
 
+  const updateColorHistory = useCallback(
+    (newColor: string) => {
+      const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
+        0,
+        10,
+      )
+      setColorHistory(updatedHistory)
+      localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
+    },
+    [colorHistory],
+  )
+
   useEffect(() => {
     if (backgroundColor) {
       backgroundColor(backgroundColorValue)
     }
-  }, [backgroundColorValue])
+  }, [backgroundColor, backgroundColorValue])
 
   useEffect(() => {
     if (accentBgColor) {
       accentBgColor(accentBgColorValue)
     }
-  }, [accentBgColorValue])
+  }, [accentBgColor, accentBgColorValue])
 
   useEffect(() => {
     if (accentFgColor) {
       accentFgColor(accentFgColorValue)
     }
-  }, [accentFgColorValue])
+  }, [accentFgColor, accentFgColorValue])
 
   useEffect(() => {
     if (typoColor) {
       typoColor(typoColorValue)
     }
-  }, [typoColorValue])
+  }, [typoColor, typoColorValue])
 
   useEffect(() => {
     if (boxBackgroundColor) {
       boxBackgroundColor(boxBackgroundColorValue)
     }
-  }, [boxBackgroundColorValue])
+  }, [boxBackgroundColor, boxBackgroundColorValue])
 
   useEffect(() => {
     if (boxTypoColor) {
       boxTypoColor(boxTypoColorValue)
     }
-  }, [boxTypoColorValue])
+  }, [boxTypoColor, boxTypoColorValue])
 
   useEffect(() => {
     if (boxIconColor) {
       boxIconColor(boxIconColorValue)
     }
-  }, [boxIconColorValue])
+  }, [boxIconColor, boxIconColorValue])
 
-  const initializePicker = (
-    ref: React.RefObject<HTMLDivElement>,
-    color: string,
-    setColor: React.Dispatch<React.SetStateAction<string>>,
-    colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
-  ) => {
-    if (ref.current && !colorPickerRef.current) {
-      // @ts-ignore
-      colorPickerRef.current = new iro.ColorPicker(ref.current, {
-        width: 220,
-        color,
-      })
-      // @ts-ignore
-      colorPickerRef.current.on(['color:init', 'color:change'], color => {
-        setColor(color.hexString)
-        updateColorHistory(color.hexString)
-      })
-    }
-  }
+  const initializePicker = useCallback(
+    (
+      ref: React.RefObject<HTMLDivElement>,
+      color: string,
+      setColor: React.Dispatch<React.SetStateAction<string>>,
+      colorPickerRef: React.MutableRefObject<IroColorPicker | null>,
+    ) => {
+      if (ref.current && !colorPickerRef.current) {
+        // @ts-ignore
+        colorPickerRef.current = new iro.ColorPicker(ref.current, {
+          width: 220,
+          color,
+        })
+        // @ts-ignore
+        colorPickerRef.current.on(['color:init', 'color:change'], color => {
+          setColor(color.hexString)
+          updateColorHistory(color.hexString)
+        })
+      }
+    },
+    [updateColorHistory],
+  )
 
   useEffect(() => {
     if (visiblePicker === 'background') {
@@ -122,7 +137,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       backgroundColorPicker.current.off(['color:init', 'color:change'])
       backgroundColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, backgroundColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'accentBg') {
@@ -132,7 +147,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       accentBgColorPicker.current.off(['color:init', 'color:change'])
       accentBgColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, accentBgColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'accentFg') {
@@ -142,7 +157,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       accentFgColorPicker.current.off(['color:init', 'color:change'])
       accentFgColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, accentFgColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'typo') {
@@ -152,7 +167,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       typoColorPicker.current.off(['color:init', 'color:change'])
       typoColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, typoColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'boxBackground') {
@@ -167,7 +182,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       boxBackgroundColorPicker.current.off(['color:init', 'color:change'])
       boxBackgroundColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, boxBackgroundColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'boxTypo') {
@@ -177,7 +192,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       boxTypoColorPicker.current.off(['color:init', 'color:change'])
       boxTypoColorPicker.current = null
     }
-  }, [visiblePicker])
+  }, [initializePicker, visiblePicker, boxTypoColorValue])
 
   useEffect(() => {
     if (visiblePicker === 'boxIcon') {
@@ -187,16 +202,7 @@ const ColorPickerService: React.FC<ColorPickerProps> = ({
       boxIconColorPicker.current.off(['color:init', 'color:change'])
       boxIconColorPicker.current = null
     }
-  }, [visiblePicker])
-
-  const updateColorHistory = (newColor: string) => {
-    const updatedHistory = [newColor, ...colorHistory.filter(color => color !== newColor)].slice(
-      0,
-      5,
-    )
-    setColorHistory(updatedHistory)
-    localStorage.setItem('colorHistory', JSON.stringify(updatedHistory))
-  }
+  }, [initializePicker, visiblePicker, boxIconColorValue])
 
   const handleHexInputChange = (
     colorSetter: React.Dispatch<React.SetStateAction<string>>,

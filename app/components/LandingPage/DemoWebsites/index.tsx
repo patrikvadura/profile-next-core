@@ -2,18 +2,12 @@
 
 import React from 'react'
 import data from '@/app/lib/dataLandingPage.json'
+import { DemoWebsiteItems } from '@/app/lib/types'
 import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const DemoWebsites = ({
-  websites,
-}: {
-  websites: {
-    link: string | undefined | any
-    image: string | undefined | any
-  }[]
-}) => {
+export const DemoWebsites = ({ websites }: { websites: DemoWebsiteItems[] }) => {
   const firstRow = websites.slice(0, 5)
   const secondRow = websites.slice(5, 10)
   const thirdRow = websites.slice(10, 15)
@@ -95,10 +89,7 @@ export const Item = ({
   website,
   translate,
 }: {
-  website: {
-    link: string | undefined | any
-    image: string | undefined | any
-  }
+  website: DemoWebsiteItems
   translate: MotionValue<number>
 }) => {
   return (

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 interface DynamicFontLoaderProps {
   fontName: string
@@ -28,7 +28,7 @@ const DynamicFontLoader: React.FC<DynamicFontLoaderProps> = ({ fontName, fontWei
       document.head.removeChild(link)
       document.head.removeChild(style)
     }
-  }, [fontName])
+  }, [fontName, fontWeights])
 
   return null
 }

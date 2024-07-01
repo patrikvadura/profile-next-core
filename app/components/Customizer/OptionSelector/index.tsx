@@ -66,8 +66,7 @@ export default function OptionSelector({
                   role="listbox"
                   aria-labelledby="listbox-label"
                 >
-                  {/*@ts-ignore*/}
-                  {options.map((option, index) => (
+                  {options.map((option: { value: string; label: string }, index: number) => (
                     <li
                       key={option.value}
                       className={`text-gray-900 hover:bg-gray-100 cursor-default select-none py-2 pl-3 pr-9 ${
@@ -75,6 +74,7 @@ export default function OptionSelector({
                       }`}
                       id={`listbox-option-${index}`}
                       role="option"
+                      aria-selected={selectedOption === option.value}
                       onClick={() => {
                         onChange(option.value)
                         setIsDropdownOpen(false)
@@ -103,8 +103,7 @@ export default function OptionSelector({
 
         <div className="flex flex-nowrap overflow-x-scroll overflow-y-hidden">
           <div className="flex space-x-4 mb-4">
-            {/*@ts-ignore*/}
-            {options.map(option => (
+            {options.map((option: { value: string; label: string; image?: string }) => (
               <div
                 key={option.value}
                 className={`size-36 flex flex-col justify-center cursor-pointer p-2 rounded-md ${
