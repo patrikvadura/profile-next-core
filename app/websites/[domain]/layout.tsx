@@ -3,6 +3,22 @@ import type { Metadata } from 'next'
 import Providers from '@/app/websites/providers'
 import '@/app/globals.css'
 
+async function fetchData(domain: string) {
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+
+  const url = `${websiteURL}/api/getData?domain=${domain}`
+
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data = await res.json()
+  return data.data || null
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -13,20 +29,18 @@ export async function generateMetadata({
   const websiteURL =
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      : 'http://localhost:3000/'
+      : 'http://localhost:3000'
 
-  const url = `${websiteURL}/api/getData?domain=${domain}`
-  const res = await fetch(url)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  let data = null
+  try {
+    data = await fetchData(domain)
+  } catch (error) {
+    console.error('Failed to fetch data', error)
   }
 
-  const { data } = (await res.json()) || {}
-
-  const metaTitleComputed = data.metaTitle || 'Webová vizitka | VisioSnap'
+  const metaTitleComputed = data?.metaTitle || 'Webová vizitka | VisioSnap'
   const metaDescriptionComputed =
-    data.metaDescription ||
+    data?.metaDescription ||
     'Webová vizitka vytvořeno službou VisioSnap. Levné a efektivní řešení webových vizitek, prezentačních webů pro svatby, události a další příležitosti. Neutrácejte za drahé řešení - vsaďte na jistotu.'
 
   return {

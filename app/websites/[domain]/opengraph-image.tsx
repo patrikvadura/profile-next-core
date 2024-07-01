@@ -1,10 +1,5 @@
 import { ImageResponse } from 'next/og'
 
-const websiteURL =
-  process.env.NODE_ENV === 'production'
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'http://localhost:3000/'
-
 export const runtime = 'edge'
 
 export const size = {
@@ -33,6 +28,22 @@ function getContrastColor(hex: string): string {
   return brightness > 128 ? '#000000' : '#FFFFFF'
 }
 
+async function fetchData(domain: string) {
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+
+  const url = `${websiteURL}/api/getData?domain=${domain}`
+
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  const data = await res.json()
+  return data.data || null
+}
+
 export default async function Image({ params }: { params: { domain: string } }) {
   const domain = params.domain
 
@@ -40,16 +51,17 @@ export default async function Image({ params }: { params: { domain: string } }) 
     throw new Error('domain is required')
   }
 
-  const url = `${websiteURL}/api/getData?domain=${domain}`
-  const res = await fetch(url)
-
-  if (!res.ok) {
+  let data = null
+  try {
+    data = await fetchData(domain)
+  } catch (error) {
+    console.error('Failed to fetch data', error)
     throw new Error('Failed to fetch data')
   }
 
-  const { data } = await res.json()
-
-  //console.log('Data from API:', data)
+  if (!data) {
+    throw new Error('No data found')
+  }
 
   const font: string = 'Hind'
   const fontUrl = `https://fonts.googleapis.com/css2?family=${font}:wght@700&display=swap`
@@ -68,7 +80,11 @@ export default async function Image({ params }: { params: { domain: string } }) 
 
   const fontFamily = fetch(fontFileUrl).then(res => res.arrayBuffer())
 
-  const openGraphImageUrl = `${websiteURL}/assets/img/openGraph.jpg`
+  const openGraphImageUrl = `${
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+  }/assets/img/openGraph.jpg`
 
   const backgroundColor = data.globalSecondary || '#ffffff'
   const contrastColor = getContrastColor(backgroundColor)
