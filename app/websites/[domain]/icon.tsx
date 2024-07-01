@@ -43,14 +43,14 @@ async function fetchData(domain: string) {
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000'
-  }/api/getData?domain=${domain}`
+  }/api/fetchData?domain=${domain}`
 
   const res = await fetch(url)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  const data = await res.json()
-  return data.data || null
+  const result = await res.json()
+  return result.data || null
 }
 
 export default async function Icon({ params }: { params: { domain: string } }) {
