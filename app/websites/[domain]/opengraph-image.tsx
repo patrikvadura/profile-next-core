@@ -1,3 +1,4 @@
+// app/websites/[domain]/opengraph-image.tsx
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
@@ -29,19 +30,18 @@ function getContrastColor(hex: string): string {
 }
 
 async function fetchData(domain: string) {
-  const websiteURL =
+  const url = `${
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
       : 'http://localhost:3000'
-
-  const url = `${websiteURL}/api/getData?domain=${domain}`
+  }/api/fetchData?domain=${domain}`
 
   const res = await fetch(url)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-  const data = await res.json()
-  return data.data || null
+  const result = await res.json()
+  return result.data || null
 }
 
 export default async function Image({ params }: { params: { domain: string } }) {
@@ -78,7 +78,7 @@ export default async function Image({ params }: { params: { domain: string } }) 
 
   const fontFileUrl = fontFileUrlMatch[1]
 
-  const fontFamily = fetch(fontFileUrl).then(res => res.arrayBuffer())
+  const fontFamily = await fetch(fontFileUrl).then(res => res.arrayBuffer())
 
   const openGraphImageUrl = `${
     process.env.NODE_ENV === 'production'
