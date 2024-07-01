@@ -10,7 +10,8 @@ export const DemoWebsites = ({
   websites,
 }: {
   websites: {
-    image: string
+    link: string | undefined | any
+    image: string | undefined | any
   }[]
 }) => {
   const firstRow = websites.slice(0, 5)
@@ -95,7 +96,8 @@ export const Item = ({
   translate,
 }: {
   website: {
-    image: string
+    link: string | undefined | any
+    image: string | undefined | any
   }
   translate: MotionValue<number>
 }) => {
@@ -110,13 +112,15 @@ export const Item = ({
       key={website.image}
       className="group/product h-[20rem] w-[35rem] relative flex-shrink-0"
     >
-      <Image
-        src={website.image}
-        height="600"
-        width="600"
-        className="object-cover object-left-top absolute h-full w-full inset-0"
-        alt="Demo website"
-      />
+      <Link href={website.link} target="_blank">
+        <Image
+          src={website.image}
+          height="600"
+          width="600"
+          className="object-cover object-left-top absolute h-full w-full inset-0"
+          alt="Demo website"
+        />
+      </Link>
     </motion.div>
   )
 }

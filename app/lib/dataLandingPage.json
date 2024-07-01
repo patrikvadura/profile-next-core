@@ -88,30 +88,39 @@
     "description": "Neztrácejte čas ani finance tvorbou webových stránek na míru, které většinou ani nepotřebujete. Vsaťte na jistotu s rychlostí a bezkonkurenční cenou od VisionSnap.",
     "items": [
       {
-        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_01.webp"
-      },
-      {
-        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_02.webp"
-      },
-      {
+        "link": "/websites/patrikvadura.cz",
         "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_03.webp"
       },
       {
+        "link": "/websites/cisteni-strech-nedakonice.cz",
         "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_04.webp"
       },
       {
+        "link": "/websites/indrafinance.cz",
         "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_01.webp"
       },
       {
-        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_02.webp"
-      },
-      {
-        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_03.webp"
-      },
-      {
+        "link": "/websites/cisteni-strech-nedakonice.cz",
         "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_04.webp"
       },
       {
+        "link": "https://www.kreativni-duo.cz",
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_05.webp"
+      },
+      {
+        "link": "/websites/patrikvadura.cz",
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_03.webp"
+      },
+      {
+        "link": "/websites/dolcevitakavarna.cz",
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_02.webp"
+      },
+      {
+        "link": "https://www.kreativni-duo.cz",
+        "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_05.webp"
+      },
+      {
+        "link": "/websites/indrafinance.cz",
         "image": "/assets/img/landingPage/demoWebistes/visionsnap_website_demo_01.webp"
       }
     ]
