@@ -2,21 +2,21 @@ import React from 'react'
 import type { Metadata } from 'next'
 import Providers from '@/app/websites/providers'
 import '@/app/globals.css'
+import { MongoClient } from 'mongodb'
 
 async function fetchData(domain: string) {
-  const websiteURL =
-    process.env.NODE_ENV === 'production'
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      : 'http://localhost:3000'
+  const client = await MongoClient.connect(process.env.MONGODB_URI!)
+  const db = client.db('studioDatabase')
+  const collection = db.collection('websitesData')
 
-  const url = `${websiteURL}/api/getData?domain=${domain}`
+  const data = await collection.findOne({ domain: domain })
+  client.close()
 
-  const res = await fetch(url)
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  if (!data) {
+    throw new Error('Data not found')
   }
-  const data = await res.json()
-  return data.data || null
+
+  return data
 }
 
 export async function generateMetadata({
@@ -24,12 +24,7 @@ export async function generateMetadata({
 }: {
   params: { domain: string }
 }): Promise<Metadata> {
-  const domain = params.domain
-
-  const websiteURL =
-    process.env.NODE_ENV === 'production'
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      : 'http://localhost:3000'
+  const { domain } = params
 
   let data = null
   try {
@@ -44,13 +39,17 @@ export async function generateMetadata({
     'Webová vizitka vytvořeno službou VisioSnap. Levné a efektivní řešení webových vizitek, prezentačních webů pro svatby, události a další příležitosti. Neutrácejte za drahé řešení - vsaďte na jistotu.'
 
   return {
-    metadataBase: new URL(`${websiteURL}`),
+    metadataBase: new URL(
+      process.env.NODE_ENV === 'production'
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+        : 'http://localhost:3000',
+    ),
     title: metaTitleComputed,
     description: metaDescriptionComputed,
     openGraph: {
       images: [
         {
-          url: `<generated>`,
+          url: `/openGraphImage.jpg`,
           width: 1200,
           height: 630,
           alt: 'OpenGraph Image',
@@ -61,7 +60,7 @@ export async function generateMetadata({
     icons: {
       icon: [
         {
-          url: `/icon?<generated>`,
+          url: `/icon.png`,
           sizes: '32x32',
           type: 'image/png',
         },
