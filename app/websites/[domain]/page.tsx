@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import { notFound } from 'next/navigation'
 import Head from 'next/head'
 import Header from '@/app/ui/Header'
@@ -15,35 +14,26 @@ async function fetchData(domain: string) {
   const websiteURL =
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
-      : 'http://localhost:3000/'
+      : 'http://localhost:3000'
 
   const url = `${websiteURL}/api/getData?domain=${domain}`
-
-  console.log(`Fetching data from URL: ${url}`)
 
   const res = await fetch(url)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   const data = await res.json()
-  console.log('Fetched data:', data)
   return data.data || null
 }
 
-export default async function Home({ params }: { params: { domain: string } }) {
-  const domain = params.domain
+export default async function Page({ params }: { params: { domain: string } }) {
+  const { domain } = params
 
-  if (!domain) {
-    return notFound()
-  }
-
-  let data
+  let data = null
   try {
     data = await fetchData(domain)
-    console.log('Fetched data:', data)
   } catch (error) {
     console.error('Failed to fetch data', error)
-    return notFound()
   }
 
   if (!data) {
@@ -66,8 +56,7 @@ export default async function Home({ params }: { params: { domain: string } }) {
   return (
     <>
       <Head>
-        {/*@ts-ignore*/}
-        <Fragment dangerouslySetInnerHTML={{ __html: data.customHeadCode || '' }} />
+        <div dangerouslySetInnerHTML={{ __html: data.customHeadCode || '' }} />
       </Head>
 
       <DynamicFontLoader
@@ -81,7 +70,7 @@ export default async function Home({ params }: { params: { domain: string } }) {
         accentGlobalColor={data.globalAccent || ''}
       />
 
-      <body className="fontDefault">
+      <div className="fontDefault">
         <div dangerouslySetInnerHTML={{ __html: data.customBodyStartCode || '' }} />
 
         <Header
@@ -109,14 +98,14 @@ export default async function Home({ params }: { params: { domain: string } }) {
             contentTitle={data.heroContentTitle || ''}
             contentSubtitle={data.heroContentSubtitle || ''}
             contentLargeTitle={data.heroContentLargeTitle || ''}
-            contentButtonPrimary={visibility.showHeroContentButtonPrimary || ''}
+            contentButtonPrimary={visibility.showHeroContentButtonPrimary || false}
             contentButtonPrimaryText={data.heroContentButtonPrimaryText || ''}
             contentButtonPrimaryLink={
               data.heroContentButtonPrimaryLink === null
                 ? data.heroContentButtonPrimaryCustomLink
                 : data.heroContentButtonPrimaryLink
             }
-            contentButtonSecondary={visibility.showHeroContentButtonSecondary || ''}
+            contentButtonSecondary={visibility.showHeroContentButtonSecondary || false}
             contentButtonSecondaryText={data.heroContentButtonSecondaryText || ''}
             contentButtonSecondaryLink={
               data.heroContentButtonSecondaryLink === null
@@ -143,7 +132,7 @@ export default async function Home({ params }: { params: { domain: string } }) {
             typoColor={data.aboutTypo || ''}
             contentTitle={data.aboutContentTitle || ''}
             contentDescription={data.aboutContentDescription || ''}
-            contentButton={visibility.showAboutContentButton || ''}
+            contentButton={visibility.showAboutContentButton || false}
             contentButtonText={data.aboutContentButtonTitle || ''}
             contentButtonLink={
               data.aboutContentButtonLink === null
@@ -200,8 +189,8 @@ export default async function Home({ params }: { params: { domain: string } }) {
             accentBgColor={data.contactAccentBg || ''}
             accentFgColor={data.contactAccentFg || ''}
             typoColor={data.contactTypo || ''}
-            contactForm={visibility.showContactFormOrMap || ''}
-            contactMap={visibility.showContactFormOrMap || ''}
+            contactForm={visibility.showContactFormOrMap || false}
+            contactMap={visibility.showContactFormOrMap || false}
             contactRecipient={data.contactRecipient || ''}
             contactMapAddress={data.contactMapAddress || ''}
             contactContentTitle={data.contactContentTitle || ''}
@@ -214,7 +203,7 @@ export default async function Home({ params }: { params: { domain: string } }) {
         <Footer cookieShow={data.cookieShow || false} boxes={data.boxesSocialSites || []} />
 
         <div dangerouslySetInnerHTML={{ __html: data.customFooterCode || '' }} />
-      </body>
+      </div>
     </>
   )
 }
