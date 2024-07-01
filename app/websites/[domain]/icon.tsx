@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { MongoClient } from 'mongodb'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs' // Změňte runtime na nodejs
 
 export const size = {
   width: 32,
@@ -96,6 +96,8 @@ export default async function Icon({ params }: { params: { domain: string } }) {
         {label}
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+    },
   )
 }
