@@ -8,12 +8,8 @@
   ],
   "rewrites": [
     {
-      "source": "/:domain",
-      "destination": "/websites/:domain"
-    },
-    {
-      "source": "/:domain/:path*",
-      "destination": "/websites/:domain/:path*"
+      "source": "/",
+      "destination": "/websites/test01.visiosnap.cz"
     }
   ]
 }
