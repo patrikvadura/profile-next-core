@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/og'
-import { MongoClient } from 'mongodb'
 
 export const runtime = 'edge'
 
@@ -17,7 +16,7 @@ function getContrastColor(hex: string): string {
       .map(char => char + char)
       .join('')
   } else if (hex.length < 6) {
-    hex.padStart(6, '0')
+    hex = hex.padStart(6, '0')
   }
 
   let r = parseInt(hex.substring(0, 2), 16)
@@ -30,18 +29,19 @@ function getContrastColor(hex: string): string {
 }
 
 async function fetchData(domain: string) {
-  const client = await MongoClient.connect(process.env.MONGODB_URI!)
-  const db = client.db('studioDatabase')
-  const collection = db.collection('websitesData')
+  const websiteURL =
+    process.env.NODE_ENV === 'production'
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
 
-  const data = await collection.findOne({ domain: domain })
-  client.close()
+  const url = `${websiteURL}/api/getData?domain=${domain}`
 
-  if (!data) {
-    throw new Error('Data not found')
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
   }
-
-  return data
+  const data = await res.json()
+  return data.data || null
 }
 
 export default async function Image({ params }: { params: { domain: string } }) {
@@ -78,7 +78,7 @@ export default async function Image({ params }: { params: { domain: string } }) 
 
   const fontFileUrl = fontFileUrlMatch[1]
 
-  const fontFamily = await fetch(fontFileUrl).then(res => res.arrayBuffer())
+  const fontFamily = fetch(fontFileUrl).then(res => res.arrayBuffer())
 
   const openGraphImageUrl = `${
     process.env.NODE_ENV === 'production'
